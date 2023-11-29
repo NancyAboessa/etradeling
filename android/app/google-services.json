@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "118193198129",
+    "project_id": "etradeling-d39a0",
+    "storage_bucket": "etradeling-d39a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118193198129:android:05d1fecb5c4df7dc3c7110",
+        "android_client_info": {
+          "package_name": "com.example.etradeling"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwbCI0LkPkvAkll0AeRh8_G8B7ACu_Ntg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
