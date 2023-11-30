@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ImageUploadFirst extends StatelessWidget {
+class ImageUploadScound extends StatelessWidget {
   final String? text;
   final cubit;
-  const ImageUploadFirst({super.key, required this.text, required this.cubit});
+  const ImageUploadScound({super.key, required this.text, required this.cubit});
 
   @override
   Widget build(BuildContext context) {
