@@ -4,7 +4,7 @@
 class Category{
   String? name;
   String? image;
-  Map<String, dynamic>? sub;w
+  Map<String, dynamic>? sub;
   List<String>? keys;
 
   Category({ this.name,  this.sub, this.keys,this.image});

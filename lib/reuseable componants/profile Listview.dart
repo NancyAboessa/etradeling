@@ -1,19 +1,23 @@
+import 'package:etradeling/Screens/Profile.dart';
 import 'package:etradeling/models/listModel.dart';
 import 'package:etradeling/reuseable%20componants/buttoms1.dart';
+import 'package:etradeling/stateManagement/names_cubit.dart';
 import 'package:flutter/material.dart';
 
 class Listnames extends StatelessWidget {
-   Listnames({super.key});
-  List<ListModel> names=[
-    ListModel(Name: 'hi'),
-  ];
+   Listnames({super.key,required this.namesCubit,this.input});
+  List<ListModel> ?namesCubit;
+  int ?input;
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(itemBuilder:(context,index)
-    {
-      return Buttom(text: names[index].Name,);
-    },
-        itemCount: names.length,
-    );
+    return Buttom(namesCubit:namesCubit!,);
   }
 }
+
+
+// ListView.builder(itemBuilder:(context,index)
+//     {
+//      return Buttom(namesCubit:namesCubit,);
+//     },
+//         itemCount: namesCubit.length,
+//     );

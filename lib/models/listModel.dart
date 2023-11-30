@@ -1,6 +1,9 @@
 class ListModel{
-  String Name;
+ late final String Name;
 
   ListModel({required this.Name});
+
+
+
 
 }
