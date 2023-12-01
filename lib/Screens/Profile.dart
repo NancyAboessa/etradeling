@@ -1,3 +1,4 @@
+import 'package:etradeling/Screens/profile%20part%20two.dart';
 import 'package:etradeling/models/listModel.dart';
 import 'package:etradeling/stateManagement/names_cubit.dart';
 import 'package:etradeling/stateManagement/names_state.dart';
@@ -14,26 +15,45 @@ class Profile extends StatelessWidget {
   // NamesCubit namesCubit;
   @override
   Widget build(BuildContext context) {
-    NamesCubit cubit = NamesCubit.get(context);
+   // NamesCubit cubit = NamesCubit.get(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text('hi'),
-      ),
       body: BlocBuilder<NamesCubit, NamesState>(
         builder: (context, state) {
-          return Container(
-              child: ListView.builder(
-                  itemCount: 1,
-                  itemBuilder: (context, index) {
-                    return Listnames(
-                      namesCubit: cubit.names,
-                    );
-                  }));
+          return Scaffold(
+            body: Row(
+             // mainAxisAlignment: MainAxisAlignment.start,
+               //crossAxisAlignment: CrossAxisAlignment.start,
+               children: [
+                 Listnames(),
+                 SizedBox(width: 10,),
+                 Expanded(
+                   child: SingleChildScrollView(
+                     child: Column(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: [
+                         Pro(),
+                       ],
+                     ),
+                   ),
+                 ),
+             ],
+            ),
+          );
         },
       ),
     );
   }
 }
+//cubit code listview.builder
+// Container(
+// child: ListView.builder(
+// itemCount: 1,
+// itemBuilder: (context, index) {
+// return Listnames(
+// namesCubit: cubit.names,
+// );
+// }));
+
 
 //        TextButton(onPressed: (){
 //           setState(() {
