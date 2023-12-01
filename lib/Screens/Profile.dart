@@ -34,7 +34,6 @@ class Profile extends StatelessWidget {
     );
   }
 }
-
 //        TextButton(onPressed: (){
 //           setState(() {
 //             _hasBeenPressed = !_hasBeenPressed;

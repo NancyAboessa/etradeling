@@ -1,5 +1,7 @@
 import 'package:etradeling/Screens/Profile.dart';
 import 'package:etradeling/firebase_options.dart';
+import 'package:etradeling/presentation/auth/bloc/login.cubit.dart';
+import 'package:etradeling/presentation/auth/login.dart';
 import 'package:etradeling/presentation/post/cubit/cubite.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +29,9 @@ class MyApp extends StatelessWidget {
       ),
       home: MultiBlocProvider(providers: [
         BlocProvider(create: (context) => PostCubit()),
-        BlocProvider(create: (context) => NamesCubit())
-      ], child: Profile()),
+        BlocProvider(create: (context) => NamesCubit()),
+        BlocProvider(create: (context) => LoginCubit()),
+      ], child: login_screen()),
     );
   }
 }
