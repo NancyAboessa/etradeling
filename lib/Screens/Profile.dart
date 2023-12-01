@@ -44,6 +44,7 @@ class Profile extends StatelessWidget {
     );
   }
 }
+<<<<<<< HEAD
 //cubit code listview.builder
 // Container(
 // child: ListView.builder(
@@ -55,6 +56,8 @@ class Profile extends StatelessWidget {
 // }));
 
 
+=======
+>>>>>>> 1d8ffe4d7bd7f999c1c360d4bd1c4e4c66c62218
 //        TextButton(onPressed: (){
 //           setState(() {
 //             _hasBeenPressed = !_hasBeenPressed;
