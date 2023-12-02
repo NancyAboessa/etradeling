@@ -20,14 +20,16 @@ class Profile extends StatelessWidget {
       body: BlocBuilder<NamesCubit, NamesState>(
         builder: (context, state) {
           return Scaffold(
-            body: Row(
-             // mainAxisAlignment: MainAxisAlignment.start,
-               //crossAxisAlignment: CrossAxisAlignment.start,
-               children: [
-                 Listnames(),
-                 SizedBox(width: 10,),
-                 Expanded(
-                   child: SingleChildScrollView(
+            body: SizedBox(
+              width: 2000,
+              height: 1000,
+              child: Row(
+               // mainAxisAlignment: MainAxisAlignment.start,
+                 //crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                   Listnames(),
+                   SizedBox(width: 10,),
+                   SingleChildScrollView(
                      child: Column(
                        crossAxisAlignment: CrossAxisAlignment.start,
                        children: [
@@ -35,8 +37,8 @@ class Profile extends StatelessWidget {
                        ],
                      ),
                    ),
-                 ),
-             ],
+               ],
+              ),
             ),
           );
         },
@@ -44,7 +46,6 @@ class Profile extends StatelessWidget {
     );
   }
 }
-<<<<<<< HEAD
 //cubit code listview.builder
 // Container(
 // child: ListView.builder(
@@ -56,8 +57,6 @@ class Profile extends StatelessWidget {
 // }));
 
 
-=======
->>>>>>> 1d8ffe4d7bd7f999c1c360d4bd1c4e4c66c62218
 //        TextButton(onPressed: (){
 //           setState(() {
 //             _hasBeenPressed = !_hasBeenPressed;

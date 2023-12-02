@@ -68,7 +68,7 @@ class PostCubit extends Cubit<PostMainState> {
     }
     emit(GetImageStateFirst());
   }
-
+//image picker
   getImageScound() async {
     final imagePiker = ImagePicker();
     XFile? image = await imagePiker.pickImage(source: ImageSource.gallery);

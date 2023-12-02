@@ -14,7 +14,7 @@ class Listnames extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 150,top: 20),
+      padding: EdgeInsets.only(left: 150,top: 80),
       child: Container(
         height: 700,
         width: 300,
@@ -29,13 +29,22 @@ class Listnames extends StatelessWidget {
         child: ListView(
           children:
           [
-            ButtomList(text: 'My Account', icon: FontAwesomeIcons.user),
-            ButtomList(text: 'My Orders', icon: FontAwesomeIcons.box),
-            ButtomList(text: 'My Addresses', icon: FontAwesomeIcons.mapLocation),
-            ButtomList(text: 'Messenger', icon: FontAwesomeIcons.comment),
-            ButtomList(text: 'My Request', icon: Icons.library_books),
-            ButtomList(text: 'become vendor create account ', icon: FontAwesomeIcons.newspaper),
-            ButtomList(text: 'Log Out', icon: FontAwesomeIcons.angleRight),
+            ButtomList(text: Text('My Account'), icon: FontAwesomeIcons.user),
+            ButtomList(text: Text('My Orders'), icon: FontAwesomeIcons.box),
+            ButtomList(text: Text('My Addresses'), icon: FontAwesomeIcons.mapLocation),
+            ButtomList(text: Text('Messenger'), icon: FontAwesomeIcons.comment),
+            ButtomList(text: Text('My Request'), icon: Icons.library_books),
+            ButtomList(text: Column(
+              children: [
+                Text('''become vendor 
+create account ''',),
+                Divider(
+                  color: Colors.grey,
+                  thickness: 2,
+                ),
+              ],
+            ), icon: FontAwesomeIcons.newspaper),
+            ButtomList(text: Text('Log Out'), icon: FontAwesomeIcons.angleRight),
 
           ],
         ),

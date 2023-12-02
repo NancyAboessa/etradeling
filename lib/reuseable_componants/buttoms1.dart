@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ButtomList extends StatelessWidget {
-  final String text;
+  final Widget text;
   final IconData icon;
   ButtomList({
     Key? key,
@@ -14,24 +14,23 @@ class ButtomList extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {},
-        child: SizedBox(
+        child: Container(
+          alignment: Alignment.center,
           height: 70,
           width: 100,
-          child: Row(
+          child: Column(
             children: [
-              Icon(
-                icon as IconData?,
-                color:  Colors.black,
-              ),
-              SizedBox(
-                width: 15,
-              ),
-              Text(
-                text!,
-                style: TextStyle(
-                    color: Colors.black,
-
-                    fontSize: 18),
+              Row(
+                children: [
+                  Icon(
+                    icon as IconData?,
+                    color:  Colors.black,
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  text
+                ],
               ),
             ],
           ),
