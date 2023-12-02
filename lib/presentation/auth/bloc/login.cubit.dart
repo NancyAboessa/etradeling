@@ -36,6 +36,7 @@ class LoginCubit extends Cubit<LoginState> {
     } on Exception catch (e) {
       log(e as String);
     }
+    emit(SignUpState());
   }
 }
 

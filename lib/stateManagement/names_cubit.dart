@@ -8,23 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
-
-
 class NamesCubit extends Cubit<NamesState> {
   NamesCubit() : super(NamesInitial());
 
-  static NamesCubit get(context)=>BlocProvider.of(context);
+  static NamesCubit get(context) => BlocProvider.of(context);
   bool _hasBeenPressed = false;
   final storage = FirebaseStorage.instance;
 
-  sendData(data) async {
-
-    await FirebaseFirestore.instance.collection("profile").add(data);
-     emit(getDataState());
-
-  }
-
-  List<ListModel> names=[
+  List<ListModel> names = [
     ListModel(Name: 'My Account'),
     ListModel(Name: 'My Orders'),
     ListModel(Name: 'My Addresses'),
@@ -33,16 +24,21 @@ class NamesCubit extends Cubit<NamesState> {
     ListModel(Name: 'Become Vender Create account'),
     ListModel(Name: 'Log out'),
   ];
-  getnameCubit(names)
-  {
+  getnameCubit(names) {
     ListModel(Name: names);
     emit(getnammesState());
   }
-   getcolor()
-   {
-     _hasBeenPressed = !_hasBeenPressed;
-     emit(colorchange());
-   }
 
+  getcolor() {
+    _hasBeenPressed = !_hasBeenPressed;
+    emit(colorchange());
+  }
 
+  sendData(data) async {
+    print(data);
+    if (data != null) {
+      await FirebaseFirestore.instance.collection("Profile").add(data);
+    }
+    emit(getDataState());
+  }
 }

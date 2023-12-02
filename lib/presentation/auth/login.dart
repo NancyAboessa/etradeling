@@ -92,7 +92,7 @@ class login_screen extends StatelessWidget {
                         children: [
                           MaterialButton(
                             onPressed: () {
-                              loginCubit!.NewPassword();
+                              loginCubit.NewPassword();
                             },
                             child: Text(
                               'Forget password ?',
