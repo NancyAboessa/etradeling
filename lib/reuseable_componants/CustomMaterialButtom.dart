@@ -16,28 +16,19 @@ class CustomMaterialButtom extends StatelessWidget {
   double width;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () async {
-        print(data);
-        // await  cubit.sendData(data);
-        if (data != null) {
-          cubit.sendData(data!);
-        }
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.zero,
-          color: Colors.black,
-        ),
-        alignment: Alignment.center,
-        width: width,
-        height: 40,
-        child: Text(
-          text,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20.0,
-          ),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.zero,
+        color: Colors.black,
+      ),
+      alignment: Alignment.center,
+      width: width,
+      height: 40,
+      child: Text(
+        text,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 20.0,
         ),
       ),
     );

@@ -134,14 +134,25 @@ class Profile extends StatelessWidget {
                                 const SizedBox(
                                   height: 20,
                                 ),
-                                CustomMaterialButtom(
-                                  text: 'Save',
-                                  width: 150,
-                                  cubit: cubit,
-                                  data: {
-                                    'name': textController.text,
-                                    'phone': phoneNumberController.text,
+                                InkWell(
+                                  onTap: () async {
+                                    // await  cubit.sendData(data);
+                                    cubit.sendData(
+                                      {
+                                        'name': textController.text,
+                                        'phone': phoneNumberController.text,
+                                      },
+                                    );
                                   },
+                                  child: CustomMaterialButtom(
+                                    text: 'Save',
+                                    width: 150,
+                                    cubit: cubit,
+                                    data: {
+                                      'name': textController.text,
+                                      'phone': phoneNumberController.text,
+                                    },
+                                  ),
                                 ),
                                 const SizedBox(
                                   height: 10,
