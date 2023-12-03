@@ -1,14 +1,9 @@
-import 'package:etradeling/reuseable_componants/CustomMaterialButtom.dart';
-import 'package:etradeling/reuseable_componants/CustomTextField.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import '../stateManagement/names_cubit.dart';
-import '../stateManagement/names_state.dart';
-
+import '../reuseable_componants/CustomMaterialButtom.dart';
+import '../reuseable_componants/CustomTextField.dart';
 class Pro extends StatelessWidget {
-  Pro({
+   Pro({
     super.key,
     required this.cubit,
   });
@@ -22,7 +17,7 @@ class Pro extends StatelessWidget {
     '+86',
     '+20'
   ]; // Add your desired country codes
-  final cubit;
+  final  cubit;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -64,12 +59,12 @@ class Pro extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 60, right: 70),
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: const Icon(FontAwesomeIcons.pen,
-                        size: 15, color: Colors.white),
                     style: ElevatedButton.styleFrom(
                       shape: const CircleBorder(),
                       backgroundColor: Colors.grey[300], // <-- Button color
                     ),
+                    child: const Icon(FontAwesomeIcons.pen,
+                        size: 15, color: Colors.white),
                   ),
                 )
               ],
@@ -96,19 +91,19 @@ class Pro extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Name'),
-                    textField(cotrollar: textController),
+                   const Text('Name'),
+                    textField(controller: textController),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Phone number'),
+                    const Text('Phone number'),
                     textField(
-                      cotrollar: phoneNumberController,
+                      controller: phoneNumberController,
                     ),
                   ],
                 ),
@@ -129,7 +124,7 @@ class Pro extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Divider(
+           const Divider(
               color: Colors.grey,
               thickness: 2,
             ),

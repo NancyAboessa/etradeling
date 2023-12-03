@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
 class textField extends StatelessWidget {
-  textField({
-    required this.cotrollar,
+  const textField({
+    required this.controller,
     super.key,
   });
-  final TextEditingController? cotrollar;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 38,
       width: 330,
       child: TextField(
-        controller: cotrollar!,
-        decoration: InputDecoration(
+        controller: controller!,
+        decoration: const InputDecoration(
             border: OutlineInputBorder(
               borderRadius: BorderRadius.zero, // No rounded corners
             ),

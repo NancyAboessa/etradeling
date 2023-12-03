@@ -1,20 +1,14 @@
-import 'package:etradeling/Screens/profile%20part%20two.dart';
-import 'package:etradeling/models/listModel.dart';
-import 'package:etradeling/stateManagement/names_cubit.dart';
-import 'package:etradeling/stateManagement/names_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../reuseable_componants/CustomMaterialButtom.dart';
 import '../reuseable_componants/CustomTextField.dart';
 import '../reuseable_componants/profile Listview.dart';
+import '../stateManagement/names_cubit.dart';
+import '../stateManagement/names_state.dart';
 
 class Profile extends StatelessWidget {
   Profile({super.key});
-  // List<ListModel> names=[];
-  // NamesCubit namesCubit;
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController textController = TextEditingController();
   @override
@@ -25,11 +19,9 @@ class Profile extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             body: Row(
-              // mainAxisAlignment: MainAxisAlignment.start,
-              //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Listnames(),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Expanded(
@@ -78,13 +70,13 @@ class Profile extends StatelessWidget {
                                           top: 60, right: 70),
                                       child: ElevatedButton(
                                         onPressed: () {},
-                                        child: const Icon(FontAwesomeIcons.pen,
-                                            size: 15, color: Colors.white),
                                         style: ElevatedButton.styleFrom(
                                           shape: const CircleBorder(),
                                           backgroundColor: Colors
                                               .grey[300], // <-- Button color
                                         ),
+                                        child: const Icon(FontAwesomeIcons.pen,
+                                            size: 15, color: Colors.white),
                                       ),
                                     )
                                   ],
@@ -112,20 +104,20 @@ class Profile extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text('Name'),
-                                        textField(cotrollar: textController),
+                                        const Text('Name'),
+                                        textField(controller: textController),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 20,
                                     ),
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text('Phone number'),
+                                        const Text('Phone number'),
                                         textField(
-                                          cotrollar: phoneNumberController,
+                                          controller: phoneNumberController,
                                         ),
                                       ],
                                     ),
@@ -136,7 +128,6 @@ class Profile extends StatelessWidget {
                                 ),
                                 InkWell(
                                   onTap: () async {
-                                    // await  cubit.sendData(data);
                                     cubit.sendData(
                                       {
                                         'name': textController.text,
@@ -157,7 +148,7 @@ class Profile extends StatelessWidget {
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                Divider(
+                                const Divider(
                                   color: Colors.grey,
                                   thickness: 2,
                                 ),
@@ -187,36 +178,3 @@ class Profile extends StatelessWidget {
     );
   }
 }
-//cubit code listview.builder
-// Container(
-// child: ListView.builder(
-// itemCount: 1,
-// itemBuilder: (context, index) {
-// return Listnames(
-// namesCubit: cubit.names,
-// );
-// }));
-
-//        TextButton(onPressed: (){
-//           setState(() {
-//             _hasBeenPressed = !_hasBeenPressed;
-//           });
-//         }, child: Container(
-//           height: 100.h,
-//           width: 150.w,
-//           decoration: BoxDecoration(),
-//           child: Row(
-//            children: [
-//              Icon(FontAwesomeIcons.user,
-//                color: _hasBeenPressed ? Colors.orange[600] : Colors.black,),
-//              SizedBox(width: 15.w,),
-//              Text('My Account',
-//                style: TextStyle(
-//                    color: _hasBeenPressed ? Colors.orange[600] : Colors.black,
-//
-//                    fontSize: 18.sp),),
-//                 ],
-//                  ),
-//         )
-//
-//                   ),

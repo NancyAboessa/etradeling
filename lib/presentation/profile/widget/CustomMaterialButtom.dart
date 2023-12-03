@@ -17,7 +17,7 @@ class CustomMaterialButtom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         borderRadius: BorderRadius.zero,
         color: Colors.black,
       ),
@@ -26,7 +26,7 @@ class CustomMaterialButtom extends StatelessWidget {
       height: 40,
       child: Text(
         text,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 20.0,
         ),
