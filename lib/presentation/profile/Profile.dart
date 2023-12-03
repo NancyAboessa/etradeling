@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../reuseable_componants/CustomMaterialButtom.dart';
-import '../reuseable_componants/CustomTextField.dart';
-import '../reuseable_componants/profile Listview.dart';
-import '../stateManagement/names_cubit.dart';
-import '../stateManagement/names_state.dart';
+import 'cubit/names_cubit.dart';
+import 'cubit/names_state.dart';
+import 'widget/CustomMaterialButtom.dart';
+import 'widget/CustomTextField.dart';
+import 'widget/profile Listview.dart';
 
 class Profile extends StatelessWidget {
   Profile({super.key});

@@ -124,7 +124,7 @@ class CreatePost extends StatelessWidget {
                     // "Details": "",
                   },
                 ),
-              )
+              ),
             ],
           ),
         );

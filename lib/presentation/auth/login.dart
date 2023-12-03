@@ -1,15 +1,13 @@
-import 'package:etradeling/presentation/auth/rigster.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'bloc/login.cubit.dart';
 import 'bloc/login.state.dart';
+import 'rigster.dart';
 
-class login_screen extends StatelessWidget {
-  login_screen({super.key});
-  LoginCubit? loginCubit;
-  var emaiController = TextEditingController();
-  var PasswordlController = TextEditingController();
+class LoginScreen extends StatelessWidget {
+  LoginScreen({super.key});
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     LoginCubit loginCubit = LoginCubit.get(context);
@@ -25,7 +23,7 @@ class login_screen extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         'Welcome',
                         style: TextStyle(
                           color: Colors.black,
@@ -33,7 +31,7 @@ class login_screen extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      Text(
+                      const Text(
                         'Sign in ',
                         style: TextStyle(
                           color: Colors.black,
@@ -41,12 +39,12 @@ class login_screen extends StatelessWidget {
                           fontWeight: FontWeight.w300,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30.0,
                       ),
-                      Container(
+                      SizedBox(
                         child: TextFormField(
-                          controller: emaiController,
+                          controller: emailController,
                           keyboardType: TextInputType.emailAddress,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -54,29 +52,32 @@ class login_screen extends StatelessWidget {
                             }
                             return null;
                           },
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.zero,
+                            ),
                             labelText: 'E-mail',
                             prefixIcon: Icon(Icons.email),
                           ),
                           onFieldSubmitted: (value) {
-                            print(value);
+                            // print(value);
                           },
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20.0,
                       ),
-                      Container(
+                      SizedBox(
                         child: TextFormField(
                           keyboardType: TextInputType.visiblePassword,
                           obscureText: true,
                           onFieldSubmitted: (value) {
-                            print(value);
+                            // print(value);
                           },
                           onChanged: (value) {
-                            print(value);
+                            // print(value);
                           },
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'Password',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.zero,
@@ -94,7 +95,7 @@ class login_screen extends StatelessWidget {
                             onPressed: () {
                               loginCubit.NewPassword();
                             },
-                            child: Text(
+                            child: const Text(
                               'Forget password ?',
                               style: TextStyle(
                                 color: Colors.orange,
@@ -103,18 +104,19 @@ class login_screen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20.0,
                       ),
                       Container(
+                        height: 75,
                         width: double.infinity,
                         color: Colors.black,
                         child: MaterialButton(
                           onPressed: () {
                             loginCubit.SignInWithEamilandPass(
-                                emaiController.text, PasswordlController.text);
+                                emailController.text, passwordController.text);
                           },
-                          child: Text(
+                          child: const Text(
                             'Sign in',
                             style: TextStyle(
                               color: Colors.white,
@@ -125,7 +127,7 @@ class login_screen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             'Don\'t have an account .?',
                           ),
                           TextButton(
@@ -134,16 +136,20 @@ class login_screen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => SignUp_Screen(),
+                                    builder: (_) => BlocProvider.value(
+                                      value:
+                                          BlocProvider.of<LoginCubit>(context),
+                                      child: SignUpScreen(),
+                                    ),
                                   ));
                             },
-                            child: Text(
+                            child: const Text(
                               'Sign up',
                               style: TextStyle(
                                 color: Colors.orange,
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ],

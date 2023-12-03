@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../reuseable_componants/CustomMaterialButtom.dart';
-import '../reuseable_componants/CustomTextField.dart';
+
+import 'widget/CustomMaterialButtom.dart';
+import 'widget/CustomTextField.dart';
+
 class Pro extends StatelessWidget {
-   Pro({
+  Pro({
     super.key,
     required this.cubit,
   });
@@ -17,7 +19,7 @@ class Pro extends StatelessWidget {
     '+86',
     '+20'
   ]; // Add your desired country codes
-  final  cubit;
+  final cubit;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -91,7 +93,7 @@ class Pro extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                   const Text('Name'),
+                    const Text('Name'),
                     textField(controller: textController),
                   ],
                 ),
@@ -124,7 +126,7 @@ class Pro extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-           const Divider(
+            const Divider(
               color: Colors.grey,
               thickness: 2,
             ),

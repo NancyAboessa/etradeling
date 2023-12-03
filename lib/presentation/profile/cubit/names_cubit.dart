@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:etradeling/models/listModel.dart';
-import 'package:etradeling/stateManagement/names_cubit.dart';
-import 'package:etradeling/stateManagement/names_state.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
+
+import 'names_state.dart';
 
 class NamesCubit extends Cubit<NamesState> {
   NamesCubit() : super(NamesInitial());
