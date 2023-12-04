@@ -1,3 +1,4 @@
+import 'package:etradeling/presentation/messages/messages_list.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'buttoms1.dart';
@@ -29,7 +30,14 @@ class Listnames extends StatelessWidget {
             ButtomList(text: Text('My Orders'), icon: FontAwesomeIcons.box),
             ButtomList(
                 text: Text('My Addresses'), icon: FontAwesomeIcons.mapLocation),
-            ButtomList(text: Text('Messenger'), icon: FontAwesomeIcons.comment),
+            InkWell(
+                onTap: () {
+                  MaterialPageRoute(
+                    builder: (_) => const MessagesList(),
+                  );
+                },
+                child: ButtomList(
+                    text: Text('Messenger'), icon: FontAwesomeIcons.comment)),
             ButtomList(text: Text('My Request'), icon: Icons.library_books),
             ButtomList(
                 text: Column(

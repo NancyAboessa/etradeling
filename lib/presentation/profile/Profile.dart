@@ -78,7 +78,7 @@ class Profile extends StatelessWidget {
                                         child: const Icon(FontAwesomeIcons.pen,
                                             size: 15, color: Colors.white),
                                       ),
-                                    )
+                                    ),
                                   ],
                                 ),
                                 const SizedBox(
