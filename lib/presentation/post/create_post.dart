@@ -1,3 +1,4 @@
+import 'package:etradeling/presentation/home_screen/appbar.dart';
 import 'package:etradeling/presentation/post/widget/Quantity.dart';
 import 'package:etradeling/presentation/post/widget/counter.dart';
 import 'package:etradeling/presentation/post/widget/image_upload.dart';
@@ -26,6 +27,7 @@ class CreatePost extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              MainAppBar(),
               const PigContainer(),
               Padding(
                 padding: const EdgeInsets.only(left: 80.0, right: 80.0),
@@ -117,10 +119,8 @@ class CreatePost extends StatelessWidget {
                     "Max_Budget": maxBudgetController.text,
                     "Quantity": cubit.count,
                     "unit": cubit.valUnit,
-                    "Product_Certificate":
-                        "gs://etradeling-d39a0.appspot.com/${cubit.firstImage}",
-                    "Company_Certificate":
-                        "gs://etradeling-d39a0.appspot.com/${cubit.scondImage}",
+                    "Product_Certificate": "${cubit.firstImage}",
+                    "Company_Certificate": "${cubit.scondImage}",
                     // "Details": "",
                   },
                 ),

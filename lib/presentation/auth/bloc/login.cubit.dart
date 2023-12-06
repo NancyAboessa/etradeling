@@ -1,14 +1,19 @@
 import 'dart:developer';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'login.state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(initialState());
 
   static LoginCubit get(context) => BlocProvider.of(context);
+  bool emailVerified = false;
+  //       emailVerified=  await FirebaseAuth.instance.currentUser!.emailVerified;
+  emailVerifiedCubit() async {
+    emailVerified = await FirebaseAuth.instance.currentUser!.emailVerified;
+    emit(EmailVerifiedState());
+  }
 
   loginPress() {
     print('login now');
@@ -29,25 +34,23 @@ class LoginCubit extends Cubit<LoginState> {
     emit(SuccessState());
   }
 
+  sendData() async {
+    await FirebaseFirestore.instance.collection("Profile").add({
+      "user_id": FirebaseAuth.instance.currentUser!.uid,
+    });
+
+    emit(SetDataState());
+  }
+
   SignupWithEmailandpass(email, pass) async {
     try {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: pass);
+      await FirebaseAuth.instance.currentUser!.sendEmailVerification();
+      await sendData();
     } on Exception catch (e) {
       log(e as String);
     }
     emit(SignUpState());
   }
 }
-
-//  Stream<LoginState> mapEventToState(LoginCubit event) async* {
-//     if (event == LoginCubit) {
-//    yield   SuccessState();
-//       try {
-//         await Future.delayed(Duration(seconds: 2));
-//         yield  loadingState();
-//       } catch (_) {
-//         yield FailState();
-//       }
-//     }
-//   }
