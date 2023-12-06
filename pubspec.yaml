@@ -45,6 +45,7 @@ dependencies:
   firebase_storage: ^11.5.3
   platform_file: ^0.0.1
   rating: ^1.0.0-dev.1
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:

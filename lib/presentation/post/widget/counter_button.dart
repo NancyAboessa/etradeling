@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 class CounterButton extends StatelessWidget {
   final String? query;
   final fanc;
-  const CounterButton({super.key, required this.query, required this.fanc});
+  final double hight;
+  const CounterButton({
+    required this.hight,
+    super.key, required this.query, required this.fanc});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -11,8 +14,8 @@ class CounterButton extends StatelessWidget {
         await fanc.plus();
       },
       child: Container(
-        height: 80,
-        width: 80,
+        height: hight,
+        width: hight,
         alignment: Alignment.center,
         decoration: BoxDecoration(
             border: Border.all(

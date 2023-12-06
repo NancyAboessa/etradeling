@@ -82,7 +82,7 @@ class CreatePost extends StatelessWidget {
                     child: Counter(
                         minasFunction: cubit,
                         plasFunction: cubit,
-                        count: cubit.count),
+                        count: cubit.count, text: 'Quantity', left: 100, width: 400, hight: 80, widthtt: 10,),
                   ),
                   Expanded(
                     flex: 1,
