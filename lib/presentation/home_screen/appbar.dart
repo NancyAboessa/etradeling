@@ -1,4 +1,10 @@
+import 'package:etradeling/presentation/post/create_post.dart';
+import 'package:etradeling/presentation/post/cubit/cubite.dart';
+import 'package:etradeling/presentation/post/cubit/state.dart';
+import 'package:etradeling/presentation/profile/Profile.dart';
+import 'package:etradeling/presentation/profile/cubit/names_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainAppBar extends StatelessWidget {
@@ -60,14 +66,30 @@ class MainAppBar extends StatelessWidget {
               SizedBox(
                 width: 40.0,
               ),
-              Icon(FontAwesomeIcons.circleUser, size: 15, color: Colors.black),
-              SizedBox(
-                width: 5.0,
-              ),
-              Text(
-                'shehab eldin',
-                style: TextStyle(
-                  fontSize: 15.0,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => BlocProvider.value(
+                                value: BlocProvider.of<NamesCubit>(context),
+                                child: Profile(),
+                              )));
+                },
+                child: Row(
+                  children: [
+                    Icon(FontAwesomeIcons.circleUser,
+                        size: 15, color: Colors.black),
+                    SizedBox(
+                      width: 5.0,
+                    ),
+                    Text(
+                      'shehab eldin',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(
