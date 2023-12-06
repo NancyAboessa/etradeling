@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class home_screen extends StatelessWidget {
-  const home_screen({super.key});
+class app_bar extends StatelessWidget {
+  const app_bar({super.key});
 
   @override
   Widget build(BuildContext context) {

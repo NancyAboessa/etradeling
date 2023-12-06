@@ -85,10 +85,10 @@ packages:
     dependency: transitive
     description:
       name: cross_file
-      sha256: "2f9d2cbccb76127ba28528cb3ae2c2326a122446a83de5a056aaa3880d3882c5"
+      sha256: fedaadfa3a6996f75211d835aaeb8fede285dae94262485698afd832371b9a5e
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.3+7"
+    version: "0.3.3+8"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -246,6 +246,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.9.0"
+  flutter_spinkit:
+    dependency: transitive
+    description:
+      name: flutter_spinkit
+      sha256: b39c753e909d4796906c5696a14daf33639a76e017136c8d82bf3e620ce5bb8e
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.2.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -432,6 +440,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.1"
+  rating:
+    dependency: "direct main"
+    description:
+      name: rating
+      sha256: db86bc1f778a6ef89f3aba98f170a12bb159387636e41acb3f491bf6b5f41324
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0-dev.1"
   sky_engine:
     dependency: transitive
     description: flutter

@@ -1,19 +1,14 @@
 import 'package:etradeling/firebase_options.dart';
 import 'package:etradeling/presentation/auth/bloc/login.cubit.dart';
 import 'package:etradeling/presentation/auth/login.dart';
-<<<<<<< HEAD
-=======
 import 'package:etradeling/presentation/home_screen/appbar.dart';
->>>>>>> 54c9b0b (appparcommit)
 import 'package:etradeling/presentation/post/cubit/cubite.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-<<<<<<< HEAD
-=======
+import 'presentation/home_screen/home_body/home_screen.dart';
 import 'presentation/profile/Profile.dart';
->>>>>>> 54c9b0b (appparcommit)
-import 'presentation/profile/cubit/names_cubit.dart';
+ import 'presentation/profile/cubit/names_cubit.dart';
 
 void main() async {
   await Firebase.initializeApp(
@@ -36,12 +31,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => PostCubit()),
         BlocProvider(create: (context) => NamesCubit()),
         BlocProvider(create: (context) => LoginCubit()),
-<<<<<<< HEAD
-      ], child: LoginScreen()),
-=======
-      ], child: home_screen()
-      ),
->>>>>>> 54c9b0b (appparcommit)
+      ], child: home_screen()),
     );
   }
 }
