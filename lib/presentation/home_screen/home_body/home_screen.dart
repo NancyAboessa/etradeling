@@ -55,7 +55,173 @@ class home_screen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
             children: [
-        Column(
+              Stack(
+                children: [
+                  Container(
+                    alignment: AlignmentDirectional.bottomEnd,
+                    width: double.infinity,
+                    height: 500,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.zero,
+                      color:Colors.black,
+                    ),
+                    child: Column(
+                      children: [
+                        Text(
+                          'بوابتك للصناعات المصرية',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w200,
+                            fontSize: 50.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          'Download Now _ حمل الأن ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w200,
+                            fontSize: 50.0,
+                            color: Colors.white,
+                          ),
+                        ),
+
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 40.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(50.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 150 ,
+                      width: 400,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color:Colors.black87,
+                        ),
+                      ),
+
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Request for Quotation',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30.0,
+
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          Text(
+                            'Tell Suppliers what you need',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10.0,
+
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          Container(
+                            height: 40.0,
+                            width: 100.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5.0),
+                              color:Colors.orange[600],
+                            ),
+                            child: MaterialButton(onPressed: ()
+                            {
+                            },
+                              child: Text(
+                                'Create post',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+
+                            ),
+                          ),
+
+                        ],
+                      ),
+
+                    ),
+                    SizedBox(
+                      width: 50.0,
+                    ),
+                    Container(
+                      alignment: Alignment.topCenter,
+                      height: 150 ,
+                      width: 400,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color:Colors.black87,
+                        ),
+                      ),
+
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Become a vendor',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30.0,
+
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          Text(
+                            'and Reach your target customers',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10.0,
+
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          Container(
+                            height: 40.0,
+                            width: 100.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5.0),
+                              color:Colors.orange[600],
+                            ),
+                            child: MaterialButton(onPressed: ()
+                            {
+                            },
+                              child: Text(
+                                'Sigu up now',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+
+                            ),
+                          ),
+
+                        ],
+                      ),
+
+                    ),
+
+                  ],
+                ),
+              ),
+              Column(
         children: [
         Column(
         children: [
@@ -95,77 +261,577 @@ class home_screen extends StatelessWidget {
         SizedBox(
           height: 20,
         ),
-        Column(
+        Row(
           children: [
-            Stack(
-              alignment: AlignmentDirectional.topEnd,
+            Column(
               children: [
+                Stack(
+                  alignment: AlignmentDirectional.topEnd,
+                  children: [
+                    Container(
+                      height: 150,
+                      width:180 ,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.black,
+                      ),
+                    ),
+                    CircleAvatar(
+                      backgroundColor: Colors.grey.withOpacity(0.5),
+                    ),
+                    Icon(
+                      FontAwesomeIcons.heart,
+                      weight: 0.3,
+                    ),
+                  ],
+                ),
                 Container(
-                  height: 150,
                   width:180 ,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.black,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Text(
+                          'Apple AirPods With Charging Case White',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 10.0,
+                          ),
+                          maxLines: 2,
+                          // overflow:TextOverflow.ellipsis,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Container(
+                          alignment: AlignmentDirectional.topStart,
+                          child: Text(
+                            'EGP 2000',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 10.0,
+                              fontWeight: FontWeight.bold,
+                            ),
 
+                          ),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        CustomMaterialButtom(
+                          text: 'Add To Cart',
+                          icon: Icons.shopping_cart,
+                          color: Colors.black,
+                          coolor: Colors.white,
+                        ),
+
+                      ],
+                    ),
                   ),
 
                 ),
-
-                CircleAvatar(
-                  backgroundColor: Colors.grey.withOpacity(0.5),
+              ],
+            ),
+            Column(
+              children: [
+                Stack(
+                  alignment: AlignmentDirectional.topEnd,
+                  children: [
+                    Container(
+                      height: 150,
+                      width:180 ,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.black,
+                      ),
+                    ),
+                    CircleAvatar(
+                      backgroundColor: Colors.grey.withOpacity(0.5),
+                    ),
+                    Icon(
+                      FontAwesomeIcons.heart,
+                      weight: 0.3,
+                    ),
+                  ],
                 ),
-                Icon(
-                  FontAwesomeIcons.heart,
+                Container(
+                  width:180 ,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Text(
+                          'Apple AirPods With Charging Case White',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 10.0,
+                          ),
+                          maxLines: 2,
+                          // overflow:TextOverflow.ellipsis,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Container(
+                          alignment: AlignmentDirectional.topStart,
+                          child: Text(
+                            'EGP 2000',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 10.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+
+                          ),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        CustomMaterialButtom(
+                          text: 'Add To Cart',
+                          icon: Icons.shopping_cart,
+                          color: Colors.black,
+                          coolor: Colors.white,
+                        ),
+
+                      ],
+                    ),
+                  ),
+
                 ),
               ],
             ),
-            Container(
-              width:180 ,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
+            Column(
+              children: [
+                Stack(
+                  alignment: AlignmentDirectional.topEnd,
                   children: [
-                    Text(
-                      'Apple AirPods With Charging Case White',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 10.0,
-                      ),
-                      maxLines: 2,
-                      // overflow:TextOverflow.ellipsis,
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
                     Container(
-                      alignment: AlignmentDirectional.topStart,
-                      child: Text(
-                        'EGP 2000',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 10.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-
+                      height: 150,
+                      width:180 ,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.black,
                       ),
                     ),
-                    SizedBox(
-                      height: 5,
+                    CircleAvatar(
+                      backgroundColor: Colors.grey.withOpacity(0.5),
                     ),
-                    CustomMaterialButtom(
-                      text: 'Add To Cart',
-                      icon: Icons.shopping_cart,
-                      color: Colors.black,
-                      coolor: Colors.white,
+                    Icon(
+                      FontAwesomeIcons.heart,
+                      weight: 0.3,
                     ),
-
                   ],
                 ),
-              ),
+                Container(
+                  width:180 ,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Text(
+                          'Apple AirPods With Charging Case White',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 10.0,
+                          ),
+                          maxLines: 2,
+                          // overflow:TextOverflow.ellipsis,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Container(
+                          alignment: AlignmentDirectional.topStart,
+                          child: Text(
+                            'EGP 2000',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 10.0,
+                              fontWeight: FontWeight.bold,
+                            ),
 
+                          ),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        CustomMaterialButtom(
+                          text: 'Add To Cart',
+                          icon: Icons.shopping_cart,
+                          color: Colors.black,
+                          coolor: Colors.white,
+                        ),
+
+                      ],
+                    ),
+                  ),
+
+                ),
+              ],
             ),
+            Column(
+              children: [
+                Stack(
+                  alignment: AlignmentDirectional.topEnd,
+                  children: [
+                    Container(
+                      height: 150,
+                      width:180 ,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.black,
+                      ),
+                    ),
+                    CircleAvatar(
+                      backgroundColor: Colors.grey.withOpacity(0.5),
+                    ),
+                    Icon(
+                      FontAwesomeIcons.heart,
+                      weight: 0.3,
+                    ),
+                  ],
+                ),
+                Container(
+                  width:180 ,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Text(
+                          'Apple AirPods With Charging Case White',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 10.0,
+                          ),
+                          maxLines: 2,
+                          // overflow:TextOverflow.ellipsis,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Container(
+                          alignment: AlignmentDirectional.topStart,
+                          child: Text(
+                            'EGP 2000',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 10.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+
+                          ),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        CustomMaterialButtom(
+                          text: 'Add To Cart',
+                          icon: Icons.shopping_cart,
+                          color: Colors.black,
+                          coolor: Colors.white,
+                        ),
+
+                      ],
+                    ),
+                  ),
+
+                ),
+              ],
+            ),
+
+
+
           ],
         ),
+          SizedBox(
+            height: 30.0,
+          ),
+
+          Row(
+            children: [
+              Column(
+                children: [
+                  Stack(
+                    alignment: AlignmentDirectional.topEnd,
+                    children: [
+                      Container(
+                        height: 150,
+                        width:180 ,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.black,
+                        ),
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Colors.grey.withOpacity(0.5),
+                      ),
+                      Icon(
+                        FontAwesomeIcons.heart,
+                        weight: 0.3,
+                      ),
+                    ],
+                  ),
+                  Container(
+                    width:180 ,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Apple AirPods With Charging Case White',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 10.0,
+                            ),
+                            maxLines: 2,
+                            // overflow:TextOverflow.ellipsis,
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            alignment: AlignmentDirectional.topStart,
+                            child: Text(
+                              'EGP 2000',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 10.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          CustomMaterialButtom(
+                            text: 'Add To Cart',
+                            icon: Icons.shopping_cart,
+                            color: Colors.black,
+                            coolor: Colors.white,
+                          ),
+
+                        ],
+                      ),
+                    ),
+
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Stack(
+                    alignment: AlignmentDirectional.topEnd,
+                    children: [
+                      Container(
+                        height: 150,
+                        width:180 ,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.black,
+                        ),
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Colors.grey.withOpacity(0.5),
+                      ),
+                      Icon(
+                        FontAwesomeIcons.heart,
+                        weight: 0.3,
+                      ),
+                    ],
+                  ),
+                  Container(
+                    width:180 ,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Apple AirPods With Charging Case White',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 10.0,
+                            ),
+                            maxLines: 2,
+                            // overflow:TextOverflow.ellipsis,
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            alignment: AlignmentDirectional.topStart,
+                            child: Text(
+                              'EGP 2000',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 10.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          CustomMaterialButtom(
+                            text: 'Add To Cart',
+                            icon: Icons.shopping_cart,
+                            color: Colors.black,
+                            coolor: Colors.white,
+                          ),
+
+                        ],
+                      ),
+                    ),
+
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Stack(
+                    alignment: AlignmentDirectional.topEnd,
+                    children: [
+                      Container(
+                        height: 150,
+                        width:180 ,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.black,
+                        ),
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Colors.grey.withOpacity(0.5),
+                      ),
+                      Icon(
+                        FontAwesomeIcons.heart,
+                        weight: 0.3,
+                      ),
+                    ],
+                  ),
+                  Container(
+                    width:180 ,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Apple AirPods With Charging Case White',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 10.0,
+                            ),
+                            maxLines: 2,
+                            // overflow:TextOverflow.ellipsis,
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            alignment: AlignmentDirectional.topStart,
+                            child: Text(
+                              'EGP 2000',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 10.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          CustomMaterialButtom(
+                            text: 'Add To Cart',
+                            icon: Icons.shopping_cart,
+                            color: Colors.black,
+                            coolor: Colors.white,
+                          ),
+
+                        ],
+                      ),
+                    ),
+
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Stack(
+                    alignment: AlignmentDirectional.topEnd,
+                    children: [
+                      Container(
+                        height: 150,
+                        width:180 ,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.black,
+                        ),
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Colors.grey.withOpacity(0.5),
+                      ),
+                      Icon(
+                        FontAwesomeIcons.heart,
+                        weight: 0.3,
+                      ),
+                    ],
+                  ),
+                  Container(
+                    width:180 ,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Apple AirPods With Charging Case White',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 10.0,
+                            ),
+                            maxLines: 2,
+                            // overflow:TextOverflow.ellipsis,
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            alignment: AlignmentDirectional.topStart,
+                            child: Text(
+                              'EGP 2000',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 10.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          CustomMaterialButtom(
+                            text: 'Add To Cart',
+                            icon: Icons.shopping_cart,
+                            color: Colors.black,
+                            coolor: Colors.white,
+                          ),
+
+                        ],
+                      ),
+                    ),
+
+                  ),
+                ],
+              ),
+
+
+
+            ],
+          ),
+
         ],
         ),
               Container(
@@ -321,11 +987,11 @@ class home_screen extends StatelessWidget {
                                     children: [
                                       iconwithTextOnly(text: 'Labore',),
                                       SizedBox(width: 15,),
-                                      iconwithTextOnly(text: 'Labore',),
+                                      iconwithTextOnly(text: 'aliqua',),
                                       SizedBox(width: 15,),
-                                      iconwithTextOnly(text: 'Labore',),
+                                      iconwithTextOnly(text: 'dynamic',),
                                       SizedBox(width: 15,),
-                                      iconwithTextOnly(text: 'Labore',)
+                                      iconwithTextOnly(text: 'fugiat',)
 
                                     ],
                                   ),
@@ -334,11 +1000,11 @@ class home_screen extends StatelessWidget {
                                     children: [
                                       iconwithTextOnly(text: 'Labore',),
                                       SizedBox(width: 15,),
-                                      iconwithTextOnly(text: 'Labore',),
+                                      iconwithTextOnly(text: 'aliqua',),
                                       SizedBox(width: 15,),
-                                      iconwithTextOnly(text: 'Labore',),
+                                      iconwithTextOnly(text: 'dynamic',),
                                       SizedBox(width: 15,),
-                                      iconwithTextOnly(text: 'Labore',)
+                                      iconwithTextOnly(text: 'fugiat',)
 
                                     ],
                                   ),
@@ -399,7 +1065,8 @@ class home_screen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(bottom: 150,right: 30),
-                    child: Text('Our Benefite',
+                    child: Text(
+                      'Our Benefite',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -736,36 +1403,41 @@ class iconColom extends StatelessWidget {
   String texttwo;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+    return Column(
       children: [
-        Column(
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-              height: 50,
-              width: 45,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.black,)
-              ),
-              child: Icon(icon,size: 30,color: Colors.black,),
-            ),
-            Text(texttwo,
-              style: TextStyle(
-                fontSize: 15,
-              ),
-            ),
-            SizedBox(height: 5,),
-            Divider(
-              height: 15,
-              color: Colors.black,
-              thickness: 1,
-            ),
-            Text(text,
-              style: TextStyle(
-                fontSize: 10,
-              ),
-              textAlign: TextAlign.center,
+
+            Column(
+              children: [
+                Container(
+                  height: 50,
+                  width: 45,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.black,)
+                  ),
+                  child: Icon(icon,size: 30,color: Colors.black,),
+                ),
+                Text(texttwo,
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                ),
+                SizedBox(height: 5,),
+                Divider(
+                  height: 15,
+                  color: Colors.black,
+                  thickness: 1,
+                ),
+                Text(text,
+                  style: TextStyle(
+                    fontSize: 10,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
           ],
         ),
