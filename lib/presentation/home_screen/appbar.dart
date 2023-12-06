@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainAppBar extends StatelessWidget {
   const MainAppBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return AppBar(

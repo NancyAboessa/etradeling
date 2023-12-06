@@ -102,8 +102,8 @@ class Profile extends StatelessWidget {
                                             padding: const EdgeInsets.only(
                                                 left: 6, top: 64),
                                             child: InkWell(
-                                              onTap: () {
-                                                cubit.sendImage();
+                                              onTap: () async {
+                                                await cubit.sendImage();
                                               },
                                               child: CircleAvatar(
                                                 backgroundColor:

@@ -47,12 +47,14 @@ class Listnames extends StatelessWidget {
                   icon: FontAwesomeIcons.mapLocation),
               InkWell(
                   onTap: () {
-                    MaterialPageRoute(
-                      builder: (_) => BlocProvider.value(
-                        value: BlocProvider.of<CubitMessages>(context),
-                        child: MessagesList(),
-                      ),
-                    );
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => BlocProvider.value(
+                            value: BlocProvider.of<CubitMessages>(context),
+                            child: MessagesList(),
+                          ),
+                        ));
                   },
                   child: ButtomList(
                       text: Text('Messenger'), icon: FontAwesomeIcons.comment)),
