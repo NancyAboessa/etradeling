@@ -1,5 +1,5 @@
 import 'package:etradeling/presentation/Productpage/cubit/cubit.dart';
-import 'package:etradeling/presentation/Productpage/custom%20Widgets/custom%20image%20Box.dart';
+import 'package:etradeling/utls/themes/button/custom%20image%20Box.dart';
 import 'package:etradeling/presentation/post/cubit/cubite.dart';
 import 'package:etradeling/presentation/post/widget/counter.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'cubit/state.dart';
-import 'custom Widgets/MaterialButtom.dart';
+import '../../utls/themes/button/MaterialButtom.dart';
 import 'custom Widgets/rating.dart';
 
 class product extends StatelessWidget {
@@ -46,7 +46,7 @@ class product extends StatelessWidget {
                       SizedBox(
                         height: 30,
                       ),
-                      Rating(initialRating: 1,),
+                      Rating(initialRating: 1,itemSize: 15,),
                       SizedBox(
                         height: 8,
                       ),

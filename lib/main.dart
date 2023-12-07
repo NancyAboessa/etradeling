@@ -4,6 +4,7 @@ import 'package:etradeling/presentation/Productpage/cubit/cubit.dart';
 import 'package:etradeling/presentation/auth/bloc/login.cubit.dart';
 import 'package:etradeling/presentation/auth/login.dart';
 import 'package:etradeling/presentation/cartPage/cartPage.dart';
+import 'package:etradeling/presentation/cartPage/cubit/CartCubit.dart';
 import 'package:etradeling/presentation/home_screen/appbar.dart';
 import 'package:etradeling/presentation/post/create_post.dart';
 import 'package:etradeling/presentation/post/cubit/cubite.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -39,7 +41,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context)=>CubitProduct()),
         BlocProvider(create: (context)=>AppBarCubit()),
-      ], child: Cart()
+         BlocProvider(create: (context)=>CartCubit()),
+      ], child: HomeScreen()
       ),
     );
   }
