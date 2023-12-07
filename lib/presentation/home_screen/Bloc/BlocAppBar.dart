@@ -13,4 +13,4 @@ class AppBarCubit extends Cubit< AppBarState> {
   }
 }
 
-//    var cubit = PostCubit.get(context);
+//    var cubit  = PostCubit.get(context);

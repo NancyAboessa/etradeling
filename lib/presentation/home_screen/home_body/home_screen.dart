@@ -119,7 +119,7 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Padding(
                           padding:
-                              const EdgeInsets.only(bottom: 190, right: 30),
+                          const EdgeInsets.only(bottom: 190, right: 30),
                           child: Text(
                             'Our Benefite',
                             style: TextStyle(
@@ -191,13 +191,13 @@ enjoyable and exceptional delivery experience ''',
                         children: [
                           Column(children: [
                             listViewhome(
-                                widget: iconwithTextOnly(text: 'Labore',),
-                                items: 4,
-                                left:10, hight: 120,
+                              widget: iconwithTextOnly(text: 'Labore',),
+                              items: 4,
+                              left:10, hight: 120,
                             ),
                             listViewhome(
-                                widget: iconwithTextOnly(text: 'Labore',),
-                                items: 4,
+                              widget: iconwithTextOnly(text: 'Labore',),
+                              items: 4,
                               left:10, hight:120 ,
                             ),
 
