@@ -1,10 +1,14 @@
 import 'package:etradeling/presentation/home_screen/appbar.dart';
 import 'package:etradeling/presentation/home_screen/home_body/components/imageWithText.dart';
+import 'package:etradeling/utls/themes/button/custom%20image%20Box.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'components/Custom IconBottom.dart';
 import 'components/CustomContainerWithCircleAvIcon.dart';
 import 'components/components.dart';
 import 'components/constants.dart';
 import 'components/customListView.dart';
+import 'components/customorangeBottom.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -39,6 +43,85 @@ class HomeScreen extends StatelessWidget {
                       left: 350,
                       hight: 550,
                     ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Stack(
+                  children: [
+                    imageBox(hight: 150, width: 400),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30, left: 30),
+                      child: Text(
+                        'Request for Quotation',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            fontSize: 20),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 70, left: 30),
+                      child: Text(
+                        'Tell Suppliers what you need',
+                        style: TextStyle(color: Colors.black, fontSize: 20),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 110, left: 30),
+                      child:
+                          CustomOrangeBottom(text: 'Create post', width: 100),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  width: 15,
+                ),
+                Stack(
+                  children: [
+                    imageBox(hight: 150, width: 400),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30, left: 30),
+                      child: Text(
+                        'Become a vendor ',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            fontSize: 20),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 70, left: 30),
+                      child: Text(
+                        'and Reach your target customers',
+                        style: TextStyle(color: Colors.black, fontSize: 20),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 110, left: 30),
+                      child: CustomOrangeBottom(
+                        text: 'Sigu up now',
+                        width: 110,
+                      ),
+                    )
                   ],
                 ),
               ],
@@ -81,6 +164,13 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
+                  height: 30,
+                ),
+                CustomOrangeBottom(
+                  text: 'See all',
+                  width: 70,
+                ),
+                SizedBox(
                   height: 30,
                 ),
               ],
@@ -403,6 +493,20 @@ dummy text ever since the 1500s''',
                             'app available now on',
                             style: TextStyle(color: Colors.white),
                           ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          // CustomIconBottom(text: 'App Store', icon: Icons.apple,),
+                          SizedBox(
+                            height: 10,
+                          ),
+
+                          // CustomIconBottom(text: 'Google Play', icon: FontAwesomeIcons.google,),
+                          SizedBox(
+                            height: 10,
+                          ),
+
+                          // CustomIconBottom(text: 'App Gallary', icon: FontAwesomeIcons.suitcase,),
                         ],
                       ),
                     ),
