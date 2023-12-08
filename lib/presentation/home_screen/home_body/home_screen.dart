@@ -184,7 +184,7 @@ enjoyable and exceptional delivery experience ''',
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 150, left: 450),
+                      padding: const EdgeInsets.only(top: 150, left: 550),
                       child: Column(
                         children: [
                           Column(children: [
@@ -192,17 +192,9 @@ enjoyable and exceptional delivery experience ''',
                               widget: iconwithTextOnly(
                                 text: 'Labore',
                               ),
-                              items: 4,
+                              items: 6,
                               left: 10,
-                              hight: 120,
-                            ),
-                            listViewhome(
-                              widget: iconwithTextOnly(
-                                text: 'Labore',
-                              ),
-                              items: 4,
-                              left: 10,
-                              hight: 120,
+                              hight: 300,
                             ),
                           ]),
                         ],
