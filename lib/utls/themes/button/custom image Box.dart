@@ -1,5 +1,6 @@
 import 'package:etradeling/presentation/Productpage/cubit/cubit.dart';
 import 'package:etradeling/presentation/Productpage/cubit/state.dart';
+import 'package:etradeling/presentation/cartPage/cubit/CartCubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,14 +16,14 @@ class imageBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cubit = CubitProduct.get(context);
+    var cubit = CartCubit.get(context);
 
     return BlocBuilder<CubitProduct, CubitProductState>(
       builder: (context, state) {
         return InkWell(
           onTap: () async {
-            await cubit.getImage();
-           Image.file( cubit.file!);
+          await  cubit.getImage();
+        //   Image.file( cubit.file!);
           },
           child: Container(
             height: hight,
