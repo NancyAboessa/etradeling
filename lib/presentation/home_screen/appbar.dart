@@ -66,8 +66,8 @@ class MainAppBar extends StatelessWidget {
               SizedBox(
                 width: 40.0,
               ),
-              InkWell(
-                onTap: () {
+              MaterialButton(
+                onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(

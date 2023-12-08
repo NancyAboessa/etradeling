@@ -1,19 +1,15 @@
 import 'package:etradeling/firebase_options.dart';
-import 'package:etradeling/presentation/Productpage/Productpage.dart';
 import 'package:etradeling/presentation/Productpage/cubit/cubit.dart';
 import 'package:etradeling/presentation/auth/bloc/login.cubit.dart';
 import 'package:etradeling/presentation/auth/login.dart';
+import 'package:etradeling/presentation/auth/login_check.dart';
 import 'package:etradeling/presentation/cartPage/cartPage.dart';
-import 'package:etradeling/presentation/home_screen/appbar.dart';
-import 'package:etradeling/presentation/post/create_post.dart';
 import 'package:etradeling/presentation/post/cubit/cubite.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'presentation/home_screen/Bloc/BlocAppBar.dart';
-import 'presentation/home_screen/home_body/home_screen.dart';
-import 'presentation/profile/Profile.dart';
- import 'presentation/profile/cubit/names_cubit.dart';
+import 'presentation/profile/cubit/names_cubit.dart';
 
 void main() async {
   await Firebase.initializeApp(
@@ -32,15 +28,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MultiBlocProvider(
-       providers: [
+      home: MultiBlocProvider(providers: [
         BlocProvider(create: (context) => PostCubit()),
         BlocProvider(create: (context) => NamesCubit()),
         BlocProvider(create: (context) => LoginCubit()),
-        BlocProvider(create: (context)=>CubitProduct()),
-        BlocProvider(create: (context)=>AppBarCubit()),
-      ], child: Cart()
-      ),
+        BlocProvider(create: (context) => CubitProduct()),
+        BlocProvider(create: (context) => AppBarCubit()),
+      ], child: LoginCheck()),
     );
   }
 }

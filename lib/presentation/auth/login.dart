@@ -1,3 +1,4 @@
+import 'package:etradeling/presentation/auth/login_check.dart';
 import 'package:etradeling/presentation/profile/Profile.dart';
 import 'package:etradeling/presentation/profile/cubit/names_cubit.dart';
 import 'package:flutter/material.dart';
@@ -143,9 +144,9 @@ class LoginScreen extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                     builder: (_) => BlocProvider.value(
-                                        value: BlocProvider.of<NamesCubit>(
+                                        value: BlocProvider.of<LoginCubit>(
                                             context),
-                                        child: Profile()),
+                                        child: LoginCheck()),
                                   ));
                             },
                             child: const Text(

@@ -44,7 +44,7 @@ class NamesCubit extends Cubit<NamesState> {
   getProfie() async {
     await FirebaseFirestore.instance
         .collection("Profile")
-        .where("user_id", isEqualTo: "RGZ0ztaBk2M43mkQF7MgCgasWQQ2")
+        .where("user_id", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
         .get()
         .then((value) {
       value.docs.forEach((element) {
@@ -54,12 +54,10 @@ class NamesCubit extends Cubit<NamesState> {
     });
   }
 
-  sendData(data) async {
+  sendData(data) {
     print(data);
-    getProfie();
-    print(FirebaseAuth.instance.currentUser!.uid);
     if (data != null && id != null) {
-      await FirebaseFirestore.instance
+      FirebaseFirestore.instance
           .collection("Profile")
           .doc(id!)
           // .where("user_id", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
@@ -69,7 +67,7 @@ class NamesCubit extends Cubit<NamesState> {
   }
 
   getData() async {
-    getProfie();
+    await getProfie();
     if (id != null) {
       await FirebaseFirestore.instance
           .collection("Profile")
@@ -77,7 +75,7 @@ class NamesCubit extends Cubit<NamesState> {
           .get()
           .then((value) {
         map = value.data()!;
-        print("${map}");
+        // print("${map}");
       });
       // getImage(map);
     }

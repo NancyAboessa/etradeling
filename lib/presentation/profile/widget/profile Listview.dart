@@ -15,7 +15,7 @@ class Listnames extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 150, top: 80, right: 100),
+      padding: const EdgeInsets.only(left: 150, top: 80, right: 100),
       child: Container(
         height: 600,
         width: 300,
