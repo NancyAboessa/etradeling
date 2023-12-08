@@ -9,10 +9,16 @@ class LoginCubit extends Cubit<LoginState> {
 
   static LoginCubit get(context) => BlocProvider.of(context);
   bool emailVerified = false;
+  User? user;
   //       emailVerified=  await FirebaseAuth.instance.currentUser!.emailVerified;
   emailVerifiedCubit() async {
     emailVerified = await FirebaseAuth.instance.currentUser!.emailVerified;
     emit(EmailVerifiedState());
+  }
+
+  userdata() {
+    user = FirebaseAuth.instance.currentUser!;
+    emit(UserDataState());
   }
 
   loginPress() {

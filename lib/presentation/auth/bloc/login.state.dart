@@ -14,4 +14,6 @@ class NewpassState extends LoginState {}
 
 class EmailVerifiedState extends LoginState {}
 
+class UserDataState extends LoginState {}
+
 class SetDataState extends LoginState {}

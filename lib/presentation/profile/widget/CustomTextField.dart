@@ -7,14 +7,14 @@ class textField extends StatelessWidget {
     super.key,
   });
   final String? label;
-  final TextEditingController? controller;
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 38,
       width: 330,
       child: TextField(
-        controller: controller!,
+        controller: controller,
         decoration: InputDecoration(
             border: OutlineInputBorder(
               borderRadius: BorderRadius.zero, // No rounded corners

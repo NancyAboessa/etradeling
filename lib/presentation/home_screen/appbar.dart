@@ -1,9 +1,11 @@
+import 'package:etradeling/presentation/home_screen/home_body/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../auth/bloc/login.cubit.dart';
-import 'home_body/home_screen.dart';
+import '../profile/Profile.dart';
+import '../profile/cubit/names_cubit.dart';
 
 class MainAppBar extends StatelessWidget {
   const MainAppBar({super.key});
@@ -26,6 +28,18 @@ class MainAppBar extends StatelessWidget {
                   child: Image.asset("assets/imeges/etradeling3-1.png"),
                 ),
               ),
+              SizedBox(
+                width: 40.0,
+              ),
+              MaterialButton(onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => BlocProvider.value(
+                              value: BlocProvider.of<NamesCubit>(context),
+                              child: Profile(),
+                            )));
+              }),
               Container(
                 width: 550,
                 decoration: BoxDecoration(
@@ -48,7 +62,7 @@ class MainAppBar extends StatelessWidget {
           ),
           actions: [
             Padding(
-              padding: const EdgeInsets.only(left: 10.0,right: 30),
+              padding: const EdgeInsets.only(left: 10.0, right: 30),
               child: Row(
                 children: [
                   MaterialButton(
@@ -66,7 +80,8 @@ class MainAppBar extends StatelessWidget {
                   SizedBox(
                     width: 40.0,
                   ),
-                  Icon(FontAwesomeIcons.circleUser, size: 15, color: Colors.black),
+                  Icon(FontAwesomeIcons.circleUser,
+                      size: 15, color: Colors.black),
                   SizedBox(
                     width: 5.0,
                   ),
@@ -153,8 +168,7 @@ class MainAppBar extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (_) => BlocProvider.value(
-                            value:
-                            BlocProvider.of<LoginCubit>(context),
+                            value: BlocProvider.of<LoginCubit>(context),
                             child: HomeScreen(),
                           ),
                         ));
@@ -176,8 +190,7 @@ class MainAppBar extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (_) => BlocProvider.value(
-                            value:
-                            BlocProvider.of<LoginCubit>(context),
+                            value: BlocProvider.of<LoginCubit>(context),
                             child: HomeScreen(),
                           ),
                         ));
@@ -199,8 +212,7 @@ class MainAppBar extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (_) => BlocProvider.value(
-                            value:
-                            BlocProvider.of<LoginCubit>(context),
+                            value: BlocProvider.of<LoginCubit>(context),
                             child: HomeScreen(),
                           ),
                         ));
@@ -222,8 +234,7 @@ class MainAppBar extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (_) => BlocProvider.value(
-                            value:
-                            BlocProvider.of<LoginCubit>(context),
+                            value: BlocProvider.of<LoginCubit>(context),
                             child: HomeScreen(),
                           ),
                         ));
@@ -241,25 +252,22 @@ class MainAppBar extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
-                    color:Colors.white,
+                    color: Colors.white,
                   ),
-                  child: MaterialButton(onPressed: ()
-                  {
-                  },
+                  child: MaterialButton(
+                    onPressed: () {},
                     child: Text(
                       'Submit RFQ',
                       style: TextStyle(
                         color: Colors.orange[600],
                       ),
                     ),
-
                   ),
                 ),
               ],
             ),
           ),
         ),
-
       ],
     );
   }
