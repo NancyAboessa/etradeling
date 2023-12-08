@@ -14,19 +14,18 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center, children: [
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             // best seller ,see all,circle avatar/ apple /
             Column(
               children: [
-                MainAppBar(),
-                SizedBox(
+                const MainAppBar(),
+                const SizedBox(
                   height: 20,
                 ),
                 Column(
                   children: [
                     // List View AirPods
-                    Text(
+                    const Text(
                       'Explore our Categories',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -34,26 +33,26 @@ class HomeScreen extends StatelessWidget {
                         fontSize: 50.0,
                       ),
                     ),
-                    listViewhome(widget: imagewithText(),items: 3,left: 250,hight: 260,),
-                    SizedBox(
-                      height: 10.0,
+                    listViewhome(
+                      widget: const imagewithText(),
+                      items: 6,
+                      left: 350,
+                      hight: 550,
                     ),
-                    //listview
-                    listViewhome(widget: imagewithText(),items: 3,left: 250,hight: 260,),
                   ],
                 ),
               ],
             ),
             // explore caregore
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.zero),
               ),
             ),
             //apple
             Column(
               children: [
-                Text(
+                const Text(
                   'Best Seller',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -61,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
                 Container(
@@ -81,16 +80,16 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 30,),
+                const SizedBox(
+                  height: 30,
+                ),
               ],
             ),
-            listViewhome(widget: customContainerWithCircleAvIcon(),items: 3,left: 250,hight: 260,),
-            listViewhome(widget: customContainerWithCircleAvIcon(),items: 3,left: 250,hight: 260,),
-            SizedBox(
-              height: 40.0,
-            ),
-            SizedBox(
-              height: 60.0,
+            listViewhome(
+              widget: const customContainerWithCircleAvIcon(),
+              items: 6,
+              left: 300,
+              hight: 560,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -102,24 +101,24 @@ class HomeScreen extends StatelessWidget {
                     Container(
                       width: double.infinity,
                       height: 400,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.black,
                       ),
                     ),
                     Container(
-                      width: 650,
+                      width: 1000,
                       height: 300,
-                      decoration: BoxDecoration(
+                      alignment: Alignment.center,
+                      decoration: const BoxDecoration(
                         color: Colors.white,
                       ),
                     ),
                     //Text our benifits
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding:
-                          const EdgeInsets.only(bottom: 190, right: 30),
+                          padding: EdgeInsets.only(bottom: 190, right: 30),
                           child: Text(
                             'Our Benefite',
                             style: TextStyle(
@@ -133,9 +132,8 @@ class HomeScreen extends StatelessWidget {
                     ),
                     //Icons
                     Padding(
-                      padding: const EdgeInsets.only(left: 350, top: 20),
+                      padding: const EdgeInsets.only(left: 450, top: 20),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           iconColom(
                             text: '''We Provide all agricultural
@@ -144,7 +142,7 @@ products, multiple options of
                             texttwo: 'Browse by categories',
                             icon: Icons.category,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           iconColom(
@@ -154,7 +152,7 @@ service of prepacked or cutting products''',
                             texttwo: 'Fast delivery',
                             icon: Icons.fire_truck,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           iconColom(
@@ -171,12 +169,12 @@ enjoyable and exceptional delivery experience ''',
                 ),
                 Stack(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: double.infinity,
                       height: 200,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 550, top: 50),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 650, top: 50),
                       child: Text(
                         'Our partners',
                         style: TextStyle(
@@ -186,28 +184,33 @@ enjoyable and exceptional delivery experience ''',
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 150, left: 380),
+                      padding: const EdgeInsets.only(top: 150, left: 450),
                       child: Column(
                         children: [
                           Column(children: [
                             listViewhome(
-                              widget: iconwithTextOnly(text: 'Labore',),
+                              widget: iconwithTextOnly(
+                                text: 'Labore',
+                              ),
                               items: 4,
-                              left:10, hight: 120,
+                              left: 10,
+                              hight: 120,
                             ),
                             listViewhome(
-                              widget: iconwithTextOnly(text: 'Labore',),
+                              widget: iconwithTextOnly(
+                                text: 'Labore',
+                              ),
                               items: 4,
-                              left:10, hight:120 ,
+                              left: 10,
+                              hight: 120,
                             ),
-
                           ]),
                         ],
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Stack(
@@ -222,12 +225,13 @@ enjoyable and exceptional delivery experience ''',
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset("assets/imeges/etradeling3-1.png",width: 200,height: 45),
-                          SizedBox(
+                          Image.asset("assets/imeges/etradeling3-1.png",
+                              width: 200, height: 45),
+                          const SizedBox(
                             width: 150,
                           ),
                           //two texts
-                          Column(
+                          const Column(
                             children: [
                               Text(
                                 'Join our',
@@ -248,7 +252,7 @@ enjoyable and exceptional delivery experience ''',
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 50,
                           ),
                           Container(
@@ -259,7 +263,7 @@ enjoyable and exceptional delivery experience ''',
                               border: Border.all(color: Colors.white),
                               color: Colors.transparent,
                             ),
-                            child: TextField(
+                            child: const TextField(
                               decoration: InputDecoration(
                                 hintText: '  What your are Looking for?',
                                 hintStyle: TextStyle(
@@ -273,21 +277,21 @@ enjoyable and exceptional delivery experience ''',
                             onPressed: () {},
                             height: 43,
                             color: Colors.orange[600],
-                            child: Text('Subscribe'),
+                            child: const Text('Subscribe'),
                           ),
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 10),
                       child: Divider(
                         color: Colors.white54,
                         thickness: 1,
                         height: 200,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 130, left: 200),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 130, left: 200),
                       child: Text(
                         '''Lorem Ipsum is simply dummy
 text of the printing and typesett
@@ -314,8 +318,8 @@ dummy text ever since the 1500s''',
                         size: 15,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 130, left: 610),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 130, left: 610),
                       child: Column(
                         children: [
                           Text(
@@ -353,8 +357,8 @@ dummy text ever since the 1500s''',
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 130, left: 750),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 130, left: 750),
                       child: Column(
                         children: [
                           Text(
@@ -392,8 +396,8 @@ dummy text ever since the 1500s''',
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 130, left: 950),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 130, left: 950),
                       child: Column(
                         children: [
                           Text(
@@ -420,5 +424,3 @@ dummy text ever since the 1500s''',
     );
   }
 }
-
-

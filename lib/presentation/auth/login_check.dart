@@ -19,7 +19,7 @@ class LoginCheck extends StatelessWidget {
       if (FirebaseAuth.instance.currentUser == null) {
         return LoginScreen();
       } else {
-        return Profile();
+        return HomeScreen();
       }
     });
   }

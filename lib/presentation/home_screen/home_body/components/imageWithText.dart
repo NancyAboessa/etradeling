@@ -4,7 +4,6 @@ class imagewithText extends StatelessWidget {
   const imagewithText({
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
     return Row(

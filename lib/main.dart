@@ -1,12 +1,7 @@
 import 'package:etradeling/firebase_options.dart';
 import 'package:etradeling/presentation/Productpage/cubit/cubit.dart';
 import 'package:etradeling/presentation/auth/bloc/login.cubit.dart';
-import 'package:etradeling/presentation/auth/login.dart';
 import 'package:etradeling/presentation/auth/login_check.dart';
-import 'package:etradeling/presentation/cartPage/cartPage.dart';
-import 'package:etradeling/presentation/cartPage/cubit/CartCubit.dart';
-import 'package:etradeling/presentation/home_screen/appbar.dart';
-import 'package:etradeling/presentation/post/create_post.dart';
 import 'package:etradeling/presentation/post/cubit/cubite.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

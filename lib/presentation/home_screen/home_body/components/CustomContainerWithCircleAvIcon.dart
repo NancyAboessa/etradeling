@@ -12,7 +12,7 @@ class customContainerWithCircleAvIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 50),
+      padding: const EdgeInsets.only(left: 100),
       child: Column(
         children: [
           Stack(
@@ -36,7 +36,6 @@ class customContainerWithCircleAvIcon extends StatelessWidget {
                     color: Colors.black26,
                     size: 15,
                   ),
-
                 ),
               ),
             ],
