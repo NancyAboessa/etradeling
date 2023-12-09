@@ -68,11 +68,14 @@ class ProfileData extends StatelessWidget {
                               border: Border.all(
                                 color: Colors.black26,
                               )),
-                          child: cubit.getimage != null && cubit.map.isNotEmpty
+                          child: cubit.map["image"] != null &&
+                                  cubit.map.isNotEmpty
                               ? Container(
+                                  height: 100,
+                                  width: 200,
                                   decoration: BoxDecoration(
                                       image: DecorationImage(
-                                        image: NetworkImage(cubit.getimage!),
+                                        image: NetworkImage(cubit.map["image"]),
                                         fit: BoxFit.cover,
                                       ),
                                       borderRadius: BorderRadius.circular(15)),

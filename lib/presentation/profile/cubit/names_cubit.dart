@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:etradeling/models/listModel.dart';
@@ -52,6 +54,8 @@ class NamesCubit extends Cubit<NamesState> {
         print(id);
       });
     });
+    // getImage(map["image"]);
+    emit(GetDataState());
   }
 
   sendData(data) {
@@ -75,7 +79,7 @@ class NamesCubit extends Cubit<NamesState> {
           .get()
           .then((value) {
         map = value.data()!;
-        // print("${map}");
+        print("${map}");
       });
       // getImage(map);
     }
@@ -83,31 +87,39 @@ class NamesCubit extends Cubit<NamesState> {
   }
 
   sendImage() async {
-    final imagePiker = ImagePicker();
+    var imagePiker = await ImagePicker();
     XFile? image = await imagePiker.pickImage(source: ImageSource.gallery);
+
     if (image != null) {
       var f = await image.readAsBytes();
       webImage = f;
-      scondImage = image.path.toString();
+      scondImage = image.name;
       await FirebaseStorage.instance
           .ref()
-          .child(image.path.toString())
-          .putData(f);
+          .child('${DateTime.now()}.png')
+          .putData(webImage);
     }
+    String x = await FirebaseStorage.instance
+        .ref()
+        .child(scondImage!)
+        .getDownloadURL();
+    FirebaseFirestore.instance.collection("Profile").doc(id!).update({
+      "image": x,
+    });
     emit(SendImageState());
   }
 
-  getImage(image) async {
-    // print(data);
-    await FirebaseStorage.instance
-        .ref()
-        .child(image)
-        .getDownloadURL()
-        .then((value) {
-      getimage = value;
-      // print(getimage);
-    });
-
-    emit(GetImageState());
-  }
+  // getImage(image) async {
+  //   // print(data);
+  //   await FirebaseStorage.instance
+  //       .ref()
+  //       .child(image)
+  //       .getDownloadURL()
+  //       .then((value) {
+  //     getimage = value;
+  //     print(getimage);
+  //   });
+  //
+  //   emit(GetImageState());
+  // }
 }
