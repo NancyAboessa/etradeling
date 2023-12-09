@@ -18,18 +18,19 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center, children: [
             // best seller ,see all,circle avatar/ apple /
             Column(
               children: [
-                const MainAppBar(),
-                const SizedBox(
+                MainAppBar(),
+                SizedBox(
                   height: 20,
                 ),
                 Column(
                   children: [
                     // List View AirPods
-                    const Text(
+                    Text(
                       'Explore our Categories',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -37,19 +38,17 @@ class HomeScreen extends StatelessWidget {
                         fontSize: 50.0,
                       ),
                     ),
-                    listViewhome(
-                      widget: const imagewithText(),
-                      items: 6,
-                      left: 350,
-                      hight: 550,
+                    listViewhome(widget: imagewithText(),items: 3,left: 250,hight: 260,),
+                    SizedBox(
+                      height: 10.0,
                     ),
+                    //listview
+                    listViewhome(widget: imagewithText(),items: 3,left: 250,hight: 260,),
                   ],
                 ),
               ],
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -57,85 +56,62 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     imageBox(hight: 150, width: 400),
                     Padding(
-                      padding: const EdgeInsets.only(top: 30, left: 30),
-                      child: Text(
-                        'Request for Quotation',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            fontSize: 20),
+                      padding: const EdgeInsets.only(top: 30,left: 30),
+                      child: Text('Request for Quotation',
+                      style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20),
                       ),
                     ),
-                    SizedBox(
-                      height: 15,
-                    ),
+                    SizedBox(height: 15,),
                     Padding(
-                      padding: const EdgeInsets.only(top: 70, left: 30),
-                      child: Text(
-                        'Tell Suppliers what you need',
-                        style: TextStyle(color: Colors.black, fontSize: 20),
+                      padding: const EdgeInsets.only(top: 70,left: 30),
+                      child: Text('Tell Suppliers what you need',
+                        style: TextStyle(color: Colors.black,fontSize: 20),
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    SizedBox(height: 10,),
                     Padding(
-                      padding: const EdgeInsets.only(top: 110, left: 30),
-                      child:
-                          CustomOrangeBottom(text: 'Create post', width: 100),
+                      padding: const EdgeInsets.only(top: 110,left: 30),
+                      child: CustomOrangeBottom(text:'Create post',width:100),
                     )
                   ],
                 ),
-                SizedBox(
-                  width: 15,
-                ),
+                SizedBox(width: 15,),
                 Stack(
                   children: [
                     imageBox(hight: 150, width: 400),
                     Padding(
-                      padding: const EdgeInsets.only(top: 30, left: 30),
-                      child: Text(
-                        'Become a vendor ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            fontSize: 20),
+                      padding: const EdgeInsets.only(top: 30,left: 30),
+                      child: Text('Become a vendor ',
+                        style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20),
                       ),
                     ),
-                    SizedBox(
-                      height: 15,
-                    ),
+                    SizedBox(height: 15,),
                     Padding(
-                      padding: const EdgeInsets.only(top: 70, left: 30),
-                      child: Text(
-                        'and Reach your target customers',
-                        style: TextStyle(color: Colors.black, fontSize: 20),
+                      padding: const EdgeInsets.only(top: 70,left: 30),
+                      child: Text('and Reach your target customers',
+                        style: TextStyle(color: Colors.black,fontSize: 20),
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    SizedBox(height: 10,),
                     Padding(
-                      padding: const EdgeInsets.only(top: 110, left: 30),
-                      child: CustomOrangeBottom(
-                        text: 'Sigu up now',
-                        width: 110,
-                      ),
+                      padding: const EdgeInsets.only(top: 110,left: 30),
+                      child: CustomOrangeBottom(text: 'Sigu up now',width: 110,),
                     )
                   ],
                 ),
+
               ],
             ),
             // explore caregore
             Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.zero),
               ),
             ),
             //apple
             Column(
               children: [
-                const Text(
+                Text(
                   'Best Seller',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -143,43 +119,20 @@ class HomeScreen extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 20.0,
                 ),
-                Container(
-                  height: 30.0,
-                  width: 70.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.orange[600],
-                  ),
-                  child: MaterialButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'see all',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                CustomOrangeBottom(
-                  text: 'See all',
-                  width: 70,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
+                CustomOrangeBottom(text: 'See all',width: 70,),
+                SizedBox(height: 30,),
               ],
             ),
-            listViewhome(
-              widget: const customContainerWithCircleAvIcon(),
-              items: 6,
-              left: 300,
-              hight: 560,
+            listViewhome(widget: customContainerWithCircleAvIcon(),items: 3,left: 250,hight: 260,),
+            listViewhome(widget: customContainerWithCircleAvIcon(),items: 3,left: 250,hight: 260,),
+            SizedBox(
+              height: 40.0,
+            ),
+            SizedBox(
+              height: 60.0,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -191,24 +144,24 @@ class HomeScreen extends StatelessWidget {
                     Container(
                       width: double.infinity,
                       height: 400,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         color: Colors.black,
                       ),
                     ),
                     Container(
-                      width: 1000,
+                      width: 650,
                       height: 300,
-                      alignment: Alignment.center,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         color: Colors.white,
                       ),
                     ),
                     //Text our benifits
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(bottom: 190, right: 30),
+                          padding:
+                          const EdgeInsets.only(bottom: 190, right: 30),
                           child: Text(
                             'Our Benefite',
                             style: TextStyle(
@@ -222,8 +175,9 @@ class HomeScreen extends StatelessWidget {
                     ),
                     //Icons
                     Padding(
-                      padding: const EdgeInsets.only(left: 450, top: 20),
+                      padding: const EdgeInsets.only(left: 350, top: 20),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           iconColom(
                             text: '''We Provide all agricultural
@@ -232,7 +186,7 @@ products, multiple options of
                             texttwo: 'Browse by categories',
                             icon: Icons.category,
                           ),
-                          const SizedBox(
+                          SizedBox(
                             width: 10,
                           ),
                           iconColom(
@@ -242,7 +196,7 @@ service of prepacked or cutting products''',
                             texttwo: 'Fast delivery',
                             icon: Icons.fire_truck,
                           ),
-                          const SizedBox(
+                          SizedBox(
                             width: 10,
                           ),
                           iconColom(
@@ -259,12 +213,12 @@ enjoyable and exceptional delivery experience ''',
                 ),
                 Stack(
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       width: double.infinity,
                       height: 200,
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 650, top: 50),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 550, top: 50),
                       child: Text(
                         'Our partners',
                         style: TextStyle(
@@ -274,25 +228,28 @@ enjoyable and exceptional delivery experience ''',
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 150, left: 550),
+                      padding: const EdgeInsets.only(top: 150, left: 380),
                       child: Column(
                         children: [
                           Column(children: [
                             listViewhome(
-                              widget: iconwithTextOnly(
-                                text: 'Labore',
-                              ),
-                              items: 6,
-                              left: 10,
-                              hight: 300,
+                              widget: iconwithTextOnly(text: 'Labore',),
+                              items: 4,
+                              left:10, hight: 120,
                             ),
+                            listViewhome(
+                              widget: iconwithTextOnly(text: 'Labore',),
+                              items: 4,
+                              left:10, hight:120 ,
+                            ),
+
                           ]),
                         ],
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 50,
                 ),
                 Stack(
@@ -307,13 +264,12 @@ enjoyable and exceptional delivery experience ''',
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset("assets/imeges/etradeling3-1.png",
-                              width: 200, height: 45),
-                          const SizedBox(
+                          Image.asset("assets/imeges/etradeling3-1.png",width: 200,height: 45),
+                          SizedBox(
                             width: 150,
                           ),
                           //two texts
-                          const Column(
+                          Column(
                             children: [
                               Text(
                                 'Join our',
@@ -334,7 +290,7 @@ enjoyable and exceptional delivery experience ''',
                               ),
                             ],
                           ),
-                          const SizedBox(
+                          SizedBox(
                             width: 50,
                           ),
                           Container(
@@ -345,7 +301,7 @@ enjoyable and exceptional delivery experience ''',
                               border: Border.all(color: Colors.white),
                               color: Colors.transparent,
                             ),
-                            child: const TextField(
+                            child: TextField(
                               decoration: InputDecoration(
                                 hintText: '  What your are Looking for?',
                                 hintStyle: TextStyle(
@@ -359,21 +315,21 @@ enjoyable and exceptional delivery experience ''',
                             onPressed: () {},
                             height: 43,
                             color: Colors.orange[600],
-                            child: const Text('Subscribe'),
+                            child: Text('Subscribe'),
                           ),
                         ],
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 10),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
                       child: Divider(
                         color: Colors.white54,
                         thickness: 1,
                         height: 200,
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 130, left: 200),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 130, left: 200),
                       child: Text(
                         '''Lorem Ipsum is simply dummy
 text of the printing and typesett
@@ -400,8 +356,8 @@ dummy text ever since the 1500s''',
                         size: 15,
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 130, left: 610),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 130, left: 610),
                       child: Column(
                         children: [
                           Text(
@@ -439,8 +395,8 @@ dummy text ever since the 1500s''',
                         ],
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 130, left: 750),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 130, left: 750),
                       child: Column(
                         children: [
                           Text(
@@ -478,8 +434,8 @@ dummy text ever since the 1500s''',
                         ],
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 130, left: 950),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 130, left: 950),
                       child: Column(
                         children: [
                           Text(
@@ -496,17 +452,19 @@ dummy text ever since the 1500s''',
                           SizedBox(
                             height: 10,
                           ),
-                          // CustomIconBottom(text: 'App Store', icon: Icons.apple,),
+                          CustomIconBottom(text: 'App Store', icon: Icons.apple,),
                           SizedBox(
                             height: 10,
                           ),
 
-                          // CustomIconBottom(text: 'Google Play', icon: FontAwesomeIcons.google,),
+                          CustomIconBottom(text: 'Google Play', icon: FontAwesomeIcons.google,),
                           SizedBox(
                             height: 10,
                           ),
 
-                          // CustomIconBottom(text: 'App Gallary', icon: FontAwesomeIcons.suitcase,),
+                          CustomIconBottom(text: 'App Gallary', icon: FontAwesomeIcons.suitcase,),
+
+
                         ],
                       ),
                     ),
@@ -520,3 +478,6 @@ dummy text ever since the 1500s''',
     );
   }
 }
+
+
+

@@ -2,32 +2,32 @@ import 'package:etradeling/presentation/home_screen/home_body/components/imageWi
 import 'package:flutter/material.dart';
 
 class listViewhome extends StatelessWidget {
-  listViewhome({
+   listViewhome({
     super.key,
     required this.widget,
-    required this.items,
-    required this.left,
-    required this.hight,
+     required this.items,
+     required this.left,
+     required this.hight,
   });
-  Widget widget;
-  int items;
-  double left;
-  double hight;
+Widget widget;
+int items;
+double left;
+double hight;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: left),
-      child: SizedBox(
+      padding:  EdgeInsets.only(left: left),
+      child: Container(
         height: hight,
         width: double.infinity,
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // Number of columns
-          ),
+        child: ListView.separated(
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return widget;
           },
+          separatorBuilder: (context, index) => SizedBox(
+            width: 10.0,
+          ),
           itemCount: items,
         ),
       ),

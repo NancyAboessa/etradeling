@@ -1,4 +1,6 @@
 import 'package:etradeling/firebase_options.dart';
+import 'package:etradeling/presentation/Category/Category.dart';
+import 'package:etradeling/presentation/Category/Cubit/Category%20Cubit.dart';
 import 'package:etradeling/presentation/Productpage/cubit/cubit.dart';
 import 'package:etradeling/presentation/auth/bloc/login.cubit.dart';
 import 'package:etradeling/presentation/auth/login_check.dart';
@@ -33,7 +35,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => CubitProduct()),
         BlocProvider(create: (context) => AppBarCubit()),
-      ], child: LoginCheck()),
+        BlocProvider(create: (context)=>CubitCategories()),
+      ], child: Category()),
     );
   }
 }
