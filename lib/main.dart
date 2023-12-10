@@ -6,6 +6,7 @@ import 'package:etradeling/presentation/post/cubit/cubite.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'presentation/cartPage/cubit/CartCubit.dart';
 import 'presentation/home_screen/Bloc/BlocAppBar.dart';
 import 'presentation/profile/cubit/names_cubit.dart';
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => CubitProduct()),
         BlocProvider(create: (context) => AppBarCubit()),
+        BlocProvider(create: (context) => CartCubit()),
       ], child: LoginCheck()),
     );
   }

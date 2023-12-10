@@ -5,17 +5,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:etradeling/models/listModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:meta/meta.dart';
-
 import 'names_state.dart';
+import 'package:file_picker/file_picker.dart';
 
 class NamesCubit extends Cubit<NamesState> {
   NamesCubit() : super(NamesInitial());
-
   static NamesCubit get(context) => BlocProvider.of(context);
   bool _hasBeenPressed = false;
   final storage = FirebaseStorage.instance;
@@ -51,7 +48,7 @@ class NamesCubit extends Cubit<NamesState> {
         .then((value) {
       value.docs.forEach((element) {
         id = element.id;
-        print(id);
+        // print(id);
       });
     });
     // getImage(map["image"]);
@@ -61,17 +58,14 @@ class NamesCubit extends Cubit<NamesState> {
   sendData(data) {
     print(data);
     if (data != null && id != null) {
-      FirebaseFirestore.instance
-          .collection("Profile")
-          .doc(id!)
-          // .where("user_id", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-          .update(data);
+      FirebaseFirestore.instance.collection("Profile").doc(id!).update(data);
     }
     emit(GetProfileState());
   }
 
   getData() async {
     await getProfie();
+    // getImage(map["image"]);
     if (id != null) {
       await FirebaseFirestore.instance
           .collection("Profile")
@@ -79,7 +73,7 @@ class NamesCubit extends Cubit<NamesState> {
           .get()
           .then((value) {
         map = value.data()!;
-        print("${map}");
+        // print("${map}");
       });
       // getImage(map);
     }
@@ -87,39 +81,29 @@ class NamesCubit extends Cubit<NamesState> {
   }
 
   sendImage() async {
-    var imagePiker = await ImagePicker();
-    XFile? image = await imagePiker.pickImage(source: ImageSource.gallery);
-
-    if (image != null) {
-      var f = await image.readAsBytes();
-      webImage = f;
-      scondImage = image.name;
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['jpg', 'pdf', 'doc'],
+    );
+    if (result != null) {
+      Uint8List? fileBytes = result.files.first.bytes;
+      String fileName = result.files.first.name;
+      // Upload file
       await FirebaseStorage.instance
-          .ref()
-          .child('${DateTime.now()}.png')
-          .putData(webImage);
+          .ref('uploads/$fileName')
+          .putData(fileBytes!);
     }
-    String x = await FirebaseStorage.instance
-        .ref()
-        .child(scondImage!)
-        .getDownloadURL();
-    FirebaseFirestore.instance.collection("Profile").doc(id!).update({
-      "image": x,
-    });
+    // Emit state or perform any necessary actions
     emit(SendImageState());
   }
 
-  // getImage(image) async {
-  //   // print(data);
-  //   await FirebaseStorage.instance
-  //       .ref()
-  //       .child(image)
-  //       .getDownloadURL()
-  //       .then((value) {
-  //     getimage = value;
-  //     print(getimage);
-  //   });
-  //
-  //   emit(GetImageState());
-  // }
+  getImage(image) async {
+    // print(data);
+    await FirebaseStorage.instance.ref(image).getDownloadURL().then((value) {
+      getimage = value;
+      // print(getimage);
+    });
+
+    emit(GetImageState());
+  }
 }
