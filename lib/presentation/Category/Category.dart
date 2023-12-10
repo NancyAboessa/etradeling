@@ -3,16 +3,19 @@ import 'package:etradeling/presentation/home_screen/home_body/components/imageWi
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../home_screen/Bloc/BlocAppBar.dart';
+import 'Cubit/Category Cubit.dart';
+import 'Cubit/category state.dart';
 
 class Category extends StatelessWidget {
   const Category({super.key, required this.catgory});
   final String? catgory;
   @override
   Widget build(BuildContext context) {
-    AppBarCubit cubit = AppBarCubit.get(context);
+    CubitCategories cubit = CubitCategories.get(context);
     cubit.category(catgory!);
-    return BlocBuilder<AppBarCubit, AppBarState>(builder: (context, state) {
-      return cubit.proudctlist.isEmpty
+    return BlocBuilder<CubitCategories, CategoriesState>(
+        builder: (context, state) {
+      return cubit.proudctlist!.isEmpty && state is Empty
           ? Center(
               child: CircularProgressIndicator(),
             )
@@ -61,20 +64,20 @@ class Category extends StatelessWidget {
                                                 value: BlocProvider.of<
                                                     AppBarCubit>(context),
                                                 child: Category(
-                                                    catgory:
-                                                        cubit.proudctlist[index]
-                                                            ["name"]),
+                                                    catgory: cubit
+                                                            .proudctlist![index]
+                                                        ["name"]),
                                               )));
                                 },
                                 child: ImageWithText(
-                                  image: cubit.proudctlist[index]
+                                  image: cubit.proudctlist![index]
                                       ["Product_Certificate"],
-                                  name: cubit.proudctlist[index]
+                                  name: cubit.proudctlist![index]
                                       ["Product_Name"],
                                 ),
                               );
                             },
-                            itemCount: cubit.proudctlist.length,
+                            itemCount: cubit.proudctlist!.length,
                           ),
                         ),
                       ],

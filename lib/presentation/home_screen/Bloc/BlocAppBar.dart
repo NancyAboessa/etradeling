@@ -7,7 +7,6 @@ class AppBarCubit extends Cubit<AppBarState> {
   AppBarCubit() : super(IntitialState());
   static AppBarCubit get(context) => BlocProvider.of(context);
   List list = [];
-  List proudctlist = [];
   String? getimage;
   changecolor() {
     //logic here
@@ -19,22 +18,10 @@ class AppBarCubit extends Cubit<AppBarState> {
         .get()
         .then((value) {
       value.docs.forEach((element) {
-        list.add(element.data());
+        list!.add(element.data());
       });
     });
     // print(list);
     emit(Catgory());
-  }
-
-  category(catgory) async {
-    await FirebaseFirestore.instance.collection("Product").get().then((value) {
-      value.docs.forEach((element) {
-        if (element.data()["unit"] == catgory) {
-          proudctlist.add(element.data());
-        }
-      });
-    });
-    print(proudctlist);
-    emit(MainCatgory());
   }
 }

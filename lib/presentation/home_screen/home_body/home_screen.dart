@@ -1,3 +1,4 @@
+import 'package:etradeling/presentation/Category/Cubit/Category%20Cubit.dart';
 import 'package:etradeling/presentation/home_screen/Bloc/stateAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +22,7 @@ class HomeScreen extends StatelessWidget {
     AppBarCubit cubit = AppBarCubit.get(context);
     cubit.mainCategory();
     return BlocBuilder<AppBarCubit, AppBarState>(builder: (context, state) {
-      return cubit.list.isEmpty
+      return cubit.list!.isEmpty
           ? Center(
               child: CircularProgressIndicator(),
             )
@@ -47,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                             fontSize: 50.0,
                           ),
                         ),
-                        cubit.list.isEmpty
+                        cubit.list!.isEmpty
                             ? const Center(
                                 child: CircularProgressIndicator(),
                               )
@@ -71,17 +72,17 @@ class HomeScreen extends StatelessWidget {
                                                   builder: (_) =>
                                                       BlocProvider.value(
                                                         value: BlocProvider.of<
-                                                                AppBarCubit>(
+                                                                CubitCategories>(
                                                             context),
                                                         child: Category(
                                                             catgory: cubit
-                                                                    .list[index]
-                                                                ["name"]),
+                                                                    .list![
+                                                                index]["name"]),
                                                       )));
                                         },
                                         child: ImageWithText(
-                                          image: cubit.list[index]["image"],
-                                          name: cubit.list[index]["name"],
+                                          image: cubit.list![index]["image"],
+                                          name: cubit.list![index]["name"],
                                         ),
                                       );
                                     },
