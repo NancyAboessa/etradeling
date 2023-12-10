@@ -2,6 +2,8 @@ import 'package:etradeling/presentation/home_screen/appbar.dart';
 import 'package:etradeling/presentation/home_screen/home_body/components/imageWithText.dart';
 import 'package:etradeling/utls/themes/button/custom%20image%20Box.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'components/Custom IconBottom.dart';
 import 'components/CustomContainerWithCircleAvIcon.dart';
 import 'components/components.dart';
 import 'components/constants.dart';
@@ -163,6 +165,10 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const SizedBox(
                   height: 30,
+                ),
+                CustomOrangeBottom(
+                  text: 'See all',
+                  width: 70,
                 ),
                 SizedBox(
                   height: 30,
