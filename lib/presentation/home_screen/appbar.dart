@@ -1,3 +1,4 @@
+import 'package:etradeling/presentation/home_screen/Bloc/BlocAppBar.dart';
 import 'package:etradeling/presentation/home_screen/home_body/home_screen.dart';
 import 'package:etradeling/presentation/post/create_post.dart';
 import 'package:etradeling/presentation/post/cubit/cubite.dart';
@@ -145,12 +146,11 @@ class MainAppBar extends StatelessWidget {
               children: [
                 TextButton(
                   onPressed: () {
-                    // loginCubit!.signupPress();
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (_) => BlocProvider.value(
-                            value: BlocProvider.of<LoginCubit>(context),
+                            value: BlocProvider.of<AppBarCubit>(context),
                             child: HomeScreen(),
                           ),
                         ));

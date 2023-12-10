@@ -7,7 +7,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 import 'names_state.dart';
 import 'package:file_picker/file_picker.dart';
 
@@ -65,7 +64,6 @@ class NamesCubit extends Cubit<NamesState> {
 
   getData() async {
     await getProfie();
-    // getImage(map["image"]);
     if (id != null) {
       await FirebaseFirestore.instance
           .collection("Profile")
@@ -92,6 +90,12 @@ class NamesCubit extends Cubit<NamesState> {
       await FirebaseStorage.instance
           .ref('uploads/$fileName')
           .putData(fileBytes!);
+      getimage = await FirebaseStorage.instance
+          .ref('uploads/$fileName')
+          .getDownloadURL();
+      FirebaseFirestore.instance.collection("Profile").doc(id!).update({
+        "image": getimage,
+      });
     }
     // Emit state or perform any necessary actions
     emit(SendImageState());
@@ -99,9 +103,9 @@ class NamesCubit extends Cubit<NamesState> {
 
   getImage(image) async {
     // print(data);
-    await FirebaseStorage.instance.ref(image).getDownloadURL().then((value) {
-      getimage = value;
-      // print(getimage);
+    getimage = await FirebaseStorage.instance.ref(image).getDownloadURL();
+    FirebaseFirestore.instance.collection("Profile").doc(id!).update({
+      "image": getimage,
     });
 
     emit(GetImageState());

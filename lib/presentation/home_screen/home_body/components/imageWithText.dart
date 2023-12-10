@@ -20,14 +20,13 @@ class ImageWithText extends StatelessWidget {
               height: 250,
               width: 250,
               decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  image: DecorationImage(
-                    image: NetworkImage(image!),
-                  ),
-                  borderRadius: BorderRadius.circular(7),
-                  border: Border.all(
-                    color: Colors.black26,
-                  )),
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(7),
+                border: Border.all(
+                  color: Colors.black26,
+                ),
+              ),
+              child: Image.network(image!),
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),
