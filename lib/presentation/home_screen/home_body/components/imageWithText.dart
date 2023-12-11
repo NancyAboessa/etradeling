@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
-class imagewithText extends StatelessWidget {
-  const imagewithText({
+class ImageWithText extends StatelessWidget {
+  const ImageWithText({
     super.key,
+    required this.image,
+    required this.name,
   });
+  final String? image;
+  final String? name;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -15,20 +20,19 @@ class imagewithText extends StatelessWidget {
               height: 250,
               width: 250,
               decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  image: DecorationImage(
-                    image: AssetImage(''),
-                  ),
-                  borderRadius: BorderRadius.circular(7),
-                  border: Border.all(
-                    color: Colors.black26,
-                  )),
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(7),
+                border: Border.all(
+                  color: Colors.black26,
+                ),
+              ),
+              child: Image.network(image!),
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Text(
-                'construction',
-                style: TextStyle(
+                name!,
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 25.0,
                   color: Colors.black,

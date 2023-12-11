@@ -8,23 +8,25 @@ class listViewhome extends StatelessWidget {
     required this.items,
     required this.left,
     required this.hight,
+    required this.width,
   });
   Widget widget;
   int items;
   double left;
   double hight;
+  double width;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: left),
-      child: SizedBox(
+      child: Container(
         height: hight,
-        width: double.infinity,
+        width: width,
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // Number of columns
+            crossAxisCount: 3,
+            // Number of columns
           ),
-          scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return widget;
           },

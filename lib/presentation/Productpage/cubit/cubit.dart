@@ -1,43 +1,41 @@
-import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:etradeling/presentation/Productpage/cubit/state.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 
-import '../../../test.dart';
-
-class CubitProduct extends Cubit< CubitProductState>{
-  static CubitProduct get(context) => BlocProvider.of(context);
+class CubitProduct extends Cubit<CubitProductState> {
   CubitProduct() : super(initCubit());
-  String? refrance;
-  File ?file;
-  getImage()async{
-    final imagePiker = ImagePicker();
-    XFile? image = await imagePiker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      var f = await image.readAsBytes();
-      webImage = f;
-      refrance = image.path.toString();
-      await FirebaseStorage.instance
-          .ref()
-          .child(image.path.toString())
-          .putData(f);
-    }
- emit(imageSuceessState());
- }
-
-
-int count = 0;
-
+  static CubitProduct get(context) => BlocProvider.of(context);
+  int count = 0;
+  Map<String, dynamic> map = {};
   plus() {
     count++;
     emit(Plus());
   }
 
-  minas() {
-    count--;
-    emit(minas());
+  getData(id) async {
+    if (id != null) {
+      await FirebaseFirestore.instance
+          .collection("Profile")
+          .where("user_id", isEqualTo: id)
+          .get()
+          .then((value) {
+        map = value.docs[0].data();
+        // print("${map}");
+      });
+      // getImage(map);
+    }
+    emit(getDataState());
   }
 
+  sendCatgory(data) async {
+    if (data != null) {
+      await FirebaseFirestore.instance.collection("Cart").add(data);
+    }
+    emit(SendDataState());
+  }
 
+  minas() {
+    count--;
+    emit(Mnus());
+  }
 }

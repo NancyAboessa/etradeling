@@ -8,6 +8,7 @@ import 'package:etradeling/presentation/post/widget/post_button.dart';
 import 'package:etradeling/presentation/post/widget/select_category.dart';
 import 'package:etradeling/presentation/post/widget/sub_catgory.dart';
 import 'package:etradeling/utls/themes/main_field/main_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/cubite.dart';
@@ -80,9 +81,15 @@ class CreatePost extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: Counter(
-                        minasFunction: cubit,
-                        plasFunction: cubit,
-                        count: cubit.count, text: 'Quantity', left: 100, width: 400, hight: 80, widthtt: 10,),
+                      minasFunction: cubit,
+                      plasFunction: cubit,
+                      count: cubit.count,
+                      text: 'Quantity',
+                      left: 100,
+                      width: 400,
+                      hight: 80,
+                      widthtt: 10,
+                    ),
                   ),
                   Expanded(
                     flex: 1,
@@ -103,9 +110,19 @@ class CreatePost extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ImageUploadFirst(text: "Product Certificate", cubit: cubit),
-                    ImageUploadScound(
-                        text: "Company Certificate", cubit: cubit),
+                    GestureDetector(
+                        onTap: () {
+                          cubit.getImageFirst();
+                        },
+                        child: ImageUploadFirst(
+                            text: "Product Certificate", cubit: cubit)),
+                    GestureDetector(
+                      onTap: () {
+                        cubit.getImageScound();
+                      },
+                      child: ImageUploadScound(
+                          text: "Company Certificate", cubit: cubit),
+                    ),
                   ],
                 ),
               ),
@@ -119,8 +136,9 @@ class CreatePost extends StatelessWidget {
                     "Max_Budget": maxBudgetController.text,
                     "Quantity": cubit.count,
                     "unit": cubit.valUnit,
-                    "Product_Certificate": "${cubit.firstImage}",
-                    "Company_Certificate": "${cubit.scondImage}",
+                    "Product_Certificate": cubit.firstImage,
+                    "Company_Certificate": cubit.scondImage,
+                    "user": FirebaseAuth.instance.currentUser!.uid,
                     // "Details": "",
                   },
                 ),

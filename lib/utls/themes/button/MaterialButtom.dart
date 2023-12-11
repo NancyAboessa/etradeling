@@ -19,32 +19,29 @@ class CustomMaterialButtom extends StatelessWidget {
       width: 250,
       decoration: BoxDecoration(
           border: Border.all(
-        color: Colors.black,
-      )),
-      child: MaterialButton(
-        color: color,
-        onPressed: () {},
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              text,
-              style: TextStyle(
-                color: coolor,
-                // fontWeight: FontWeight.w100,
-                fontSize: 15,
-              ),
+            color: Colors.black,
+          ),
+          color: color),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            text,
+            style: TextStyle(
+              color: coolor,
+              // fontWeight: FontWeight.w100,
+              fontSize: 15,
             ),
-            SizedBox(
-              width: 3,
-            ),
-            Icon(
-              icon as IconData?,
-              color: Colors.white,
-              size: 15,
-            ),
-          ],
-        ),
+          ),
+          SizedBox(
+            width: 3,
+          ),
+          Icon(
+            icon as IconData?,
+            color: Colors.white,
+            size: 15,
+          ),
+        ],
       ),
     );
   }

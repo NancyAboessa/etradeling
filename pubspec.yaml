@@ -46,7 +46,8 @@ dependencies:
   platform_file: ^0.0.1
   rating: ^1.0.0-dev.1
   flutter_rating_bar: ^4.0.1
-
+  file_picker: ^6.1.1
+  beamer: ^1.5.6
 dev_dependencies:
   flutter_test:
     sdk: flutter

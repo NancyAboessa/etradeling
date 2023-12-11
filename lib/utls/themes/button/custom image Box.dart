@@ -8,31 +8,27 @@ class imageBox extends StatelessWidget {
   imageBox({
     super.key,
     required this.hight,
-    required this .width,
+    required this.width,
+    required this.image,
   });
 
   double hight;
   double width;
+  String image;
 
   @override
   Widget build(BuildContext context) {
-    var cubit = CartCubit.get(context);
-
-    return BlocBuilder<CubitProduct, CubitProductState>(
-      builder: (context, state) {
-        return InkWell(
-          onTap: () async {
-          await  cubit.getImage();
-        //   Image.file( cubit.file!);
-          },
-          child: Container(
-            height: hight,
-            width: width,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.black12,)),
+    return Container(
+      height: hight,
+      width: width,
+      decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.black12,
           ),
-        );
-      },
+          image: DecorationImage(
+            image: NetworkImage(image),
+            fit: BoxFit.cover,
+          )),
     );
   }
 }

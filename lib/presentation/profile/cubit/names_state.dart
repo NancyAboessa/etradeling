@@ -14,4 +14,6 @@ class GetImageState extends NamesState {}
 
 class SendImageState extends NamesState {}
 
+class GetDataState extends NamesState {}
+
 class GetProfileState extends NamesState {}
