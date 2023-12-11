@@ -1,3 +1,5 @@
+import 'package:etradeling/presentation/cartPage/cartPage.dart';
+import 'package:etradeling/presentation/cartPage/cubit/CartCubit.dart';
 import 'package:etradeling/presentation/home_screen/Bloc/BlocAppBar.dart';
 import 'package:etradeling/presentation/home_screen/home_body/home_screen.dart';
 import 'package:etradeling/presentation/post/create_post.dart';
@@ -121,10 +123,23 @@ class MainAppBar extends StatelessWidget {
                   SizedBox(
                     width: 5.0,
                   ),
-                  Text(
-                    'cart',
-                    style: TextStyle(
-                      fontSize: 15.0,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => BlocProvider.value(
+                              value: BlocProvider.of<AppBarCubit>(context),
+                              child: BlocProvider<CartCubit>(
+                                  create: (_) => CartCubit(), child: Cart()),
+                            ),
+                          ));
+                    },
+                    child: Text(
+                      'cart',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                      ),
                     ),
                   ),
                   SizedBox(

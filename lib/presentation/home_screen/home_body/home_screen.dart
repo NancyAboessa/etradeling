@@ -98,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             Stack(
                               children: [
-                                imageBox(hight: 150, width: 400),
+                                imageBox(hight: 150, width: 400, image: ""),
                                 const Padding(
                                   padding: EdgeInsets.only(top: 30, left: 30),
                                   child: Text(
@@ -136,7 +136,11 @@ class HomeScreen extends StatelessWidget {
                             ),
                             Stack(
                               children: [
-                                imageBox(hight: 150, width: 400),
+                                imageBox(
+                                  hight: 150,
+                                  width: 400,
+                                  image: "",
+                                ),
                                 const Padding(
                                   padding: EdgeInsets.only(top: 30, left: 30),
                                   child: Text(

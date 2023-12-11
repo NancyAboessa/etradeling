@@ -8,6 +8,7 @@ import 'package:etradeling/presentation/post/widget/post_button.dart';
 import 'package:etradeling/presentation/post/widget/select_category.dart';
 import 'package:etradeling/presentation/post/widget/sub_catgory.dart';
 import 'package:etradeling/utls/themes/main_field/main_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/cubite.dart';
@@ -137,6 +138,7 @@ class CreatePost extends StatelessWidget {
                     "unit": cubit.valUnit,
                     "Product_Certificate": cubit.firstImage,
                     "Company_Certificate": cubit.scondImage,
+                    "user": FirebaseAuth.instance.currentUser!.uid,
                     // "Details": "",
                   },
                 ),

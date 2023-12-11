@@ -16,4 +16,12 @@ class CubitMessages extends Cubit<MainMessagesState> {
     });
     emit(ListUser());
   }
+
+  chatUser(id) async {
+    await firebaseFirestore
+        .collection("MessagesList")
+        .where("Maseeges_id", isEqualTo: id)
+        .get();
+    emit(ChatUser());
+  }
 }

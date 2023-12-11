@@ -14,262 +14,278 @@ class Product extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cubit = CubitProduct.get(context);
+    cubit.getData(product!["user"]);
     return BlocBuilder<CubitProduct, CubitProductState>(builder: (context, i) {
-      return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.orange[600],
-        ),
-        body: Padding(
-          padding: const EdgeInsets.only(left: 100, top: 50),
-          child: Row(
-            // crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              imageBox(
-                width: 70,
-                hight: 100,
+      return cubit.map.isEmpty
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.orange[600],
               ),
-              SizedBox(
-                width: 15,
-              ),
-              imageBox(
-                width: 250,
-                hight: 330,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 80, left: 20),
-                child: Column(
-                  //  crossAxisAlignment: CrossAxisAlignment.center,
+              body: Padding(
+                padding: const EdgeInsets.only(left: 100, top: 50),
+                child: Row(
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 60, right: 150),
-                      child: Text('Product Name'),
+                    imageBox(
+                      width: 70,
+                      hight: 100,
+                      image: product!["Product_Certificate"],
                     ),
                     SizedBox(
-                      height: 30,
+                      width: 15,
                     ),
-                    Rating(
-                      initialRating: 1,
-                      itemSize: 15,
-                    ),
-                    SizedBox(
-                      height: 8,
+                    imageBox(
+                      width: 250,
+                      hight: 330,
+                      image: product!["Company_Certificate"],
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 100),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Now:',
-                            style: TextStyle(color: Colors.black38),
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Text('EGP 200.00'),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 80),
-                      child: Row(
+                      padding: const EdgeInsets.only(top: 80, left: 20),
+                      child: Column(
+                        //  crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(top: 25),
-                            child: Text(
-                              'Quantity:',
-                              style: TextStyle(
-                                color: Colors.black38,
-                              ),
-                            ),
+                            padding: const EdgeInsets.only(top: 60, right: 150),
+                            child: Text('${product!["Product_Name"]}'),
                           ),
                           SizedBox(
-                            width: 20,
+                            height: 30,
                           ),
-                          Counter(
-                            left: 0,
-                            text: '',
-                            width: 25,
-                            minasFunction: cubit,
-                            plasFunction: cubit,
-                            count: cubit.count,
-                            hight: 25,
-                            widthtt: 0,
+                          Rating(
+                            initialRating: 1,
+                            itemSize: 15,
                           ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    CustomMaterialButtom(
-                      text: 'Add To Cart',
-                      icon: Icons.shopping_cart,
-                      color: Colors.black,
-                      coolor: Colors.white,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Divider(
-                      color: Colors.black,
-                      thickness: 1,
-                      height: 20,
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Container(
-                height: 320,
-                child: VerticalDivider(
-                  color: Colors.black26,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 80, left: 20),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 60, right: 150),
-                      child: Text(
-                        'EGP 200.00',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 60),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
+                          SizedBox(
+                            height: 8,
+                          ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 20),
-                            child: Text(
-                              'Share Product',
-                              style: TextStyle(color: Colors.black38),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                  height: 25,
-                                  width: 25,
-                                  decoration: BoxDecoration(
-                                    color: Colors.orange[600],
-                                    shape: BoxShape.rectangle,
-                                  ),
-                                  child: Icon(
-                                    Icons.facebook,
-                                    color: Colors.white,
-                                  )),
-                              SizedBox(
-                                width: 3,
-                              ),
-                              Container(
-                                  height: 25,
-                                  width: 25,
-                                  decoration: BoxDecoration(
-                                    color: Colors.orange[600],
-                                    shape: BoxShape.rectangle,
-                                  ),
-                                  child: Icon(
-                                    FontAwesomeIcons.x,
-                                    color: Colors.white,
-                                  )),
-                              SizedBox(
-                                width: 3,
-                              ),
-                              Container(
-                                  height: 25,
-                                  width: 25,
-                                  decoration: BoxDecoration(
-                                    color: Colors.orange[600],
-                                    shape: BoxShape.rectangle,
-                                  ),
-                                  child: Icon(
-                                    FontAwesomeIcons.whatsapp,
-                                    color: Colors.white,
-                                  )),
-                              //x-twitter
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    // SizedBox(height: 10,),
-                    //Divider(
-                    //   height: 50,
-                    //   color: Colors.black,
-                    // ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 110, top: 20),
-                      child: Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(color: Colors.orange)),
-                            child: InkWell(
-                              onTap: () async {},
-                              child: CircleAvatar(
-                                backgroundColor: Colors.black12,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            children: [
-                              Text(
-                                'Client name',
-                              ),
-                              Text(
-                                '( )',
-                                style: TextStyle(
-                                  color: Colors.black12,
+                            padding: const EdgeInsets.only(right: 100),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Now:',
+                                  style: TextStyle(color: Colors.black38),
                                 ),
-                              ),
-                            ],
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Text('EGP ${product!["Max_Budget"]}'),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 80),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 25),
+                                  child: Text(
+                                    'Quantity:',
+                                    style: TextStyle(
+                                      color: Colors.black38,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Counter(
+                                  left: 0,
+                                  text: '',
+                                  width: 25,
+                                  minasFunction: cubit,
+                                  plasFunction: cubit,
+                                  count: cubit.count,
+                                  hight: 25,
+                                  widthtt: 0,
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              cubit.sendCatgory({
+                                "user": product!["user"],
+                                "image": product!["Company_Certificate"],
+                                "name": product!["Company_Certificate"],
+                                "price": product!["Product_Name"],
+                              });
+                            },
+                            child: CustomMaterialButtom(
+                              text: 'Add To Cart',
+                              icon: Icons.shopping_cart,
+                              color: Colors.black,
+                              coolor: Colors.white,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Divider(
+                            color: Colors.black,
+                            thickness: 1,
+                            height: 20,
                           ),
                         ],
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      width: 20,
                     ),
-                    CustomMaterialButtom(
-                      text: 'View Profile',
-                      color: Colors.white,
-                      coolor: Colors.black,
+                    Container(
+                      height: 320,
+                      child: VerticalDivider(
+                        color: Colors.black26,
+                      ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    CustomMaterialButtom(
-                      text: 'Chat Now',
-                      color: Colors.white,
-                      coolor: Colors.black,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 80, left: 20),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 60, right: 150),
+                            child: Text(
+                              'EGP 200.00',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 60),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 20),
+                                  child: Text(
+                                    'Share Product',
+                                    style: TextStyle(color: Colors.black38),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Row(
+                                  children: [
+                                    Container(
+                                        height: 25,
+                                        width: 25,
+                                        decoration: BoxDecoration(
+                                          color: Colors.orange[600],
+                                          shape: BoxShape.rectangle,
+                                        ),
+                                        child: Icon(
+                                          Icons.facebook,
+                                          color: Colors.white,
+                                        )),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Container(
+                                        height: 25,
+                                        width: 25,
+                                        decoration: BoxDecoration(
+                                          color: Colors.orange[600],
+                                          shape: BoxShape.rectangle,
+                                        ),
+                                        child: Icon(
+                                          FontAwesomeIcons.x,
+                                          color: Colors.white,
+                                        )),
+                                    SizedBox(
+                                      width: 3,
+                                    ),
+                                    Container(
+                                        height: 25,
+                                        width: 25,
+                                        decoration: BoxDecoration(
+                                          color: Colors.orange[600],
+                                          shape: BoxShape.rectangle,
+                                        ),
+                                        child: Icon(
+                                          FontAwesomeIcons.whatsapp,
+                                          color: Colors.white,
+                                        )),
+                                    //x-twitter
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          // SizedBox(height: 10,),
+                          //Divider(
+                          //   height: 50,
+                          //   color: Colors.black,
+                          // ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 110, top: 20),
+                            child: Row(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(color: Colors.orange)),
+                                  child: InkWell(
+                                    onTap: () async {},
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.black12,
+                                      child: Image.network(cubit.map["image"]),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  children: [
+                                    Text(cubit.map["name"]),
+                                    Text(
+                                      '( )',
+                                      style: TextStyle(
+                                        color: Colors.black12,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomMaterialButtom(
+                            text: 'View Profile',
+                            color: Colors.white,
+                            coolor: Colors.black,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CustomMaterialButtom(
+                            text: 'Chat Now',
+                            color: Colors.white,
+                            coolor: Colors.black,
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
-            ],
-          ),
-        ),
-      );
+            );
     });
   }
 }
