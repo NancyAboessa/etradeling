@@ -1,3 +1,4 @@
+import 'package:etradeling/presentation/home_screen/home_body/components/CustomMaterialButtom.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -270,11 +271,18 @@ class ourblog_screen extends StatelessWidget {
         
                   ),
                 ),
-        
-        
-        
+                CustomMaterialButtom(
+                  text: 'See More',
+                  color: Colors.black,
+                  coolor: Colors.white,
+                ),
+
+
+
+
               ],
             ),
+
           ),
 
         ),
