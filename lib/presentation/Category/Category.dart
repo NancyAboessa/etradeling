@@ -1,13 +1,13 @@
-import 'package:etradeling/presentation/home_screen/Bloc/stateAppBar.dart';
+import 'package:etradeling/presentation/Productpage/Productpage.dart';
 import 'package:etradeling/presentation/home_screen/home_body/components/imageWithText.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../home_screen/Bloc/BlocAppBar.dart';
+import '../Productpage/cubit/cubit.dart';
 import 'Cubit/Category Cubit.dart';
 import 'Cubit/category state.dart';
 
 class Category extends StatelessWidget {
-  const Category({super.key, required this.catgory});
+  const Category({super.key, this.catgory});
   final String? catgory;
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class Category extends StatelessWidget {
     cubit.category(catgory!);
     return BlocBuilder<CubitCategories, CategoriesState>(
         builder: (context, state) {
-      return cubit.proudctlist!.isEmpty && state is Empty
+      return cubit.proudctlist.isEmpty && state is Empty
           ? Center(
               child: CircularProgressIndicator(),
             )
@@ -57,27 +57,25 @@ class Category extends StatelessWidget {
                             itemBuilder: (context, index) {
                               return GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (_) => BlocProvider.value(
-                                                value: BlocProvider.of<
-                                                    AppBarCubit>(context),
-                                                child: Category(
-                                                    catgory: cubit
-                                                            .proudctlist![index]
-                                                        ["name"]),
-                                              )));
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (_) {
+                                    return BlocProvider.value(
+                                      value: BlocProvider.of<CubitProduct>(
+                                          context),
+                                      child: Product(
+                                          product: cubit.proudctlist[index]),
+                                    );
+                                  }));
                                 },
                                 child: ImageWithText(
-                                  image: cubit.proudctlist![index]
+                                  image: cubit.proudctlist[index]
                                       ["Product_Certificate"],
-                                  name: cubit.proudctlist![index]
+                                  name: cubit.proudctlist[index]
                                       ["Product_Name"],
                                 ),
                               );
                             },
-                            itemCount: cubit.proudctlist!.length,
+                            itemCount: cubit.proudctlist.length,
                           ),
                         ),
                       ],

@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:etradeling/presentation/home_screen/Bloc/stateAppBar.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppBarCubit extends Cubit<AppBarState> {
@@ -18,7 +17,7 @@ class AppBarCubit extends Cubit<AppBarState> {
         .get()
         .then((value) {
       value.docs.forEach((element) {
-        list!.add(element.data());
+        list.add(element.data());
       });
     });
     // print(list);
