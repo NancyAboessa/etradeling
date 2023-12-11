@@ -22,7 +22,7 @@ class CubitCategories extends Cubit<CategoriesState> {
         }
       });
     });
-    print(proudctlist);
+    // print(proudctlist);
     emit(MainCatgory());
   }
 }

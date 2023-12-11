@@ -11,6 +11,7 @@ class Category extends StatelessWidget {
   final String? catgory;
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic>? map;
     CubitCategories cubit = CubitCategories.get(context);
     cubit.category(catgory!);
     return BlocBuilder<CubitCategories, CategoriesState>(
@@ -54,16 +55,18 @@ class Category extends StatelessWidget {
                               crossAxisCount: 3,
                               // Number of columns
                             ),
-                            itemBuilder: (context, index) {
+                            itemBuilder: (context1, index) {
                               return GestureDetector(
                                 onTap: () {
+                                  map = cubit.proudctlist[index];
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (_) {
                                     return BlocProvider.value(
-                                      value: BlocProvider.of<CubitProduct>(
+                                      value: BlocProvider.of<CubitCategories>(
                                           context),
-                                      child: Product(
-                                          product: cubit.proudctlist[index]),
+                                      child: BlocProvider<CubitProduct>(
+                                          create: (_) => CubitProduct(),
+                                          child: Product(product: map!)),
                                     );
                                   }));
                                 },

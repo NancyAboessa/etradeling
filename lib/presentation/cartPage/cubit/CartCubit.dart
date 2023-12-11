@@ -8,35 +8,32 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../test.dart';
 
-class CartCubit extends Cubit< CubitCartState> {
+class CartCubit extends Cubit<CubitCartState> {
   static CartCubit get(context) => BlocProvider.of(context);
-
   CartCubit() : super(initCartCubit());
   String? refrance;
-  File ?file;
-  Map<String, dynamic> ? map ;
+  File? file;
+  Map<String, dynamic>? map;
 
-  getImage() async {
-    // final imagePiker = ImagePicker();
-    // XFile? image = await imagePiker.pickImage(source: ImageSource.gallery);
-     await FirebaseFirestore.instance
-          .collection("Product")
-          .doc("it97J1rbUn3W3Ynm9lNp")
-          .get()
-          .then((value) {
-        map = value.data();
-        print("${map}");
-      });
-
-    emit(imageSuceessCartState());
-  }
-
+  // getImage() async {
+  //   // final imagePiker = ImagePicker();
+  //   // XFile? image = await imagePiker.pickImage(source: ImageSource.gallery);
+  //   await FirebaseFirestore.instance
+  //       .collection("Product")
+  //       .doc("it97J1rbUn3W3Ynm9lNp")
+  //       .get()
+  //       .then((value) {
+  //     map = value.data();
+  //     print("${map}");
+  //   });
+  //
+  //   emit(imageSuceessCartState());
+  // }
 
   // imagedesplay() async {
   //   await FirebaseFirestore.instance.collection("Product").doc("it97J1rbUn3W3Ynm9lNp");
   //   emit(imagedesplaySucess());
   // }
-
 
   int count = 0;
 
@@ -49,6 +46,4 @@ class CartCubit extends Cubit< CubitCartState> {
     count--;
     emit(minasCart());
   }
-
-
 }

@@ -42,8 +42,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<CubitProduct>(create: (context) => CubitProduct()),
         BlocProvider<CubitCategories>(create: (context) => CubitCategories()),
         BlocProvider<AppBarCubit>(create: (context) => AppBarCubit()),
-        BlocProvider<AppBarCubit>(create: (context) => AppBarCubit()),
-        BlocProvider<CartCubit>(create: (context) => CartCubit()),
+        BlocProvider(create: (context) => CartCubit()),
       ], child: const LoginCheck()),
     );
   }
