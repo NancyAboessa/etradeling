@@ -1,8 +1,16 @@
+import 'package:etradeling/about_us/about_usScreen.dart';
 import 'package:etradeling/firebase_options.dart';
+import 'package:etradeling/presentation/Contact_screen/contact_screen.dart';
 import 'package:etradeling/presentation/Productpage/cubit/cubit.dart';
 import 'package:etradeling/presentation/auth/bloc/login.cubit.dart';
 import 'package:etradeling/presentation/auth/login_check.dart';
+import 'package:etradeling/presentation/category_screen/category_cart.dart';
+import 'package:etradeling/presentation/home_screen/home_body/home_screen.dart';
+import 'package:etradeling/presentation/our_blog/custemCaret-downIcon.dart';
+import 'package:etradeling/presentation/our_blog/ourblog_screen.dart';
 import 'package:etradeling/presentation/post/cubit/cubite.dart';
+import 'package:etradeling/presentation/profile/Profile.dart';
+import 'package:etradeling/presentation/profile/profile%20part%20two.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,7 +41,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => CubitProduct()),
         BlocProvider(create: (context) => AppBarCubit()),
-      ], child: LoginCheck()),
+      ], child: About_us(),
+      ),
     );
   }
 }
