@@ -118,8 +118,8 @@ class Product extends StatelessWidget {
                               cubit.sendCatgory({
                                 "user": product!["user"],
                                 "image": product!["Company_Certificate"],
-                                "name": product!["Company_Certificate"],
-                                "price": product!["Product_Name"],
+                                "name": product!["Product_Name"],
+                                "price": product!["Max_Budget"],
                               });
                             },
                             child: CustomMaterialButtom(
@@ -156,7 +156,7 @@ class Product extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 60, right: 150),
                             child: Text(
-                              'EGP 200.00',
+                              'EGP ${product!["Max_Budget"]}',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 18,

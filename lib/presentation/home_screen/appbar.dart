@@ -87,8 +87,11 @@ class MainAppBar extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (_) => BlocProvider.value(
-                                    value: BlocProvider.of<NamesCubit>(context),
-                                    child: Profile(),
+                                    value:
+                                        BlocProvider.of<AppBarCubit>(context),
+                                    child: BlocProvider<NamesCubit>(
+                                        create: (_) => NamesCubit(),
+                                        child: Profile()),
                                   )));
                     },
                     child: const Text(
@@ -123,7 +126,7 @@ class MainAppBar extends StatelessWidget {
                   SizedBox(
                     width: 5.0,
                   ),
-                  GestureDetector(
+                  InkWell(
                     onTap: () {
                       Navigator.push(
                           context,

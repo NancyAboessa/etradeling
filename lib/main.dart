@@ -43,13 +43,15 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange.shade500),
         useMaterial3: true,
       ),
-      home: MultiBlocProvider(providers: [
-        BlocProvider(create: (context) => PostCubit()),
-        BlocProvider(create: (context) => NamesCubit()),
-        BlocProvider(create: (context) => LoginCubit()),
-        BlocProvider(create: (context) => CubitProduct()),
-        BlocProvider(create: (context) => AppBarCubit()),
-      ], child: About_us(),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => PostCubit()),
+          BlocProvider(create: (context) => NamesCubit()),
+          BlocProvider(create: (context) => LoginCubit()),
+          BlocProvider(create: (context) => CubitProduct()),
+          BlocProvider(create: (context) => AppBarCubit()),
+        ],
+        child: LoginCheck(),
       ),
     );
   }

@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                             fontSize: 50.0,
                           ),
                         ),
-                        cubit.list!.isEmpty
+                        cubit.list.isEmpty
                             ? const Center(
                                 child: CircularProgressIndicator(),
                               )
@@ -72,12 +72,18 @@ class HomeScreen extends StatelessWidget {
                                                   builder: (_) =>
                                                       BlocProvider.value(
                                                         value: BlocProvider.of<
-                                                                CubitCategories>(
+                                                                AppBarCubit>(
                                                             context),
-                                                        child: Category(
-                                                            catgory: cubit
-                                                                    .list[index]
-                                                                ["name"]),
+                                                        child: BlocProvider<
+                                                            CubitCategories>(
+                                                          create: (_) =>
+                                                              CubitCategories(),
+                                                          child: Category(
+                                                              catgory:
+                                                                  cubit.list[
+                                                                          index]
+                                                                      ["name"]),
+                                                        ),
                                                       )));
                                         },
                                         child: ImageWithText(

@@ -4,7 +4,6 @@ import 'package:etradeling/utls/themes/button/custom%20image%20Box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../../utls/themes/button/MaterialButtom.dart';
 import '../Productpage/custom Widgets/rating.dart';
 import '../post/widget/counter.dart';
@@ -29,7 +28,6 @@ class Cart extends StatelessWidget {
                 ),
                 body: SingleChildScrollView(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
                         height: 800,
@@ -62,20 +60,21 @@ class Cart extends StatelessWidget {
                                         imageBox(
                                           hight: 230,
                                           width: 300,
-                                          image: "",
+                                          image: cubit.list[i]["image"],
                                         )
                                       ],
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 80),
+                                    padding: const EdgeInsets.only(
+                                        top: 80, left: 20),
                                     child: Column(
                                       //  crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         Padding(
                                           padding: const EdgeInsets.only(
                                               top: 60, right: 150),
-                                          child: Text('Product Name'),
+                                          child: Text(cubit.list[i]["name"]),
                                         ),
                                         SizedBox(
                                           height: 10,
@@ -106,7 +105,8 @@ class Cart extends StatelessWidget {
                                               SizedBox(
                                                 width: 20,
                                               ),
-                                              Text('EGP 200.00'),
+                                              Text(
+                                                  'EGP ${cubit.list[i]["Max_Budget"]}'),
                                             ],
                                           ),
                                         ),
@@ -191,7 +191,7 @@ class Cart extends StatelessWidget {
                             }),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 150),
+                        padding: const EdgeInsets.only(bottom: 200),
                         child: Stack(
                           children: [
                             Container(
