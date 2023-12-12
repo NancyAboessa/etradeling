@@ -1,9 +1,11 @@
 import 'package:etradeling/presentation/Productpage/cubit/cubit.dart';
+import 'package:etradeling/presentation/messages/cubit/cubit.dart';
 import 'package:etradeling/utls/themes/button/custom%20image%20Box.dart';
 import 'package:etradeling/presentation/post/widget/counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../messages/chat.dart';
 import 'cubit/state.dart';
 import '../../utls/themes/button/MaterialButtom.dart';
 import 'custom Widgets/rating.dart';
@@ -274,10 +276,29 @@ class Product extends StatelessWidget {
                           SizedBox(
                             height: 10,
                           ),
-                          CustomMaterialButtom(
-                            text: 'Chat Now',
-                            color: Colors.white,
-                            coolor: Colors.black,
+                          Material(
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => BlocProvider.value(
+                                              value:
+                                                  BlocProvider.of<CubitProduct>(
+                                                      context),
+                                              child:
+                                                  BlocProvider<CubitMessages>(
+                                                      create: (_) =>
+                                                          CubitMessages(),
+                                                      child: Chat()),
+                                            )));
+                              },
+                              child: CustomMaterialButtom(
+                                text: 'Chat Now',
+                                color: Colors.white,
+                                coolor: Colors.black,
+                              ),
+                            ),
                           ),
                         ],
                       ),

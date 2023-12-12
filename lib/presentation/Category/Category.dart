@@ -1,3 +1,4 @@
+import 'package:etradeling/presentation/Category/widget/card.dart';
 import 'package:etradeling/presentation/Productpage/Productpage.dart';
 import 'package:etradeling/presentation/home_screen/home_body/components/imageWithText.dart';
 import 'package:flutter/material.dart';
@@ -31,16 +32,8 @@ class Category extends StatelessWidget {
                     SizedBox(
                       height: 50,
                     ),
-                    Divider(
-                      color: Colors.black38,
-                      indent: 500,
-                      endIndent: 50,
-                    ),
                     SizedBox(
                       height: 5,
-                    ),
-                    Text(
-                      '7 products found',
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -48,7 +41,7 @@ class Category extends StatelessWidget {
                       children: [
                         SizedBox(
                           height: 700,
-                          width: 1000,
+                          width: 850,
                           child: GridView.builder(
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
@@ -57,26 +50,22 @@ class Category extends StatelessWidget {
                             ),
                             itemBuilder: (context1, index) {
                               return GestureDetector(
-                                onTap: () {
-                                  map = cubit.proudctlist[index];
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (_) {
-                                    return BlocProvider.value(
-                                      value: BlocProvider.of<CubitCategories>(
-                                          context),
-                                      child: BlocProvider<CubitProduct>(
-                                          create: (_) => CubitProduct(),
-                                          child: Product(product: map!)),
-                                    );
-                                  }));
-                                },
-                                child: ImageWithText(
-                                  image: cubit.proudctlist[index]
-                                      ["Product_Certificate"],
-                                  name: cubit.proudctlist[index]
-                                      ["Product_Name"],
-                                ),
-                              );
+                                  onTap: () {
+                                    map = cubit.proudctlist[index];
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (_) {
+                                      return BlocProvider.value(
+                                        value: BlocProvider.of<CubitCategories>(
+                                            context),
+                                        child: BlocProvider<CubitProduct>(
+                                            create: (_) => CubitProduct(),
+                                            child: Product(product: map!)),
+                                      );
+                                    }));
+                                  },
+                                  child: CardScreen(
+                                    map: cubit.proudctlist[index],
+                                  ));
                             },
                             itemCount: cubit.proudctlist.length,
                           ),

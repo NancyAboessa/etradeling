@@ -4,12 +4,10 @@ import 'package:etradeling/presentation/auth/bloc/login.state.dart';
 import 'package:etradeling/presentation/auth/login.dart';
 import 'package:etradeling/presentation/home_screen/Bloc/BlocAppBar.dart';
 import 'package:etradeling/presentation/home_screen/home_body/home_screen.dart';
-import 'package:etradeling/presentation/our_blog/ourblog_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../Contact_screen/contact_screen.dart';
 import '../profile/Profile.dart';
 
 class LoginCheck extends StatelessWidget {
@@ -23,7 +21,7 @@ class LoginCheck extends StatelessWidget {
         return LoginScreen();
       } else {
         return BlocProvider<AppBarCubit>(
-            create: (_) => AppBarCubit(), child: const ContactScreen());
+            create: (_) => AppBarCubit(), child: HomeScreen());
       }
     });
   }

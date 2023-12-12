@@ -78,10 +78,14 @@ class ProfileData extends StatelessWidget {
                                         height: 100,
                                         width: 200,
                                         decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                        child:
-                                            Image.network(cubit.map["image"]),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          image: DecorationImage(
+                                            image: NetworkImage(
+                                                cubit.map["image"]),
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
                                       )
                                     : const Text(""),
                               ),

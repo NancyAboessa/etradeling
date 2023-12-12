@@ -19,6 +19,7 @@ class NamesCubit extends Cubit<NamesState> {
   String? getimage;
   String? id;
   Map<String, dynamic> map = {};
+  int count = 0;
   Uint8List webImage = Uint8List(8);
   List<ListModel> names = [
     ListModel(Name: 'My Account'),
@@ -52,6 +53,11 @@ class NamesCubit extends Cubit<NamesState> {
     });
     // getImage(map["image"]);
     emit(GetDataState());
+  }
+
+  Count(index) {
+    count = index;
+    emit(CountState());
   }
 
   sendData(data) {
