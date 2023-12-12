@@ -1,3 +1,4 @@
+import 'package:etradeling/presentation/Contact_screen/custenformfeild.dart';
 import 'package:flutter/material.dart';
 
 import '../home_screen/home_body/components/CustomMaterialButtom.dart';
@@ -59,17 +60,54 @@ class ContactScreen extends StatelessWidget {
                           color: Colors.black,
                         ),
                       ),
-                      SizedBox(height: 10),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            labelText: 'Enter your first name',
-                            border: OutlineInputBorder(),
-                          ),
+                      SizedBox(
+                        height: 1000,
+                        width: 1800,
+                        child: Row(
+                          children: [
+                            CustemTextFeild(),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                      'Country',
+                                  ),
+                                  SizedBox(height: 10),
+                                  TextField(
+
+                                    decoration: InputDecoration(
+                                      labelText: 'Where you from ?',
+                                      border: OutlineInputBorder(),
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(
+                                      'Message',
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    height: 150,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(),
+                                    ),
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                        labelText: 'Your message Here',
+                                        border: OutlineInputBorder(),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      SizedBox(height: 10),
                       CustomMaterialButtom(
                         text: 'Send',
                         color: Colors.black,
