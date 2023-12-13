@@ -19,3 +19,11 @@ class SendImageState extends NamesState {}
 class GetDataState extends NamesState {}
 
 class GetProfileState extends NamesState {}
+
+class SendProfileAddress extends NamesState {}
+
+class GetProfileAddress extends NamesState {}
+
+class EmptyAddress extends NamesState {}
+
+class DropDownCountryState extends NamesState {}

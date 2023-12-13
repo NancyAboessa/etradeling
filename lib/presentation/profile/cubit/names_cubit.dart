@@ -21,6 +21,8 @@ class NamesCubit extends Cubit<NamesState> {
   Map<String, dynamic> map = {};
   int count = 0;
   Uint8List webImage = Uint8List(8);
+  String? valCountry;
+  List address = [];
   List<ListModel> names = [
     ListModel(Name: 'My Account'),
     ListModel(Name: 'My Orders'),
@@ -68,6 +70,18 @@ class NamesCubit extends Cubit<NamesState> {
     emit(GetProfileState());
   }
 
+  sendAddress(data) {
+    print(data);
+    if (data != null && id != null) {
+      FirebaseFirestore.instance
+          .collection("Profile")
+          .doc(id!)
+          .collection("Address")
+          .add(data);
+    }
+    emit(SendProfileAddress());
+  }
+
   getData() async {
     await getProfie();
     if (id != null) {
@@ -82,6 +96,26 @@ class NamesCubit extends Cubit<NamesState> {
       // getImage(map);
     }
     emit(getDataState());
+  }
+
+  getAddress() async {
+    await getProfie();
+    emit(EmptyAddress());
+    // address = [];
+    if (id != null) {
+      await FirebaseFirestore.instance
+          .collection("Profile")
+          .doc(id!)
+          .collection("Address")
+          .get()
+          .then((value) {
+        value.docs.forEach((element) {
+          address.add(element.data());
+        });
+      });
+      print("this is ${address}");
+    }
+    emit(GetProfileAddress());
   }
 
   sendImage() async {
@@ -113,7 +147,12 @@ class NamesCubit extends Cubit<NamesState> {
     FirebaseFirestore.instance.collection("Profile").doc(id!).update({
       "image": getimage,
     });
-
     emit(GetImageState());
+  }
+
+  dropDownCountry(value) async {
+    // print(data);
+    valCountry = value;
+    emit(DropDownCountryState());
   }
 }

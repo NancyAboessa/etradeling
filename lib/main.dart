@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => CubitProduct()),
           BlocProvider(create: (context) => AppBarCubit()),
         ],
-        child: ourblog_screen(),
+        child: LoginCheck(),
       ),
     );
   }

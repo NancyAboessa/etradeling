@@ -65,44 +65,43 @@ class ContactScreen extends StatelessWidget {
                         width: 1800,
                         child: Row(
                           children: [
-                            CustemTextFeild(),
-                            SizedBox(
-                              width: 10.0,
-                            ),
+                            Expanded(child: CustemTextFeild()),
                             Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 20.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
                                       'Country',
-                                  ),
-                                  SizedBox(height: 10),
-                                  TextField(
-
-                                    decoration: InputDecoration(
-                                      labelText: 'Where you from ?',
-                                      border: OutlineInputBorder(),
                                     ),
-                                  ),
-                                  SizedBox(height: 10),
-                                  Text(
-                                      'Message',
-                                  ),
-                                  SizedBox(height: 10),
-                                  Container(
-                                    height: 150,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(),
-                                    ),
-                                    child: TextField(
+                                    SizedBox(height: 10),
+                                    TextField(
                                       decoration: InputDecoration(
-                                        labelText: 'Your message Here',
+                                        labelText: 'Where you from ?',
                                         border: OutlineInputBorder(),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    SizedBox(height: 10),
+                                    Text(
+                                      'Message',
+                                    ),
+                                    SizedBox(height: 10),
+                                    Container(
+                                      height: 150,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(),
+                                      ),
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                          labelText: 'Your message Here',
+                                          border: OutlineInputBorder(),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],

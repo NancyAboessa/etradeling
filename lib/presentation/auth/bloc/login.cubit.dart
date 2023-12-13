@@ -41,10 +41,13 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   sendData() async {
-    await FirebaseFirestore.instance.collection("Profile").add({
-      "user_id": FirebaseAuth.instance.currentUser!.uid,
-    });
-
+    await FirebaseFirestore.instance
+        .collection("Profile")
+        .add({"user_id": FirebaseAuth.instance.currentUser!.uid});
+    await FirebaseFirestore.instance
+        .collection("Profile")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection("Address");
     emit(SetDataState());
   }
 
