@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PigContainer extends StatelessWidget {
   const PigContainer({super.key});
@@ -12,19 +13,19 @@ class PigContainer extends StatelessWidget {
         width: 1000,
         color: Colors.grey.shade100,
         padding: const EdgeInsets.only(top: 40),
-        child: const Column(
+        child:  Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("We'd Love to help you"),
-            Text("Submit RFQ",
+            Text(AppLocalizations.of(context)!.we_dLoveto_helpyou),
+            Text(AppLocalizations.of(context)!.submitRFQ,
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 25,
                 )),
             Text(
-                "Tell suppliers what you need The more specific your information, the faster response you will get"),
-          ],
+              AppLocalizations.of(context)!.tell_suppliers_what_you_need_Themore,
+            ),],
         ),
       ),
     );

@@ -11,6 +11,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../auth/bloc/login.cubit.dart';
 import '../profile/Profile.dart';
 import '../profile/cubit/names_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainAppBar extends StatelessWidget {
   const MainAppBar({super.key});
@@ -34,10 +35,10 @@ class MainAppBar extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: 40.0,
+                width: 5.0,
               ),
               Container(
-                width: 550,
+                width: 450,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5.0),
                   color: Colors.white,
@@ -50,7 +51,9 @@ class MainAppBar extends StatelessWidget {
                     SizedBox(
                       width: 10.0,
                     ),
-                    Text('search'),
+                    Text(
+                        AppLocalizations.of(context)!.search,
+                    ),
                   ],
                 ),
               ),
@@ -66,8 +69,8 @@ class MainAppBar extends StatelessWidget {
                       var loginCubit;
                       loginCubit.NewPassword();
                     },
-                    child: const Text(
-                      'Egyption pound',
+                    child:  Text(
+                     AppLocalizations.of(context)!.egyptionpound,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -113,7 +116,7 @@ class MainAppBar extends StatelessWidget {
                     width: 5.0,
                   ),
                   Text(
-                    'Whishlist',
+                    AppLocalizations.of(context)!.whishlist,
                     style: TextStyle(
                       fontSize: 15.0,
                     ),
@@ -139,7 +142,7 @@ class MainAppBar extends StatelessWidget {
                           ));
                     },
                     child: Text(
-                      'cart',
+                      AppLocalizations.of(context)!.cart,
                       style: TextStyle(
                         fontSize: 15.0,
                       ),
@@ -173,8 +176,8 @@ class MainAppBar extends StatelessWidget {
                           ),
                         ));
                   },
-                  child: const Text(
-                    'Home',
+                  child:  Text(
+                    AppLocalizations.of(context)!.home,
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -195,8 +198,8 @@ class MainAppBar extends StatelessWidget {
                           ),
                         ));
                   },
-                  child: const Text(
-                    'Categories',
+                  child:  Text(
+                    AppLocalizations.of(context)!.categories,
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -217,8 +220,8 @@ class MainAppBar extends StatelessWidget {
                           ),
                         ));
                   },
-                  child: const Text(
-                    'Our blog ',
+                  child:  Text(
+                    AppLocalizations.of(context)!.ourblog,
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -239,8 +242,8 @@ class MainAppBar extends StatelessWidget {
                           ),
                         ));
                   },
-                  child: const Text(
-                    'Contact us',
+                  child:  Text(
+                    AppLocalizations.of(context)!.contactus,
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -261,8 +264,8 @@ class MainAppBar extends StatelessWidget {
                           ),
                         ));
                   },
-                  child: const Text(
-                    'About us',
+                  child:  Text(
+                    AppLocalizations.of(context)!.aboutus,
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -287,7 +290,7 @@ class MainAppBar extends StatelessWidget {
                                   )));
                     },
                     child: Text(
-                      'Submit RFQ',
+                      AppLocalizations.of(context)!.submitRFQ,
                       style: TextStyle(
                         color: Colors.orange[600],
                       ),

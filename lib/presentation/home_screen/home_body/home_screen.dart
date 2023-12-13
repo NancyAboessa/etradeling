@@ -14,7 +14,7 @@ import 'components/constants.dart';
 import 'components/customListView.dart';
 import 'components/custom_orange_button.dart';
 import 'components/imageWithText.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
   @override
@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
     AppBarCubit cubit = AppBarCubit.get(context);
     cubit.mainCategory();
     return BlocBuilder<AppBarCubit, AppBarState>(builder: (context, state) {
-      return cubit.list.isEmpty
+      return cubit.list!.isEmpty
           ? Center(
               child: CircularProgressIndicator(),
             )
@@ -40,15 +40,15 @@ class HomeScreen extends StatelessWidget {
                       ),
                       Column(children: [
                         // List View AirPods
-                        const Text(
-                          'Explore our Categories',
+                         Text(
+                          AppLocalizations.of(context)!.exploreourCategories,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                             fontSize: 50.0,
                           ),
                         ),
-                        cubit.list.isEmpty
+                        cubit.list!.isEmpty
                             ? const Center(
                                 child: CircularProgressIndicator(),
                               )
@@ -72,23 +72,17 @@ class HomeScreen extends StatelessWidget {
                                                   builder: (_) =>
                                                       BlocProvider.value(
                                                         value: BlocProvider.of<
-                                                                AppBarCubit>(
+                                                                CubitCategories>(
                                                             context),
-                                                        child: BlocProvider<
-                                                            CubitCategories>(
-                                                          create: (_) =>
-                                                              CubitCategories(),
-                                                          child: Category(
-                                                              catgory:
-                                                                  cubit.list[
-                                                                          index]
-                                                                      ["name"]),
-                                                        ),
+                                                        child: Category(
+                                                            catgory: cubit
+                                                                    .list![
+                                                                index]["name"]),
                                                       )));
                                         },
                                         child: ImageWithText(
-                                          image: cubit.list[index]["image"],
-                                          name: cubit.list[index]["name"],
+                                          image: cubit.list![index]["image"],
+                                          name: cubit.list![index]["name"],
                                         ),
                                       );
                                     },
@@ -104,24 +98,24 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             Stack(
                               children: [
-                                imageBox(hight: 150, width: 400, image: ""),
-                                const Padding(
+                                imageBox(hight: 150, width: 400),
+                                 Padding(
                                   padding: EdgeInsets.only(top: 30, left: 30),
                                   child: Text(
-                                    'Request for Quotation',
+                                    AppLocalizations.of(context)!.requestforQuotation,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black,
                                         fontSize: 20),
                                   ),
                                 ),
-                                const SizedBox(
+                                 SizedBox(
                                   height: 15,
                                 ),
-                                const Padding(
+                                 Padding(
                                   padding: EdgeInsets.only(top: 70, left: 30),
                                   child: Text(
-                                    'Tell Suppliers what you need',
+                                    AppLocalizations.of(context)!.tellSupplierswhatyouneed,
                                     style: TextStyle(
                                         color: Colors.black, fontSize: 20),
                                   ),
@@ -133,7 +127,7 @@ class HomeScreen extends StatelessWidget {
                                   padding:
                                       const EdgeInsets.only(top: 110, left: 30),
                                   child: CustomOrangeBottom(
-                                      text: 'Create post', width: 100),
+                                      text: AppLocalizations.of(context)!.createpost, width: 100),
                                 )
                               ],
                             ),
@@ -142,15 +136,11 @@ class HomeScreen extends StatelessWidget {
                             ),
                             Stack(
                               children: [
-                                imageBox(
-                                  hight: 150,
-                                  width: 400,
-                                  image: "",
-                                ),
-                                const Padding(
+                                imageBox(hight: 150, width: 400),
+                                 Padding(
                                   padding: EdgeInsets.only(top: 30, left: 30),
                                   child: Text(
-                                    'Become a vendor ',
+                                    AppLocalizations.of(context)!.becomeavendor,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black,
@@ -160,10 +150,10 @@ class HomeScreen extends StatelessWidget {
                                 const SizedBox(
                                   height: 15,
                                 ),
-                                const Padding(
+                                 Padding(
                                   padding: EdgeInsets.only(top: 70, left: 30),
                                   child: Text(
-                                    'and Reach your target customers',
+                                    AppLocalizations.of(context)!.andReachyourtargetcustomers,
                                     style: TextStyle(
                                         color: Colors.black, fontSize: 20),
                                   ),
@@ -175,7 +165,7 @@ class HomeScreen extends StatelessWidget {
                                   padding:
                                       const EdgeInsets.only(top: 110, left: 30),
                                   child: CustomOrangeBottom(
-                                    text: 'Sigu up now',
+                                    text: AppLocalizations.of(context)!.siguupnow,
                                     width: 110,
                                   ),
                                 )
@@ -192,8 +182,8 @@ class HomeScreen extends StatelessWidget {
                         //apple
                         Column(
                           children: [
-                            const Text(
-                              'Best Seller',
+                             Text(
+                            AppLocalizations.of(context)!.bestSeller,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 40.0,
@@ -204,7 +194,7 @@ class HomeScreen extends StatelessWidget {
                               height: 50,
                             ),
                             CustomOrangeBottom(
-                              text: 'See all',
+                              text: AppLocalizations.of(context)!.see_all,
                               width: 70,
                             ),
                             const SizedBox(
@@ -251,14 +241,14 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                 ),
                                 //Text our benifits
-                                const Row(
+                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
                                       padding: EdgeInsets.only(
                                           bottom: 190, right: 30),
                                       child: Text(
-                                        'Our Benefite',
+                                        AppLocalizations.of(context)!.ourBenefite,
                                         style: TextStyle(
                                           fontSize: 30,
                                           fontWeight: FontWeight.bold,
@@ -276,30 +266,24 @@ class HomeScreen extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       iconColom(
-                                        text: '''We Provide all agricultural
-        products, multiple options of
-         different sesons in whole the year''',
-                                        texttwo: 'Browse by categories',
+                                        text: AppLocalizations.of(context)!.we_Provide_all_agricultural_products,
+                                        texttwo:AppLocalizations.of(context)!.browse_bycategories,
                                         icon: Icons.category,
                                       ),
                                       const SizedBox(
                                         width: 10,
                                       ),
                                       iconColom(
-                                        text: '''To ensure a perfect customer
-        experience , we have provided a
-        service of prepacked or cutting products''',
-                                        texttwo: 'Fast delivery',
+                                        text: AppLocalizations.of(context)!.to_ensure_a_perfect_customere,
+                                        texttwo: AppLocalizations.of(context)!.fastdelivery,
                                         icon: Icons.fire_truck,
                                       ),
                                       const SizedBox(
                                         width: 10,
                                       ),
                                       iconColom(
-                                        text: '''we target all segments both
-        business or individuals to get an
-        enjoyable and exceptional delivery experience ''',
-                                        texttwo: 'Easy payment options',
+                                        text: AppLocalizations.of(context)!.we_target_all_segments_both_business_or,
+                                        texttwo: AppLocalizations.of(context)!.easy_payment_options,
                                         icon: Icons.wallet,
                                       ),
                                     ],
@@ -313,10 +297,10 @@ class HomeScreen extends StatelessWidget {
                                   width: double.infinity,
                                   height: 200,
                                 ),
-                                const Padding(
+                                 Padding(
                                   padding: EdgeInsets.only(left: 700, top: 50),
                                   child: Text(
-                                    'Our partners',
+                                    AppLocalizations.of(context)!.our_partners,
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 30,
@@ -367,10 +351,10 @@ class HomeScreen extends StatelessWidget {
                                         width: 150,
                                       ),
                                       //two texts
-                                      const Column(
+                                       Column(
                                         children: [
                                           Text(
-                                            'Join our',
+                                            AppLocalizations.of(context)!.join_our,
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 25,
@@ -380,7 +364,7 @@ class HomeScreen extends StatelessWidget {
                                             height: 3,
                                           ),
                                           Text(
-                                            'Newsetter',
+                                            AppLocalizations.of(context)!.newsetter,
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 25,
@@ -400,10 +384,10 @@ class HomeScreen extends StatelessWidget {
                                               Border.all(color: Colors.white),
                                           color: Colors.transparent,
                                         ),
-                                        child: const TextField(
+                                        child:  TextField(
                                           decoration: InputDecoration(
                                             hintText:
-                                                '  What your are Looking for?',
+                                            AppLocalizations.of(context)!.what_yourareLookingfor,
                                             hintStyle: TextStyle(
                                               color: Colors.white54,
                                               fontSize: 15,
@@ -415,7 +399,7 @@ class HomeScreen extends StatelessWidget {
                                         onPressed: () {},
                                         height: 43,
                                         color: Colors.orange[600],
-                                        child: const Text('Subscribe'),
+                                        child:  Text(AppLocalizations.of(context)!.subscribe),
                                       ),
                                     ],
                                   ),
@@ -428,14 +412,10 @@ class HomeScreen extends StatelessWidget {
                                     height: 200,
                                   ),
                                 ),
-                                const Padding(
+                                 Padding(
                                   padding: EdgeInsets.only(top: 130, left: 200),
                                   child: Text(
-                                    '''Lorem Ipsum is simply dummy
-        text of the printing and typesett
-        ing industry. Lorem Ipsum has
-        been the industry's standard
-        dummy text ever since the 1500s''',
+                                    AppLocalizations.of(context)!.lorem_Ipsum_is_simply_dummy,
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 ),
@@ -443,7 +423,7 @@ class HomeScreen extends StatelessWidget {
                                   padding: const EdgeInsets.only(
                                       top: 270, left: 200),
                                   child: Text(
-                                    'Follow us on',
+                                    AppLocalizations.of(context)!.follow_uson,
                                     style: TextStyle(
                                         color: Colors.orange[600],
                                         fontWeight: FontWeight.bold),
@@ -458,79 +438,79 @@ class HomeScreen extends StatelessWidget {
                                     size: 15,
                                   ),
                                 ),
-                                const Padding(
+                                 Padding(
                                   padding: EdgeInsets.only(top: 130, left: 610),
                                   child: Column(
                                     children: [
                                       Text(
-                                        'Home',
+                                        AppLocalizations.of(context)!.home,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       SizedBox(
                                         height: 15,
                                       ),
                                       Text(
-                                        'categories',
+                                        AppLocalizations.of(context)!.categories,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       SizedBox(
                                         height: 15,
                                       ),
                                       Text(
-                                        'Our blog ',
+                                        AppLocalizations.of(context)!.ourblog,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       SizedBox(
                                         height: 15,
                                       ),
                                       Text(
-                                        'Contact us',
+                                        AppLocalizations.of(context)!.contactus,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       SizedBox(
                                         height: 15,
                                       ),
                                       Text(
-                                        'About us ',
+                                        AppLocalizations.of(context)!.aboutus,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                     ],
                                   ),
                                 ),
-                                const Padding(
+                                 Padding(
                                   padding: EdgeInsets.only(top: 130, left: 750),
                                   child: Column(
                                     children: [
                                       Text(
-                                        'Submit RFQ ',
+                                        AppLocalizations.of(context)!.submitRFQ,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       SizedBox(
                                         height: 15,
                                       ),
                                       Text(
-                                        'My account',
+                                        AppLocalizations.of(context)!.my_account,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       SizedBox(
                                         height: 15,
                                       ),
                                       Text(
-                                        'Terms & Conditions',
+                                        AppLocalizations.of(context)!.termsConditions,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       SizedBox(
                                         height: 15,
                                       ),
                                       Text(
-                                        'Privacy policies',
+                                        AppLocalizations.of(context)!.privacypolicies,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       SizedBox(
                                         height: 15,
                                       ),
                                       Text(
-                                        'FAQ',
+                                        AppLocalizations.of(context)!.fAQ,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                     ],
@@ -541,15 +521,15 @@ class HomeScreen extends StatelessWidget {
                                       top: 130, left: 950),
                                   child: Column(
                                     children: [
-                                      const Text(
-                                        'Get The app',
+                                       Text(
+                                        AppLocalizations.of(context)!.get_The_app,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       const SizedBox(
                                         height: 10,
                                       ),
-                                      const Text(
-                                        'app available now on',
+                                       Text(
+                                        AppLocalizations.of(context)!.app_available_nowon,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       const SizedBox(

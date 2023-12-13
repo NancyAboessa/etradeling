@@ -6,6 +6,7 @@ import '../Productpage/custom Widgets/rating.dart';
 import '../auth/bloc/login.cubit.dart';
 import '../home_screen/home_body/components/CustomMaterialButtom.dart';
 import '../home_screen/home_body/home_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class category_screen extends StatelessWidget {
   const category_screen({super.key});
@@ -50,8 +51,8 @@ class category_screen extends StatelessWidget {
               height: 5,
             ),
             CustomMaterialButtom(
-              text: 'Add To Cart',
-              icon: Icons.shopping_cart,
+              text: AppLocalizations.of(context)!.add_To_Cart,
+               icon: Icons.shopping_cart,
               color: Colors.black,
               coolor: Colors.white,
             ),

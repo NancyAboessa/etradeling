@@ -3,6 +3,7 @@ import 'package:etradeling/presentation/profile/cubit/names_state.dart';
 import 'package:etradeling/presentation/profile/widget/buttondown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Adress extends StatelessWidget {
   const Adress({
@@ -25,10 +26,10 @@ class Adress extends StatelessWidget {
               height: 600,
               width: 1800,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                        child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text("My Addresses"),
@@ -106,120 +107,8 @@ class Adress extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 550,
-                    width: 800,
-                    child: ListView.builder(
-                        itemCount: cubit.address.length,
-                        padding: EdgeInsets.only(right: 20),
-                        itemBuilder: (c, i) {
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 20.0),
-                            child: Container(
-                              height: 200,
-                              width: 400,
-                              padding: EdgeInsets.only(left: 20, top: 10),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  width: .1,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: 50,
-                                    child: Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 20.0),
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              first[0],
-                                              style: TextStyle(fontSize: 17),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              cubit.address[i]["firstname"],
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  color: Colors.grey.shade400),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 50,
-                                    child: Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 20.0),
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              first[1],
-                                              style: TextStyle(fontSize: 17),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              cubit.address[i]["phonenumber"],
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  color: Colors.grey.shade400),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 50,
-                                    child: Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 20.0),
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              first[2],
-                                              style: TextStyle(fontSize: 17),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              cubit.address[i]["lastname"],
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  color: Colors.grey.shade400),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        }),
-                  ),
-                ],
-              ),
-            );
+                    ))
+                  ]));
     });
   }
 }

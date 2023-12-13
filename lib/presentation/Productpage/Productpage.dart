@@ -9,6 +9,8 @@ import '../messages/chat.dart';
 import 'cubit/state.dart';
 import '../../utls/themes/button/MaterialButtom.dart';
 import 'custom Widgets/rating.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class Product extends StatelessWidget {
   const Product({super.key, this.product});
@@ -70,13 +72,13 @@ class Product extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Now:',
+                                  AppLocalizations.of(context)!.now,
                                   style: TextStyle(color: Colors.black38),
                                 ),
                                 SizedBox(
                                   width: 20,
                                 ),
-                                Text('EGP ${product!["Max_Budget"]}'),
+                                Text('${ AppLocalizations.of(context)!.eGP} ${product!["Max_Budget"]}'),
                               ],
                             ),
                           ),
@@ -90,7 +92,7 @@ class Product extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 25),
                                   child: Text(
-                                    'Quantity:',
+                                    AppLocalizations.of(context)!.quantity,
                                     style: TextStyle(
                                       color: Colors.black38,
                                     ),
@@ -125,7 +127,7 @@ class Product extends StatelessWidget {
                               });
                             },
                             child: CustomMaterialButtom(
-                              text: 'Add To Cart',
+                              text:  AppLocalizations.of(context)!.add_To_Cart,
                               icon: Icons.shopping_cart,
                               color: Colors.black,
                               coolor: Colors.white,
@@ -158,7 +160,7 @@ class Product extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 60, right: 150),
                             child: Text(
-                              'EGP ${product!["Max_Budget"]}',
+                              '${ AppLocalizations.of(context)!.eGP} ${product!["Max_Budget"]}',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 18,
@@ -173,7 +175,7 @@ class Product extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 20),
                                   child: Text(
-                                    'Share Product',
+                                    AppLocalizations.of(context)!.share_Product,
                                     style: TextStyle(color: Colors.black38),
                                   ),
                                 ),
@@ -269,7 +271,7 @@ class Product extends StatelessWidget {
                             height: 10,
                           ),
                           CustomMaterialButtom(
-                            text: 'View Profile',
+                            text:  AppLocalizations.of(context)!.viewProfile,
                             color: Colors.white,
                             coolor: Colors.black,
                           ),
@@ -294,7 +296,7 @@ class Product extends StatelessWidget {
                                             )));
                               },
                               child: CustomMaterialButtom(
-                                text: 'Chat Now',
+                                text:  AppLocalizations.of(context)!.chat_Now,
                                 color: Colors.white,
                                 coolor: Colors.black,
                               ),

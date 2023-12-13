@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustemTextFeild extends StatelessWidget {
   const CustemTextFeild({super.key});
@@ -13,19 +14,19 @@ class CustemTextFeild extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-                'Name'
+                AppLocalizations.of(context)!.name,
             ),
             SizedBox(height: 10),
             TextField(
 
               decoration: InputDecoration(
-                labelText: 'Enter your first name',
+                labelText:AppLocalizations.of(context)!.enteryourfirstname,
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 10),
             Text(
-                'Email'
+                AppLocalizations.of(context)!.email,
             ),
             SizedBox(height: 10),
             TextField(
@@ -36,12 +37,12 @@ class CustemTextFeild extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              'Subject',
+              AppLocalizations.of(context)!.subject,
             ),
             SizedBox(height: 10),
             TextField(
               decoration: InputDecoration(
-                labelText: 'what your Subject Title ?',
+                labelText: AppLocalizations.of(context)!.whatyourSubjectTitle,
                 border: OutlineInputBorder(),
               ),
             ),

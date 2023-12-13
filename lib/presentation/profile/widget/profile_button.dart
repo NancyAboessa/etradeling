@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileButton extends StatelessWidget {
   final cubit;
@@ -14,8 +15,8 @@ class ProfileButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.black,
       ),
-      child: const Text(
-        "save",
+      child:  Text(
+      AppLocalizations.of(context)!.save,
         style: TextStyle(
           fontSize: 18,
           color: Colors.white,

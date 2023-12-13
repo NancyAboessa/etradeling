@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../utls/themes/button/MaterialButtom.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileData extends StatelessWidget {
   ProfileData({
@@ -36,10 +37,10 @@ class ProfileData extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          const Row(
+                           Row(
                             children: [
                               Text(
-                                'My Account',
+                                AppLocalizations.of(context)!.my_account,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 30,
@@ -111,8 +112,8 @@ class ProfileData extends StatelessWidget {
                           const SizedBox(
                             height: 5,
                           ),
-                          const Text(
-                            'General Information',
+                           Text(
+                            AppLocalizations.of(context)!.general_Information,
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 30,
@@ -130,7 +131,7 @@ class ProfileData extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text('Name'),
+                                   Text(AppLocalizations.of(context)!.name),
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
@@ -149,7 +150,7 @@ class ProfileData extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text('Phone number'),
+                                   Text(AppLocalizations.of(context)!.phone_number),
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
@@ -189,8 +190,8 @@ class ProfileData extends StatelessWidget {
                             color: Colors.grey,
                             thickness: 2,
                           ),
-                          const Text(
-                            'Security',
+                           Text(
+                            AppLocalizations.of(context)!.security,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 25),
                           ),
@@ -198,7 +199,7 @@ class ProfileData extends StatelessWidget {
                             height: 10,
                           ),
                           CustomMaterialButtom(
-                            text: 'Change Password',
+                            text: AppLocalizations.of(context)!.changePassword,
                             color: Colors.black,
                             coolor: Colors.white,
                           ),

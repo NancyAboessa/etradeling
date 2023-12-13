@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PostButton extends StatelessWidget {
   final cubit;
@@ -19,8 +20,8 @@ class PostButton extends StatelessWidget {
           color: Colors.black,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: const Text(
-          "submit",
+        child:  Text(
+          AppLocalizations.of(context)!.submit,
           style: TextStyle(
             fontSize: 24,
             color: Colors.white,
