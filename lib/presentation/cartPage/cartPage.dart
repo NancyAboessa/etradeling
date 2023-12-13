@@ -8,6 +8,7 @@ import '../../utls/themes/button/MaterialButtom.dart';
 import '../Productpage/custom Widgets/rating.dart';
 import '../post/widget/counter.dart';
 import 'cubit/CartState.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Cart extends StatelessWidget {
   const Cart({super.key});
@@ -49,7 +50,7 @@ class Cart extends StatelessWidget {
                                           padding:
                                               const EdgeInsets.only(right: 250),
                                           child: Text(
-                                            'Cart',
+                                            AppLocalizations.of(context)!.cart   ,
                                             style: TextStyle(
                                               color: Colors.black,
                                               fontSize: 25,
@@ -98,7 +99,7 @@ class Cart extends StatelessWidget {
                                                 MainAxisAlignment.start,
                                             children: [
                                               Text(
-                                                'EGP',
+                                                AppLocalizations.of(context)!.eGP,
                                                 style: TextStyle(
                                                     color: Colors.black38),
                                               ),
@@ -106,7 +107,7 @@ class Cart extends StatelessWidget {
                                                 width: 20,
                                               ),
                                               Text(
-                                                  'EGP ${cubit.list[i]["Max_Budget"]}'),
+                                                  '${AppLocalizations.of(context)!.eGP} ${cubit.list[i]["Max_Budget"]}'),
                                             ],
                                           ),
                                         ),
@@ -119,7 +120,7 @@ class Cart extends StatelessWidget {
                                           child: Row(
                                             children: [
                                               Text(
-                                                'Arrives : ',
+                                                AppLocalizations.of(context)!.arrives,
                                                 style: TextStyle(
                                                     color: Colors.black),
                                               ),
@@ -140,7 +141,7 @@ class Cart extends StatelessWidget {
                                                 padding: const EdgeInsets.only(
                                                     top: 25),
                                                 child: Text(
-                                                  'Quantity:',
+                                                  AppLocalizations.of(context)!.quantity,
                                                   style: TextStyle(
                                                     color: Colors.black38,
                                                   ),
@@ -166,7 +167,7 @@ class Cart extends StatelessWidget {
                                           height: 10,
                                         ),
                                         CustomMaterialButtom(
-                                          text: 'Add To Wishlist',
+                                          text: AppLocalizations.of(context)!.add_To_Wishlist,
                                           icon: FontAwesomeIcons.heart,
                                           color: Colors.black,
                                           coolor: Colors.white,
@@ -208,7 +209,7 @@ class Cart extends StatelessWidget {
                                 left: 10,
                               ),
                               child: Text(
-                                'Order Summary',
+                                AppLocalizations.of(context)!.order_Summary,
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w400,
@@ -230,7 +231,7 @@ class Cart extends StatelessWidget {
                                     ),
                                     child: TextField(
                                       decoration: InputDecoration(
-                                        hintText: ' Enter a PromoCode',
+                                        hintText: AppLocalizations.of(context)!.enter_a_PromoCode,
                                         hintStyle: TextStyle(
                                           color: Colors.black26,
                                           fontSize: 15,
@@ -243,7 +244,7 @@ class Cart extends StatelessWidget {
                                     height: 43,
                                     color: Colors.black,
                                     child: Text(
-                                      'APPLY',
+                                      AppLocalizations.of(context)!.aPPLY,
                                       style: TextStyle(color: Colors.white),
                                     ),
                                   ),
@@ -255,7 +256,7 @@ class Cart extends StatelessWidget {
                               child: Column(
                                 children: [
                                   TextRow(
-                                    textone: 'SubTotal (1 item)',
+                                    textone: AppLocalizations.of(context)!.subTotal,
                                     texttwo: 'EGP 200',
                                     width: 70,
                                     colorone: Colors.black26,
@@ -265,7 +266,7 @@ class Cart extends StatelessWidget {
                                     height: 10,
                                   ),
                                   TextRow(
-                                    textone: 'Promo',
+                                    textone: AppLocalizations.of(context)!.promo,
                                     texttwo: 'EGP 0,0',
                                     width: 130,
                                     colorone: Colors.black26,
@@ -275,7 +276,7 @@ class Cart extends StatelessWidget {
                                     height: 10,
                                   ),
                                   TextRow(
-                                    textone: '+ Delivary',
+                                    textone: AppLocalizations.of(context)!.delivary,
                                     texttwo: 'EGP 0,0',
                                     width: 130,
                                     colorone: Colors.black26,
@@ -295,7 +296,7 @@ class Cart extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 230),
                               child: CustomMaterialButtom(
-                                  text: 'Proceed to Checkout',
+                                  text: AppLocalizations.of(context)!.proceed_to_Checkout,
                                   color: Colors.black,
                                   coolor: Colors.white),
                             )

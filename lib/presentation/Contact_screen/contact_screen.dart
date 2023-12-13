@@ -2,6 +2,7 @@ import 'package:etradeling/presentation/Contact_screen/custenformfeild.dart';
 import 'package:flutter/material.dart';
 
 import '../home_screen/home_body/components/CustomMaterialButtom.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ContactScreen extends StatelessWidget {
   const ContactScreen({Key? key}) : super(key: key);

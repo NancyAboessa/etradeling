@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/login.cubit.dart';
 import 'login.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -42,16 +43,16 @@ class SignUpScreen extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    const Text(
-                      'Sign up',
+                     Text(
+                       AppLocalizations.of(context)!.signup,
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 30.0,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    const Text(
-                      'Create an account free',
+                     Text(
+                      AppLocalizations.of(context)!.createanaccountfree,
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 30.0,
@@ -71,8 +72,8 @@ class SignUpScreen extends StatelessWidget {
                         onChanged: (value) {
                           // print(value);
                         },
-                        decoration: const InputDecoration(
-                          labelText: 'Name',
+                        decoration:  InputDecoration(
+                          labelText: AppLocalizations.of(context)!.name,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.zero),
                           ),
@@ -91,8 +92,8 @@ class SignUpScreen extends StatelessWidget {
                         onChanged: (value) {
                           // print(value);
                         },
-                        decoration: const InputDecoration(
-                          labelText: 'Phone Number',
+                        decoration:  InputDecoration(
+                          labelText: AppLocalizations.of(context)!.phone_number,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.zero,
                           ),
@@ -111,8 +112,8 @@ class SignUpScreen extends StatelessWidget {
                         onChanged: (value) {
                           // print(value);
                         },
-                        decoration: const InputDecoration(
-                          labelText: 'Country',
+                        decoration:  InputDecoration(
+                          labelText: AppLocalizations.of(context)!.country,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.zero,
                           ),
@@ -133,8 +134,8 @@ class SignUpScreen extends StatelessWidget {
                         onChanged: (value) {
                           // print(value);
                         },
-                        decoration: const InputDecoration(
-                          labelText: 'Password',
+                        decoration:  InputDecoration(
+                          labelText: AppLocalizations.of(context)!.password,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.zero,
                           ),
@@ -157,8 +158,8 @@ class SignUpScreen extends StatelessWidget {
                         onChanged: (value) {
                           // print(value);
                         },
-                        decoration: const InputDecoration(
-                          labelText: 'Confirm Password',
+                        decoration:  InputDecoration(
+                          labelText: AppLocalizations.of(context)!.confirm_password,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.zero,
                           ),
@@ -183,8 +184,8 @@ class SignUpScreen extends StatelessWidget {
                           loginCubit.SignupWithEmailandpass(
                               emailController.text, passwordController.text);
                         },
-                        child: const Text(
-                          'Sign up',
+                        child:  Text(
+                          AppLocalizations.of(context)!.signup,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20.0,
@@ -195,7 +196,7 @@ class SignUpScreen extends StatelessWidget {
                     const SizedBox(
                       height: 10.0,
                     ),
-                    const Row(
+                     Row(
                       children: [
                         Expanded(
                           child: Divider(
@@ -208,7 +209,7 @@ class SignUpScreen extends StatelessWidget {
                             horizontal: 10.0,
                           ),
                           child: Text(
-                            'or',
+                            AppLocalizations.of(context)!.or,
                             style: TextStyle(
                               fontSize: 20.0,
                             ),
@@ -228,8 +229,8 @@ class SignUpScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
-                          'have an account ?',
+                         Text(
+                           AppLocalizations.of(context)!.have  ,
                         ),
                         TextButton(
                           onPressed: () {
@@ -243,8 +244,8 @@ class SignUpScreen extends StatelessWidget {
                                   ),
                                 ));
                           },
-                          child: const Text(
-                            'Sign in',
+                          child:  Text(
+                            AppLocalizations.of(context)!.signin,
                             style: TextStyle(
                               color: Colors.orange,
                             ),

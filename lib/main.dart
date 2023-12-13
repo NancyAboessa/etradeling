@@ -1,30 +1,25 @@
 import 'package:etradeling/firebase_options.dart';
-import 'package:etradeling/presentation/Contact_screen/contact_screen.dart';
 import 'package:etradeling/presentation/Category/Cubit/Category%20Cubit.dart';
-import 'package:etradeling/presentation/Contact_screen/custenformfeild.dart';
+import 'package:etradeling/presentation/Contact_screen/contact_screen.dart';
+import 'package:etradeling/presentation/Productpage/Productpage.dart';
 import 'package:etradeling/presentation/Productpage/cubit/cubit.dart';
 import 'package:etradeling/presentation/auth/bloc/login.cubit.dart';
-import 'package:etradeling/presentation/auth/login.dart';
 import 'package:etradeling/presentation/auth/login_check.dart';
-import 'package:etradeling/presentation/category_screen/category_cart.dart';
-import 'package:etradeling/presentation/home_screen/home_body/home_screen.dart';
-import 'package:etradeling/presentation/our_blog/custemCaret-downIcon.dart';
-import 'package:etradeling/presentation/our_blog/ourblog_screen.dart';
 import 'package:etradeling/presentation/auth/rigster.dart';
+import 'package:etradeling/presentation/cartPage/cartPage.dart';
+import 'package:etradeling/presentation/home_screen/appbar.dart';
 import 'package:etradeling/presentation/home_screen/home_body/home_screen.dart';
+import 'package:etradeling/presentation/our_blog/ourblog_screen.dart';
 import 'package:etradeling/presentation/post/create_post.dart';
 import 'package:etradeling/presentation/post/cubit/cubite.dart';
-import 'package:etradeling/presentation/profile/Profile.dart';
-import 'package:etradeling/presentation/profile/profile%20part%20two.dart';
-import 'package:etradeling/presentation/terms%20_conditions/terms_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'presentation/Category/Category.dart';
-import 'presentation/Productpage/Productpage.dart';
 import 'presentation/cartPage/cubit/CartCubit.dart';
 import 'presentation/home_screen/Bloc/BlocAppBar.dart';
 import 'presentation/profile/cubit/names_cubit.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   await Firebase.initializeApp(
@@ -41,19 +36,30 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange.shade500),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (context) => PostCubit()),
-          BlocProvider(create: (context) => NamesCubit()),
-          BlocProvider(create: (context) => LoginCubit()),
-          BlocProvider(create: (context) => CubitProduct()),
-          BlocProvider(create: (context) => AppBarCubit()),
-        ],
-        child: ourblog_screen(),
-      ),
+      localizationsDelegates: [
+        AppLocalizations.delegate, // Add this line
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en'),
+        //Locale('ar'),
+      ],
+
+
+      home: MultiBlocProvider(providers: [
+        BlocProvider(create: (context) => PostCubit()),
+        BlocProvider(create: (context) => NamesCubit()),
+        BlocProvider(create: (context) => LoginCubit()),
+        BlocProvider(create: (context) => CubitProduct()),
+        BlocProvider(create: (context) => CubitCategories()),
+        BlocProvider(create: (context) => AppBarCubit()),
+        BlocProvider(create: (context) => CartCubit()),
+      ], child: HomeScreen()),
     );
   }
 }

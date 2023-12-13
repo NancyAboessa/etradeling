@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Adress extends StatelessWidget {
   const Adress({super.key});
@@ -16,7 +17,7 @@ class Adress extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("My Addresses"),
+                 Text(AppLocalizations.of(context)!.my_Addresses),
                 Padding(
                   padding: const EdgeInsets.only(right: 200.0, bottom: 10),
                   child: InkWell(
@@ -28,9 +29,8 @@ class Adress extends StatelessWidget {
                         border: Border.all(color: Colors.deepOrange, width: .2),
                       ),
                       alignment: Alignment.center,
-                      child: const Text(
-                        "add Addresses",
-                        style: TextStyle(color: Colors.deepOrange),
+                      child:  Text(
+                          AppLocalizations.of(context)!.add_Addresses,                        style: TextStyle(color: Colors.deepOrange),
                       ),
                     ),
                   ),

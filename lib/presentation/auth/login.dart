@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/login.cubit.dart';
 import 'bloc/login.state.dart';
 import 'rigster.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
   final TextEditingController emailController = TextEditingController();
@@ -14,9 +14,11 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginCubit loginCubit = LoginCubit.get(context);
-    return Scaffold(body: BlocBuilder<LoginCubit, LoginState>(
-      builder: (BuildContext context, LoginState state) {
-        return Center(
+    return Scaffold
+      (
+        body: BlocBuilder<LoginCubit, LoginState>(
+         builder: (BuildContext context, LoginState state) {
+         return Center(
           child: SingleChildScrollView(
             child: Row(
               children: [
@@ -47,16 +49,16 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           height: 20,
                         ),
-                        const Text(
-                          'Welcome',
+                         Text(
+                           AppLocalizations.of(context)!.title ,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 30.0,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        const Text(
-                          'Sign in ',
+                         Text(
+                          AppLocalizations.of(context)!.signin,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 30.0,
@@ -72,15 +74,15 @@ class LoginScreen extends StatelessWidget {
                             keyboardType: TextInputType.emailAddress,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'email address must not be empty ';
+                                return AppLocalizations.of(context)!.email_address_must_not_be_empty;
                               }
                               return null;
                             },
-                            decoration: const InputDecoration(
+                            decoration:  InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.zero,
                               ),
-                              labelText: 'E-mail',
+                              labelText: AppLocalizations.of(context)!.email,
                               prefixIcon: Icon(Icons.email),
                             ),
                             onFieldSubmitted: (value) {
@@ -101,8 +103,8 @@ class LoginScreen extends StatelessWidget {
                               // print(value);
                             },
                             controller: passwordController,
-                            decoration: const InputDecoration(
-                              labelText: 'Password',
+                            decoration:  InputDecoration(
+                              labelText: AppLocalizations.of(context)!.password,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.zero,
                               ),
@@ -119,8 +121,8 @@ class LoginScreen extends StatelessWidget {
                               onPressed: () {
                                 loginCubit.NewPassword();
                               },
-                              child: const Text(
-                                'Forget password ?',
+                              child:  Text(
+                                AppLocalizations.of(context)!.forgetpassword,
                                 style: TextStyle(
                                   color: Colors.orange,
                                 ),
@@ -149,8 +151,8 @@ class LoginScreen extends StatelessWidget {
                                         child: LoginCheck()),
                                   ));
                             },
-                            child: const Text(
-                              'Sign in',
+                            child:  Text(
+                              AppLocalizations.of(context)!.signin,
                               style: TextStyle(
                                 color: Colors.white,
                               ),
@@ -160,8 +162,8 @@ class LoginScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text(
-                              'Don\'t have an account .?',
+                             Text(
+                              AppLocalizations.of(context)!.donthaveanaccount,
                             ),
                             TextButton(
                               onPressed: () {
@@ -176,8 +178,8 @@ class LoginScreen extends StatelessWidget {
                                       ),
                                     ));
                               },
-                              child: const Text(
-                                'Sign up',
+                              child:  Text(
+                                AppLocalizations.of(context)!.signup,
                                 style: TextStyle(
                                   color: Colors.orange,
                                 ),

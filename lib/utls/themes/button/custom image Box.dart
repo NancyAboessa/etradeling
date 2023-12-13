@@ -9,12 +9,12 @@ class imageBox extends StatelessWidget {
     super.key,
     required this.hight,
     required this.width,
-    required this.image,
+     this.image,
   });
 
   double hight;
   double width;
-  String image;
+  String ?image;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class imageBox extends StatelessWidget {
             color: Colors.black12,
           ),
           image: DecorationImage(
-            image: NetworkImage(image),
+            image: NetworkImage(image!),
             fit: BoxFit.cover,
           )),
     );

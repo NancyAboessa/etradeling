@@ -7,14 +7,14 @@ class listViewhome extends StatelessWidget {
     required this.widget,
     required this.items,
     required this.left,
-    required this.hight,
-    required this.width,
+     this.hight,
+     this.width,
   });
   Widget widget;
   int items;
   double left;
-  double hight;
-  double width;
+  double ?hight;
+  double ?width;
   @override
   Widget build(BuildContext context) {
     return Padding(

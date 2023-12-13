@@ -9,7 +9,7 @@ class CubitMessages extends Cubit<MainMessagesState> {
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   List? _listUsers;
   listUser() async {
-    await firebaseFirestore.collection("MessagesList").get().then((value) {
+        await firebaseFirestore.collection("MessagesList").get().then((value) {
       value.docs.forEach((element) {
         _listUsers!.add(element.data());
       });
@@ -24,4 +24,12 @@ class CubitMessages extends Cubit<MainMessagesState> {
         .get();
     emit(ChatUser());
   }
+
+  sendMessege(data)async{
+    if (data!=null){
+      await  FirebaseFirestore.instance.collection("messeges").add(data);}
+      print(data);
+    emit(sendmessegeState());
+  }
+
 }

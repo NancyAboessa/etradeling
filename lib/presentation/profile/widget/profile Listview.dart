@@ -1,11 +1,10 @@
-import 'package:etradeling/presentation/messages/messages_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../messages/componants/chatbodycard.dart';
 import '../../messages/cubit/cubit.dart';
-import '../cubit/names_cubit.dart';
-import '../cubit/names_state.dart';
 import 'buttoms1.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Listnames extends StatelessWidget {
   Listnames({
@@ -16,87 +15,71 @@ class Listnames extends StatelessWidget {
   // int? input;
   @override
   Widget build(BuildContext context) {
-    NamesCubit cubit = NamesCubit.get(context);
-    return BlocBuilder<NamesCubit, NamesState>(builder: (context, state) {
-      return Padding(
-        padding: const EdgeInsets.only(left: 150, top: 80, right: 100),
-        child: Container(
-          height: 600,
-          width: 300,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(0),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(.5),
-                spreadRadius: 1,
-                blurRadius: 7,
-                offset: Offset(0, 3), // changes position of shadow
-              ),
-            ],
-            border: Border(
-                left: BorderSide(
-              width: 1.0,
-              color: Color(0xff7f26),
-            )),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(left: 20.0, top: 20),
-            child: ListView(
-              children: [
-                InkWell(
-                  onTap: () {
-                    cubit.Count(0);
-                  },
-                  child: ButtomList(
-                      text: Text('My Account'), icon: FontAwesomeIcons.user),
-                ),
-                ButtomList(text: Text('My Orders'), icon: FontAwesomeIcons.box),
-                InkWell(
-                  onTap: () {
-                    cubit.Count(1);
-                  },
-                  child: ButtomList(
-                      text: Text('My Addresses'),
-                      icon: FontAwesomeIcons.mapLocation),
-                ),
-                InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => BlocProvider.value(
-                              value: BlocProvider.of<CubitMessages>(context),
-                              child: MessagesList(),
-                            ),
-                          ));
-                    },
-                    child: ButtomList(
-                        text: Text('Messenger'),
-                        icon: FontAwesomeIcons.comment)),
-                ButtomList(text: Text('My Request'), icon: Icons.library_books),
-                ButtomList(
-                    text: Column(
-                      children: [
-                        Text(
-                          '''become vendor 
-        create account ''',
-                        ),
-                        Divider(
-                          color: Colors.grey,
-                          thickness: 2,
-                        ),
-                      ],
-                    ),
-                    icon: FontAwesomeIcons.newspaper),
-                ButtomList(
-                    text: Text('Log Out'), icon: FontAwesomeIcons.angleRight),
-              ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 150, top: 80, right: 100),
+      child: Container(
+        height: 600,
+        width: 300,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(.5),
+              spreadRadius: 1,
+              blurRadius: 7,
+              offset: Offset(0, 3), // changes position of shadow
             ),
+          ],
+          border: Border(
+              left: BorderSide(
+            width: 1.0,
+            color: Color(0xff7f26),
+          )),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20.0, top: 20),
+          child: ListView(
+            children: [
+              ButtomList(text: Text( AppLocalizations.of(context)!.my_account), icon: FontAwesomeIcons.user),
+              ButtomList(text: Text(AppLocalizations.of(context)!.my_Orders), icon: FontAwesomeIcons.box),
+              ButtomList(
+                  text: Text(AppLocalizations.of(context)!.my_Addresses),
+                  icon: FontAwesomeIcons.mapLocation),
+              InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => BlocProvider.value(
+                            value: BlocProvider.of<CubitMessages>(context),
+                            child: chatbodycard(),
+                          ),
+                        ));
+                  },
+                  child: ButtomList(
+                      text: Text(AppLocalizations.of(context)!.messenger), icon: FontAwesomeIcons.comment)),
+              ButtomList(text: Text(AppLocalizations.of(context)!.myRequest), icon: Icons.library_books),
+              ButtomList(
+                  text: Column(
+                    children: [
+                      Text(
+                          AppLocalizations.of(context)!.become_vendor_create_account,
+                      ),
+                      Divider(
+                        color: Colors.grey,
+                        thickness: 2,
+                      ),
+                    ],
+                  ),
+                  icon: FontAwesomeIcons.newspaper),
+              ButtomList(
+                  text: Text(AppLocalizations.of(context)!.logOut), icon: FontAwesomeIcons.angleRight),
+            ],
           ),
         ),
-      );
-    });
+      ),
+    );
   }
 }
 
