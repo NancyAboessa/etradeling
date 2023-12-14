@@ -44,38 +44,40 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCNNfENSYLuJtTqs8MJG8wcW5xwY6II5-A',
-    appId: '1:979129892080:web:ee23f12d05e63a39811635',
-    messagingSenderId: '979129892080',
-    projectId: 'etradliing',
-    authDomain: 'etradliing.firebaseapp.com',
-    storageBucket: 'etradliing.appspot.com',
-    measurementId: 'G-S5DPJDJJ46',
+    apiKey: 'AIzaSyBGYRHwVprAu0VBnW8YWGKxcclvBNtY9Us',
+    appId: '1:118193198129:web:043d6313ff76481d3c7110',
+    messagingSenderId: '118193198129',
+    projectId: 'etradeling-d39a0',
+    authDomain: 'etradeling-d39a0.firebaseapp.com',
+    storageBucket: 'etradeling-d39a0.appspot.com',
+    measurementId: 'G-RNF82MN68J',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDM-ivEyx4Cj5ZcSE29dobHp6tJYX2QraY',
-    appId: '1:979129892080:android:1b399baa7983870e811635',
-    messagingSenderId: '979129892080',
-    projectId: 'etradliing',
-    storageBucket: 'etradliing.appspot.com',
+    apiKey: 'AIzaSyBwbCI0LkPkvAkll0AeRh8_G8B7ACu_Ntg',
+    appId: '1:118193198129:android:05d1fecb5c4df7dc3c7110',
+    messagingSenderId: '118193198129',
+    projectId: 'etradeling-d39a0',
+    storageBucket: 'etradeling-d39a0.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCPVYNSMQA1nDlBqZBf8fyNEOscoZIm5QU',
-    appId: '1:979129892080:ios:63cd936ac84c0939811635',
-    messagingSenderId: '979129892080',
-    projectId: 'etradliing',
-    storageBucket: 'etradliing.appspot.com',
+    apiKey: 'AIzaSyDsT5ydivflZZXNUWMcfxLzod7QUpkGVyI',
+    appId: '1:118193198129:ios:d1b988af14efd7a03c7110',
+    messagingSenderId: '118193198129',
+    projectId: 'etradeling-d39a0',
+    storageBucket: 'etradeling-d39a0.appspot.com',
+    iosClientId: '118193198129-3kr15huq4v9vublu25ql761to4k3cinf.apps.googleusercontent.com',
     iosBundleId: 'com.example.etradeling',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCPVYNSMQA1nDlBqZBf8fyNEOscoZIm5QU',
-    appId: '1:979129892080:ios:9e8e562dae28c115811635',
-    messagingSenderId: '979129892080',
-    projectId: 'etradliing',
-    storageBucket: 'etradliing.appspot.com',
+    apiKey: 'AIzaSyDsT5ydivflZZXNUWMcfxLzod7QUpkGVyI',
+    appId: '1:118193198129:ios:d2acb940671ac8e13c7110',
+    messagingSenderId: '118193198129',
+    projectId: 'etradeling-d39a0',
+    storageBucket: 'etradeling-d39a0.appspot.com',
+    iosClientId: '118193198129-atgsfs5ktervkcalm5k7k3opejcdfue9.apps.googleusercontent.com',
     iosBundleId: 'com.example.etradeling.RunnerTests',
   );
 }

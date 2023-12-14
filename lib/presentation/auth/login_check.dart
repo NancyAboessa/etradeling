@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../home_screen/Bloc/BlocAppBar.dart';
 import '../profile/Profile.dart';
 
 class LoginCheck extends StatelessWidget {
@@ -19,7 +20,8 @@ class LoginCheck extends StatelessWidget {
       if (FirebaseAuth.instance.currentUser == null) {
         return LoginScreen();
       } else {
-        return HomeScreen();
+        return BlocProvider<AppBarCubit>(
+            create: (_) => AppBarCubit(), child: HomeScreen());
       }
     });
   }
