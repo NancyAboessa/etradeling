@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class chatBubble extends StatelessWidget {
-  const chatBubble({
+class ChatBubble extends StatelessWidget {
+  const ChatBubble({
     super.key,
+    required this.massege,
   });
-
+  final String? massege;
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -17,16 +18,18 @@ class chatBubble extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.only(left: 16,top: 16,bottom: 16,right: 16),
-                margin: EdgeInsets.symmetric(horizontal:16 ,vertical:8 ),
+                padding:
+                    EdgeInsets.only(left: 16, top: 16, bottom: 16, right: 16),
+                margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(
                   color: Colors.orange[600],
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Text('iam New User',
-                  style:TextStyle(color: Colors.white) ,),
+                child: Text(
+                  'iam New User',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-
             ],
           ),
           Row(
@@ -34,19 +37,20 @@ class chatBubble extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.only(left: 16,top: 16,bottom: 16,right: 16),
-                margin: EdgeInsets.symmetric(horizontal:16 ,vertical:8 ),
+                padding:
+                    EdgeInsets.only(left: 16, top: 16, bottom: 16, right: 16),
+                margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(
                   color: Colors.grey,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Text('iam New User',
-                  style:TextStyle(color: Colors.white) ,),
+                child: Text(
+                  'iam New User',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-
             ],
           ),
-
         ],
       ),
     );

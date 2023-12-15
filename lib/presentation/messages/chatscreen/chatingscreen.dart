@@ -7,42 +7,71 @@ import '../cubit/state.dart';
 import 'chatbubble.dart';
 
 class Chating extends StatelessWidget {
-   Chating({super.key});
+  Chating({super.key});
   @override
   Widget build(BuildContext context) {
-    TextEditingController controller=TextEditingController();
-    var cubit = CubitMessages.get(context);
+    TextEditingController controller = TextEditingController();
+    CubitMessages cubit = CubitMessages.get(context);
+    cubit.listUser();
     return Scaffold(
       body: BlocBuilder<CubitMessages, MainMessagesState>(
         builder: (context, state) {
-          return Column(
-            children: [
-              Expanded(
-                child: ListView.builder(itemBuilder: (context, index) {
-                  return chatBubble();
-
-                }
-                ),),
-              TextField(
-                controller:controller ,
-                decoration: InputDecoration(
-                  suffixIcon: Icon(Icons.send, color: Colors.orange[600],),
-                    hintText: 'Send a Message',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide(color: Colors.orange.shade600)
-                    )
+          return Container(
+            height: 1000,
+            width: 1200,
+            child: Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                      itemCount: 2,
+                      itemBuilder: (context, index) {
+                        return ChatBubble(
+                          massege: '',
+                        );
+                      }),
                 ),
-
-              ),
-            ],
+                Expanded(
+                  child: SizedBox(
+                    height: 400,
+                    width: 1000,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 10,
+                          child: TextField(
+                            controller: controller,
+                            decoration: InputDecoration(
+                                hintText: 'Send a Message',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                    borderSide: BorderSide(
+                                        color: Colors.orange.shade600))),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: InkWell(
+                              onTap: () {
+                                cubit
+                                    .sendMessege({"masseges": controller.text});
+                              },
+                              child: Icon(
+                                Icons.send,
+                                color: Colors.orange[600],
+                              )),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           );
         },
       ),
     );
   }
 }
-
