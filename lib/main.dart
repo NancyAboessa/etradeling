@@ -1,6 +1,9 @@
 import 'package:etradeling/firebase_options.dart';
 import 'package:etradeling/presentation/Productpage/cubit/cubit.dart';
 import 'package:etradeling/presentation/auth/bloc/login.cubit.dart';
+import 'package:etradeling/presentation/auth/login_check.dart';
+import 'package:etradeling/presentation/home_screen/appbar.dart';
+import 'package:etradeling/presentation/home_screen/home_body/home_screen.dart';
 import 'package:etradeling/presentation/post/cubit/cubite.dart';
 import 'package:etradeling/test.dart';
 import 'package:etradeling/utls/cache_helper/cache_helper.dart';
@@ -48,7 +51,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: x(),
+          home: HomeScreen(),
           localizationsDelegates: const [
             AppLocalizations.delegate, // Add this line
             GlobalMaterialLocalizations.delegate,
