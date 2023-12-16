@@ -1,67 +1,67 @@
 import 'package:etradeling/firebase_options.dart';
-import 'package:etradeling/presentation/Category/Cubit/Category%20Cubit.dart';
-import 'package:etradeling/presentation/Contact_screen/contact_screen.dart';
-import 'package:etradeling/presentation/Productpage/Productpage.dart';
 import 'package:etradeling/presentation/Productpage/cubit/cubit.dart';
 import 'package:etradeling/presentation/auth/bloc/login.cubit.dart';
-import 'package:etradeling/presentation/auth/login_check.dart';
-import 'package:etradeling/presentation/auth/rigster.dart';
-import 'package:etradeling/presentation/cartPage/cartPage.dart';
-import 'package:etradeling/presentation/home_screen/appbar.dart';
-import 'package:etradeling/presentation/home_screen/home_body/home_screen.dart';
-import 'package:etradeling/presentation/our_blog/ourblog_screen.dart';
-import 'package:etradeling/presentation/post/create_post.dart';
 import 'package:etradeling/presentation/post/cubit/cubite.dart';
+import 'package:etradeling/test.dart';
+import 'package:etradeling/utls/cache_helper/cache_helper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'presentation/cartPage/cubit/CartCubit.dart';
 import 'presentation/home_screen/Bloc/BlocAppBar.dart';
-import 'presentation/messages/chatscreen/chatingscreen.dart';
 import 'presentation/messages/cubit/cubit.dart';
+import 'presentation/messages/cubit/state.dart';
 import 'presentation/profile/cubit/names_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await CacheHelper.init();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  // MyApp? of(BuildContext context) => context.findAncestorStateOfType<MyApp>();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (context) => PostCubit()),
-          BlocProvider(create: (context) => NamesCubit()),
-          BlocProvider(create: (context) => LoginCubit()),
-          BlocProvider(create: (context) => CubitProduct()),
-          BlocProvider(create: (context) => AppBarCubit()),
-          BlocProvider(create: (context) => CubitMessages()),
-        ],
-        child: LoginCheck(),
-      ),
-      localizationsDelegates: const [
-        AppLocalizations.delegate, // Add this line
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
+    CacheHelper.put(key: "local", value: "en");
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => PostCubit()),
+        BlocProvider(create: (_) => NamesCubit()),
+        BlocProvider(create: (_) => LoginCubit()),
+        BlocProvider(create: (_) => CubitProduct()),
+        BlocProvider(create: (_) => AppBarCubit()),
+        BlocProvider(create: (_) => CubitMessages()),
       ],
-      supportedLocales: [
-        Locale('en'),
-        //Locale('ar'),
-      ],
+      child:
+          BlocBuilder<CubitMessages, MainMessagesState>(builder: (context, i) {
+        CubitMessages cubit = CubitMessages.get(context);
+        return MaterialApp(
+          title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          home: x(),
+          localizationsDelegates: const [
+            AppLocalizations.delegate, // Add this line
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          locale: cubit.lang,
+          supportedLocales: const [
+            Locale('ar'),
+            Locale('en'),
+          ],
+        );
+      }),
     );
   }
 }
