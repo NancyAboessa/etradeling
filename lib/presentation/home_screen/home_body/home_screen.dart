@@ -1,4 +1,3 @@
-import 'package:etradeling/presentation/Category/Cubit/Category%20Cubit.dart';
 import 'package:etradeling/presentation/home_screen/Bloc/stateAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +14,7 @@ import 'components/customListView.dart';
 import 'components/custom_orange_button.dart';
 import 'components/imageWithText.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
   @override
@@ -22,8 +22,8 @@ class HomeScreen extends StatelessWidget {
     AppBarCubit cubit = AppBarCubit.get(context);
     cubit.mainCategory();
     return BlocBuilder<AppBarCubit, AppBarState>(builder: (context, state) {
-      return cubit.list!.isEmpty
-          ? Center(
+      return cubit.list.isEmpty
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : Scaffold(
@@ -40,15 +40,15 @@ class HomeScreen extends StatelessWidget {
                       ),
                       Column(children: [
                         // List View AirPods
-                         Text(
+                        Text(
                           AppLocalizations.of(context)!.exploreourCategories,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                             fontSize: 50.0,
                           ),
                         ),
-                        cubit.list!.isEmpty
+                        cubit.list.isEmpty
                             ? const Center(
                                 child: CircularProgressIndicator(),
                               )
@@ -69,20 +69,13 @@ class HomeScreen extends StatelessWidget {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                  builder: (_) =>
-                                                      BlocProvider.value(
-                                                        value: BlocProvider.of<
-                                                                CubitCategories>(
-                                                            context),
-                                                        child: Category(
-                                                            catgory: cubit
-                                                                    .list![
-                                                                index]["name"]),
-                                                      )));
+                                                  builder: (_) => Category(
+                                                      catgory: cubit.list[index]
+                                                          ["name"])));
                                         },
                                         child: ImageWithText(
-                                          image: cubit.list![index]["image"],
-                                          name: cubit.list![index]["name"],
+                                          image: cubit.list[index]["image"],
+                                          name: cubit.list[index]["name"],
                                         ),
                                       );
                                     },
@@ -99,23 +92,25 @@ class HomeScreen extends StatelessWidget {
                             Stack(
                               children: [
                                 imageBox(hight: 150, width: 400),
-                                 Padding(
+                                Padding(
                                   padding: EdgeInsets.only(top: 30, left: 30),
                                   child: Text(
-                                    AppLocalizations.of(context)!.requestforQuotation,
+                                    AppLocalizations.of(context)!
+                                        .requestforQuotation,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black,
                                         fontSize: 20),
                                   ),
                                 ),
-                                 SizedBox(
+                                SizedBox(
                                   height: 15,
                                 ),
-                                 Padding(
+                                Padding(
                                   padding: EdgeInsets.only(top: 70, left: 30),
                                   child: Text(
-                                    AppLocalizations.of(context)!.tellSupplierswhatyouneed,
+                                    AppLocalizations.of(context)!
+                                        .tellSupplierswhatyouneed,
                                     style: TextStyle(
                                         color: Colors.black, fontSize: 20),
                                   ),
@@ -127,7 +122,9 @@ class HomeScreen extends StatelessWidget {
                                   padding:
                                       const EdgeInsets.only(top: 110, left: 30),
                                   child: CustomOrangeBottom(
-                                      text: AppLocalizations.of(context)!.createpost, width: 100),
+                                      text: AppLocalizations.of(context)!
+                                          .createpost,
+                                      width: 100),
                                 )
                               ],
                             ),
@@ -137,7 +134,7 @@ class HomeScreen extends StatelessWidget {
                             Stack(
                               children: [
                                 imageBox(hight: 150, width: 400),
-                                 Padding(
+                                Padding(
                                   padding: EdgeInsets.only(top: 30, left: 30),
                                   child: Text(
                                     AppLocalizations.of(context)!.becomeavendor,
@@ -150,10 +147,11 @@ class HomeScreen extends StatelessWidget {
                                 const SizedBox(
                                   height: 15,
                                 ),
-                                 Padding(
+                                Padding(
                                   padding: EdgeInsets.only(top: 70, left: 30),
                                   child: Text(
-                                    AppLocalizations.of(context)!.andReachyourtargetcustomers,
+                                    AppLocalizations.of(context)!
+                                        .andReachyourtargetcustomers,
                                     style: TextStyle(
                                         color: Colors.black, fontSize: 20),
                                   ),
@@ -165,7 +163,8 @@ class HomeScreen extends StatelessWidget {
                                   padding:
                                       const EdgeInsets.only(top: 110, left: 30),
                                   child: CustomOrangeBottom(
-                                    text: AppLocalizations.of(context)!.siguupnow,
+                                    text:
+                                        AppLocalizations.of(context)!.siguupnow,
                                     width: 110,
                                   ),
                                 )
@@ -182,8 +181,8 @@ class HomeScreen extends StatelessWidget {
                         //apple
                         Column(
                           children: [
-                             Text(
-                            AppLocalizations.of(context)!.bestSeller,
+                            Text(
+                              AppLocalizations.of(context)!.bestSeller,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 40.0,
@@ -241,14 +240,15 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                 ),
                                 //Text our benifits
-                                 Row(
+                                Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
                                       padding: EdgeInsets.only(
                                           bottom: 190, right: 30),
                                       child: Text(
-                                        AppLocalizations.of(context)!.ourBenefite,
+                                        AppLocalizations.of(context)!
+                                            .ourBenefite,
                                         style: TextStyle(
                                           fontSize: 30,
                                           fontWeight: FontWeight.bold,
@@ -266,24 +266,30 @@ class HomeScreen extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       iconColom(
-                                        text: AppLocalizations.of(context)!.we_Provide_all_agricultural_products,
-                                        texttwo:AppLocalizations.of(context)!.browse_bycategories,
+                                        text: AppLocalizations.of(context)!
+                                            .we_Provide_all_agricultural_products,
+                                        texttwo: AppLocalizations.of(context)!
+                                            .browse_bycategories,
                                         icon: Icons.category,
                                       ),
                                       const SizedBox(
                                         width: 10,
                                       ),
                                       iconColom(
-                                        text: AppLocalizations.of(context)!.to_ensure_a_perfect_customere,
-                                        texttwo: AppLocalizations.of(context)!.fastdelivery,
+                                        text: AppLocalizations.of(context)!
+                                            .to_ensure_a_perfect_customere,
+                                        texttwo: AppLocalizations.of(context)!
+                                            .fastdelivery,
                                         icon: Icons.fire_truck,
                                       ),
                                       const SizedBox(
                                         width: 10,
                                       ),
                                       iconColom(
-                                        text: AppLocalizations.of(context)!.we_target_all_segments_both_business_or,
-                                        texttwo: AppLocalizations.of(context)!.easy_payment_options,
+                                        text: AppLocalizations.of(context)!
+                                            .we_target_all_segments_both_business_or,
+                                        texttwo: AppLocalizations.of(context)!
+                                            .easy_payment_options,
                                         icon: Icons.wallet,
                                       ),
                                     ],
@@ -297,7 +303,7 @@ class HomeScreen extends StatelessWidget {
                                   width: double.infinity,
                                   height: 200,
                                 ),
-                                 Padding(
+                                Padding(
                                   padding: EdgeInsets.only(left: 700, top: 50),
                                   child: Text(
                                     AppLocalizations.of(context)!.our_partners,
@@ -351,10 +357,11 @@ class HomeScreen extends StatelessWidget {
                                         width: 150,
                                       ),
                                       //two texts
-                                       Column(
+                                      Column(
                                         children: [
                                           Text(
-                                            AppLocalizations.of(context)!.join_our,
+                                            AppLocalizations.of(context)!
+                                                .join_our,
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 25,
@@ -364,7 +371,8 @@ class HomeScreen extends StatelessWidget {
                                             height: 3,
                                           ),
                                           Text(
-                                            AppLocalizations.of(context)!.newsetter,
+                                            AppLocalizations.of(context)!
+                                                .newsetter,
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 25,
@@ -384,10 +392,11 @@ class HomeScreen extends StatelessWidget {
                                               Border.all(color: Colors.white),
                                           color: Colors.transparent,
                                         ),
-                                        child:  TextField(
+                                        child: TextField(
                                           decoration: InputDecoration(
                                             hintText:
-                                            AppLocalizations.of(context)!.what_yourareLookingfor,
+                                                AppLocalizations.of(context)!
+                                                    .what_yourareLookingfor,
                                             hintStyle: TextStyle(
                                               color: Colors.white54,
                                               fontSize: 15,
@@ -399,7 +408,9 @@ class HomeScreen extends StatelessWidget {
                                         onPressed: () {},
                                         height: 43,
                                         color: Colors.orange[600],
-                                        child:  Text(AppLocalizations.of(context)!.subscribe),
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .subscribe),
                                       ),
                                     ],
                                   ),
@@ -412,10 +423,11 @@ class HomeScreen extends StatelessWidget {
                                     height: 200,
                                   ),
                                 ),
-                                 Padding(
+                                Padding(
                                   padding: EdgeInsets.only(top: 130, left: 200),
                                   child: Text(
-                                    AppLocalizations.of(context)!.lorem_Ipsum_is_simply_dummy,
+                                    AppLocalizations.of(context)!
+                                        .lorem_Ipsum_is_simply_dummy,
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 ),
@@ -438,7 +450,7 @@ class HomeScreen extends StatelessWidget {
                                     size: 15,
                                   ),
                                 ),
-                                 Padding(
+                                Padding(
                                   padding: EdgeInsets.only(top: 130, left: 610),
                                   child: Column(
                                     children: [
@@ -450,7 +462,8 @@ class HomeScreen extends StatelessWidget {
                                         height: 15,
                                       ),
                                       Text(
-                                        AppLocalizations.of(context)!.categories,
+                                        AppLocalizations.of(context)!
+                                            .categories,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       SizedBox(
@@ -477,7 +490,7 @@ class HomeScreen extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                 Padding(
+                                Padding(
                                   padding: EdgeInsets.only(top: 130, left: 750),
                                   child: Column(
                                     children: [
@@ -489,21 +502,24 @@ class HomeScreen extends StatelessWidget {
                                         height: 15,
                                       ),
                                       Text(
-                                        AppLocalizations.of(context)!.my_account,
+                                        AppLocalizations.of(context)!
+                                            .my_account,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       SizedBox(
                                         height: 15,
                                       ),
                                       Text(
-                                        AppLocalizations.of(context)!.termsConditions,
+                                        AppLocalizations.of(context)!
+                                            .termsConditions,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       SizedBox(
                                         height: 15,
                                       ),
                                       Text(
-                                        AppLocalizations.of(context)!.privacypolicies,
+                                        AppLocalizations.of(context)!
+                                            .privacypolicies,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       SizedBox(
@@ -521,15 +537,17 @@ class HomeScreen extends StatelessWidget {
                                       top: 130, left: 950),
                                   child: Column(
                                     children: [
-                                       Text(
-                                        AppLocalizations.of(context)!.get_The_app,
+                                      Text(
+                                        AppLocalizations.of(context)!
+                                            .get_The_app,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       const SizedBox(
                                         height: 10,
                                       ),
-                                       Text(
-                                        AppLocalizations.of(context)!.app_available_nowon,
+                                      Text(
+                                        AppLocalizations.of(context)!
+                                            .app_available_nowon,
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       const SizedBox(

@@ -1,4 +1,5 @@
 import 'package:etradeling/presentation/Productpage/cubit/cubit.dart';
+import 'package:etradeling/presentation/home_screen/home_body/home_screen.dart';
 import 'package:etradeling/presentation/messages/cubit/cubit.dart';
 import 'package:etradeling/utls/themes/button/custom%20image%20Box.dart';
 import 'package:etradeling/presentation/post/widget/counter.dart';
@@ -10,7 +11,6 @@ import 'cubit/state.dart';
 import '../../utls/themes/button/MaterialButtom.dart';
 import 'custom Widgets/rating.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class Product extends StatelessWidget {
   const Product({super.key, this.product});
@@ -78,7 +78,8 @@ class Product extends StatelessWidget {
                                 SizedBox(
                                   width: 20,
                                 ),
-                                Text('${ AppLocalizations.of(context)!.eGP} ${product!["Max_Budget"]}'),
+                                Text(
+                                    '${AppLocalizations.of(context)!.eGP} ${product!["Max_Budget"]}'),
                               ],
                             ),
                           ),
@@ -127,7 +128,7 @@ class Product extends StatelessWidget {
                               });
                             },
                             child: CustomMaterialButtom(
-                              text:  AppLocalizations.of(context)!.add_To_Cart,
+                              text: AppLocalizations.of(context)!.add_To_Cart,
                               icon: Icons.shopping_cart,
                               color: Colors.black,
                               coolor: Colors.white,
@@ -160,7 +161,7 @@ class Product extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 60, right: 150),
                             child: Text(
-                              '${ AppLocalizations.of(context)!.eGP} ${product!["Max_Budget"]}',
+                              '${AppLocalizations.of(context)!.eGP} ${product!["Max_Budget"]}',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 18,
@@ -271,35 +272,24 @@ class Product extends StatelessWidget {
                             height: 10,
                           ),
                           CustomMaterialButtom(
-                            text:  AppLocalizations.of(context)!.viewProfile,
+                            text: AppLocalizations.of(context)!.viewProfile,
                             color: Colors.white,
                             coolor: Colors.black,
                           ),
                           SizedBox(
                             height: 10,
                           ),
-                          Material(
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => BlocProvider.value(
-                                              value:
-                                                  BlocProvider.of<CubitProduct>(
-                                                      context),
-                                              child:
-                                                  BlocProvider<CubitMessages>(
-                                                      create: (_) =>
-                                                          CubitMessages(),
-                                                      child: Chat()),
-                                            )));
-                              },
-                              child: CustomMaterialButtom(
-                                text:  AppLocalizations.of(context)!.chat_Now,
-                                color: Colors.white,
-                                coolor: Colors.black,
-                              ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => HomeScreen()));
+                            },
+                            child: CustomMaterialButtom(
+                              text: AppLocalizations.of(context)!.chat_Now,
+                              color: Colors.white,
+                              coolor: Colors.black,
                             ),
                           ),
                         ],
