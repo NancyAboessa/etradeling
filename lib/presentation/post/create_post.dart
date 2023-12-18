@@ -14,6 +14,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/cubite.dart';
 import 'cubit/state.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class CreatePost extends StatelessWidget {
   final TextEditingController productNameController = TextEditingController();
   final TextEditingController tradeTermsController = TextEditingController();
@@ -44,7 +45,8 @@ class CreatePost extends StatelessWidget {
                       child: DropDownSubCategoryButton(
                           width: 1000,
                           list: ["x", "y", "z"],
-                          dropdownValue: AppLocalizations.of(context)!.select_Category,
+                          dropdownValue:
+                              AppLocalizations.of(context)!.select_Category,
                           fun: cubit),
                     ),
                   ],
@@ -63,7 +65,8 @@ class CreatePost extends StatelessWidget {
                       flex: 1,
                       child: DropDownCategoryButton(
                         list: ["x", "y", "z"],
-                        dropdownValue: AppLocalizations.of(context)!.sub_Categories,
+                        dropdownValue:
+                            AppLocalizations.of(context)!.sub_Categories,
                         fun: cubit,
                         width: 1000,
                       ),
@@ -74,7 +77,8 @@ class CreatePost extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 770, left: 80),
                 child: MainField(
-                    hint: AppLocalizations.of(context)!.max_Budget, controller: maxBudgetController),
+                    hint: AppLocalizations.of(context)!.max_Budget,
+                    controller: maxBudgetController),
               ),
               Row(
                 children: [
@@ -115,13 +119,17 @@ class CreatePost extends StatelessWidget {
                           cubit.getImageFirst();
                         },
                         child: ImageUploadFirst(
-                            text: AppLocalizations.of(context)!.product_Certificate, cubit: cubit)),
+                            text: AppLocalizations.of(context)!
+                                .product_Certificate,
+                            cubit: cubit)),
                     GestureDetector(
                       onTap: () {
                         cubit.getImageScound();
                       },
                       child: ImageUploadScound(
-                          text: AppLocalizations.of(context)!.companyCertificate, cubit: cubit),
+                          text:
+                              AppLocalizations.of(context)!.companyCertificate,
+                          cubit: cubit),
                     ),
                   ],
                 ),
@@ -139,7 +147,7 @@ class CreatePost extends StatelessWidget {
                     "Product_Certificate": cubit.firstImage,
                     "Company_Certificate": cubit.scondImage,
                     "user": FirebaseAuth.instance.currentUser!.uid,
-                    "ispending": false;
+                    "ispending": false,
                     // "Details": "",
                   },
                 ),

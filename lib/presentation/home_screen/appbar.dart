@@ -282,13 +282,8 @@ class MainAppBar extends StatelessWidget {
                   ),
                   child: MaterialButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => BlocProvider.value(
-                                    value: BlocProvider.of<PostCubit>(context),
-                                    child: CreatePost(),
-                                  )));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => CreatePost()));
                     },
                     child: Text(
                       AppLocalizations.of(context)!.submitRFQ,
