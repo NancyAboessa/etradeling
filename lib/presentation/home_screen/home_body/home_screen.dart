@@ -1,9 +1,9 @@
+import 'package:beamer/beamer.dart';
 import 'package:etradeling/presentation/home_screen/Bloc/stateAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../utls/themes/button/custom image Box.dart';
-import '../../Category/Category.dart';
 import '../Bloc/BlocAppBar.dart';
 import '../appbar.dart';
 import 'components/Custom IconBottom.dart';
@@ -66,12 +66,9 @@ class HomeScreen extends StatelessWidget {
                                     itemBuilder: (context, index) {
                                       return GestureDetector(
                                         onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (_) => Category(
-                                                      catgory: cubit.list[index]
-                                                          ["name"])));
+                                          context.beamToNamed(
+                                              '/catgory/${cubit.list[index]["name"]}',
+                                              data: cubit.list[index]["name"]);
                                         },
                                         child: ImageWithText(
                                           image: cubit.list[index]["image"],

@@ -5,7 +5,7 @@ import 'package:etradeling/presentation/auth/rigster.dart';
 import 'package:etradeling/presentation/home_screen/home_body/home_screen.dart';
 import 'package:etradeling/presentation/profile/Profile.dart';
 import 'package:flutter/material.dart';
-
+import '../../presentation/Category/Category.dart';
 import '../../presentation/auth/login_check.dart';
 
 class HomeLocation extends BeamLocation<BeamState> {
@@ -33,10 +33,10 @@ class HomeLocation extends BeamLocation<BeamState> {
         ),
       );
     }
-    if (state.uri.pathSegments.contains('main_home')) {
+    if (state.uri.pathSegments.contains('home')) {
       pathPatterns.add(
         BeamPage(
-          key: ValueKey('/main_home'),
+          key: ValueKey('/home'),
           child: HomeScreen(),
         ),
       );
@@ -52,10 +52,20 @@ class HomeLocation extends BeamLocation<BeamState> {
     final String? madaname = state.pathParameters['product'];
     if (madaname != null) {
       pathPatterns.add(BeamPage(
-        key: ValueKey('catgory/$madaname'),
-        child: Product(product: {"ss": madaname}),
+        key: ValueKey('product/$madaname'),
+        child: Product(product: madaname),
       ));
     }
+    final String? catgoryname = state.pathParameters['catgory'];
+    if (state.uri.pathSegments.contains('catgory')) {
+      if (catgoryname != null) {
+        pathPatterns.add(BeamPage(
+          key: ValueKey('catgory/'),
+          child: Category(catgory: catgoryname),
+        ));
+      }
+    }
+
     return pathPatterns;
   }
 
@@ -66,7 +76,8 @@ class HomeLocation extends BeamLocation<BeamState> {
         '/login',
         '/signup',
         '/main_home',
-        '/catgory/:product',
+        '/catgory/:catgory',
+        '/product/:product',
         "/profile",
         "/catgory",
       ];

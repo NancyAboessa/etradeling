@@ -4,9 +4,12 @@ import 'category state.dart';
 
 class CubitCategories extends Cubit<CategoriesState> {
   CubitCategories() : super(InitialCubitState());
+
   static CubitCategories get(context) => BlocProvider.of(context);
   List proudctlist = [];
   String? valCategories;
+  String? productId;
+
   dropDownCategory(value) {
     valCategories = value;
     emit(DropdounCategoriesState());
@@ -25,8 +28,14 @@ class CubitCategories extends Cubit<CategoriesState> {
     // print(proudctlist);
     emit(MainCatgory());
   }
-}
 
+  productid(id) async {
+    await FirebaseFirestore.instance.collection("Product").get().then((value) {
+      productId = value.docs[id].id;
+    });
+    emit(ProductId());
+  }
+}
 //    var cubit = CartCubit.get(context);
 // bloc builder
 //
