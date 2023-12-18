@@ -11,12 +11,11 @@ class LoginCheck extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LoginCubit cubit = LoginCubit.get(context);
     return BlocBuilder<LoginCubit, LoginState>(builder: (context, states) {
       if (FirebaseAuth.instance.currentUser == null) {
         return LoginScreen();
       } else {
-        return HomeScreen();
+        return const HomeScreen();
       }
     });
   }

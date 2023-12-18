@@ -20,7 +20,8 @@ class CubitCategories extends Cubit<CategoriesState> {
     proudctlist = [];
     await FirebaseFirestore.instance.collection("Product").get().then((value) {
       value.docs.forEach((element) {
-        if (element.data()["unit"] == catgory) {
+        if (element.data()["unit"] == catgory &&
+            element.data()["ispending"] == true) {
           proudctlist.add(element.data());
         }
       });
