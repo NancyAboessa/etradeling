@@ -1,76 +1,65 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../cubit/cubit.dart';
-import '../cubit/state.dart';
+import '../../profile/cubit/names_cubit.dart';
 import 'chatbubble.dart';
 
 class Chating extends StatelessWidget {
-  Chating({super.key});
+  Chating({super.key, required this.receiver, required this.controllerText});
+  final String? receiver;
+  final TextEditingController? controllerText;
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController controller = TextEditingController();
-    CubitMessages cubit = CubitMessages.get(context);
-    cubit.listUser();
-    return Scaffold(
-      body: BlocBuilder<CubitMessages, MainMessagesState>(
-        builder: (context, state) {
-          return Container(
-            height: 1000,
-            width: 1200,
-            child: Column(
-              children: [
-                Expanded(
-                  child: ListView.builder(
-                      itemCount: 2,
-                      itemBuilder: (context, index) {
-                        return ChatBubble(
-                          massege: '',
-                        );
-                      }),
-                ),
-                Expanded(
-                  child: SizedBox(
-                    height: 400,
-                    width: 1000,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 10,
-                          child: TextField(
-                            controller: controller,
-                            decoration: InputDecoration(
-                                hintText: 'Send a Message',
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(16),
-                                    borderSide: BorderSide(
-                                        color: Colors.orange.shade600))),
-                          ),
+    NamesCubit cubit = NamesCubit.get(context);
+    cubit.getProfie();
+    return Container(
+      height: 400,
+      width: 500,
+      decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+      child: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+                itemCount: 2,
+                itemBuilder: (context, index) {
+                  return ChatBubble(
+                    massege: '',
+                  );
+                }),
+          ),
+          Expanded(
+            child: SizedBox(
+              height: 400,
+              width: 500,
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 10,
+                    child: TextField(
+                      controller: controllerText!,
+                      decoration: InputDecoration(
+                        hintText: 'Send a Message',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
                         ),
-                        Expanded(
-                          flex: 1,
-                          child: InkWell(
-                              onTap: () {
-                                cubit
-                                    .sendMessege({"masseges": controller.text});
-                              },
-                              child: Icon(
-                                Icons.send,
-                                color: Colors.orange[600],
-                              )),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  Expanded(
+                    flex: 1,
+                    child: InkWell(
+                        onTap: () {
+                          cubit.SendMessages(receiver, controllerText!.text);
+                        },
+                        child: Icon(
+                          Icons.send,
+                          color: Colors.orange[600],
+                        )),
+                  ),
+                ],
+              ),
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }

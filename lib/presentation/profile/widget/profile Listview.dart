@@ -1,3 +1,4 @@
+import 'package:etradeling/presentation/profile/cubit/names_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,9 +8,8 @@ import 'buttoms1.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Listnames extends StatelessWidget {
-  Listnames({
-    super.key,
-  });
+  Listnames({super.key, required this.cubit});
+  NamesCubit cubit;
   // required this.namesCubit, this.input
   // List<ListModel>? namesCubit;
   // int? input;
@@ -41,30 +41,46 @@ class Listnames extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20.0, top: 20),
           child: ListView(
             children: [
-              ButtomList(text: Text( AppLocalizations.of(context)!.my_account), icon: FontAwesomeIcons.user),
-              ButtomList(text: Text(AppLocalizations.of(context)!.my_Orders), icon: FontAwesomeIcons.box),
+              GestureDetector(
+                onTap: () {
+                  cubit.Count(0);
+                },
+                child: ButtomList(
+                    text: Text(AppLocalizations.of(context)!.my_account),
+                    icon: FontAwesomeIcons.user),
+              ),
               ButtomList(
-                  text: Text(AppLocalizations.of(context)!.my_Addresses),
-                  icon: FontAwesomeIcons.mapLocation),
+                  text: Text(AppLocalizations.of(context)!.my_Orders),
+                  icon: FontAwesomeIcons.box),
+              GestureDetector(
+                onTap: () {
+                  cubit.Count(1);
+                },
+                child: ButtomList(
+                    text: Text(AppLocalizations.of(context)!.my_Addresses),
+                    icon: FontAwesomeIcons.mapLocation),
+              ),
               InkWell(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => BlocProvider.value(
-                            value: BlocProvider.of<CubitMessages>(context),
-                            child: chatbodycard(),
-                          ),
-                        ));
+                    cubit.Count(3);
                   },
                   child: ButtomList(
-                      text: Text(AppLocalizations.of(context)!.messenger), icon: FontAwesomeIcons.comment)),
-              ButtomList(text: Text(AppLocalizations.of(context)!.myRequest), icon: Icons.library_books),
+                      text: Text(AppLocalizations.of(context)!.messenger),
+                      icon: FontAwesomeIcons.comment)),
+              GestureDetector(
+                onTap: () {
+                  cubit.Count(2);
+                },
+                child: ButtomList(
+                    text: Text(AppLocalizations.of(context)!.myRequest),
+                    icon: Icons.library_books),
+              ),
               ButtomList(
                   text: Column(
                     children: [
                       Text(
-                          AppLocalizations.of(context)!.become_vendor_create_account,
+                        AppLocalizations.of(context)!
+                            .become_vendor_create_account,
                       ),
                       Divider(
                         color: Colors.grey,
@@ -74,7 +90,8 @@ class Listnames extends StatelessWidget {
                   ),
                   icon: FontAwesomeIcons.newspaper),
               ButtomList(
-                  text: Text(AppLocalizations.of(context)!.logOut), icon: FontAwesomeIcons.angleRight),
+                  text: Text(AppLocalizations.of(context)!.logOut),
+                  icon: FontAwesomeIcons.angleRight),
             ],
           ),
         ),

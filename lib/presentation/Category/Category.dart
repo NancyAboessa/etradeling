@@ -13,7 +13,7 @@ class Category extends StatelessWidget {
   final String? catgory;
   @override
   Widget build(BuildContext context) {
-    print(catgory!);
+    // print(catgory!);
     CubitCategories cubit = CubitCategories.get(context);
     cubit.category(catgory!);
     return BlocBuilder<CubitCategories, CategoriesState>(

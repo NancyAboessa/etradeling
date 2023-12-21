@@ -1,20 +1,19 @@
 import 'package:beamer/beamer.dart';
 import 'package:etradeling/firebase_options.dart';
-import 'package:etradeling/presentation/Category/Cubit/Category%20Cubit.dart';
-import 'package:etradeling/presentation/Productpage/cubit/cubit.dart';
-import 'package:etradeling/presentation/auth/bloc/login.cubit.dart';
-import 'package:etradeling/presentation/post/cubit/cubite.dart';
-import 'package:etradeling/utls/cache_helper/cache_helper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'presentation/Category/Cubit/Category Cubit.dart';
+import 'presentation/Productpage/cubit/cubit.dart';
+import 'presentation/auth/bloc/login.cubit.dart';
 import 'presentation/home_screen/Bloc/BlocAppBar.dart';
 import 'presentation/messages/cubit/cubit.dart';
 import 'presentation/messages/cubit/state.dart';
+import 'presentation/post/cubit/cubite.dart';
 import 'presentation/profile/cubit/names_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'utls/cache_helper/cache_helper.dart';
 import 'utls/route/route.dart';
 
 void main() async {
@@ -59,6 +58,7 @@ class MyApp extends StatelessWidget {
             Locale('ar'),
             Locale('en'),
           ],
+          color: Colors.orange,
           localizationsDelegates: const [
             AppLocalizations.delegate, // Add this line
             GlobalMaterialLocalizations.delegate,

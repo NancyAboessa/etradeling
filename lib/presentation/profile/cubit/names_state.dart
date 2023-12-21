@@ -10,9 +10,15 @@ class getnammesState extends NamesState {}
 
 class getDataState extends NamesState {}
 
+class getDataTradeState extends NamesState {}
+
 class SetDataState extends NamesState {}
 
 class GetImageState extends NamesState {}
+
+class CreateRomeState extends NamesState {}
+
+class CkeckRomeState extends NamesState {}
 
 class SendImageState extends NamesState {}
 
@@ -27,3 +33,7 @@ class GetProfileAddress extends NamesState {}
 class EmptyAddress extends NamesState {}
 
 class DropDownCountryState extends NamesState {}
+
+class SendMessegeState extends NamesState {}
+
+class MassengerGet extends NamesState {}

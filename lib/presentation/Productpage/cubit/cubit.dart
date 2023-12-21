@@ -15,8 +15,6 @@ class CubitProduct extends Cubit<CubitProductState> {
   }
 
   getData(id) async {
-    emit(EmptyState());
-    mapProduct = {};
     if (id != null) {
       await FirebaseFirestore.instance
           .collection("Product")
@@ -24,7 +22,6 @@ class CubitProduct extends Cubit<CubitProductState> {
           .get()
           .then((value) {
         mapProduct = value.data()!;
-        print("${mapProduct}");
       });
       print(mapProduct);
       getUserData(mapProduct["user"]);

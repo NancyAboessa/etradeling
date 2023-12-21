@@ -18,11 +18,16 @@ class NamesCubit extends Cubit<NamesState> {
   String? scondImage;
   String? getimage;
   String? id;
+
   Map<String, dynamic> map = {};
   int count = 0;
+  String? myProf;
   Uint8List webImage = Uint8List(8);
   String? valCountry;
   List address = [];
+  List listMaseges = [];
+  List listUsresMaseges = [];
+
   List<ListModel> names = [
     ListModel(Name: 'My Account'),
     ListModel(Name: 'My Orders'),
@@ -48,10 +53,10 @@ class NamesCubit extends Cubit<NamesState> {
         .where("user_id", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
         .get()
         .then((value) {
-      value.docs.forEach((element) {
+      for (var element in value.docs) {
         id = element.id;
         // print(id);
-      });
+      }
     });
     // getImage(map["image"]);
     emit(GetDataState());
@@ -98,6 +103,21 @@ class NamesCubit extends Cubit<NamesState> {
     emit(getDataState());
   }
 
+  getTradeData(id) async {
+    if (id != null) {
+      await FirebaseFirestore.instance
+          .collection("Profile")
+          .doc(id!)
+          .get()
+          .then((value) {
+        map = value.data()!;
+        // print("${map}");
+      });
+      // getImage(map);
+    }
+    emit(getDataTradeState());
+  }
+
   getAddress() async {
     await getProfie();
     emit(EmptyAddress());
@@ -109,9 +129,9 @@ class NamesCubit extends Cubit<NamesState> {
           .collection("Address")
           .get()
           .then((value) {
-        value.docs.forEach((element) {
+        for (var element in value.docs) {
           address.add(element.data());
-        });
+        }
       });
       print("this is ${address}");
     }
@@ -150,9 +170,77 @@ class NamesCubit extends Cubit<NamesState> {
     emit(GetImageState());
   }
 
+  createRomeCubit(tradeProfile) async {
+    // print(data);
+    await FirebaseFirestore.instance
+        .collection("Profile")
+        .where("user_id", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .get()
+        .then((value) {
+      myProf = value.docs[0].id;
+    });
+    FirebaseFirestore.instance
+        .collection("Profile")
+        .doc(myProf!)
+        .collection("MessagesList")
+        .doc(tradeProfile)
+        .set({
+      "name": map["name"],
+      "receiver": tradeProfile,
+      "sender": FirebaseAuth.instance.currentUser!.uid,
+    });
+
+    emit(CreateRomeState());
+  }
+
+  GetMassenger() async {
+    // print(data);
+    await FirebaseFirestore.instance
+        .collection("Profile")
+        .doc(id)
+        .collection("MessagesList")
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        listMaseges.add(element.data());
+        listUsresMaseges.add(element.id);
+      });
+    });
+    print(listMaseges);
+    emit(MassengerGet());
+  }
+
   dropDownCountry(value) async {
     // print(data);
     valCountry = value;
     emit(DropDownCountryState());
+  }
+
+  SendMessages(recver, massege) async {
+    // print(data);
+    String? recverid;
+    FirebaseFirestore.instance
+        .collection("Profile")
+        .doc(id)
+        .collection("MessagesList")
+        .doc(recver)
+        .collection("Messages")
+        .add({"messages": massege});
+    FirebaseFirestore.instance
+        .collection("Profile")
+        .where("user_id", isEqualTo: recver)
+        .get()
+        .then((value) {
+      recverid = value.docs[0].id;
+    });
+    FirebaseFirestore.instance
+        .collection("Profile")
+        .doc(recverid)
+        .collection("MessagesList")
+        .doc(id)
+        .collection("Messages")
+        .add({"messages": massege});
+
+    emit(SendMessegeState());
   }
 }

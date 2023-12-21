@@ -22,6 +22,7 @@ class CubitCategories extends Cubit<CategoriesState> {
       value.docs.forEach((element) {
         if (element.data()["unit"] == catgory &&
             element.data()["ispending"] == true) {
+          print(element.data()["ispending"].toString());
           proudctlist.add(element.data());
         }
       });
@@ -32,7 +33,7 @@ class CubitCategories extends Cubit<CategoriesState> {
 
   productid(id) async {
     await FirebaseFirestore.instance.collection("Product").get().then((value) {
-      productId = value.docs[id].id;
+      productId = value.docs[id + 1].id;
     });
     emit(ProductId());
   }

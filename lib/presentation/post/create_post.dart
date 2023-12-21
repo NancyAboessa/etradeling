@@ -148,6 +148,7 @@ class CreatePost extends StatelessWidget {
                     "Company_Certificate": cubit.scondImage,
                     "user": FirebaseAuth.instance.currentUser!.uid,
                     "ispending": false,
+                    "Catgory": "",
                     // "Details": "",
                   },
                 ),
