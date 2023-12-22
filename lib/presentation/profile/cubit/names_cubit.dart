@@ -201,6 +201,7 @@ class NamesCubit extends Cubit<NamesState> {
         .collection("MessagesList")
         .get()
         .then((value) {
+      listMaseges = [];
       value.docs.forEach((element) {
         listMaseges.add(element.data());
         listUsresMaseges.add(element.id);
