@@ -203,13 +203,14 @@ class HomeScreen extends StatelessWidget {
                             const SizedBox(
                               width: 300.0,
                             ),
-                            listViewhome(
-                              widget: const customContainerWithCircleAvIcon(),
-                              items: 6,
-                              left: 0,
-                              hight: 600,
-                              width: 870,
-                            ),
+                            Text("the catgory is empty"),
+                            // listViewhome(
+                            //   widget: const customContainerWithCircleAvIcon(),
+                            //   items: 6,
+                            //   left: 0,
+                            //   hight: 600,
+                            //   width: 870,
+                            // ),
                           ],
                         ),
                         const SizedBox(

@@ -3,14 +3,20 @@ import '../../profile/cubit/names_cubit.dart';
 import 'chatbubble.dart';
 
 class Chating extends StatelessWidget {
-  Chating({super.key, required this.receiver, required this.controllerText});
+  Chating(
+      {super.key,
+      required this.receiver,
+      required this.controllerText,
+      required this.me});
   final String? receiver;
+  final String? me;
   final TextEditingController? controllerText;
 
   @override
   Widget build(BuildContext context) {
     NamesCubit cubit = NamesCubit.get(context);
     cubit.getProfie();
+    cubit.getMessages(receiver!);
     return Container(
       height: 400,
       width: 500,
@@ -19,10 +25,10 @@ class Chating extends StatelessWidget {
         children: [
           Expanded(
             child: ListView.builder(
-                itemCount: 2,
+                itemCount: cubit.listmaseges.length,
                 itemBuilder: (context, index) {
                   return ChatBubble(
-                    massege: '',
+                    massege: cubit.listmaseges[index]["messages"],
                   );
                 }),
           ),

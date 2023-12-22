@@ -36,4 +36,6 @@ class DropDownCountryState extends NamesState {}
 
 class SendMessegeState extends NamesState {}
 
+class GetMessegeState extends NamesState {}
+
 class MassengerGet extends NamesState {}

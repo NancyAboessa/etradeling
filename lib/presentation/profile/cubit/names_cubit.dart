@@ -18,7 +18,6 @@ class NamesCubit extends Cubit<NamesState> {
   String? scondImage;
   String? getimage;
   String? id;
-
   Map<String, dynamic> map = {};
   int count = 0;
   String? myProf;
@@ -26,6 +25,7 @@ class NamesCubit extends Cubit<NamesState> {
   String? valCountry;
   List address = [];
   List listMaseges = [];
+  List listmaseges = [];
   List listUsresMaseges = [];
 
   List<ListModel> names = [
@@ -219,6 +219,14 @@ class NamesCubit extends Cubit<NamesState> {
   SendMessages(recver, massege) async {
     // print(data);
     String? recverid;
+    await FirebaseFirestore.instance
+        .collection("Profile")
+        .where("user_id", isEqualTo: recver)
+        .get()
+        .then((value) {
+      recverid = value.docs[0].id;
+    });
+
     FirebaseFirestore.instance
         .collection("Profile")
         .doc(id)
@@ -228,19 +236,36 @@ class NamesCubit extends Cubit<NamesState> {
         .add({"messages": massege});
     FirebaseFirestore.instance
         .collection("Profile")
-        .where("user_id", isEqualTo: recver)
-        .get()
-        .then((value) {
-      recverid = value.docs[0].id;
-    });
-    FirebaseFirestore.instance
-        .collection("Profile")
-        .doc(recverid)
+        .doc(recverid!)
         .collection("MessagesList")
         .doc(id)
         .collection("Messages")
-        .add({"messages": massege});
-
+        .add({
+      "receiver": recver,
+      "messages": massege,
+      "sender": FirebaseAuth.instance.currentUser!.uid
+    });
+    print(recverid);
     emit(SendMessegeState());
+  }
+
+  getMessages(recver) async {
+    // print(data);
+
+    FirebaseFirestore.instance
+        .collection("Profile")
+        .doc(id)
+        .collection("MessagesList")
+        .doc(recver)
+        .collection("Messages")
+        .snapshots()
+        .listen((event) {
+      listmaseges = [];
+      event.docs.forEach((element) {
+        listmaseges.add(element.data());
+      });
+    });
+    print(listmaseges);
+    emit(GetMessegeState());
   }
 }

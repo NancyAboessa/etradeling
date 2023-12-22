@@ -24,20 +24,25 @@ class Profile extends StatelessWidget {
     NamesCubit cubit = NamesCubit.get(context);
     return BlocBuilder<NamesCubit, NamesState>(builder: (context, state) {
       return Scaffold(
-        body: SingleChildScrollView(
+        body: SizedBox(
+          height: 750,
           child: Column(
             children: [
               const MainAppBar(),
-              Row(
-                children: [
-                  Listnames(cubit: cubit),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    child: list[cubit.count],
-                  ),
-                ],
+              SizedBox(
+                height: 600,
+                width: 2000,
+                child: Row(
+                  children: [
+                    Listnames(cubit: cubit),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: list[cubit.count],
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

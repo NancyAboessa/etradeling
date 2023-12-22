@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:etradeling/presentation/Productpage/cubit/state.dart';
 import 'package:etradeling/presentation/cartPage/cubit/CartState.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -17,7 +18,11 @@ class CartCubit extends Cubit<CubitCartState> {
   int count = 0;
   List list = [];
   getUserData() async {
-    await FirebaseFirestore.instance.collection("Cart").get().then((value) {
+    await FirebaseFirestore.instance
+        .collection("Cart")
+        .where("user", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .get()
+        .then((value) {
       value.docs.forEach((element) {
         list.add(element.data());
       });

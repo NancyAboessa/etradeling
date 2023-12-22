@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
     notFoundRedirectNamed: '/',
   );
   Widget build(BuildContext context) {
-    CacheHelper.put(key: "local", value: "en");
+    CacheHelper.put(key: "en", value: "en");
+    CacheHelper.put(key: "ar", value: "a");
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => PostCubit()),

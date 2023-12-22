@@ -2,7 +2,9 @@ import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../utls/cache_helper/cache_helper.dart';
 import 'state.dart';
 
 class CubitMessages extends Cubit<MainMessagesState> {
@@ -39,7 +41,11 @@ class CubitMessages extends Cubit<MainMessagesState> {
   }
 
   langCahnge() async {
-    lang = await Locale("ar");
+    if (lang == Locale(CacheHelper.get(key: "en"))) {
+      lang = await Locale(CacheHelper.get(key: "ar"));
+    } else {
+      lang = await Locale(CacheHelper.get(key: "en"));
+    }
     print(lang);
     emit(LangState());
     print(lang);

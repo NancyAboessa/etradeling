@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -115,6 +117,8 @@ class Messenger extends StatelessWidget {
                                     flex: 1,
                                     child: Chating(
                                       receiver: cubit.listUsresMaseges[0],
+                                      me: FirebaseAuth
+                                          .instance.currentUser!.uid,
                                       controllerText: controllerText,
                                     ),
                                   ),
