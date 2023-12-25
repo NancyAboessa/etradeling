@@ -1,3 +1,4 @@
+import 'package:etradeling/presentation/profile/vendore_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../home_screen/appbar.dart';
@@ -20,6 +21,7 @@ class Profile extends StatelessWidget {
       const Adress(),
       const Request(),
       const Messenger(),
+      VendorForm(),
     ];
     NamesCubit cubit = NamesCubit.get(context);
     return BlocBuilder<NamesCubit, NamesState>(builder: (context, state) {

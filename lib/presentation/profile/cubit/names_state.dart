@@ -39,3 +39,15 @@ class SendMessegeState extends NamesState {}
 class GetMessegeState extends NamesState {}
 
 class MassengerGet extends NamesState {}
+
+class RequestListState extends NamesState {}
+
+class RequestListTrueState extends NamesState {}
+
+class EmptyRequestListState extends NamesState {}
+
+class EmptyRequestListTrueState extends NamesState {}
+
+class AddList extends NamesState {}
+
+class VendorState extends NamesState {}

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'category state.dart';
 
@@ -7,6 +8,7 @@ class CubitCategories extends Cubit<CategoriesState> {
 
   static CubitCategories get(context) => BlocProvider.of(context);
   List proudctlist = [];
+  List proudctlistid = [];
   String? valCategories;
   String? productId;
 
@@ -22,8 +24,9 @@ class CubitCategories extends Cubit<CategoriesState> {
       value.docs.forEach((element) {
         if (element.data()["unit"] == catgory &&
             element.data()["ispending"] == true) {
-          print(element.data()["ispending"].toString());
+          print(element.data());
           proudctlist.add(element.data());
+          proudctlistid.add(element.id);
         }
       });
     });
@@ -31,10 +34,28 @@ class CubitCategories extends Cubit<CategoriesState> {
     emit(MainCatgory());
   }
 
-  productid(id) async {
-    await FirebaseFirestore.instance.collection("Product").get().then((value) {
-      productId = value.docs[id + 1].id;
+  myCategory() async {
+    emit(Empty());
+    proudctlist = [];
+    await FirebaseFirestore.instance
+        .collection("Product")
+        .where("user", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        if (element.data()["ispending"] == true) {
+          print(element.data());
+          proudctlist.add(element.data());
+          proudctlistid.add(element.id);
+        }
+      });
     });
+    // print(proudctlist);
+    emit(MeCatgory());
+  }
+
+  productid(id) async {
+    productId = proudctlistid[id];
     emit(ProductId());
   }
 }

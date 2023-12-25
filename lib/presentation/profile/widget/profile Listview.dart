@@ -78,9 +78,14 @@ class Listnames extends StatelessWidget {
               ButtomList(
                   text: Column(
                     children: [
-                      Text(
-                        AppLocalizations.of(context)!
-                            .become_vendor_create_account,
+                      InkWell(
+                        onTap: () {
+                          cubit.Count(4);
+                        },
+                        child: Text(
+                          AppLocalizations.of(context)!
+                              .become_vendor_create_account,
+                        ),
                       ),
                       Divider(
                         color: Colors.grey,

@@ -7,6 +7,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class SignUpScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+
   SignUpScreen({super.key});
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class SignUpScreen extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Image.asset(
-                "assets/imeges/1.jpg",
+                "assets/imeges/Sign-In.jpg",
                 fit: BoxFit.cover,
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width / 2,
@@ -43,15 +45,15 @@ class SignUpScreen extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                     Text(
-                       AppLocalizations.of(context)!.signup,
+                    Text(
+                      AppLocalizations.of(context)!.signup,
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 30.0,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                     Text(
+                    Text(
                       AppLocalizations.of(context)!.createanaccountfree,
                       style: TextStyle(
                         color: Colors.black,
@@ -72,10 +74,10 @@ class SignUpScreen extends StatelessWidget {
                         onChanged: (value) {
                           // print(value);
                         },
-                        decoration:  InputDecoration(
-                          labelText: AppLocalizations.of(context)!.name,
+                        decoration: InputDecoration(
+                          labelText: AppLocalizations.of(context)!.email,
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.zero),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                         ),
                       ),
@@ -83,39 +85,23 @@ class SignUpScreen extends StatelessWidget {
                     const SizedBox(
                       height: 15.0,
                     ),
-                    SizedBox(
-                      child: TextFormField(
-                        keyboardType: TextInputType.number,
-                        onFieldSubmitted: (value) {
-                          // print(value);
-                        },
-                        onChanged: (value) {
-                          // print(value);
-                        },
-                        decoration:  InputDecoration(
-                          labelText: AppLocalizations.of(context)!.phone_number,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.zero,
-                          ),
-                        ),
-                      ),
-                    ),
                     const SizedBox(
                       height: 8.0,
                     ),
                     SizedBox(
                       child: TextFormField(
                         keyboardType: TextInputType.text,
+                        controller: nameController,
                         onFieldSubmitted: (value) {
                           // print(value);
                         },
                         onChanged: (value) {
                           // print(value);
                         },
-                        decoration:  InputDecoration(
-                          labelText: AppLocalizations.of(context)!.country,
+                        decoration: InputDecoration(
+                          labelText: AppLocalizations.of(context)!.name,
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.zero,
+                            borderRadius: BorderRadius.circular(20),
                           ),
                         ),
                       ),
@@ -134,10 +120,10 @@ class SignUpScreen extends StatelessWidget {
                         onChanged: (value) {
                           // print(value);
                         },
-                        decoration:  InputDecoration(
+                        decoration: InputDecoration(
                           labelText: AppLocalizations.of(context)!.password,
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.zero,
+                            borderRadius: BorderRadius.circular(20),
                           ),
                           suffixIcon: Icon(
                             Icons.remove_red_eye,
@@ -158,10 +144,11 @@ class SignUpScreen extends StatelessWidget {
                         onChanged: (value) {
                           // print(value);
                         },
-                        decoration:  InputDecoration(
-                          labelText: AppLocalizations.of(context)!.confirm_password,
+                        decoration: InputDecoration(
+                          labelText:
+                              AppLocalizations.of(context)!.confirm_password,
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.zero,
+                            borderRadius: BorderRadius.circular(20),
                           ),
                           suffixIcon: Icon(
                             Icons.remove_red_eye,
@@ -174,17 +161,19 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     Container(
                       height: 50,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.zero,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
                         color: Colors.black,
                       ),
                       width: double.infinity,
                       child: MaterialButton(
                         onPressed: () {
                           loginCubit.SignupWithEmailandpass(
-                              emailController.text, passwordController.text);
+                              emailController.text,
+                              passwordController.text,
+                              nameController.text);
                         },
-                        child:  Text(
+                        child: Text(
                           AppLocalizations.of(context)!.signup,
                           style: TextStyle(
                             color: Colors.white,
@@ -196,7 +185,7 @@ class SignUpScreen extends StatelessWidget {
                     const SizedBox(
                       height: 10.0,
                     ),
-                     Row(
+                    Row(
                       children: [
                         Expanded(
                           child: Divider(
@@ -229,8 +218,8 @@ class SignUpScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                         Text(
-                           AppLocalizations.of(context)!.have  ,
+                        Text(
+                          AppLocalizations.of(context)!.have,
                         ),
                         TextButton(
                           onPressed: () {
@@ -244,7 +233,7 @@ class SignUpScreen extends StatelessWidget {
                                   ),
                                 ));
                           },
-                          child:  Text(
+                          child: Text(
                             AppLocalizations.of(context)!.signin,
                             style: TextStyle(
                               color: Colors.orange,

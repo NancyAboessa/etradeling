@@ -27,7 +27,10 @@ class NamesCubit extends Cubit<NamesState> {
   List listMaseges = [];
   List listmaseges = [];
   List listUsresMaseges = [];
-
+  List listRequest = [];
+  List listRequestTrue = [];
+  List mainListRequest = [];
+  int listIndex = 0;
   List<ListModel> names = [
     ListModel(Name: 'My Account'),
     ListModel(Name: 'My Orders'),
@@ -107,10 +110,10 @@ class NamesCubit extends Cubit<NamesState> {
     if (id != null) {
       await FirebaseFirestore.instance
           .collection("Profile")
-          .doc(id!)
+          .where("user_id", isEqualTo: id)
           .get()
           .then((value) {
-        map = value.data()!;
+        map = value.docs[0].data();
         // print("${map}");
       });
       // getImage(map);
@@ -207,6 +210,8 @@ class NamesCubit extends Cubit<NamesState> {
         listUsresMaseges.add(element.id);
       });
     });
+    mainListRequest.add(listRequest);
+
     print(listMaseges);
     emit(MassengerGet());
   }
@@ -268,5 +273,47 @@ class NamesCubit extends Cubit<NamesState> {
     });
     print(listmaseges);
     emit(GetMessegeState());
+  }
+
+  requestList() async {
+    emit(EmptyRequestListState());
+    await FirebaseFirestore.instance
+        .collection("Product")
+        .where("user", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        listRequest = [];
+        if (element.data()["ispending"] == false) {
+          listRequest.add(element.data());
+        }
+      });
+      print("y");
+    });
+    emit(RequestListState());
+  }
+
+  vendorCubit(data) async {
+    await FirebaseFirestore.instance.collection("Vendor").add(data);
+    emit(VendorState());
+  }
+
+  requestListTrue() async {
+    emit(EmptyRequestListState());
+    listRequest = [];
+    await FirebaseFirestore.instance
+        .collection("Product")
+        .where("user", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        if (element.data()["ispending"] == true) {
+          listRequest.add(element.data());
+        }
+      });
+    });
+    print(listRequest);
+    print("x");
+    emit(RequestListTrueState());
   }
 }

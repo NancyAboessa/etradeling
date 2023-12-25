@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
                 Expanded(
                   flex: 1,
                   child: Image.asset(
-                    "assets/imeges/1.jpg",
+                    "assets/imeges/Sign-In.jpg",
                     fit: BoxFit.cover,
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width / 2,
@@ -78,7 +78,7 @@ class LoginScreen extends StatelessWidget {
                             },
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.zero,
+                                borderRadius: BorderRadius.circular(20),
                               ),
                               labelText: AppLocalizations.of(context)!.email,
                               prefixIcon: Icon(Icons.email),
@@ -104,7 +104,7 @@ class LoginScreen extends StatelessWidget {
                             decoration: InputDecoration(
                               labelText: AppLocalizations.of(context)!.password,
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.zero,
+                                borderRadius: BorderRadius.circular(20),
                               ),
                               suffixIcon: Icon(
                                 Icons.remove_red_eye,
@@ -132,9 +132,12 @@ class LoginScreen extends StatelessWidget {
                           height: 20.0,
                         ),
                         Container(
-                          height: 75,
-                          width: double.infinity,
-                          color: Colors.black,
+                          height: 50,
+                          width: 150,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25),
+                            color: Colors.black,
+                          ),
                           child: MaterialButton(
                             onPressed: () {
                               loginCubit.SignInWithEamilandPass(

@@ -42,10 +42,10 @@ class LoginCubit extends Cubit<LoginState> {
     emit(SuccessState());
   }
 
-  sendData() async {
+  sendData(name) async {
     await FirebaseFirestore.instance
         .collection("Profile")
-        .add({"user_id": FirebaseAuth.instance.currentUser!.uid});
+        .add({"user_id": FirebaseAuth.instance.currentUser!.uid, "name": name});
     await FirebaseFirestore.instance
         .collection("Profile")
         .doc(FirebaseAuth.instance.currentUser!.uid)
@@ -53,12 +53,12 @@ class LoginCubit extends Cubit<LoginState> {
     emit(SetDataState());
   }
 
-  SignupWithEmailandpass(email, pass) async {
+  SignupWithEmailandpass(email, pass, name) async {
     try {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: pass);
       await FirebaseAuth.instance.currentUser!.sendEmailVerification();
-      await sendData();
+      await sendData(name);
     } on Exception catch (e) {
       log(e as String);
     }

@@ -4,19 +4,20 @@ import 'package:etradeling/presentation/Productpage/Productpage.dart';
 import 'package:etradeling/presentation/home_screen/home_body/components/imageWithText.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../Category/Cubit/Category Cubit.dart';
+import '../Category/Cubit/category state.dart';
 import '../Productpage/cubit/cubit.dart';
 import '../home_screen/appbar.dart';
-import 'Cubit/Category Cubit.dart';
-import 'Cubit/category state.dart';
 
-class Category extends StatelessWidget {
-  const Category({super.key, required this.catgory});
+class MyCategory extends StatelessWidget {
+  const MyCategory({super.key, required this.catgory});
   final String? catgory;
   @override
   Widget build(BuildContext context) {
     // print(catgory!);
+    print("x");
     CubitCategories cubit = CubitCategories.get(context);
-    cubit.category(catgory!);
+    cubit.myCategory();
     return BlocBuilder<CubitCategories, CategoriesState>(
         builder: (context, state) {
       return cubit.proudctlist.isEmpty && state is Empty

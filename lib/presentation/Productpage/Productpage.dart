@@ -6,6 +6,7 @@ import 'package:etradeling/presentation/post/widget/counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../home_screen/appbar.dart';
 import 'cubit/state.dart';
 import '../../utls/themes/button/MaterialButtom.dart';
 import 'custom Widgets/rating.dart';
@@ -18,277 +19,365 @@ class Product extends StatelessWidget {
   Widget build(BuildContext context) {
     var cubit = CubitProduct.get(context);
     cubit.getData(product);
+    print(product);
     return BlocBuilder<CubitProduct, CubitProductState>(
         builder: (context, state) {
       return cubit.mapProduct.isEmpty && cubit.mapUser.isEmpty
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : Scaffold(
-              appBar: AppBar(
-                backgroundColor: Colors.orange[600],
-              ),
-              body: Padding(
-                padding: const EdgeInsets.only(left: 100, top: 50),
-                child: Row(
-                  // crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
+              body: SingleChildScrollView(
+                child: Column(
                   children: [
-                    imageBox(
-                      width: 70,
-                      hight: 100,
-                      image: cubit.mapProduct["Product_Certificate"],
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    imageBox(
-                      width: 250,
-                      hight: 330,
-                      image: cubit.mapProduct["Company_Certificate"],
-                    ),
+                    MainAppBar(),
                     Padding(
-                      padding: const EdgeInsets.only(top: 80, left: 20),
+                      padding: const EdgeInsets.only(left: 100, top: 50),
                       child: Column(
-                        //  crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 60, right: 150),
-                            child: Text('${cubit.mapProduct["Product_Name"]}'),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          Rating(
-                            initialRating: 1,
-                            itemSize: 15,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 100),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  AppLocalizations.of(context)!.now,
-                                  style: TextStyle(color: Colors.black38),
-                                ),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                    '${AppLocalizations.of(context)!.eGP} ${cubit.mapProduct["Max_Budget"]}'),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 80),
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 25),
-                                  child: Text(
-                                    AppLocalizations.of(context)!.quantity,
-                                    style: TextStyle(
-                                      color: Colors.black38,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Counter(
-                                  left: 0,
-                                  text: '',
-                                  width: 25,
-                                  minasFunction: cubit,
-                                  plasFunction: cubit,
-                                  count: cubit.count,
-                                  hight: 25,
-                                  widthtt: 0,
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              cubit.sendCatgory({
-                                "user": cubit.mapProduct["user"],
-                                "image":
-                                    cubit.mapProduct["Company_Certificate"],
-                                "name": cubit.mapProduct["Product_Name"],
-                                "price": cubit.mapProduct["Max_Budget"],
-                              });
-                            },
-                            child: CustomMaterialButtom(
-                              text: AppLocalizations.of(context)!.add_To_Cart,
-                              icon: Icons.shopping_cart,
-                              color: Colors.black,
-                              coolor: Colors.white,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Divider(
-                            color: Colors.black,
-                            thickness: 1,
-                            height: 20,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Container(
-                      height: 320,
-                      child: VerticalDivider(
-                        color: Colors.black26,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 80, left: 20),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 60, right: 150),
-                            child: Text(
-                              '${AppLocalizations.of(context)!.eGP} ${cubit.mapProduct["Max_Budget"]}',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
+                          Row(
+                            // crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              imageBox(
+                                width: 70,
+                                hight: 100,
+                                image: cubit.mapProduct["Product_Certificate"],
                               ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 60),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 20),
-                                  child: Text(
-                                    AppLocalizations.of(context)!.share_Product,
-                                    style: TextStyle(color: Colors.black38),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Row(
+                              SizedBox(
+                                width: 15,
+                              ),
+                              imageBox(
+                                width: 250,
+                                hight: 330,
+                                image: cubit.mapProduct["Company_Certificate"],
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 0, left: 20),
+                                child: Column(
+                                  //  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Container(
-                                        height: 25,
-                                        width: 25,
-                                        decoration: BoxDecoration(
-                                          color: Colors.orange[600],
-                                          shape: BoxShape.rectangle,
-                                        ),
-                                        child: Icon(
-                                          Icons.facebook,
-                                          color: Colors.white,
-                                        )),
-                                    SizedBox(
-                                      width: 3,
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 0, right: 150),
+                                      child: Text(
+                                          '${cubit.mapProduct["Product_Name"]}'),
                                     ),
-                                    Container(
-                                        height: 25,
-                                        width: 25,
-                                        decoration: BoxDecoration(
-                                          color: Colors.orange[600],
-                                          shape: BoxShape.rectangle,
-                                        ),
-                                        child: Icon(
-                                          FontAwesomeIcons.x,
-                                          color: Colors.white,
-                                        )),
                                     SizedBox(
-                                      width: 3,
+                                      height: 30,
                                     ),
-                                    Container(
-                                        height: 25,
-                                        width: 25,
-                                        decoration: BoxDecoration(
-                                          color: Colors.orange[600],
-                                          shape: BoxShape.rectangle,
-                                        ),
-                                        child: Icon(
-                                          FontAwesomeIcons.whatsapp,
-                                          color: Colors.white,
-                                        )),
-                                    //x-twitter
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          // SizedBox(height: 10,),
-                          //Divider(
-                          //   height: 50,
-                          //   color: Colors.black,
-                          // ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 110, top: 20),
-                            child: Row(
-                              children: [
-                                // Container(
-                                //   decoration: BoxDecoration(
-                                //       shape: BoxShape.circle,
-                                //       border: Border.all(
-                                //           color: Colors.orange)),
-                                //   child: InkWell(
-                                //     onTap: () async {},
-                                //     child: CircleAvatar(
-                                //       backgroundColor: Colors.black12,
-                                //       child: Image.network(
-                                //           cubit.mapUser["image"]),
-                                //     ),
-                                //   ),
-                                // ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
-                                  children: [
-                                    // Text(cubit.mapUser["name"]),
-                                    Text(
-                                      '( )',
-                                      style: TextStyle(
-                                        color: Colors.black12,
+                                    Rating(
+                                      initialRating: 1,
+                                      itemSize: 15,
+                                    ),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(right: 100),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            AppLocalizations.of(context)!.now,
+                                            style: TextStyle(
+                                                color: Colors.black38),
+                                          ),
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          Text(
+                                              '${AppLocalizations.of(context)!.eGP} ${cubit.mapProduct["Max_Budget"]}'),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 80),
+                                      child: Row(
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 25),
+                                            child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .quantity,
+                                              style: TextStyle(
+                                                color: Colors.black38,
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          Counter(
+                                            left: 0,
+                                            text: '',
+                                            width: 25,
+                                            minasFunction: cubit,
+                                            plasFunction: cubit,
+                                            count: cubit.count,
+                                            hight: 25,
+                                            widthtt: 0,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Divider(
+                                      color: Colors.black,
+                                      thickness: 1,
+                                      height: 20,
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(right: 80.0),
+                                      child: Text(
+                                        "Stock In/Out : Available",
+                                        style: TextStyle(fontSize: 15),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(right: 140.0),
+                                      child: Text(
+                                        "Sampels :10per",
+                                        style: TextStyle(fontSize: 15),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Container(
+                                height: 320,
+                                child: VerticalDivider(
+                                  color: Colors.black26,
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 80, left: 20),
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 60, right: 150),
+                                      child: Text(
+                                        '${AppLocalizations.of(context)!.eGP} ${cubit.mapProduct["Max_Budget"]}',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 60),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 20),
+                                            child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .share_Product,
+                                              style: TextStyle(
+                                                  color: Colors.black38),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Container(
+                                                  height: 25,
+                                                  width: 25,
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.orange[600],
+                                                    shape: BoxShape.rectangle,
+                                                  ),
+                                                  child: Icon(
+                                                    Icons.facebook,
+                                                    color: Colors.white,
+                                                  )),
+                                              SizedBox(
+                                                width: 3,
+                                              ),
+                                              Container(
+                                                  height: 25,
+                                                  width: 25,
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.orange[600],
+                                                    shape: BoxShape.rectangle,
+                                                  ),
+                                                  child: Icon(
+                                                    FontAwesomeIcons.x,
+                                                    color: Colors.white,
+                                                  )),
+                                              SizedBox(
+                                                width: 3,
+                                              ),
+                                              Container(
+                                                  height: 25,
+                                                  width: 25,
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.orange[600],
+                                                    shape: BoxShape.rectangle,
+                                                  ),
+                                                  child: Icon(
+                                                    FontAwesomeIcons.whatsapp,
+                                                    color: Colors.white,
+                                                  )),
+                                              //x-twitter
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    // SizedBox(height: 10,),
+                                    //Divider(
+                                    //   height: 50,
+                                    //   color: Colors.black,
+                                    // ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          right: 110, top: 20),
+                                      child: Row(
+                                        children: [
+                                          // Container(
+                                          //   decoration: BoxDecoration(
+                                          //       shape: BoxShape.circle,
+                                          //       border: Border.all(
+                                          //           color: Colors.orange)),
+                                          //   child: InkWell(
+                                          //     onTap: () async {},
+                                          //     child: CircleAvatar(
+                                          //       backgroundColor: Colors.black12,
+                                          //       child: Image.network(
+                                          //           cubit.mapUser["image"]),
+                                          //     ),
+                                          //   ),
+                                          // ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Column(
+                                            children: [
+                                              // Text(cubit.mapUser["name"]),
+                                              Text(
+                                                '( )',
+                                                style: TextStyle(
+                                                  color: Colors.black12,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        context.beamToNamed(
+                                            '/trade_profile/${cubit.mapProduct["user"]}',
+                                            data: cubit.mapProduct["user"]);
+                                      },
+                                      child: CustomMaterialButtom(
+                                        text: AppLocalizations.of(context)!
+                                            .viewProfile,
+                                        color: Colors.white,
+                                        coolor: Colors.black,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        cubit.sendCatgory({
+                                          "user": cubit.mapProduct["user"],
+                                          "image": cubit.mapProduct[
+                                              "Company_Certificate"],
+                                          "name":
+                                              cubit.mapProduct["Product_Name"],
+                                          "price":
+                                              cubit.mapProduct["Max_Budget"],
+                                        });
+                                      },
+                                      child: CustomMaterialButtom(
+                                        text: AppLocalizations.of(context)!
+                                            .add_To_Cart,
+                                        icon: Icons.shopping_cart,
+                                        color: Colors.black,
+                                        coolor: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
-                          SizedBox(
-                            height: 10,
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20.0),
+                            child: Text("Short Description",
+                                style: TextStyle(
+                                    color: Colors.orange, fontSize: 18)),
                           ),
-                          InkWell(
-                            onTap: () {
-                              context.beamToNamed(
-                                  '/trade_profile/${cubit.mapProduct["user"]}',
-                                  data: cubit.mapProduct["user"]);
-                            },
-                            child: CustomMaterialButtom(
-                              text: AppLocalizations.of(context)!.viewProfile,
-                              color: Colors.white,
-                              coolor: Colors.black,
-                            ),
+                          Text('''
+                    relieve colonic spasm and bowel irritability Gas relief Decrease nausea and vomiting
+                    Boost bile secretions Treatment of indigestion and flatulence
+                              ''',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 15)),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20.0),
+                            child: Text("Product Description",
+                                style: TextStyle(
+                                    color: Colors.orange, fontSize: 18)),
                           ),
-                          SizedBox(
-                            height: 10,
-                          ),
+                          Text('''
+                 1 - Mendes has been conveying the secrets of the ancient Egyptians in the use
+                  of medicinal herbs 
+                  2 - Mendes is offering all its customers The best herbs grown in the Egyptian
+                   soil and packed with the best international technologies according to
+                    international standards 
+                    3 - Mendes are pure and natural herbs without any artificial colors 
+                    or flavors added 
+                    4 - Mendes are non GMO products 
+                    5 - Mendes are products free of sugar and salts so it is suitable
+                    for diabetic and hypertension patients
+                    6 - Mendes are products free of caffeine and gluten
+                    7 - Mendes are products suitable for vegans 
+                    8 - Mendes is packed in natural cellulose filters 
+                    9 - Mendes products matches the specifications of the United States of America 
+                    10 - Mendes - Potion of comfort - used to relieve colonic spasm and bowel irritability
+                    11 - Mendes - Potion of comfort - used as gas relief 
+                    12 - Mendes - Potion of comfort - used to decrease nausea and vomiting
+                    13 - Mendes - Potion of comfort - used to boost bile secretions 
+                    14 - Mendes - Potion of comfort - used as antiparasitic
+                    15 - Mendes - Potion of comfort - used as treatment of indigestion and flatulence
+                    Mendes - Potion of comfort - Pure peppermint
+                              ''',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 15)),
                         ],
                       ),
                     ),

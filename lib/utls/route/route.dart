@@ -4,6 +4,7 @@ import 'package:etradeling/presentation/auth/login.dart';
 import 'package:etradeling/presentation/auth/rigster.dart';
 import 'package:etradeling/presentation/home_screen/home_body/home_screen.dart';
 import 'package:etradeling/presentation/profile/Profile.dart';
+import 'package:etradeling/presentation/profile/my_product.dart';
 import 'package:etradeling/presentation/profile/tradeprofile.dart';
 import 'package:flutter/material.dart';
 import '../../presentation/Category/Category.dart';
@@ -68,12 +69,21 @@ class HomeLocation extends BeamLocation<BeamState> {
         child: Product(product: madaname),
       ));
     }
-    final String? catgoryname = state.pathParameters['catgory'];
-    if (state.uri.pathSegments.contains('catgory')) {
+    final String? catgoryname = state.pathParameters['category'];
+    if (state.uri.pathSegments.contains('category')) {
       if (catgoryname != null) {
         pathPatterns.add(BeamPage(
-          key: const ValueKey('catgory/'),
+          key: const ValueKey('category/'),
           child: Category(catgory: catgoryname),
+        ));
+      }
+    }
+    final String? my = state.pathParameters['meProduct'];
+    if (state.uri.pathSegments.contains('meProduct')) {
+      if (my != null) {
+        pathPatterns.add(BeamPage(
+          key: const ValueKey('meProduct/'),
+          child: MyCategory(catgory: my),
         ));
       }
     }
@@ -88,9 +98,9 @@ class HomeLocation extends BeamLocation<BeamState> {
         '/signup',
         '/trade_profile/:trade_profile',
         '/main_home',
-        '/catgory/:catgory',
+        '/category/:category',
         '/product/:product',
         "/profile",
-        "/catgory",
+        '/meProduct/:meProduct'
       ];
 }

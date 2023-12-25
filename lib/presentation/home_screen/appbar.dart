@@ -4,7 +4,6 @@ import 'package:etradeling/presentation/cartPage/cubit/CartCubit.dart';
 import 'package:etradeling/presentation/home_screen/Bloc/BlocAppBar.dart';
 import 'package:etradeling/presentation/home_screen/home_body/home_screen.dart';
 import 'package:etradeling/presentation/post/create_post.dart';
-import 'package:etradeling/presentation/post/cubit/cubite.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,12 +11,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../auth/bloc/login.cubit.dart';
 import '../messages/cubit/cubit.dart';
 import '../messages/cubit/state.dart';
-import '../profile/Profile.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainAppBar extends StatelessWidget {
   const MainAppBar({super.key});
-
   @override
   Widget build(BuildContext context) {
     CubitMessages cubit = CubitMessages.get(context);
@@ -62,13 +59,21 @@ class MainAppBar extends StatelessWidget {
               ),
               BlocBuilder<CubitMessages, MainMessagesState>(
                 builder: (context, state) {
-                  return ElevatedButton(
-                    onPressed: () async {
+                  return InkWell(
+                    onTap: () async {
                       await cubit.langCahnge();
                     },
-                    child: Text(
-                      AppLocalizations.of(context)!.language,
-                      style: TextStyle(color: Colors.black),
+                    child: Container(
+                      height: 30,
+                      width: 150,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.black),
+                      alignment: Alignment.center,
+                      child: Text(
+                        AppLocalizations.of(context)!.language,
+                        style: TextStyle(color: Colors.white, fontSize: 15),
+                      ),
                     ),
                   );
                 },
@@ -164,6 +169,7 @@ class MainAppBar extends StatelessWidget {
         Container(
           color: Colors.black,
           width: double.infinity,
+          height: 40,
           child: Padding(
             padding: const EdgeInsets.only(left: 200),
             child: Row(
@@ -181,6 +187,7 @@ class MainAppBar extends StatelessWidget {
                     AppLocalizations.of(context)!.home,
                     style: TextStyle(
                       color: Colors.white,
+                      fontSize: 20,
                     ),
                   ),
                 ),
@@ -202,8 +209,9 @@ class MainAppBar extends StatelessWidget {
                   child: Text(
                     AppLocalizations.of(context)!.categories,
                     style: TextStyle(
-                      color: Colors.white,
-                    ),
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
                 SizedBox(
@@ -225,6 +233,7 @@ class MainAppBar extends StatelessWidget {
                     AppLocalizations.of(context)!.ourblog,
                     style: TextStyle(
                       color: Colors.white,
+                      fontSize: 20,
                     ),
                   ),
                 ),
@@ -247,6 +256,7 @@ class MainAppBar extends StatelessWidget {
                     AppLocalizations.of(context)!.contactus,
                     style: TextStyle(
                       color: Colors.white,
+                      fontSize: 20,
                     ),
                   ),
                 ),
@@ -269,6 +279,7 @@ class MainAppBar extends StatelessWidget {
                     AppLocalizations.of(context)!.aboutus,
                     style: TextStyle(
                       color: Colors.white,
+                      fontSize: 20,
                     ),
                   ),
                 ),
