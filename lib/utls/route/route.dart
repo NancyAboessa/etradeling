@@ -9,13 +9,16 @@ import 'package:etradeling/presentation/profile/tradeprofile.dart';
 import 'package:flutter/material.dart';
 import '../../presentation/Category/Category.dart';
 import '../../presentation/auth/login_check.dart';
+import '../../presentation/manufacture order/display Post.dart';
+import '../../presentation/manufacture order/factor order.dart';
+import '../../presentation/manufacture order/factory.dart';
 
 class HomeLocation extends BeamLocation<BeamState> {
   @override
   List<BeamPage> buildPages(BuildContext context, BeamState state) {
     final pathPatterns = [
       const BeamPage(
-        child: LoginCheck(),
+        child: DisplayFactory(),
         key: ValueKey('/'),
       ),
     ];

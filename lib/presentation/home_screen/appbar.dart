@@ -38,7 +38,7 @@ class MainAppBar extends StatelessWidget {
                 width: 5.0,
               ),
               Container(
-                width: 400,
+                width: 350,
                 height: 50,
                 child: TextField(
                   decoration: InputDecoration(

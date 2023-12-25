@@ -16,9 +16,8 @@ class FooterScreen extends StatelessWidget {
           height: 350,
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 35),
+          padding: const EdgeInsets.only(bottom: 200,left: 150),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset("assets/imeges/etradeling3-1.png",
                   width: 200, height: 45),
@@ -26,26 +25,29 @@ class FooterScreen extends StatelessWidget {
                 width: 150,
               ),
               //two texts
-              Column(
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.join_our,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
+              Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: Column(
+                  children: [
+                    Text(
+                      AppLocalizations.of(context)!.join_our,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  Text(
-                    AppLocalizations.of(context)!.newsetter,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
+                    SizedBox(
+                      height: 3,
                     ),
-                  ),
-                ],
+                    Text(
+                      AppLocalizations.of(context)!.newsetter,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(
                 width: 50,
