@@ -8,17 +8,14 @@ import 'package:etradeling/presentation/profile/my_product.dart';
 import 'package:etradeling/presentation/profile/tradeprofile.dart';
 import 'package:flutter/material.dart';
 import '../../presentation/Category/Category.dart';
-import '../../presentation/auth/login_check.dart';
-import '../../presentation/manufacture order/display Post.dart';
-import '../../presentation/manufacture order/factor order.dart';
-import '../../presentation/manufacture order/factory.dart';
+import '../../presentation/manufacture order/ListUserPost.dart';
 
 class HomeLocation extends BeamLocation<BeamState> {
   @override
   List<BeamPage> buildPages(BuildContext context, BeamState state) {
     final pathPatterns = [
       const BeamPage(
-        child: DisplayFactory(),
+        child: ListUserPost(),
         key: ValueKey('/'),
       ),
     ];
