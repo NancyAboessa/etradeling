@@ -6,6 +6,8 @@ class Plus extends CubitProductState {}
 
 class getDataState extends CubitProductState {}
 
+class PostActionState extends CubitProductState {}
+
 class getUserDataState extends CubitProductState {}
 
 class SendDataState extends CubitProductState {}

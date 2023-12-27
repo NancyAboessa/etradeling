@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
       child:
           BlocBuilder<CubitMessages, MainMessagesState>(builder: (context, i) {
         CubitMessages cubit = CubitMessages.get(context);
-           return MaterialApp.router(
+        return MaterialApp.router(
           routerDelegate: routerDelegate,
           routeInformationParser: BeamerParser(),
           locale: cubit.lang,

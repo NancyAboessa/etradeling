@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -21,6 +22,15 @@ class PostCubit extends Cubit<PostMainState> {
   dropDownTrade(value) {
     valTrade = value;
     emit(DropDownTradeState());
+  }
+
+  PostAction() async {
+    await FirebaseFirestore.instance.collection("UserAction").add({
+      "user": FirebaseAuth.instance.currentUser!.uid,
+      "action": "CreatePost",
+    });
+    // print(proudctlist);
+    emit(PostActionState());
   }
 
   dropDownCategory(value) {
@@ -50,6 +60,7 @@ class PostCubit extends Cubit<PostMainState> {
 
   postCreate(data) async {
     await FirebaseFirestore.instance.collection("Product").add(data);
+    PostAction();
     emit(PostCreate());
   }
 

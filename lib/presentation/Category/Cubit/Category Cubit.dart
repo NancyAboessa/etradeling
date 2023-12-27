@@ -34,6 +34,15 @@ class CubitCategories extends Cubit<CategoriesState> {
     emit(MainCatgory());
   }
 
+  categoryAction() async {
+    await FirebaseFirestore.instance.collection("UserAction").add({
+      "user": FirebaseAuth.instance.currentUser!.uid,
+      "action": "category",
+    });
+    // print(proudctlist);
+    emit(CategoryActionState());
+  }
+
   myCategory() async {
     emit(Empty());
     proudctlist = [];

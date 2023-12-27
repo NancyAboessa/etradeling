@@ -1,6 +1,7 @@
 import 'package:beamer/beamer.dart';
 import 'package:etradeling/presentation/Productpage/Productpage.dart';
 import 'package:etradeling/presentation/auth/login.dart';
+import 'package:etradeling/presentation/auth/login_check.dart';
 import 'package:etradeling/presentation/auth/rigster.dart';
 import 'package:etradeling/presentation/home_screen/home_body/home_screen.dart';
 import 'package:etradeling/presentation/profile/Profile.dart';
@@ -8,14 +9,15 @@ import 'package:etradeling/presentation/profile/my_product.dart';
 import 'package:etradeling/presentation/profile/tradeprofile.dart';
 import 'package:flutter/material.dart';
 import '../../presentation/Category/Category.dart';
-import '../../presentation/manufacture order/ListUserPost.dart';
+import '../../presentation/manufacture order/factor order.dart';
+import '../../presentation/manufacture order/factory.dart';
 
 class HomeLocation extends BeamLocation<BeamState> {
   @override
   List<BeamPage> buildPages(BuildContext context, BeamState state) {
     final pathPatterns = [
       const BeamPage(
-        child: ListUserPost(),
+        child: LoginCheck(),
         key: ValueKey('/'),
       ),
     ];
@@ -24,6 +26,22 @@ class HomeLocation extends BeamLocation<BeamState> {
         BeamPage(
           key: ValueKey('/login'),
           child: LoginScreen(),
+        ),
+      );
+    }
+    if (state.uri.pathSegments.contains('factor_oreder')) {
+      pathPatterns.add(
+        const BeamPage(
+          key: ValueKey('/factor_oreder'),
+          child: FactorOreder(),
+        ),
+      );
+    }
+    if (state.uri.pathSegments.contains('factorry')) {
+      pathPatterns.add(
+        const BeamPage(
+          key: ValueKey('/factorry'),
+          child: factorry(),
         ),
       );
     }
@@ -98,6 +116,8 @@ class HomeLocation extends BeamLocation<BeamState> {
         '/signup',
         '/trade_profile/:trade_profile',
         '/main_home',
+        '/factor_oreder',
+        '/factorry',
         '/category/:category',
         '/product/:product',
         "/profile",

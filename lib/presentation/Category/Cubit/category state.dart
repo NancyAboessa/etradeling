@@ -6,6 +6,8 @@ class DropdounCategoriesState extends CategoriesState {}
 
 class MainCatgory extends CategoriesState {}
 
+class CategoryActionState extends CategoriesState {}
+
 class MeCatgory extends CategoriesState {}
 
 class ProductId extends CategoriesState {}

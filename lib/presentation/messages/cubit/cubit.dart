@@ -40,12 +40,13 @@ class CubitMessages extends Cubit<MainMessagesState> {
     emit(sendmessegeState());
   }
 
-  langCahnge() async {
-    if (lang == Locale(CacheHelper.get(key: "en"))) {
-      lang = await Locale(CacheHelper.get(key: "ar"));
-    } else {
-      lang = await Locale(CacheHelper.get(key: "en"));
-    }
+  langCahnge(lang1) async {
+    lang = lang1;
+    // if (lang == Locale(CacheHelper.get(key: "en"))) {
+    //   lang = await Locale(CacheHelper.get(key: "ar"));
+    // } else {
+    //   lang = await Locale(CacheHelper.get(key: "en"));
+    // }
     print(lang);
     emit(LangState());
     print(lang);

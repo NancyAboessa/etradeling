@@ -12,6 +12,8 @@ class DropDownUnitState extends PostMainState {}
 
 class DropDownTradeState extends PostMainState {}
 
+class PostActionState extends PostMainState {}
+
 class Plus extends PostMainState {}
 
 class Minas extends PostMainState {}

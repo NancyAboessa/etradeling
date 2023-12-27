@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../utls/cache_helper/cache_helper.dart';
 import '../auth/bloc/login.cubit.dart';
 import '../messages/cubit/cubit.dart';
 import '../messages/cubit/state.dart';
@@ -61,17 +62,43 @@ class MainAppBar extends StatelessWidget {
                 builder: (context, state) {
                   return InkWell(
                     onTap: () async {
-                      await cubit.langCahnge();
+                      await cubit
+                          .langCahnge(Locale(CacheHelper.get(key: "en")));
                     },
                     child: Container(
                       height: 30,
-                      width: 150,
+                      width: 75,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.black),
                       alignment: Alignment.center,
                       child: Text(
-                        AppLocalizations.of(context)!.language,
+                        "en",
+                        style: TextStyle(color: Colors.white, fontSize: 15),
+                      ),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              BlocBuilder<CubitMessages, MainMessagesState>(
+                builder: (context, state) {
+                  return InkWell(
+                    onTap: () async {
+                      await cubit
+                          .langCahnge(Locale(CacheHelper.get(key: "ar")));
+                    },
+                    child: Container(
+                      height: 30,
+                      width: 75,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.black),
+                      alignment: Alignment.center,
+                      child: Text(
+                        "ar",
                         style: TextStyle(color: Colors.white, fontSize: 15),
                       ),
                     ),
@@ -235,6 +262,32 @@ class MainAppBar extends StatelessWidget {
                       color: Colors.white,
                       fontSize: 20,
                     ),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // loginCubit!.signupPress();
+                    context.beamToNamed("factor_oreder");
+                  },
+                  child: Text(
+                    "factor oreder",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // loginCubit!.signupPress();
+                    context.beamToNamed("factorry");
+                  },
+                  child: Text(
+                    "Tender",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
                 SizedBox(

@@ -17,6 +17,7 @@ class Category extends StatelessWidget {
     // print(catgory!);
     CubitCategories cubit = CubitCategories.get(context);
     cubit.category(catgory!);
+    cubit.categoryAction();
     return BlocBuilder<CubitCategories, CategoriesState>(
         builder: (context, state) {
       return cubit.proudctlist.isEmpty && state is Empty
