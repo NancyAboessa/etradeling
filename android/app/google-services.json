@@ -1,43 +1,26 @@
 {
   "project_info": {
-    "project_number": "118193198129",
-    "project_id": "etradeling-d39a0",
-    "storage_bucket": "etradeling-d39a0.appspot.com"
+    "project_number": "870687087470",
+    "project_id": "etradeling-18174",
+    "storage_bucket": "etradeling-18174.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:118193198129:android:05d1fecb5c4df7dc3c7110",
+        "mobilesdk_app_id": "1:870687087470:android:12232176cd9cf8bdea7f7f",
         "android_client_info": {
           "package_name": "com.example.etradeling"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "118193198129-a4lf126v4fr7980f7v848kab1hf0vrv3.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBwbCI0LkPkvAkll0AeRh8_G8B7ACu_Ntg"
+          "current_key": "AIzaSyCbsOIp1QUmTDtF5aVt8sniQSDwSmvCu7M"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "118193198129-a4lf126v4fr7980f7v848kab1hf0vrv3.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "118193198129-3kr15huq4v9vublu25ql761to4k3cinf.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.etradeling"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

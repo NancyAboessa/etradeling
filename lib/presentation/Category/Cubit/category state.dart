@@ -12,4 +12,8 @@ class MeCatgory extends CategoriesState {}
 
 class ProductId extends CategoriesState {}
 
+class CheckValState extends CategoriesState {}
+
+class CategoryNameState extends CategoriesState {}
+
 class Empty extends CategoriesState {}

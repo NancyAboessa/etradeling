@@ -19,6 +19,7 @@ class CreatePost extends StatelessWidget {
   final TextEditingController productNameController = TextEditingController();
   final TextEditingController tradeTermsController = TextEditingController();
   final TextEditingController maxBudgetController = TextEditingController();
+  final TextEditingController sampils = TextEditingController();
   CreatePost({super.key});
   @override
   Widget build(BuildContext context) {
@@ -59,14 +60,13 @@ class CreatePost extends StatelessWidget {
                     Expanded(
                         flex: 1,
                         child: MainField(
-                            hint: AppLocalizations.of(context)!.tradeTerms,
+                            hint: "short Description",
                             controller: tradeTermsController)),
                     Expanded(
                       flex: 1,
                       child: DropDownCategoryButton(
-                        list: ["x", "y", "z"],
-                        dropdownValue:
-                            AppLocalizations.of(context)!.sub_Categories,
+                        list: const ["avilable", "not avilable"],
+                        dropdownValue: "StockIn/Out",
                         fun: cubit,
                         width: 1000,
                       ),
@@ -77,7 +77,7 @@ class CreatePost extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 770, left: 80),
                 child: MainField(
-                    hint: AppLocalizations.of(context)!.max_Budget,
+                    hint: "product Description",
                     controller: maxBudgetController),
               ),
               Row(
@@ -118,10 +118,8 @@ class CreatePost extends StatelessWidget {
                         onTap: () {
                           cubit.getImageFirst();
                         },
-                        child: ImageUploadFirst(
-                            text: AppLocalizations.of(context)!
-                                .product_Certificate,
-                            cubit: cubit)),
+                        child:
+                            ImageUploadFirst(text: "firstImage", cubit: cubit)),
                     GestureDetector(
                       onTap: () {
                         cubit.getImageScound();
@@ -135,20 +133,25 @@ class CreatePost extends StatelessWidget {
                 ),
               ),
               Padding(
+                padding: const EdgeInsets.only(right: 770, left: 80),
+                child: MainField(hint: "sampils", controller: sampils),
+              ),
+              Padding(
                 padding: const EdgeInsets.only(left: 250, bottom: 100),
                 child: PostButton(
                   cubit: cubit,
                   data: {
                     "Product_Name": productNameController.text,
-                    "Trade_Terms": tradeTermsController.text,
-                    "Max_Budget": maxBudgetController.text,
+                    "short_Description": tradeTermsController.text,
+                    "Product_Description": maxBudgetController.text,
+                    "sampils": sampils.text,
                     "Quantity": cubit.count,
                     "unit": cubit.valUnit,
-                    "Product_Certificate": cubit.firstImage,
-                    "Company_Certificate": cubit.scondImage,
+                    "firstImage": cubit.firstImage,
+                    "scondImage": cubit.scondImage,
                     "user": FirebaseAuth.instance.currentUser!.uid,
                     "ispending": false,
-                    "Catgory": "",
+                    "Catgory": cubit.valSubCategory,
                     // "Details": "",
                   },
                 ),

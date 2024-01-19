@@ -8,11 +8,19 @@ class SuccessState extends LoginState {}
 
 class SignUpState extends LoginState {}
 
+class SignUpFaceBookState extends LoginState {}
+
 class FailState extends LoginState {}
 
 class NewpassState extends LoginState {}
 
 class EmailVerifiedState extends LoginState {}
+
+class CheckState extends LoginState {}
+
+class Check1State extends LoginState {}
+
+class Check2State extends LoginState {}
 
 class UserDataState extends LoginState {}
 

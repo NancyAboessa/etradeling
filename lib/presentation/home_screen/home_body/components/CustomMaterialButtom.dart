@@ -4,37 +4,47 @@ class CustomMaterialButtom extends StatelessWidget {
   CustomMaterialButtom({
     super.key,
     required this.text,
-    this .icon,
+    this.icon,
     required this.color,
     required this.coolor,
   });
   String text;
-  final  IconData ?icon;
+  final IconData? icon;
   Color color;
   Color coolor;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 30,
+      height: 40,
       width: 250,
-      decoration: BoxDecoration(border: Border.all(color: Colors.black,)),
-
-      child: MaterialButton(
-        color: color,
-        onPressed: (){},
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(text,
-              style: TextStyle(color: coolor,
-                // fontWeight: FontWeight.w100,
-                fontSize: 15,
-              ),),
-            SizedBox(width: 3,),
-            Icon(icon as IconData?,
-              color: Colors.white,size: 15,),
-          ],
-        ),),
+      decoration: BoxDecoration(
+        color: Colors.black,
+        border: Border.all(
+          color: Colors.black,
+        ),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            text,
+            style: TextStyle(
+              color: coolor,
+              // fontWeight: FontWeight.w100,
+              fontSize: 15,
+            ),
+          ),
+          SizedBox(
+            width: 3,
+          ),
+          Icon(
+            icon as IconData?,
+            color: Colors.white,
+            size: 15,
+          ),
+        ],
+      ),
     );
   }
 }

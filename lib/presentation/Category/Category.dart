@@ -18,6 +18,7 @@ class Category extends StatelessWidget {
     CubitCategories cubit = CubitCategories.get(context);
     cubit.category(catgory!);
     cubit.categoryAction();
+    cubit.categoryNameCubit();
     return BlocBuilder<CubitCategories, CategoriesState>(
         builder: (context, state) {
       return cubit.proudctlist.isEmpty && state is Empty
@@ -40,6 +41,71 @@ class Category extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 340.0),
+                          child: SizedBox(
+                            height: 500,
+                            width: 200,
+                            child: Stack(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 20.0),
+                                  child: Container(
+                                    height: 400,
+                                    width: 200,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        border:
+                                            Border.all(color: Colors.black)),
+                                    child: ListView.builder(
+                                        itemCount: cubit.catgoryname.length,
+                                        shrinkWrap: true,
+                                        itemBuilder: (context, i) {
+                                          return Container(
+                                              height: 80,
+                                              width: 200,
+                                              alignment: Alignment.center,
+                                              child: RadioListTile(
+                                                  groupValue:
+                                                      cubit.catgoryname[i],
+                                                  value: cubit.catgoryname[i] ==
+                                                          catgory
+                                                      ? cubit.catgoryname[i]
+                                                      : "",
+                                                  title: Text(
+                                                    cubit.catgoryname[i],
+                                                    style: TextStyle(
+                                                        color: Colors.black),
+                                                  ),
+                                                  onChanged: (value) async {
+                                                    await cubit.checkVal();
+                                                    context.beamToNamed(
+                                                        '/category/${cubit.catgoryname[i]}');
+                                                  }));
+                                        }),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      bottom: 10.0, left: 20),
+                                  child: Container(
+                                    width: 80,
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                      color: Colors.orange,
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: const Text(
+                                      "category",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                         SizedBox(
                           height: 700,
                           width: 850,

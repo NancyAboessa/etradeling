@@ -47,11 +47,13 @@ dependencies:
   rating: ^1.0.0-dev.1
   flutter_rating_bar: ^4.0.1
   file_picker: ^6.1.1
+  flutter_facebook_auth: ^3.5.0
   intl: any
   flutter_localizations:
     sdk: flutter
   shared_preferences: ^2.2.2
   beamer: ^1.5.6
+  carousel_slider: ^4.2.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'names_state.dart';
 import 'package:file_picker/file_picker.dart';
 
@@ -72,18 +73,21 @@ class NamesCubit extends Cubit<NamesState> {
 
   sendData(data) {
     print(data);
-    if (data != null && id != null) {
-      FirebaseFirestore.instance.collection("Profile").doc(id!).update(data);
+    if (data != null && FirebaseAuth.instance.currentUser!.uid.isNotEmpty) {
+      FirebaseFirestore.instance
+          .collection("Profile")
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .update(data);
     }
     emit(GetProfileState());
   }
 
   sendAddress(data) {
     print(data);
-    if (data != null && id != null) {
+    if (data != null && FirebaseAuth.instance.currentUser!.uid.isNotEmpty) {
       FirebaseFirestore.instance
           .collection("Profile")
-          .doc(id!)
+          .doc(FirebaseAuth.instance.currentUser!.uid)
           .collection("Address")
           .add(data);
     }
@@ -91,29 +95,28 @@ class NamesCubit extends Cubit<NamesState> {
   }
 
   getData() async {
-    await getProfie();
-    if (id != null) {
-      await FirebaseFirestore.instance
-          .collection("Profile")
-          .doc(id!)
-          .get()
-          .then((value) {
-        map = value.data()!;
-        // print("${map}");
-      });
-      // getImage(map);
-    }
+    // if (FirebaseAuth.instance.currentUser!.uid.isNotEmpty) {
+    await FirebaseFirestore.instance
+        .collection("Profile")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get()
+        .then((value) {
+      map = value.data()!;
+      // print("${map}");
+    });
+    // getImage(map);
+    // }
     emit(getDataState());
   }
 
   getTradeData(id) async {
     if (id != null) {
       await FirebaseFirestore.instance
-          .collection("Profile")
-          .where("user_id", isEqualTo: id)
+          .collection("Vendor")
+          .doc(FirebaseAuth.instance.currentUser!.uid)
           .get()
           .then((value) {
-        map = value.docs[0].data();
+        map = value.data()!;
         // print("${map}");
       });
       // getImage(map);
@@ -125,10 +128,10 @@ class NamesCubit extends Cubit<NamesState> {
     await getProfie();
     emit(EmptyAddress());
     // address = [];
-    if (id != null) {
+    if (FirebaseAuth.instance.currentUser!.uid.isNotEmpty) {
       await FirebaseFirestore.instance
           .collection("Profile")
-          .doc(id!)
+          .doc(FirebaseAuth.instance.currentUser!.uid)
           .collection("Address")
           .get()
           .then((value) {
@@ -146,17 +149,23 @@ class NamesCubit extends Cubit<NamesState> {
       type: FileType.custom,
       allowedExtensions: ['jpg', 'pdf', 'doc'],
     );
+    var formatter = new DateFormat('yyyy-MM-dd');
+    var now = new DateTime.now();
+    String formattedDate = formatter.format(now);
     if (result != null) {
       Uint8List? fileBytes = result.files.first.bytes;
       String fileName = result.files.first.name;
       // Upload file
       await FirebaseStorage.instance
-          .ref('uploads/$fileName')
+          .ref('uploads/$formattedDate')
           .putData(fileBytes!);
       getimage = await FirebaseStorage.instance
-          .ref('uploads/$fileName')
+          .ref('uploads/$formattedDate')
           .getDownloadURL();
-      FirebaseFirestore.instance.collection("Profile").doc(id!).update({
+      FirebaseFirestore.instance
+          .collection("Profile")
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .update({
         "image": getimage,
       });
     }
@@ -294,7 +303,10 @@ class NamesCubit extends Cubit<NamesState> {
   }
 
   vendorCubit(data) async {
-    await FirebaseFirestore.instance.collection("Vendor").add(data);
+    await FirebaseFirestore.instance
+        .collection("Vendor")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .set(data);
     emit(VendorState());
   }
 

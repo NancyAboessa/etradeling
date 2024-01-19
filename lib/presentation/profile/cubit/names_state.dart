@@ -8,6 +8,8 @@ class colorchange extends NamesState {}
 
 class getnammesState extends NamesState {}
 
+class SetDataProfileState extends NamesState {}
+
 class getDataState extends NamesState {}
 
 class getDataTradeState extends NamesState {}

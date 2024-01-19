@@ -11,7 +11,9 @@ class CubitCategories extends Cubit<CategoriesState> {
   List proudctlistid = [];
   String? valCategories;
   String? productId;
-
+  List catgoryname = [];
+  String? x;
+  bool change = true;
   dropDownCategory(value) {
     valCategories = value;
     emit(DropdounCategoriesState());
@@ -19,6 +21,7 @@ class CubitCategories extends Cubit<CategoriesState> {
 
   category(catgory) async {
     emit(Empty());
+    change = true;
     proudctlist = [];
     await FirebaseFirestore.instance.collection("Product").get().then((value) {
       value.docs.forEach((element) {
@@ -66,6 +69,20 @@ class CubitCategories extends Cubit<CategoriesState> {
   productid(id) async {
     productId = proudctlistid[id];
     emit(ProductId());
+  }
+
+  categoryNameCubit() async {
+    FirebaseFirestore.instance.collection("Categorie").get().then((value) {
+      value.docs.forEach((element) {
+        catgoryname.add(element["name"]);
+      });
+    });
+    emit(CategoryNameState());
+  }
+
+  checkVal() async {
+    change = false;
+    emit(CheckValState());
   }
 }
 //    var cubit = CartCubit.get(context);

@@ -78,24 +78,24 @@ class TradeProfile extends StatelessWidget {
                                   Text(
                                     "myProduct",
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 20.0, left: 8.0),
-                                    child: InkWell(
-                                      onTap: () {
-                                        context.beamToNamed(
-                                            "/meProduct/${cubit.map["user_id"]}",
-                                            data: cubit.map["user_id"]);
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.contact_support_outlined,
-                                              color: Colors.orange),
-                                          Text("contact as"),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(top: 20.0, left: 8.0),
+                            child: InkWell(
+                              onTap: () {
+                                context.beamToNamed(
+                                    "/meProduct/${cubit.map["user_id"]}",
+                                    data: cubit.map["user_id"]);
+                              },
+                              child: Row(
+                                children: [
+                                  Icon(Icons.contact_support_outlined,
+                                      color: Colors.orange),
+                                  Text("contact as"),
                                 ],
                               ),
                             ),
@@ -142,10 +142,10 @@ class TradeProfile extends StatelessWidget {
                                 top: 10.0,
                               ),
                               child: Text(
-                                cubit.map["name"] != null &&
+                                cubit.map["factoryName"] != null &&
                                         cubit.map.isNotEmpty
-                                    ? cubit.map["name"]
-                                    : "name",
+                                    ? cubit.map["factoryName"]
+                                    : "factoryName",
                                 style: const TextStyle(
                                   fontSize: 20,
                                 ),
@@ -192,7 +192,7 @@ class TradeProfile extends StatelessWidget {
                                           fontSize: 20,
                                         )),
                                     SizedBox(width: 50),
-                                    Text("2010",
+                                    Text(cubit.map["dateOfEstablishment"],
                                         style: TextStyle(
                                           fontSize: 20,
                                         )),
@@ -208,8 +208,7 @@ class TradeProfile extends StatelessWidget {
                                           fontSize: 20,
                                         )),
                                     SizedBox(width: 50),
-                                    Text(
-                                        "Iso 9001 - ISO 14001 - ISO 45001 - HALAL - KOSHER",
+                                    Text("",
                                         style: TextStyle(
                                           fontSize: 20,
                                         )),
@@ -225,7 +224,7 @@ class TradeProfile extends StatelessWidget {
                                           fontSize: 20,
                                         )),
                                     SizedBox(width: 50),
-                                    Text("Mendes",
+                                    Text("",
                                         style: TextStyle(
                                           fontSize: 20,
                                         )),

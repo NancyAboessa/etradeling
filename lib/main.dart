@@ -3,6 +3,7 @@ import 'package:etradeling/firebase_options.dart';
 import 'package:etradeling/presentation/Category/Cubit/Category%20Cubit.dart';
 import 'package:etradeling/presentation/Productpage/cubit/cubit.dart';
 import 'package:etradeling/presentation/auth/bloc/login.cubit.dart';
+import 'package:etradeling/presentation/manufacture%20order/cubit/cubit.dart';
 import 'package:etradeling/presentation/post/cubit/cubite.dart';
 import 'package:etradeling/utls/cache_helper/cache_helper.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => AppBarCubit()),
         BlocProvider(create: (_) => CubitMessages()),
         BlocProvider(create: (_) => CubitCategories()),
+        BlocProvider(create: (_) => FactoryCubit()),
       ],
       child:
           BlocBuilder<CubitMessages, MainMessagesState>(builder: (context, i) {

@@ -1,3 +1,5 @@
+import 'package:etradeling/presentation/profile/profile%20part%20two.dart';
+import 'package:etradeling/presentation/profile/vendorProfile.dart';
 import 'package:etradeling/presentation/profile/vendore_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,7 +8,6 @@ import '../messages/messengerPage.dart';
 import 'adress.dart';
 import 'cubit/names_cubit.dart';
 import 'cubit/names_state.dart';
-import 'profile part two.dart';
 import 'request.dart';
 import 'widget/profile Listview.dart';
 
@@ -26,28 +27,25 @@ class Profile extends StatelessWidget {
     NamesCubit cubit = NamesCubit.get(context);
     return BlocBuilder<NamesCubit, NamesState>(builder: (context, state) {
       return Scaffold(
-        body: SizedBox(
-          height: 750,
-          child: Column(
-            children: [
-              const MainAppBar(),
-              SizedBox(
-                height: 600,
-                width: 2000,
-                child: Row(
-                  children: [
-                    Listnames(cubit: cubit),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      child: list[cubit.count],
-                    ),
-                  ],
-                ),
+        body: Column(
+          children: [
+            const MainAppBar(),
+            SizedBox(
+              height: 620,
+              width: 2000,
+              child: Row(
+                children: [
+                  Listnames(cubit: cubit),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: list[cubit.count],
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       );
     });

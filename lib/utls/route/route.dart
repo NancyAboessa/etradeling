@@ -9,8 +9,12 @@ import 'package:etradeling/presentation/profile/my_product.dart';
 import 'package:etradeling/presentation/profile/tradeprofile.dart';
 import 'package:flutter/material.dart';
 import '../../presentation/Category/Category.dart';
+import '../../presentation/Contact_screen/contact_screen.dart';
+import '../../presentation/manufacture order/ListUserPost.dart';
+import '../../presentation/manufacture order/List_Of_factory.dart';
 import '../../presentation/manufacture order/factor order.dart';
 import '../../presentation/manufacture order/factory.dart';
+import '../../presentation/plog/plog.dart';
 
 class HomeLocation extends BeamLocation<BeamState> {
   @override
@@ -24,22 +28,31 @@ class HomeLocation extends BeamLocation<BeamState> {
     if (state.uri.pathSegments.contains('login')) {
       pathPatterns.add(
         BeamPage(
-          key: ValueKey('/login'),
+          key: const ValueKey('/login'),
           child: LoginScreen(),
         ),
       );
     }
     if (state.uri.pathSegments.contains('factor_oreder')) {
       pathPatterns.add(
-        const BeamPage(
+        BeamPage(
           key: ValueKey('/factor_oreder'),
           child: FactorOreder(),
         ),
       );
     }
+    if (state.uri.pathSegments.contains('all_factor_oreder')) {
+      pathPatterns.add(
+        BeamPage(
+          key: ValueKey('/all_factor_oreder'),
+          child: ListOfFuctory(),
+        ),
+      );
+    }
+
     if (state.uri.pathSegments.contains('factorry')) {
       pathPatterns.add(
-        const BeamPage(
+        BeamPage(
           key: ValueKey('/factorry'),
           child: factorry(),
         ),
@@ -105,6 +118,30 @@ class HomeLocation extends BeamLocation<BeamState> {
         ));
       }
     }
+    if (state.uri.pathSegments.contains('Contact_As')) {
+      pathPatterns.add(
+        BeamPage(
+          key: const ValueKey('Contact_As'),
+          child: ContactScreen(),
+        ),
+      );
+    }
+    if (state.uri.pathSegments.contains('About_As')) {
+      pathPatterns.add(
+        BeamPage(
+          key: const ValueKey('About_As'),
+          child: Plog(),
+        ),
+      );
+    }
+    if (state.uri.pathSegments.contains('Request_of_quotation')) {
+      pathPatterns.add(
+        BeamPage(
+          key: const ValueKey('Request_of_quotation'),
+          child: ListUserPost(),
+        ),
+      );
+    }
     return pathPatterns;
   }
 
@@ -121,6 +158,11 @@ class HomeLocation extends BeamLocation<BeamState> {
         '/category/:category',
         '/product/:product',
         "/profile",
-        '/meProduct/:meProduct'
+        "/Contact_As",
+        "/About_As",
+        "/blog",
+        "/Request_of_quotation",
+        '/meProduct/:meProduct',
+        "/all_factor_oreder"
       ];
 }

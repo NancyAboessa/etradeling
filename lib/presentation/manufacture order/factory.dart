@@ -1,90 +1,52 @@
+import 'package:beamer/beamer.dart';
 import 'package:etradeling/presentation/home_screen/appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../home_screen/home_body/components/footer.dart';
+import 'cubit/cubit.dart';
+import 'cubit/state.dart';
+import 'widget/user_list.dart';
 
 class factorry extends StatelessWidget {
-  const factorry({super.key});
+  factorry({super.key});
+  final TextEditingController textController = TextEditingController();
+  final TextEditingController title = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            MainAppBar(),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Tender',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              width: 700,
-              height: 100,
-              child: TextField(
-                maxLines: 20,
-                decoration: InputDecoration(
-                  label: Container(
-                    child: Text(
-                      "title",
-                    ),
+    FactoryCubit cubit = FactoryCubit.get(context);
+    cubit.getAll();
+    return BlocBuilder<FactoryCubit, MainFactoryState>(
+        builder: (context, state) {
+          return Scaffold(
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const MainAppBar(),
+                  Container(
+                    constraints: BoxConstraints(maxHeight: 650.0, minHeight: 200),
+                    child: ListView.builder(
+                        itemCount: cubit.orderList.length,
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                              onTap: () {
+                                context.beamToNamed("/Request_of_quotation");
+                              },
+                              child: UserList(
+                                text: cubit.orderList[index]["text"],
+                                userName: "",
+                                title: cubit.orderList[index]["title"],
+                              ));
+                        }),
                   ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
+                  FooterScreen(),
+                ],
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              width: 700,
-              height: 400,
-              child: TextField(
-                maxLines: 200,
-                decoration: InputDecoration(
-                  label: Text(
-                    "Enter Your Offer ",
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              width: 500,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.black,
-              ),
-              child: MaterialButton(
-                onPressed: () {},
-                child: Text(
-                  'publish',
-                  style: TextStyle(color: Colors.white),
-                ),
-                height: 60,
-              ),
-            ),
-            SizedBox(height: 100),
-            Container(
-                height: 350, width: double.infinity, child: FooterScreen()),
-          ],
-        ),
-      ),
-    );
+          );
+        });
   }
 }

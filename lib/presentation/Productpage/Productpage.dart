@@ -43,7 +43,7 @@ class Product extends StatelessWidget {
                               imageBox(
                                 width: 70,
                                 hight: 100,
-                                image: cubit.mapProduct["Product_Certificate"],
+                                image: cubit.mapProduct["firstImage"],
                               ),
                               SizedBox(
                                 width: 15,
@@ -51,7 +51,7 @@ class Product extends StatelessWidget {
                               imageBox(
                                 width: 250,
                                 hight: 330,
-                                image: cubit.mapProduct["Company_Certificate"],
+                                image: cubit.mapProduct["scondImage"],
                               ),
                               Padding(
                                 padding:
@@ -91,7 +91,7 @@ class Product extends StatelessWidget {
                                             width: 20,
                                           ),
                                           Text(
-                                              '${AppLocalizations.of(context)!.eGP} ${cubit.mapProduct["Max_Budget"]}'),
+                                              '${AppLocalizations.of(context)!.eGP} ${cubit.mapProduct["Quantity"]}'),
                                         ],
                                       ),
                                     ),
@@ -177,7 +177,7 @@ class Product extends StatelessWidget {
                                       padding: const EdgeInsets.only(
                                           top: 60, right: 150),
                                       child: Text(
-                                        '${AppLocalizations.of(context)!.eGP} ${cubit.mapProduct["Max_Budget"]}',
+                                        '${AppLocalizations.of(context)!.eGP} ${cubit.mapProduct["Quantity"]}',
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 18,
@@ -314,12 +314,11 @@ class Product extends StatelessWidget {
                                       onTap: () {
                                         cubit.sendCatgory({
                                           "user": cubit.mapProduct["user"],
-                                          "image": cubit.mapProduct[
-                                              "Company_Certificate"],
+                                          "image":
+                                              cubit.mapProduct["firstImage"],
                                           "name":
-                                              cubit.mapProduct["Product_Name"],
-                                          "price":
-                                              cubit.mapProduct["Max_Budget"],
+                                              cubit.mapProduct["scondImage"],
+                                          "price": cubit.mapProduct["unit"],
                                         });
                                       },
                                       child: CustomMaterialButtom(
@@ -341,10 +340,7 @@ class Product extends StatelessWidget {
                                 style: TextStyle(
                                     color: Colors.orange, fontSize: 18)),
                           ),
-                          Text('''
-                    relieve colonic spasm and bowel irritability Gas relief Decrease nausea and vomiting
-                    Boost bile secretions Treatment of indigestion and flatulence
-                              ''',
+                          Text("${cubit.mapProduct["short_Description"]}",
                               style:
                                   TextStyle(color: Colors.black, fontSize: 15)),
                           Padding(
@@ -353,29 +349,7 @@ class Product extends StatelessWidget {
                                 style: TextStyle(
                                     color: Colors.orange, fontSize: 18)),
                           ),
-                          Text('''
-                 1 - Mendes has been conveying the secrets of the ancient Egyptians in the use
-                  of medicinal herbs 
-                  2 - Mendes is offering all its customers The best herbs grown in the Egyptian
-                   soil and packed with the best international technologies according to
-                    international standards 
-                    3 - Mendes are pure and natural herbs without any artificial colors 
-                    or flavors added 
-                    4 - Mendes are non GMO products 
-                    5 - Mendes are products free of sugar and salts so it is suitable
-                    for diabetic and hypertension patients
-                    6 - Mendes are products free of caffeine and gluten
-                    7 - Mendes are products suitable for vegans 
-                    8 - Mendes is packed in natural cellulose filters 
-                    9 - Mendes products matches the specifications of the United States of America 
-                    10 - Mendes - Potion of comfort - used to relieve colonic spasm and bowel irritability
-                    11 - Mendes - Potion of comfort - used as gas relief 
-                    12 - Mendes - Potion of comfort - used to decrease nausea and vomiting
-                    13 - Mendes - Potion of comfort - used to boost bile secretions 
-                    14 - Mendes - Potion of comfort - used as antiparasitic
-                    15 - Mendes - Potion of comfort - used as treatment of indigestion and flatulence
-                    Mendes - Potion of comfort - Pure peppermint
-                              ''',
+                          Text("${cubit.mapProduct["Product_Description"]}",
                               style:
                                   TextStyle(color: Colors.black, fontSize: 15)),
                         ],

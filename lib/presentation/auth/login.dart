@@ -10,6 +10,7 @@ class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  GlobalKey<FormState> formState = GlobalKey();
   @override
   Widget build(BuildContext context) {
     LoginCubit loginCubit = LoginCubit.get(context);
@@ -21,8 +22,8 @@ class LoginScreen extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 1,
-                  child: Image.asset(
-                    "assets/imeges/Sign-In.jpg",
+                  child: Image(
+                    image: AssetImage("assets/imeges/Sign-In.jpg"),
                     fit: BoxFit.cover,
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width / 2,
@@ -65,53 +66,74 @@ class LoginScreen extends StatelessWidget {
                         const SizedBox(
                           height: 30.0,
                         ),
-                        SizedBox(
-                          child: TextFormField(
-                            controller: emailController,
-                            keyboardType: TextInputType.emailAddress,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return AppLocalizations.of(context)!
-                                    .email_address_must_not_be_empty;
-                              }
-                              return null;
-                            },
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              labelText: AppLocalizations.of(context)!.email,
-                              prefixIcon: Icon(Icons.email),
-                            ),
-                            onFieldSubmitted: (value) {
-                              // print(value);
-                            },
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 20.0,
-                        ),
-                        SizedBox(
-                          child: TextFormField(
-                            obscureText: true,
-                            onFieldSubmitted: (value) {
-                              // print(value);
-                            },
-                            onChanged: (value) {
-                              // print(value);
-                            },
-                            controller: passwordController,
-                            decoration: InputDecoration(
-                              labelText: AppLocalizations.of(context)!.password,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              suffixIcon: Icon(
-                                Icons.remove_red_eye,
-                              ),
-                            ),
-                          ),
-                        ),
+                        Form(
+                            key: formState,
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  child: TextFormField(
+                                    controller: emailController,
+                                    keyboardType: TextInputType.emailAddress,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return "the field is empty";
+                                      }
+                                      if (!RegExp(
+                                              r'^[\w-]+(\.[\w-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$')
+                                          .hasMatch(value)) {
+                                        return "email format dosen't corect";
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      labelText:
+                                          AppLocalizations.of(context)!.email,
+                                      prefixIcon: Icon(Icons.email),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20.0,
+                                ),
+                                SizedBox(
+                                  child: TextFormField(
+                                    obscureText: true,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return "the field is empty";
+                                      }
+                                      if (value.length < 6) {
+                                        return "Password must be at least 6 characters long";
+                                      }
+                                      if (!RegExp(r'^(?=.*[A-Z])(?=.*\d).{8,}$')
+                                          .hasMatch(value)) {
+                                        return "password formate dosent corect ";
+                                      }
+                                      if (value.length > 16) {
+                                        return "Password must be at most 16 characters short";
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    controller: passwordController,
+                                    decoration: InputDecoration(
+                                      labelText: AppLocalizations.of(context)!
+                                          .password,
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      suffixIcon: Icon(
+                                        Icons.remove_red_eye,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -140,17 +162,19 @@ class LoginScreen extends StatelessWidget {
                           ),
                           child: MaterialButton(
                             onPressed: () {
-                              loginCubit.SignInWithEamilandPass(
-                                  emailController.text,
-                                  passwordController.text);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (_) => BlocProvider.value(
-                                        value: BlocProvider.of<LoginCubit>(
-                                            context),
-                                        child: LoginCheck()),
-                                  ));
+                              if (formState.currentState!.validate()) {
+                                loginCubit.SignInWithEamilandPass(
+                                    emailController.text,
+                                    passwordController.text);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => BlocProvider.value(
+                                          value: BlocProvider.of<LoginCubit>(
+                                              context),
+                                          child: LoginCheck()),
+                                    ));
+                              } else {}
                             },
                             child: Text(
                               AppLocalizations.of(context)!.signin,

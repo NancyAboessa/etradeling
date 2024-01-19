@@ -29,7 +29,7 @@ class CardScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border.all(width: .2, color: Colors.black),
                   image: DecorationImage(
-                    image: NetworkImage(map!["Product_Certificate"]),
+                    image: NetworkImage(map!["firstImage"]),
                   ),
                 ),
               ),

@@ -1,11 +1,10 @@
 import 'package:beamer/beamer.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:etradeling/presentation/home_screen/Bloc/stateAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../Bloc/BlocAppBar.dart';
 import '../appbar.dart';
-import 'components/Custom IconBottom.dart';
 import 'components/components.dart';
 import 'components/constants.dart';
 import 'components/customListView.dart';
@@ -20,6 +19,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     AppBarCubit cubit = AppBarCubit.get(context);
     cubit.mainCategory();
+    CarouselController carouselController = CarouselController();
     return BlocBuilder<AppBarCubit, AppBarState>(builder: (context, state) {
       return cubit.list.isEmpty
           ? const Center(
@@ -34,6 +34,58 @@ class HomeScreen extends StatelessWidget {
                     // best seller ,see all,circle avatar/ apple /
                     Column(children: [
                       const MainAppBar(),
+                      CarouselSlider(
+                        options: CarouselOptions(
+                          height: 400.0,
+                          viewportFraction: 1,
+                        ),
+                        carouselController: carouselController,
+                        items: [
+                          "https://firebasestorage.googleapis.com/v0/b/etradeling-18174.appspot.com/o/uploads%2F2024-01-13?alt=media&token=8d7e557c-d2ed-4923-ab43-b9163a0757e5",
+                          "https://firebasestorage.googleapis.com/v0/b/etradeling-18174.appspot.com/o/uploads%2F2024-01-13?alt=media&token=8d7e557c-d2ed-4923-ab43-b9163a0757e5",
+                          "https://firebasestorage.googleapis.com/v0/b/etradeling-18174.appspot.com/o/uploads%2F2024-01-13?alt=media&token=8d7e557c-d2ed-4923-ab43-b9163a0757e5",
+                        ].map((i) {
+                          return Builder(
+                            builder: (BuildContext context) {
+                              return Stack(
+                                children: [
+                                  Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: NetworkImage(i),
+                                          fit: BoxFit.cover),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 150.0, left: 20, right: 20),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            carouselController.previousPage();
+                                          },
+                                          child: Icon(Icons.arrow_back_ios),
+                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                            carouselController.nextPage();
+                                          },
+                                          child: Icon(
+                                              Icons.arrow_forward_ios_outlined),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }).toList(),
+                      ),
                       const SizedBox(
                         height: 20,
                       ),
@@ -75,7 +127,7 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                       );
                                     },
-                                    itemCount: 6,
+                                    itemCount: cubit.list.length,
                                   ),
                                 ),
                               ),

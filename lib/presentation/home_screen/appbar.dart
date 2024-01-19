@@ -14,6 +14,8 @@ import '../messages/cubit/cubit.dart';
 import '../messages/cubit/state.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../post/rfq.dart';
+
 class MainAppBar extends StatelessWidget {
   const MainAppBar({super.key});
   @override
@@ -22,7 +24,7 @@ class MainAppBar extends StatelessWidget {
     return Column(
       children: [
         AppBar(
-          backgroundColor: Colors.orange.shade500,
+          backgroundColor: Colors.orange.shade400,
           elevation: 60.0,
           automaticallyImplyLeading: false,
           title: Row(
@@ -134,7 +136,7 @@ class MainAppBar extends StatelessWidget {
                       Beamer.of(context).beamToNamed("/profile");
                     },
                     child: const Text(
-                      'shehab eldin',
+                      'profile',
                       style: TextStyle(
                         fontSize: 15.0,
                       ),
@@ -267,7 +269,7 @@ class MainAppBar extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     // loginCubit!.signupPress();
-                    context.beamToNamed("factor_oreder");
+                    context.beamToNamed("/factor_oreder");
                   },
                   child: Text(
                     "factor oreder",
@@ -280,7 +282,7 @@ class MainAppBar extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     // loginCubit!.signupPress();
-                    context.beamToNamed("factorry");
+                    context.beamToNamed("/factorry");
                   },
                   child: Text(
                     "Tender",
@@ -319,14 +321,7 @@ class MainAppBar extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     // loginCubit!.signupPress();
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => BlocProvider.value(
-                            value: BlocProvider.of<LoginCubit>(context),
-                            child: HomeScreen(),
-                          ),
-                        ));
+                    context.beamToNamed("/About_As");
                   },
                   child: Text(
                     AppLocalizations.of(context)!.aboutus,

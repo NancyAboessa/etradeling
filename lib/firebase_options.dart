@@ -44,40 +44,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBGYRHwVprAu0VBnW8YWGKxcclvBNtY9Us',
-    appId: '1:118193198129:web:043d6313ff76481d3c7110',
-    messagingSenderId: '118193198129',
-    projectId: 'etradeling-d39a0',
-    authDomain: 'etradeling-d39a0.firebaseapp.com',
-    storageBucket: 'etradeling-d39a0.appspot.com',
-    measurementId: 'G-RNF82MN68J',
+    apiKey: 'AIzaSyAFXu-Y4op_oL4Xik-kdl1FealyN7FCxog',
+    appId: '1:870687087470:web:9ae52f8f438f9318ea7f7f',
+    messagingSenderId: '870687087470',
+    projectId: 'etradeling-18174',
+    authDomain: 'etradeling-18174.firebaseapp.com',
+    storageBucket: 'etradeling-18174.appspot.com',
+    measurementId: 'G-D02S32NS8N',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBwbCI0LkPkvAkll0AeRh8_G8B7ACu_Ntg',
-    appId: '1:118193198129:android:05d1fecb5c4df7dc3c7110',
-    messagingSenderId: '118193198129',
-    projectId: 'etradeling-d39a0',
-    storageBucket: 'etradeling-d39a0.appspot.com',
+    apiKey: 'AIzaSyCbsOIp1QUmTDtF5aVt8sniQSDwSmvCu7M',
+    appId: '1:870687087470:android:12232176cd9cf8bdea7f7f',
+    messagingSenderId: '870687087470',
+    projectId: 'etradeling-18174',
+    storageBucket: 'etradeling-18174.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDsT5ydivflZZXNUWMcfxLzod7QUpkGVyI',
-    appId: '1:118193198129:ios:d1b988af14efd7a03c7110',
-    messagingSenderId: '118193198129',
-    projectId: 'etradeling-d39a0',
-    storageBucket: 'etradeling-d39a0.appspot.com',
-    iosClientId: '118193198129-3kr15huq4v9vublu25ql761to4k3cinf.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBwpct8b_j_Cp4o9XZLcJ30wP8xrrud1a0',
+    appId: '1:870687087470:ios:978eb2470b0dd56dea7f7f',
+    messagingSenderId: '870687087470',
+    projectId: 'etradeling-18174',
+    storageBucket: 'etradeling-18174.appspot.com',
     iosBundleId: 'com.example.etradeling',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDsT5ydivflZZXNUWMcfxLzod7QUpkGVyI',
-    appId: '1:118193198129:ios:d2acb940671ac8e13c7110',
-    messagingSenderId: '118193198129',
-    projectId: 'etradeling-d39a0',
-    storageBucket: 'etradeling-d39a0.appspot.com',
-    iosClientId: '118193198129-atgsfs5ktervkcalm5k7k3opejcdfue9.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBwpct8b_j_Cp4o9XZLcJ30wP8xrrud1a0',
+    appId: '1:870687087470:ios:6ff584c8551c85c0ea7f7f',
+    messagingSenderId: '870687087470',
+    projectId: 'etradeling-18174',
+    storageBucket: 'etradeling-18174.appspot.com',
     iosBundleId: 'com.example.etradeling.RunnerTests',
   );
 }

@@ -8,7 +8,7 @@ class SignUpScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
-
+  GlobalKey<FormState> formState = GlobalKey();
   SignUpScreen({super.key});
   @override
   Widget build(BuildContext context) {
@@ -64,96 +64,139 @@ class SignUpScreen extends StatelessWidget {
                     const SizedBox(
                       height: 50.0,
                     ),
-                    SizedBox(
-                      child: TextFormField(
-                        keyboardType: TextInputType.text,
-                        controller: emailController,
-                        onFieldSubmitted: (value) {
-                          // print(value);
-                        },
-                        onChanged: (value) {
-                          // print(value);
-                        },
-                        decoration: InputDecoration(
-                          labelText: AppLocalizations.of(context)!.email,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
+                    Form(
+                      key: formState,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            child: TextFormField(
+                              controller: emailController,
+                              decoration: InputDecoration(
+                                labelText: AppLocalizations.of(context)!.email,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return "the field is empty";
+                                }
+                                if (!RegExp(
+                                        r'^[\w-]+(\.[\w-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$')
+                                    .hasMatch(value)) {
+                                  return "email format dosen't corect";
+                                } else {
+                                  return null;
+                                }
+                              },
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15.0,
-                    ),
-                    const SizedBox(
-                      height: 8.0,
-                    ),
-                    SizedBox(
-                      child: TextFormField(
-                        keyboardType: TextInputType.text,
-                        controller: nameController,
-                        onFieldSubmitted: (value) {
-                          // print(value);
-                        },
-                        onChanged: (value) {
-                          // print(value);
-                        },
-                        decoration: InputDecoration(
-                          labelText: AppLocalizations.of(context)!.name,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
+                          const SizedBox(
+                            height: 15.0,
                           ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15.0,
-                    ),
-                    SizedBox(
-                      child: TextFormField(
-                        keyboardType: TextInputType.visiblePassword,
-                        obscureText: true,
-                        controller: passwordController,
-                        onFieldSubmitted: (value) {
-                          // print(value);
-                        },
-                        onChanged: (value) {
-                          // print(value);
-                        },
-                        decoration: InputDecoration(
-                          labelText: AppLocalizations.of(context)!.password,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
+                          const SizedBox(
+                            height: 8.0,
                           ),
-                          suffixIcon: Icon(
-                            Icons.remove_red_eye,
+                          SizedBox(
+                            child: TextFormField(
+                              keyboardType: TextInputType.text,
+                              controller: nameController,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return "the field is empty";
+                                }
+                                if (!RegExp(r'^[a-zA-Z0-9_]+$')
+                                    .hasMatch(value)) {
+                                  return "name dosen't corect";
+                                } else {
+                                  return null;
+                                }
+                              },
+                              decoration: InputDecoration(
+                                labelText: AppLocalizations.of(context)!.name,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15.0,
-                    ),
-                    SizedBox(
-                      child: TextFormField(
-                        keyboardType: TextInputType.visiblePassword,
-                        obscureText: true,
-                        onFieldSubmitted: (value) {
-                          // print(value);
-                        },
-                        onChanged: (value) {
-                          // print(value);
-                        },
-                        decoration: InputDecoration(
-                          labelText:
-                              AppLocalizations.of(context)!.confirm_password,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
+                          const SizedBox(
+                            height: 15.0,
                           ),
-                          suffixIcon: Icon(
-                            Icons.remove_red_eye,
+                          SizedBox(
+                            child: TextFormField(
+                              keyboardType: TextInputType.visiblePassword,
+                              obscureText: true,
+                              controller: passwordController,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return "the field is empty";
+                                }
+                                if (value.length < 6) {
+                                  return "Password must be at least 6 characters long";
+                                }
+                                if (!RegExp(r'^(?=.*[A-Z])(?=.*\d).{8,}$')
+                                    .hasMatch(value)) {
+                                  return "password formate dosent corect ";
+                                }
+                                if (value.length > 16) {
+                                  return "Password must be at most 16 characters short";
+                                } else {
+                                  return null;
+                                }
+                              },
+                              decoration: InputDecoration(
+                                labelText:
+                                    AppLocalizations.of(context)!.password,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                suffixIcon: Icon(
+                                  Icons.remove_red_eye,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
+                          const SizedBox(
+                            height: 15.0,
+                          ),
+                          SizedBox(
+                            child: TextFormField(
+                              keyboardType: TextInputType.visiblePassword,
+                              obscureText: true,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return "the field is empty";
+                                }
+                                if (value.length < 6) {
+                                  return "Password must be at least 6 characters long";
+                                }
+                                if (!RegExp(r'^(?=.*[A-Z])(?=.*\d).{8,}$')
+                                    .hasMatch(value)) {
+                                  return "password formate dosent corect ";
+                                }
+                                if (value.length > 16) {
+                                  return "Password must be at most 16 characters short";
+                                }
+                                if (value != passwordController.text) {
+                                  return "password didn't much password corect";
+                                } else {
+                                  return null;
+                                }
+                              },
+                              decoration: InputDecoration(
+                                labelText: AppLocalizations.of(context)!
+                                    .confirm_password,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                suffixIcon: Icon(
+                                  Icons.remove_red_eye,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(
@@ -172,6 +215,9 @@ class SignUpScreen extends StatelessWidget {
                               emailController.text,
                               passwordController.text,
                               nameController.text);
+
+                          // if (formState.currentState!.validate()) {
+                          // } else {}
                         },
                         child: Text(
                           AppLocalizations.of(context)!.signup,
@@ -239,6 +285,16 @@ class SignUpScreen extends StatelessWidget {
                               color: Colors.orange,
                             ),
                           ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () async {
+                            await loginCubit.signUpWithFacebook();
+                          },
+                          child: Icon(Icons.facebook, color: Colors.orange),
                         )
                       ],
                     ),
