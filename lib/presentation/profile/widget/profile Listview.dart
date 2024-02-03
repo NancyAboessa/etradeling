@@ -21,7 +21,7 @@ class Listnames extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (route == "profile" || cubit.count == 0) {
+    if (route == cubit.map["name"] || cubit.count == 0) {
       cubit.count = 0;
     }
     if (route == "masseges" || cubit.count == 3) {
@@ -65,7 +65,8 @@ class Listnames extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  cubit.Count(0, "");
+                  Beamer.of(context)
+                      .beamToNamed("/profile/${cubit.map["name"]}");
                 },
                 child: ButtomList(
                     text: Text(AppLocalizations.of(context)!.my_account),
@@ -76,7 +77,7 @@ class Listnames extends StatelessWidget {
                   icon: FontAwesomeIcons.box),
               GestureDetector(
                 onTap: () {
-                  cubit.Count(1, "");
+                  Beamer.of(context).beamToNamed("/profile/myaddres");
                 },
                 child: ButtomList(
                     text: Text(AppLocalizations.of(context)!.my_Addresses),
@@ -84,14 +85,14 @@ class Listnames extends StatelessWidget {
               ),
               InkWell(
                   onTap: () {
-                    cubit.Count(3, "");
+                    Beamer.of(context).beamToNamed("/profile/masseges");
                   },
                   child: ButtomList(
                       text: Text(AppLocalizations.of(context)!.messenger),
                       icon: FontAwesomeIcons.comment)),
               GestureDetector(
                 onTap: () {
-                  cubit.Count(2, "");
+                  Beamer.of(context).beamToNamed("/profile/request");
                 },
                 child: ButtomList(
                     text: Text(AppLocalizations.of(context)!.myRequest),
@@ -105,7 +106,7 @@ class Listnames extends StatelessWidget {
                           if (cubit.map["isVendore"] == true) {
                             context.beamToNamed("/CreatePost");
                           } else {
-                            cubit.Count(4, "");
+                            context.beamToNamed("profile/request");
                           }
                         },
                         child: Text(

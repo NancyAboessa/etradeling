@@ -81,6 +81,7 @@ class NamesCubit extends Cubit<NamesState> {
 
   Count(index, route) {
     count = index;
+
     emit(CountState());
   }
 

@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PigContainer extends StatelessWidget {
-  const PigContainer({
-    super.key,
-    required this.title
-  });
+  const PigContainer({super.key, required this.title});
   final String? title;
   @override
   Widget build(BuildContext context) {
@@ -20,7 +17,7 @@ class PigContainer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(AppLocalizations.of(context)!.we_dLoveto_helpyou),
-             Text("${title!}",
+            Text("${title!}",
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,

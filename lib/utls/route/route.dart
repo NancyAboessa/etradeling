@@ -97,15 +97,14 @@ class HomeLocation extends BeamLocation<BeamState> {
     }
     final String? profile = state.pathParameters['profile'];
     if (state.uri.pathSegments.contains('profile')) {
-      if (state.uri.pathSegments.contains('profile')) {
-        pathPatterns.add(
-          BeamPage(
-            key: ValueKey('profile/$profile'),
-            child: Profile(route: profile),
-          ),
-        );
-      }
+      pathPatterns.add(
+        BeamPage(
+          key: ValueKey('profile/$profile'),
+          child: Profile(route: profile),
+        ),
+      );
     }
+
     final String? madaname = state.pathParameters['product'];
     if (madaname != null) {
       pathPatterns.add(BeamPage(

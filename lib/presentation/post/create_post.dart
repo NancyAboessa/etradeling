@@ -3,6 +3,7 @@ import 'package:etradeling/presentation/post/widget/Quantity.dart';
 import 'package:etradeling/presentation/post/widget/counter.dart';
 import 'package:etradeling/presentation/post/widget/image_upload.dart';
 import 'package:etradeling/presentation/post/widget/image_upload_scund.dart';
+import 'package:etradeling/presentation/post/widget/lagerField.dart';
 import 'package:etradeling/presentation/post/widget/peg_container.dart';
 import 'package:etradeling/presentation/post/widget/post_button.dart';
 import 'package:etradeling/presentation/post/widget/select_category.dart';
@@ -71,12 +72,55 @@ class CreatePost extends StatelessWidget {
                                         fontWeight: FontWeight.bold,
                                         fontSize: 25,
                                       )),
-                                  Text(
-                                    AppLocalizations.of(context)!
-                                        .tell_suppliers_what_you_need_Themore,
-                                  ),
                                 ],
                               ),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 100.0, bottom: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                GestureDetector(
+                                    onTap: () {
+                                      cubit.getImageFirst();
+                                    },
+                                    child: ImageUploadFirst(
+                                        text: "ProductImage", cubit: cubit)),
+                                Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        cubit.getImageScound();
+                                      },
+                                      child: ImageUploadScound(
+                                          text: "", cubit: cubit),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        cubit.getImageScound();
+                                      },
+                                      child: ImageUploadScound(
+                                          text: "", cubit: cubit),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        cubit.getImageScound();
+                                      },
+                                      child: ImageUploadScound(
+                                          text: "", cubit: cubit),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        cubit.getImageScound();
+                                      },
+                                      child: ImageUploadScound(
+                                          text: "", cubit: cubit),
+                                    ),
+                                  ],
+                                )
+                              ],
                             ),
                           ),
                           Padding(
@@ -115,8 +159,7 @@ class CreatePost extends StatelessWidget {
                                 Expanded(
                                     flex: 1,
                                     child: MainField(
-                                        hint: "short Description",
-                                        controller: shortdescrption)),
+                                        hint: "sampils", controller: sampils)),
                                 Expanded(
                                   flex: 1,
                                   child: Padding(
@@ -140,15 +183,10 @@ class CreatePost extends StatelessWidget {
                                 Expanded(
                                   flex: 1,
                                   child: MainField(
-                                      hint: "product Description",
-                                      controller: productscrption),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: MainField(
                                       hint: "Request of shipping price",
                                       controller: requestSheping),
                                 ),
+                                Expanded(flex: 1, child: Container())
                               ],
                             ),
                           ),
@@ -180,72 +218,8 @@ class CreatePost extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(left: 80.0, right: 80.0),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                    flex: 1,
-                                    child: MainField(
-                                        hint: "Size", controller: size)),
-                                Expanded(flex: 1, child: SizedBox()),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(left: 100.0, bottom: 20),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                GestureDetector(
-                                    onTap: () {
-                                      cubit.getImageFirst();
-                                    },
-                                    child: ImageUploadFirst(
-                                        text: "Product image", cubit: cubit)),
-                                Row(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        cubit.getImageScound();
-                                      },
-                                      child: ImageUploadScound(
-                                          text: "", cubit: cubit),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        cubit.getImageScound();
-                                      },
-                                      child: ImageUploadScound(
-                                          text: "", cubit: cubit),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        cubit.getImageScound();
-                                      },
-                                      child: ImageUploadScound(
-                                          text: "", cubit: cubit),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        cubit.getImageScound();
-                                      },
-                                      child: ImageUploadScound(
-                                          text: "", cubit: cubit),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(right: 770, left: 80),
-                            child:
-                                MainField(hint: "sampils", controller: sampils),
-                          ),
+                          LargeField(
+                              hint: "Description", controller: shortdescrption),
                           Padding(
                             padding:
                                 const EdgeInsets.only(left: 250, bottom: 100),
