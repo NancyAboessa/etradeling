@@ -16,6 +16,7 @@ class PostCubit extends Cubit<PostMainState> {
   String? valSubCategory;
   String? valUnit;
   int count = 0;
+  Map<String, dynamic> map = {};
   String? firstImage;
   String? scondImage;
 
@@ -31,6 +32,21 @@ class PostCubit extends Cubit<PostMainState> {
     });
     // print(proudctlist);
     emit(PostActionState());
+  }
+
+  getData() async {
+    // if (FirebaseAuth.instance.currentUser!.uid.isNotEmpty) {
+    await FirebaseFirestore.instance
+        .collection("Profile")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get()
+        .then((value) {
+      map = value.data()!;
+      // print("${map}");
+    });
+    // getImage(map);
+    // }
+    emit(GetDataState());
   }
 
   dropDownCategory(value) {
@@ -62,6 +78,12 @@ class PostCubit extends Cubit<PostMainState> {
     await FirebaseFirestore.instance.collection("Product").add(data);
     PostAction();
     emit(PostCreate());
+  }
+
+  RQFsend(data) async {
+    await FirebaseFirestore.instance.collection("RQF").add(data);
+    PostAction();
+    emit(RQFSend());
   }
 
   getImageFirst() async {

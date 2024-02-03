@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class textField extends StatelessWidget {
-  const textField({
+class PhoneField extends StatelessWidget {
+  const PhoneField({
     required this.controller,
     required this.label,
     super.key,
@@ -15,6 +16,7 @@ class textField extends StatelessWidget {
       width: 330,
       child: TextFormField(
         controller: controller,
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         decoration: InputDecoration(
             border: OutlineInputBorder(
               borderRadius: BorderRadius.zero, // No rounded corners

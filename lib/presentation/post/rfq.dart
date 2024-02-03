@@ -3,8 +3,8 @@ import 'package:etradeling/presentation/post/widget/Quantity.dart';
 import 'package:etradeling/presentation/post/widget/counter.dart';
 import 'package:etradeling/presentation/post/widget/image_upload.dart';
 import 'package:etradeling/presentation/post/widget/image_upload_scund.dart';
+import 'package:etradeling/presentation/post/widget/lagerField.dart';
 import 'package:etradeling/presentation/post/widget/peg_container.dart';
-import 'package:etradeling/presentation/post/widget/post_button.dart';
 import 'package:etradeling/presentation/post/widget/sub_catgory.dart';
 import 'package:etradeling/utls/themes/main_field/main_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,11 +13,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/cubite.dart';
 import 'cubit/state.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'widget/RQFButton.dart';
 
 class RFQ extends StatelessWidget {
   final TextEditingController productNameController = TextEditingController();
   final TextEditingController tradeTermsController = TextEditingController();
   final TextEditingController maxBudgetController = TextEditingController();
+  final TextEditingController detailsController = TextEditingController();
+
   RFQ({super.key});
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,9 @@ class RFQ extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               MainAppBar(),
-              const PigContainer(),
+              const PigContainer(
+                title: "Submit RFQ",
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 80.0, right: 80.0),
                 child: Row(
@@ -99,6 +104,25 @@ class RFQ extends StatelessWidget {
                 ],
               ),
               Padding(
+                padding: const EdgeInsets.only(left: 80.0, right: 80.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                        flex: 1,
+                        child: MainField(
+                            hint: "phone", controller: productNameController)),
+                    Expanded(
+                        flex: 1,
+                        child: MainField(
+                            hint: "email", controller: productNameController)),
+                  ],
+                ),
+              ),
+              LargeField(
+                controller: detailsController,
+                hint: "details",
+              ),
+              Padding(
                 padding: const EdgeInsets.only(left: 100.0, bottom: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,7 +149,7 @@ class RFQ extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 250, bottom: 100),
-                child: PostButton(
+                child: RQFButton(
                   cubit: cubit,
                   data: {
                     "Product_Name": productNameController.text,
@@ -137,8 +161,9 @@ class RFQ extends StatelessWidget {
                     "Company_Certificate": cubit.scondImage,
                     "user": FirebaseAuth.instance.currentUser!.uid,
                     "ispending": false,
-                    "Catgory": "",
-                    // "Details": "",
+                    "Catgory": cubit.valSubCategory,
+                    "name": cubit.map["name"],
+                    "Details": detailsController.text,
                   },
                 ),
               ),

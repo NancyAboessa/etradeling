@@ -1,8 +1,8 @@
 import 'package:beamer/beamer.dart';
 import 'package:etradeling/presentation/Productpage/cubit/cubit.dart';
-import 'package:etradeling/presentation/home_screen/home_body/home_screen.dart';
 import 'package:etradeling/utls/themes/button/custom%20image%20Box.dart';
 import 'package:etradeling/presentation/post/widget/counter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -313,11 +313,12 @@ class Product extends StatelessWidget {
                                     InkWell(
                                       onTap: () {
                                         cubit.sendCatgory({
-                                          "user": cubit.mapProduct["user"],
+                                          "user": FirebaseAuth
+                                              .instance.currentUser!.uid,
                                           "image":
                                               cubit.mapProduct["firstImage"],
                                           "name":
-                                              cubit.mapProduct["scondImage"],
+                                              cubit.mapProduct["Product_Name"],
                                           "price": cubit.mapProduct["unit"],
                                         });
                                       },

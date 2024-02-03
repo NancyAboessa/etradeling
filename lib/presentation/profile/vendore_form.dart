@@ -16,7 +16,7 @@ class VendorForm extends StatelessWidget {
   final TextEditingController cityController = TextEditingController();
   final TextEditingController commercialRegistrationNoController =
       TextEditingController();
-
+  GlobalKey<FormState> formState = GlobalKey();
   @override
   Widget build(BuildContext context) {
     NamesCubit cubit = NamesCubit.get(context);
@@ -30,82 +30,95 @@ class VendorForm extends StatelessWidget {
               padding: const EdgeInsets.only(left: 200.0),
               child: SizedBox(
                 width: 600,
-                child: Column(
-                  children: [
-                    MainField(hint: "contry", controller: contryController),
-                    MainField(hint: "Abut As", controller: aboutAsController),
-                    MainField(
-                        hint: "factory name",
-                        controller: factoryNameController),
-                    MainField(
-                        hint: "Date of Establishment",
-                        controller: dateOfEstablishment),
-                    MainField(hint: "city", controller: cityController),
-                    MainField(
-                        hint: "Tax card number",
-                        controller: taxCardNumberController),
-                    MainField(
-                        hint: "Commercial Registration No",
-                        controller: commercialRegistrationNoController),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0, right: 410),
-                      child: Text(
-                        "Tax card number",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                child: Form(
+                  key: formState,
+                  child: Column(
+                    children: [
+                      MainField(hint: "contry", controller: contryController),
+                      MainField(hint: "Abut As", controller: aboutAsController),
+                      MainField(
+                          hint: "factory name",
+                          controller: factoryNameController),
+                      MainField(
+                          hint: "Date of Establishment",
+                          controller: dateOfEstablishment),
+                      MainField(hint: "city", controller: cityController),
+                      MainField(
+                          hint: "Tax card number",
+                          controller: taxCardNumberController),
+                      MainField(
+                          hint: "Commercial Registration No",
+                          controller: commercialRegistrationNoController),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20.0, right: 410),
+                        child: Text(
+                          "Tax card number",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0, right: 450),
-                      child: Container(
-                          height: 90,
-                          width: 90,
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(15),
-                              border: Border.all(
-                                color: Colors.black26,
-                              )),
-                          child: Container(
-                            height: 100,
-                            width: 200,
-                            alignment: Alignment.center,
-                            child: Text("+",
-                                style: TextStyle(color: Colors.black)),
-                          )),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0, right: 320),
-                      child: Text(
-                        "Commercial Registration No",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10.0, right: 450),
+                        child: Container(
+                            height: 90,
+                            width: 90,
+                            decoration: BoxDecoration(
+                                color: Colors.grey[200],
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(
+                                  color: Colors.black26,
+                                )),
+                            child: Container(
+                              height: 100,
+                              width: 200,
+                              alignment: Alignment.center,
+                              child: InkWell(
+                                onTap: () {
+                                  cubit.getImageScound();
+                                },
+                                child: Text("+",
+                                    style: TextStyle(color: Colors.black)),
+                              ),
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20.0, right: 320),
+                        child: Text(
+                          "Commercial Registration No",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0, right: 450),
-                      child: Container(
-                          height: 90,
-                          width: 90,
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(15),
-                              border: Border.all(
-                                color: Colors.black26,
-                              )),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10.0, right: 450),
+                        child: InkWell(
+                          onTap: () {
+                            cubit.getImageFirst();
+                          },
                           child: Container(
-                            height: 100,
-                            width: 200,
-                            alignment: Alignment.center,
-                            child: Text("+",
-                                style: TextStyle(color: Colors.black)),
-                          )),
-                    ),
-                  ],
+                              height: 90,
+                              width: 90,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(15),
+                                  border: Border.all(
+                                    color: Colors.black26,
+                                  )),
+                              child: Container(
+                                height: 100,
+                                width: 200,
+                                alignment: Alignment.center,
+                                child: Text("+",
+                                    style: TextStyle(color: Colors.black)),
+                              )),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -113,16 +126,21 @@ class VendorForm extends StatelessWidget {
               padding: const EdgeInsets.only(left: 350, bottom: 100, top: 40),
               child: InkWell(
                 onTap: () {
-                  cubit.vendorCubit({
-                    "contry": contryController.text,
-                    "about_as": aboutAsController.text,
-                    "taxCardNumber": taxCardNumberController.text,
-                    "factoryName": factoryNameController.text,
-                    "commercialRegistrationNo":
-                        commercialRegistrationNoController.text,
-                    "dateOfEstablishment": dateOfEstablishment.text,
-                    "city": cityController.text,
-                  });
+                  if (formState.currentState!.validate()) {
+                  } else {
+                    cubit.vendorCubit({
+                      "contry": contryController.text,
+                      "about_as": aboutAsController.text,
+                      "taxCardNumber": taxCardNumberController.text,
+                      "factoryName": factoryNameController.text,
+                      "commercialRegistrationNo":
+                          commercialRegistrationNoController.text,
+                      "dateOfEstablishment": dateOfEstablishment.text,
+                      "commercialRegistrationNoImage": cubit.firstImage,
+                      "taxCardNumberImage": cubit.scondImage,
+                      "city": cityController.text,
+                    });
+                  }
                 },
                 child: Container(
                   height: 40,

@@ -15,7 +15,6 @@ import 'presentation/messages/cubit/state.dart';
 import 'presentation/profile/cubit/names_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'utls/route/route.dart';
 
 void main() async {

@@ -16,6 +16,8 @@ class NewpassState extends LoginState {}
 
 class EmailVerifiedState extends LoginState {}
 
+class ObscureTextState extends LoginState {}
+
 class CheckState extends LoginState {}
 
 class Check1State extends LoginState {}

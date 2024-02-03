@@ -7,21 +7,22 @@ class listViewhome extends StatelessWidget {
     required this.widget,
     required this.items,
     required this.left,
-     this.hight,
-     this.width,
+    this.hight,
+    this.width,
   });
   Widget widget;
   int items;
   double left;
-  double ?hight;
-  double ?width;
+  double? hight;
+  double? width;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: left),
+    return Positioned(
+      left: left,
       child: Container(
         height: hight,
         width: width,
+        alignment: Alignment.center,
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,

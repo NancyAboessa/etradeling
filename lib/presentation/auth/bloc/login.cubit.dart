@@ -13,7 +13,12 @@ class LoginCubit extends Cubit<LoginState> {
   String? a;
   String? b;
   String? c;
+  bool obscureText = true;
   List list = [];
+  String emilv = "";
+  String emaile = "";
+  String passe = "";
+  // bool valedCheck = false;
   //       emailVerified=  await FirebaseAuth.instance.currentUser!.emailVerified;
   emailVerifiedCubit() async {
     emailVerified = await FirebaseAuth.instance.currentUser!.emailVerified;
@@ -25,6 +30,11 @@ class LoginCubit extends Cubit<LoginState> {
     emit(UserDataState());
   }
 
+  obscureTextCubit() {
+    obscureText = !obscureText;
+    emit(ObscureTextState());
+  }
+
   loginPress() {
     print('login now');
   }
@@ -33,18 +43,30 @@ class LoginCubit extends Cubit<LoginState> {
     print('sign up now');
   }
 
-  NewPassword() {
-    print('new pass now');
-    //  emit(NewpassState());
+  NewPassword(email) {
+    FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    emit(NewpassState());
   }
 
   SignInWithEamilandPass(email, pass) async {
     print(email);
     print(pass);
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: email,
-      password: pass,
-    );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: pass,
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      }
+      if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+      emaile = "user not found";
+      passe = "Wrong password provided for that user";
+      print(e.code);
+    }
 
     emit(SuccessState());
   }
@@ -53,6 +75,7 @@ class LoginCubit extends Cubit<LoginState> {
     await FirebaseFirestore.instance.collection("Profile").doc(uid).set({
       "email": email,
       "name": name,
+      "isVendore": false,
     });
     await FirebaseFirestore.instance
         .collection("Profile")
@@ -69,7 +92,10 @@ class LoginCubit extends Cubit<LoginState> {
         sendData(value.user!.uid, email, name);
       });
       await FirebaseAuth.instance.currentUser!.sendEmailVerification();
-    } on Exception catch (e) {
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'email-already-in-use') {
+        emilv = "email already exist";
+      }
       log(e as String);
     }
     emit(SignUpState());

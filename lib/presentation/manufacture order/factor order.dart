@@ -16,34 +16,35 @@ class FactorOreder extends StatelessWidget {
     cubit.getAll();
     return BlocBuilder<FactoryCubit, MainFactoryState>(
         builder: (context, state) {
-          return Scaffold(
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const MainAppBar(),
-                  Container(
-                    constraints: BoxConstraints(maxHeight: 650.0, minHeight: 200),
-                    child: ListView.builder(
-                        itemCount: cubit.orderList.length,
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return InkWell(
-                              onTap: () {
-                                context.beamToNamed("/Request_of_quotation");
-                              },
-                              child: UserList(
-                                text: cubit.orderList[index]["text"],
-                                userName: "",
-                                title: cubit.orderList[index]["title"],
-                              ));
-                        }),
-                  ),
-                  FooterScreen(),
-                ],
+      return Scaffold(
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              const MainAppBar(),
+              Container(
+                constraints: BoxConstraints(maxHeight: 650.0, minHeight: 200),
+                child: ListView.builder(
+                    itemCount: cubit.orderList.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                          onTap: () {
+                            context.beamToNamed(
+                                "/Request_of_quotation/${cubit.userId[index]}");
+                          },
+                          child: UserList(
+                            text: cubit.orderList[index]["Details"],
+                            userName: cubit.orderList[index]["name"],
+                            title: cubit.orderList[index]["Product_Name"],
+                          ));
+                    }),
               ),
-            ),
-          );
-        });
+              FooterScreen(),
+            ],
+          ),
+        ),
+      );
+    });
   }
 }

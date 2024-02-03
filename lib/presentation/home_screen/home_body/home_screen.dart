@@ -8,7 +8,6 @@ import '../appbar.dart';
 import 'components/components.dart';
 import 'components/constants.dart';
 import 'components/customListView.dart';
-import 'components/custom_orange_button.dart';
 import 'components/footer.dart';
 import 'components/imageWithText.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -106,7 +105,7 @@ class HomeScreen extends StatelessWidget {
                             : Padding(
                                 padding: const EdgeInsets.only(left: 100),
                                 child: SizedBox(
-                                  height: 700,
+                                  height: 350 * cubit.list.length / 3,
                                   width: 1000,
                                   child: GridView.builder(
                                     gridDelegate:
@@ -134,136 +133,44 @@ class HomeScreen extends StatelessWidget {
                         const SizedBox(
                           height: 30.0,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            // Stack(
-                            //   children: [
-                            //     imageBox(hight: 150, width: 400),
-                            //     Padding(
-                            //       padding: EdgeInsets.only(top: 30, left: 30),
-                            //       child: Text(
-                            //         AppLocalizations.of(context)!
-                            //             .requestforQuotation,
-                            //         style: TextStyle(
-                            //             fontWeight: FontWeight.bold,
-                            //             color: Colors.black,
-                            //             fontSize: 20),
-                            //       ),
-                            //     ),
-                            //     SizedBox(
-                            //       height: 15,
-                            //     ),
-                            //     Padding(
-                            //       padding: EdgeInsets.only(top: 70, left: 30),
-                            //       child: Text(
-                            //         AppLocalizations.of(context)!
-                            //             .tellSupplierswhatyouneed,
-                            //         style: TextStyle(
-                            //             color: Colors.black, fontSize: 20),
-                            //       ),
-                            //     ),
-                            //     const SizedBox(
-                            //       height: 10,
-                            //     ),
-                            //     Padding(
-                            //       padding:
-                            //           const EdgeInsets.only(top: 110, left: 30),
-                            //       child: CustomOrangeBottom(
-                            //           text: AppLocalizations.of(context)!
-                            //               .createpost,
-                            //           width: 100),
-                            //     )
-                            //   ],
-                            // ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            // Stack(
-                            //   children: [
-                            //     imageBox(hight: 150, width: 400),
-                            //     Padding(
-                            //       padding: EdgeInsets.only(top: 30, left: 30),
-                            //       child: Text(
-                            //         AppLocalizations.of(context)!.becomeavendor,
-                            //         style: TextStyle(
-                            //             fontWeight: FontWeight.bold,
-                            //             color: Colors.black,
-                            //             fontSize: 20),
-                            //       ),
-                            //     ),
-                            //     const SizedBox(
-                            //       height: 15,
-                            //     ),
-                            //     Padding(
-                            //       padding: EdgeInsets.only(top: 70, left: 30),
-                            //       child: Text(
-                            //         AppLocalizations.of(context)!
-                            //             .andReachyourtargetcustomers,
-                            //         style: TextStyle(
-                            //             color: Colors.black, fontSize: 20),
-                            //       ),
-                            //     ),
-                            //     const SizedBox(
-                            //       height: 10,
-                            //     ),
-                            //     Padding(
-                            //       padding:
-                            //           const EdgeInsets.only(top: 110, left: 30),
-                            //       child: CustomOrangeBottom(
-                            //         text:
-                            //             AppLocalizations.of(context)!.siguupnow,
-                            //         width: 110,
-                            //       ),
-                            //     )
-                            //   ],
-                            // ),
-                          ],
-                        ),
-                        // explore caregore
-                        Container(
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.zero),
-                          ),
-                        ),
                         //apple
-                        Column(
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.bestSeller,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 40.0,
-                                color: Colors.black,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 50,
-                            ),
-                            CustomOrangeBottom(
-                              text: AppLocalizations.of(context)!.see_all,
-                              width: 70,
-                            ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            const SizedBox(
-                              width: 300.0,
-                            ),
-                            Text("the catgory is empty"),
-                            // listViewhome(
-                            //   widget: const customContainerWithCircleAvIcon(),
-                            //   items: 6,
-                            //   left: 0,
-                            //   hight: 600,
-                            //   width: 870,
-                            // ),
-                          ],
-                        ),
+                        // Column(
+                        //   children: [
+                        //     Text(
+                        //       AppLocalizations.of(context)!.bestSeller,
+                        //       style: TextStyle(
+                        //         fontWeight: FontWeight.bold,
+                        //         fontSize: 40.0,
+                        //         color: Colors.black,
+                        //       ),
+                        //     ),
+                        //     const SizedBox(
+                        //       height: 50,
+                        //     ),
+                        //     CustomOrangeBottom(
+                        //       text: AppLocalizations.of(context)!.see_all,
+                        //       width: 70,
+                        //     ),
+                        //     const SizedBox(
+                        //       height: 30,
+                        //     ),
+                        //   ],
+                        // ),
+                        // Row(
+                        //   children: [
+                        //     const SizedBox(
+                        //       width: 300.0,
+                        //     ),
+                        //     Text("the catgory is empty"),
+                        //     // listViewhome(
+                        //     //   widget: const customContainerWithCircleAvIcon(),
+                        //     //   items: 6,
+                        //     //   left: 0,
+                        //     //   hight: 600,
+                        //     //   width: 870,
+                        //     // ),
+                        //   ],
+                        // ),
                         const SizedBox(
                           height: 100.0,
                         ),
@@ -308,9 +215,9 @@ class HomeScreen extends StatelessWidget {
                                   ],
                                 ),
                                 //Icons
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 300, top: 20),
+                                Positioned(
+                                  left: 300,
+                                  top: 180,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
@@ -346,14 +253,16 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            Stack(
+
+                            Column(
                               children: [
                                 const SizedBox(
                                   width: double.infinity,
-                                  height: 200,
+                                  height: 100,
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 700, top: 50),
+                                Positioned(
+                                  left: 700,
+                                  top: 50,
                                   child: Text(
                                     AppLocalizations.of(context)!.our_partners,
                                     style: TextStyle(
@@ -362,13 +271,12 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 150, left: 300),
-                                  child: Column(
-                                    children: [
-                                      Column(children: [
-                                        listViewhome(
+                                SizedBox(height: 100),
+                                Column(
+                                  children: [
+                                    Column(children: [
+                                      Center(
+                                        child: listViewhome(
                                           widget: iconwithTextOnly(
                                             text: 'Labore',
                                           ),
@@ -377,9 +285,9 @@ class HomeScreen extends StatelessWidget {
                                           hight: 400,
                                           width: 600,
                                         ),
-                                      ]),
-                                    ],
-                                  ),
+                                      ),
+                                    ]),
+                                  ],
                                 ),
                               ],
                             ),

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,8 +11,11 @@ import 'state.dart';
 class CubitMessages extends Cubit<MainMessagesState> {
   static CubitMessages get(context) => BlocProvider.of(context);
   CubitMessages() : super(MessagesInit());
+  Map<String, dynamic> map = {};
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   List? _listUsers;
+  String? valProf;
+  String name = "";
   Locale lang = const Locale("en");
   listUser() async {
     emit(EmptyMessegeState());
@@ -22,6 +26,22 @@ class CubitMessages extends Cubit<MainMessagesState> {
       });
     });
     emit(ListUser());
+  }
+
+  getData() async {
+    // if (FirebaseAuth.instance.currentUser!.uid.isNotEmpty) {
+    await FirebaseFirestore.instance
+        .collection("Profile")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get()
+        .then((value) {
+      map = value.data()!;
+      name = map["name"];
+      print("${name}");
+    });
+    // getImage(map);
+    // }
+    emit(getDataState());
   }
 
   chatUser(id) async {
@@ -50,5 +70,10 @@ class CubitMessages extends Cubit<MainMessagesState> {
     print(lang);
     emit(LangState());
     print(lang);
+  }
+
+  dropDownProf(value) {
+    valProf = value;
+    emit(DropDownProf());
   }
 }

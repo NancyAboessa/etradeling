@@ -1,3 +1,4 @@
+import 'package:etradeling/presentation/profile/widget/date_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -6,15 +7,28 @@ import '../../utls/themes/button/MaterialButtom.dart';
 import 'cubit/names_cubit.dart';
 import 'cubit/names_state.dart';
 import 'widget/CustomTextField.dart';
+import 'widget/phone_field.dart';
 import 'widget/profile_button.dart';
 
 class VendorProfile extends StatelessWidget {
   const VendorProfile({super.key});
-
   @override
   Widget build(BuildContext context) {
     final TextEditingController phoneNumberController = TextEditingController();
     final TextEditingController textController = TextEditingController();
+    final TextEditingController contryController = TextEditingController();
+    final TextEditingController aboutAsController = TextEditingController();
+    final TextEditingController taxCardNumberController =
+        TextEditingController();
+    final TextEditingController factoryNameController = TextEditingController();
+    final TextEditingController dateOfEstablishment = TextEditingController();
+    final TextEditingController cityController = TextEditingController();
+    final TextEditingController faceBookController = TextEditingController();
+    final TextEditingController InstgramController = TextEditingController();
+    final TextEditingController tweterController = TextEditingController();
+
+    final TextEditingController commercialRegistrationNoController =
+        TextEditingController();
     NamesCubit cubit = NamesCubit.get(context);
     cubit.getData();
     return BlocBuilder<NamesCubit, NamesState>(builder: (context, state) {
@@ -152,7 +166,7 @@ class VendorProfile extends StatelessWidget {
                                       .phone_number),
                                   FocusScope(
                                     node: FocusScopeNode(),
-                                    child: textField(
+                                    child: PhoneField(
                                       controller: phoneNumberController,
                                       label: cubit.map["phone"] != null &&
                                               cubit.map.isNotEmpty
@@ -174,7 +188,7 @@ class VendorProfile extends StatelessWidget {
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
-                                      controller: textController,
+                                      controller: aboutAsController,
                                       label: cubit.map["about_as"] != null &&
                                               cubit.map.isNotEmpty
                                           ? cubit.map["about_as"]
@@ -193,7 +207,7 @@ class VendorProfile extends StatelessWidget {
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
-                                      controller: phoneNumberController,
+                                      controller: cityController,
                                       label: cubit.map["city"] != null &&
                                               cubit.map.isNotEmpty
                                           ? cubit.map["city"]
@@ -214,7 +228,8 @@ class VendorProfile extends StatelessWidget {
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
-                                      controller: textController,
+                                      controller:
+                                          commercialRegistrationNoController,
                                       label:
                                           cubit.map["commercialRegistrationNo"] !=
                                                       null &&
@@ -236,7 +251,7 @@ class VendorProfile extends StatelessWidget {
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
-                                      controller: phoneNumberController,
+                                      controller: contryController,
                                       label: cubit.map["contry"] != null &&
                                               cubit.map.isNotEmpty
                                           ? cubit.map["contry"]
@@ -256,8 +271,8 @@ class VendorProfile extends StatelessWidget {
                                   Text("dateOfEstablishment"),
                                   FocusScope(
                                     node: FocusScopeNode(),
-                                    child: textField(
-                                      controller: textController,
+                                    child: TextFieldDate(
+                                      controller: dateOfEstablishment,
                                       label: cubit.map["dateOfEstablishment"] !=
                                                   null &&
                                               cubit.map.isNotEmpty
@@ -277,7 +292,7 @@ class VendorProfile extends StatelessWidget {
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
-                                      controller: phoneNumberController,
+                                      controller: factoryNameController,
                                       label: cubit.map["factoryName"] != null &&
                                               cubit.map.isNotEmpty
                                           ? cubit.map["factoryName"]
@@ -294,11 +309,11 @@ class VendorProfile extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(AppLocalizations.of(context)!.name),
+                                  const Text("taxCardNumber"),
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
-                                      controller: textController,
+                                      controller: taxCardNumberController,
                                       label:
                                           cubit.map["taxCardNumber"] != null &&
                                                   cubit.map.isNotEmpty
@@ -311,9 +326,70 @@ class VendorProfile extends StatelessWidget {
                               const SizedBox(
                                 width: 20,
                               ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text("facebook"),
+                                  FocusScope(
+                                    node: FocusScopeNode(),
+                                    child: textField(
+                                      controller: faceBookController,
+                                      label: cubit.map["facebook"] != null &&
+                                              cubit.map.isNotEmpty
+                                          ? cubit.map["facebook"]
+                                          : "facebook",
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
                             ],
                           ),
-
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text("instgram"),
+                                  FocusScope(
+                                    node: FocusScopeNode(),
+                                    child: textField(
+                                      controller: InstgramController,
+                                      label: cubit.map["instgram"] != null &&
+                                              cubit.map.isNotEmpty
+                                          ? cubit.map["instgram"]
+                                          : "instgram",
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text("tweter"),
+                                  FocusScope(
+                                    node: FocusScopeNode(),
+                                    child: textField(
+                                      controller: tweterController,
+                                      label: cubit.map["tweter"] != null &&
+                                              cubit.map.isNotEmpty
+                                          ? cubit.map["tweter"]
+                                          : "tweter",
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                            ],
+                          ),
                           const SizedBox(
                             height: 20,
                           ),
@@ -321,7 +397,9 @@ class VendorProfile extends StatelessWidget {
                             onTap: () {
                               cubit.sendData({
                                 "name": textController.text,
-                                "phone": phoneNumberController.text,
+                                "facebook": faceBookController.text,
+                                "instgrame": InstgramController.text,
+                                "tweter": tweterController.text,
                               });
                             },
                             child: ProfileButton(
@@ -350,10 +428,26 @@ class VendorProfile extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          CustomMaterialButtom(
-                            text: AppLocalizations.of(context)!.changePassword,
-                            color: Colors.black,
-                            coolor: Colors.white,
+                          InkWell(
+                            onTap: () {
+                              cubit.NewPassword();
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: const Text('please check your e-mail'),
+                                action: SnackBarAction(
+                                  label: 'Action',
+                                  onPressed: () {
+                                    // Code to execute.
+                                  },
+                                ),
+                              ));
+                            },
+                            child: CustomMaterialButtom(
+                              text:
+                                  AppLocalizations.of(context)!.changePassword,
+                              color: Colors.black,
+                              coolor: Colors.white,
+                            ),
                           ),
                         ],
                       ),

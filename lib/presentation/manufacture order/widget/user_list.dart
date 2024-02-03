@@ -33,14 +33,14 @@ class UserList extends StatelessWidget {
                 const SizedBox(
                   height: 5,
                 ),
-                const Row(
+                Row(
                   children: [
-                    Icon(Icons.person),
-                    SizedBox(
+                    const Icon(Icons.person),
+                    const SizedBox(
                       width: 5,
                     ),
-                    Text('Ahmed'),
-                    SizedBox(
+                    Text(userName),
+                    const SizedBox(
                       width: 10,
                     ),
                     Icon(Icons.timelapse),

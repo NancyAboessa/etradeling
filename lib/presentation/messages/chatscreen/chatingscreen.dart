@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../profile/cubit/names_cubit.dart';
 import 'chatbubble.dart';
@@ -27,9 +28,19 @@ class Chating extends StatelessWidget {
             child: ListView.builder(
                 itemCount: cubit.listmaseges.length,
                 itemBuilder: (context, index) {
-                  return ChatBubble(
-                    massege: cubit.listmaseges[index]["messages"],
-                  );
+                  return cubit.listmaseges[index]["sender"] ==
+                          FirebaseAuth.instance.currentUser!.uid
+                      ? Padding(
+                          padding: const EdgeInsets.only(left: 350.0),
+                          child: ChatBubble(
+                            massege: cubit.listmaseges[index]["messages"],
+                            color: Colors.orange,
+                          ),
+                        )
+                      : ChatBubble(
+                          massege: cubit.listmaseges[index]["messages"],
+                          color: Colors.grey,
+                        );
                 }),
           ),
           Expanded(

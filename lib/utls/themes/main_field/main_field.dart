@@ -21,8 +21,14 @@ class MainField extends StatelessWidget {
             height: 20,
           ),
           SizedBox(
-            height: 50,
-            child: TextField(
+            height: 100,
+            child: TextFormField(
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return "the field is empty";
+                }
+                return null;
+              },
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: hint!,

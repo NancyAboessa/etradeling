@@ -4,8 +4,8 @@ import '../home_screen/appbar.dart';
 import '../home_screen/home_body/components/footer.dart';
 
 class DisplayFactory extends StatelessWidget {
-  const DisplayFactory({super.key});
-
+  final Map<String, dynamic> map;
+  const DisplayFactory({super.key, required this.map});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,7 +35,7 @@ class DisplayFactory extends StatelessWidget {
                     SizedBox(
                       width: 5,
                     ),
-                    Text('Ahmed'),
+                    Text(map["name"]),
                     SizedBox(
                       width: 10,
                     ),
@@ -52,7 +52,7 @@ class DisplayFactory extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'I want to know if this t-Shirt costs 20 dolor or more or less',
+                      map["commint"],
                       style: TextStyle(
                         fontSize: 15,
                       ),

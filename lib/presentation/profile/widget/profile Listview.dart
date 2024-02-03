@@ -1,20 +1,42 @@
+import 'package:beamer/beamer.dart';
 import 'package:etradeling/presentation/profile/cubit/names_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../messages/componants/chatbodycard.dart';
-import '../../messages/cubit/cubit.dart';
 import 'buttoms1.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Listnames extends StatelessWidget {
-  Listnames({super.key, required this.cubit});
+  Listnames({
+    super.key,
+    required this.cubit,
+    required this.vandore,
+    required this.route,
+  });
+  String? route;
   NamesCubit cubit;
+  bool? vandore;
   // required this.namesCubit, this.input
   // List<ListModel>? namesCubit;
   // int? input;
+
   @override
   Widget build(BuildContext context) {
+    if (route == "profile" || cubit.count == 0) {
+      cubit.count = 0;
+    }
+    if (route == "masseges" || cubit.count == 3) {
+      cubit.count = 3;
+    }
+    if (route == "request" || cubit.count == 2) {
+      cubit.count = 2;
+    }
+    if (route == "myaddres" || cubit.count == 1) {
+      cubit.count = 1;
+    }
+    // if (route == "create") {
+    //   cubit.count = 5;
+    // }
+
     return Padding(
       padding: const EdgeInsets.only(left: 150, top: 80, right: 100),
       child: Container(
@@ -43,7 +65,7 @@ class Listnames extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  cubit.Count(0);
+                  cubit.Count(0, "");
                 },
                 child: ButtomList(
                     text: Text(AppLocalizations.of(context)!.my_account),
@@ -54,7 +76,7 @@ class Listnames extends StatelessWidget {
                   icon: FontAwesomeIcons.box),
               GestureDetector(
                 onTap: () {
-                  cubit.Count(1);
+                  cubit.Count(1, "");
                 },
                 child: ButtomList(
                     text: Text(AppLocalizations.of(context)!.my_Addresses),
@@ -62,14 +84,14 @@ class Listnames extends StatelessWidget {
               ),
               InkWell(
                   onTap: () {
-                    cubit.Count(3);
+                    cubit.Count(3, "");
                   },
                   child: ButtomList(
                       text: Text(AppLocalizations.of(context)!.messenger),
                       icon: FontAwesomeIcons.comment)),
               GestureDetector(
                 onTap: () {
-                  cubit.Count(2);
+                  cubit.Count(2, "");
                 },
                 child: ButtomList(
                     text: Text(AppLocalizations.of(context)!.myRequest),
@@ -80,11 +102,17 @@ class Listnames extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () {
-                          cubit.Count(4);
+                          if (cubit.map["isVendore"] == true) {
+                            context.beamToNamed("/CreatePost");
+                          } else {
+                            cubit.Count(4, "");
+                          }
                         },
                         child: Text(
-                          AppLocalizations.of(context)!
-                              .become_vendor_create_account,
+                          vandore! == true
+                              ? "create post"
+                              : AppLocalizations.of(context)!
+                                  .become_vendor_create_account,
                         ),
                       ),
                       Divider(
@@ -94,9 +122,15 @@ class Listnames extends StatelessWidget {
                     ],
                   ),
                   icon: FontAwesomeIcons.newspaper),
-              ButtomList(
-                  text: Text(AppLocalizations.of(context)!.logOut),
-                  icon: FontAwesomeIcons.angleRight),
+              InkWell(
+                onTap: () {
+                  context.beamToNamed("/login");
+                  cubit.logOut();
+                },
+                child: ButtomList(
+                    text: Text(AppLocalizations.of(context)!.logOut),
+                    icon: FontAwesomeIcons.angleRight),
+              ),
             ],
           ),
         ),

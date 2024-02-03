@@ -6,9 +6,17 @@ class CountState extends NamesState {}
 
 class colorchange extends NamesState {}
 
+class NewpassState extends NamesState {}
+
 class getnammesState extends NamesState {}
 
+class LogeOutState extends NamesState {}
+
 class SetDataProfileState extends NamesState {}
+
+class GetImageStateScound extends NamesState {}
+
+class GetImageStateFirst extends NamesState {}
 
 class getDataState extends NamesState {}
 
@@ -53,3 +61,5 @@ class EmptyRequestListTrueState extends NamesState {}
 class AddList extends NamesState {}
 
 class VendorState extends NamesState {}
+
+class RequestColorTop extends NamesState {}

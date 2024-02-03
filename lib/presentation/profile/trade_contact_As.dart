@@ -1,13 +1,16 @@
 import 'package:beamer/beamer.dart';
-import 'package:etradeling/presentation/home_screen/home_body/components/footer.dart';
+import 'package:etradeling/presentation/profile/cubit/names_cubit.dart';
+import 'package:etradeling/presentation/profile/cubit/names_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../home_screen/appbar.dart';
-import 'cubit/names_cubit.dart';
-import 'cubit/names_state.dart';
+import '../home_screen/home_body/components/footer.dart';
 
-class TradeProfile extends StatelessWidget {
-  const TradeProfile({super.key, required this.tradeProfile});
+class TradeContactAs extends StatelessWidget {
+  const TradeContactAs({
+    super.key,
+    required this.tradeProfile,
+  });
   final String? tradeProfile;
   @override
   Widget build(BuildContext context) {
@@ -163,92 +166,34 @@ class TradeProfile extends StatelessWidget {
                                 padding:
                                     const EdgeInsets.only(top: 20, bottom: 40),
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 20.0),
-                                      child: Text("About",
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          )),
+                                    Row(
+                                      children: [
+                                        const Text("facebook:"),
+                                        cubit.map["facebook"] != null
+                                            ? Text("${cubit.map["facebook"]}")
+                                            : Text(""),
+                                      ],
                                     ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 20.0),
-                                      child: Row(children: [
-                                        Text("Business Type",
-                                            style: TextStyle(
-                                              fontSize: 20,
-                                            )),
-                                        SizedBox(width: 50),
-                                        Text("busnes servece",
-                                            style: TextStyle(
-                                              fontSize: 20,
-                                            )),
-                                      ]),
+                                    Row(
+                                      children: [
+                                        const Text("instgram:"),
+                                        cubit.map["instgram"] != null
+                                            ? Text("${cubit.map["instgram"]}")
+                                            : Text(""),
+                                      ],
                                     ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 20.0),
-                                      child: Row(
-                                        children: [
-                                          Text("Year Established",
-                                              style: TextStyle(
-                                                fontSize: 20,
-                                              )),
-                                          SizedBox(width: 50),
-                                          Text(
-                                              cubit.map["dateOfEstablishment"] !=
-                                                          null ||
-                                                      cubit.map.isEmpty
-                                                  ? cubit.map[
-                                                      "dateOfEstablishment"]
-                                                  : "",
-                                              style: TextStyle(
-                                                fontSize: 20,
-                                              )),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 20.0),
-                                      child: Row(
-                                        children: [
-                                          Text("Product Certification",
-                                              style: TextStyle(
-                                                fontSize: 20,
-                                              )),
-                                          SizedBox(width: 50),
-                                          Text("",
-                                              style: TextStyle(
-                                                fontSize: 20,
-                                              )),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 20.0),
-                                      child: Row(
-                                        children: [
-                                          Text("Trademarks",
-                                              style: TextStyle(
-                                                fontSize: 20,
-                                              )),
-                                          SizedBox(width: 50),
-                                          Text("",
-                                              style: TextStyle(
-                                                fontSize: 20,
-                                              )),
-                                        ],
-                                      ),
+                                    Row(
+                                      children: [
+                                        const Text("twiter:"),
+                                        cubit.map["twiter"] != null
+                                            ? Text("${cubit.map["twiter"]}")
+                                            : Text(""),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ),
+                              )
                             ],
                           ),
                           Padding(
@@ -284,7 +229,7 @@ class TradeProfile extends StatelessWidget {
                       width: 20,
                       height: 50,
                     ),
-                    const FooterScreen(),
+                    FooterScreen(),
                   ],
                 ),
               ),
@@ -292,3 +237,24 @@ class TradeProfile extends StatelessWidget {
     });
   }
 }
+// Column(
+// children: [
+// Row(
+// children: [
+// const Text("facebook:"),
+// Text("${cubit.map["facebook"]}"),
+// ],
+// ),
+// Row(
+// children: [
+// const Text("instgram"),
+// Text("${cubit.map["instgram"]}"),
+// ],
+// ),
+// Row(
+// children: [
+// const Text("twiter"),
+// Text("${cubit.map["twiter"]}"),
+// ],
+// ),
+// ],

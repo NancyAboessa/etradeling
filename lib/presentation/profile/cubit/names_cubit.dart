@@ -15,8 +15,9 @@ class NamesCubit extends Cubit<NamesState> {
   NamesCubit() : super(NamesInitial());
   static NamesCubit get(context) => BlocProvider.of(context);
   bool _hasBeenPressed = false;
-  final storage = FirebaseStorage.instance;
+  String? firstImage;
   String? scondImage;
+  final storage = FirebaseStorage.instance;
   String? getimage;
   String? id;
   Map<String, dynamic> map = {};
@@ -32,6 +33,13 @@ class NamesCubit extends Cubit<NamesState> {
   List listRequestTrue = [];
   List mainListRequest = [];
   int listIndex = 0;
+  int requestIndex = 1;
+  NewPassword() async {
+    String? x = await FirebaseAuth.instance.currentUser!.email;
+    FirebaseAuth.instance.sendPasswordResetEmail(email: x!);
+    emit(NewpassState());
+  }
+
   List<ListModel> names = [
     ListModel(Name: 'My Account'),
     ListModel(Name: 'My Orders'),
@@ -44,6 +52,11 @@ class NamesCubit extends Cubit<NamesState> {
   getnameCubit(names) {
     ListModel(Name: names);
     emit(getnammesState());
+  }
+
+  logOut() async {
+    await FirebaseAuth.instance.signOut();
+    emit(LogeOutState());
   }
 
   getcolor() {
@@ -66,7 +79,7 @@ class NamesCubit extends Cubit<NamesState> {
     emit(GetDataState());
   }
 
-  Count(index) {
+  Count(index, route) {
     count = index;
     emit(CountState());
   }
@@ -109,10 +122,47 @@ class NamesCubit extends Cubit<NamesState> {
     emit(getDataState());
   }
 
+  getImageScound() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['jpg', 'pdf', 'doc'],
+    );
+    if (result != null) {
+      Uint8List? fileBytes = result.files.first.bytes;
+      String fileName = result.files.first.name;
+      // Upload file
+      await FirebaseStorage.instance
+          .ref('uploads/$fileName')
+          .putData(fileBytes!);
+      scondImage = await FirebaseStorage.instance
+          .ref('uploads/$fileName')
+          .getDownloadURL();
+      emit(GetImageStateScound());
+    }
+  }
+
+  getImageFirst() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['jpg', 'pdf', 'doc'],
+    );
+    if (result != null) {
+      Uint8List? fileBytes = result.files.first.bytes;
+      String fileName = result.files.first.name;
+      await FirebaseStorage.instance
+          .ref('uploads/$fileName')
+          .putData(fileBytes!);
+      firstImage = await FirebaseStorage.instance
+          .ref('uploads/$fileName')
+          .getDownloadURL();
+      emit(GetImageStateFirst());
+    }
+  }
+
   getTradeData(id) async {
     if (id != null) {
       await FirebaseFirestore.instance
-          .collection("Vendor")
+          .collection("Profile")
           .doc(FirebaseAuth.instance.currentUser!.uid)
           .get()
           .then((value) {
@@ -184,21 +234,31 @@ class NamesCubit extends Cubit<NamesState> {
 
   createRomeCubit(tradeProfile) async {
     // print(data);
-    await FirebaseFirestore.instance
+    FirebaseFirestore.instance
         .collection("Profile")
-        .where("user_id", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .doc(tradeProfile)
         .get()
         .then((value) {
-      myProf = value.docs[0].id;
+      id = value.data()!["name"];
     });
     FirebaseFirestore.instance
         .collection("Profile")
-        .doc(myProf!)
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection("MessagesList")
         .doc(tradeProfile)
         .set({
+      "name": id,
+      "receiver": map["name"],
+      "sender": FirebaseAuth.instance.currentUser!.uid,
+    });
+    FirebaseFirestore.instance
+        .collection("Profile")
+        .doc(tradeProfile)
+        .collection("MessagesList")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .set({
       "name": map["name"],
-      "receiver": tradeProfile,
+      "receiver": id,
       "sender": FirebaseAuth.instance.currentUser!.uid,
     });
 
@@ -209,7 +269,7 @@ class NamesCubit extends Cubit<NamesState> {
     // print(data);
     await FirebaseFirestore.instance
         .collection("Profile")
-        .doc(id)
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection("MessagesList")
         .get()
         .then((value) {
@@ -236,24 +296,28 @@ class NamesCubit extends Cubit<NamesState> {
     String? recverid;
     await FirebaseFirestore.instance
         .collection("Profile")
-        .where("user_id", isEqualTo: recver)
+        .doc(recver)
         .get()
         .then((value) {
-      recverid = value.docs[0].id;
+      recverid = value.id;
     });
 
     FirebaseFirestore.instance
         .collection("Profile")
-        .doc(id)
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection("MessagesList")
         .doc(recver)
         .collection("Messages")
-        .add({"messages": massege});
+        .add({
+      "receiver": recver,
+      "messages": massege,
+      "sender": FirebaseAuth.instance.currentUser!.uid
+    });
     FirebaseFirestore.instance
         .collection("Profile")
         .doc(recverid!)
         .collection("MessagesList")
-        .doc(id)
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection("Messages")
         .add({
       "receiver": recver,
@@ -269,7 +333,7 @@ class NamesCubit extends Cubit<NamesState> {
 
     FirebaseFirestore.instance
         .collection("Profile")
-        .doc(id)
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection("MessagesList")
         .doc(recver)
         .collection("Messages")
@@ -286,13 +350,13 @@ class NamesCubit extends Cubit<NamesState> {
 
   requestList() async {
     emit(EmptyRequestListState());
+    listRequest = [];
     await FirebaseFirestore.instance
         .collection("Product")
         .where("user", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
         .get()
         .then((value) {
       value.docs.forEach((element) {
-        listRequest = [];
         if (element.data()["ispending"] == false) {
           listRequest.add(element.data());
         }
@@ -304,10 +368,21 @@ class NamesCubit extends Cubit<NamesState> {
 
   vendorCubit(data) async {
     await FirebaseFirestore.instance
-        .collection("Vendor")
+        .collection("Profile")
         .doc(FirebaseAuth.instance.currentUser!.uid)
-        .set(data);
+        .update(data);
     emit(VendorState());
+  }
+
+  requestColorTop(index) async {
+    requestIndex = index;
+    print(requestIndex);
+    if (requestIndex == 3) {
+      requestListTrue();
+    } else {
+      requestList();
+    }
+    emit(RequestColorTop());
   }
 
   requestListTrue() async {
@@ -324,8 +399,6 @@ class NamesCubit extends Cubit<NamesState> {
         }
       });
     });
-    print(listRequest);
-    print("x");
     emit(RequestListTrueState());
   }
 }

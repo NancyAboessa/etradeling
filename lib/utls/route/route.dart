@@ -15,6 +15,8 @@ import '../../presentation/manufacture order/List_Of_factory.dart';
 import '../../presentation/manufacture order/factor order.dart';
 import '../../presentation/manufacture order/factory.dart';
 import '../../presentation/plog/plog.dart';
+import '../../presentation/post/create_post.dart';
+import '../../presentation/profile/trade_contact_As.dart';
 
 class HomeLocation extends BeamLocation<BeamState> {
   @override
@@ -30,6 +32,14 @@ class HomeLocation extends BeamLocation<BeamState> {
         BeamPage(
           key: const ValueKey('/login'),
           child: LoginScreen(),
+        ),
+      );
+    }
+    if (state.uri.pathSegments.contains('CreatePost')) {
+      pathPatterns.add(
+        BeamPage(
+          key: const ValueKey('/CreatePost'),
+          child: CreatePost(),
         ),
       );
     }
@@ -50,14 +60,14 @@ class HomeLocation extends BeamLocation<BeamState> {
       );
     }
 
-    if (state.uri.pathSegments.contains('factorry')) {
-      pathPatterns.add(
-        BeamPage(
-          key: ValueKey('/factorry'),
-          child: factorry(),
-        ),
-      );
-    }
+    // if (state.uri.pathSegments.contains('factorry')) {
+    //   pathPatterns.add(
+    //     BeamPage(
+    //       key: ValueKey('/factorry'),
+    //       child: factorry(),
+    //     ),
+    //   );
+    // }
     if (state.uri.pathSegments.contains('signup')) {
       pathPatterns.add(
         BeamPage(
@@ -85,13 +95,16 @@ class HomeLocation extends BeamLocation<BeamState> {
         ),
       );
     }
+    final String? profile = state.pathParameters['profile'];
     if (state.uri.pathSegments.contains('profile')) {
-      pathPatterns.add(
-        BeamPage(
-          key: const ValueKey('profile'),
-          child: Profile(),
-        ),
-      );
+      if (state.uri.pathSegments.contains('profile')) {
+        pathPatterns.add(
+          BeamPage(
+            key: ValueKey('profile/$profile'),
+            child: Profile(route: profile),
+          ),
+        );
+      }
     }
     final String? madaname = state.pathParameters['product'];
     if (madaname != null) {
@@ -134,11 +147,24 @@ class HomeLocation extends BeamLocation<BeamState> {
         ),
       );
     }
+    final String? tradecontactas = state.pathParameters['tradecontactas'];
+    if (state.uri.pathSegments.contains('tradecontactas')) {
+      if (tradecontactas != null) {
+        pathPatterns.add(BeamPage(
+          key: ValueKey('tradecontactas/$tradecontactas'),
+          child: TradeContactAs(tradeProfile: tradecontactas),
+        ));
+      }
+    }
+    final String? Request_of_quotation =
+        state.pathParameters['Request_of_quotation'];
     if (state.uri.pathSegments.contains('Request_of_quotation')) {
       pathPatterns.add(
         BeamPage(
           key: const ValueKey('Request_of_quotation'),
-          child: ListUserPost(),
+          child: ListUserPost(
+            id: Request_of_quotation,
+          ),
         ),
       );
     }
@@ -158,11 +184,14 @@ class HomeLocation extends BeamLocation<BeamState> {
         '/category/:category',
         '/product/:product',
         "/profile",
+        "/profile/:profile",
         "/Contact_As",
         "/About_As",
         "/blog",
-        "/Request_of_quotation",
+        "/Request_of_quotation/:Request_of_quotation",
         '/meProduct/:meProduct',
-        "/all_factor_oreder"
+        'tradecontactas/:tradecontactas',
+        "/all_factor_oreder",
+        "/CreatePost"
       ];
 }

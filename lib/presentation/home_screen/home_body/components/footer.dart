@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'Custom IconBottom.dart';
 
 class FooterScreen extends StatelessWidget {
@@ -19,7 +20,7 @@ class FooterScreen extends StatelessWidget {
           Container(
             color: Colors.black,
             width: double.infinity,
-            height: 400,
+            height: 450,
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 200, left: 150),
@@ -31,29 +32,26 @@ class FooterScreen extends StatelessWidget {
                   width: 150,
                 ),
                 //two texts
-                Padding(
-                  padding: const EdgeInsets.only(top: 30),
-                  child: Column(
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.join_our,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                        ),
+                Column(
+                  children: [
+                    Text(
+                      AppLocalizations.of(context)!.join_our,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
                       ),
-                      SizedBox(
-                        height: 3,
+                    ),
+                    SizedBox(
+                      height: 3,
+                    ),
+                    Text(
+                      AppLocalizations.of(context)!.newsetter,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
                       ),
-                      Text(
-                        AppLocalizations.of(context)!.newsetter,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   width: 100,
@@ -95,62 +93,96 @@ class FooterScreen extends StatelessWidget {
               height: 200,
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(top: 130, left: 200),
-            child: SizedBox(
-              width: 220,
-              child: Text(
-                "${cubit.fotter}",
-                style: TextStyle(color: Colors.white),
-              ),
+          Positioned(
+            top: 130,
+            left: 200,
+            child: Column(
+              children: [
+                SizedBox(
+                  width: 220,
+                  child: Text(
+                    "${cubit.fotter}",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                Text(
+                  AppLocalizations.of(context)!.follow_uson,
+                  style: TextStyle(
+                      color: Colors.orange[600], fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    InkWell(
+                      onTap: () async {
+                        final Uri _url =
+                            Uri.parse('https://www.facebook.com/etradeling');
+                        await launchUrl(_url);
+                      },
+                      child: Icon(
+                        Icons.facebook,
+                        color: Colors.orange[600],
+                        size: 15,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    InkWell(
+                      onTap: () async {
+                        final Uri _url =
+                            Uri.parse('https://www.instagram.com/etradeling/');
+                        await launchUrl(_url);
+                      },
+                      child: Icon(
+                        FontAwesomeIcons.instagram,
+                        color: Colors.orange[600],
+                        size: 15,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    InkWell(
+                      onTap: () async {
+                        final Uri _url = Uri.parse(
+                            'https://www.linkedin.com/company/etradeling/');
+                        await launchUrl(_url);
+                      },
+                      child: Icon(
+                        FontAwesomeIcons.linkedin,
+                        color: Colors.orange[600],
+                        size: 15,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    InkWell(
+                      onTap: () async {
+                        final Uri _url =
+                            Uri.parse('https://twitter.com/etradeling');
+                        await launchUrl(_url);
+                      },
+                      child: Icon(
+                        FontAwesomeIcons.twitter,
+                        color: Colors.orange[600],
+                        size: 15,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 270, left: 200),
-            child: Text(
-              AppLocalizations.of(context)!.follow_uson,
-              style: TextStyle(
-                  color: Colors.orange[600], fontWeight: FontWeight.bold),
-            ),
+          SizedBox(
+            width: 120,
           ),
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 295, left: 200),
-                child: Icon(
-                  Icons.facebook,
-                  color: Colors.orange[600],
-                  size: 15,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 295, left: 10),
-                child: Icon(
-                  FontAwesomeIcons.instagram,
-                  color: Colors.orange[600],
-                  size: 15,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 295, left: 10),
-                child: Icon(
-                  FontAwesomeIcons.linkedin,
-                  color: Colors.orange[600],
-                  size: 15,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 295, left: 10),
-                child: Icon(
-                  FontAwesomeIcons.twitter,
-                  color: Colors.orange[600],
-                  size: 15,
-                ),
-              ),
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 130, left: 610),
+          Positioned(
+            top: 130,
+            left: 610,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -175,8 +207,9 @@ class FooterScreen extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(top: 130, left: 750),
+          Positioned(
+            top: 100,
+            left: 450,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -204,8 +237,9 @@ class FooterScreen extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 130, left: 950),
+          Positioned(
+            top: 130,
+            left: 950,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

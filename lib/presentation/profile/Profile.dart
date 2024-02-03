@@ -1,5 +1,5 @@
+import 'package:etradeling/presentation/post/create_post.dart';
 import 'package:etradeling/presentation/profile/profile%20part%20two.dart';
-import 'package:etradeling/presentation/profile/vendorProfile.dart';
 import 'package:etradeling/presentation/profile/vendore_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,17 +14,30 @@ import 'widget/profile Listview.dart';
 class Profile extends StatelessWidget {
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController textController = TextEditingController();
-  Profile({super.key});
+
+  Profile({
+    super.key,
+    required this.route,
+  });
+  String? route;
   @override
   Widget build(BuildContext context) {
     List list = [
-      ProfileData(),
+      ProfileCheck(),
       const Adress(),
       const Request(),
       const Messenger(),
       VendorForm(),
     ];
+    List list1 = [
+      ProfileCheck(),
+      const Adress(),
+      const Request(),
+      const Messenger(),
+      CreatePost(),
+    ];
     NamesCubit cubit = NamesCubit.get(context);
+    cubit.getData();
     return BlocBuilder<NamesCubit, NamesState>(builder: (context, state) {
       return Scaffold(
         body: Column(
@@ -35,12 +48,17 @@ class Profile extends StatelessWidget {
               width: 2000,
               child: Row(
                 children: [
-                  Listnames(cubit: cubit),
+                  Listnames(
+                      cubit: cubit,
+                      vandore: cubit.map["isVendore"],
+                      route: route!),
                   const SizedBox(
                     width: 10,
                   ),
                   Expanded(
-                    child: list[cubit.count],
+                    child: cubit.map["isVendore"] == false
+                        ? list[cubit.count]
+                        : list1[cubit.count],
                   ),
                 ],
               ),

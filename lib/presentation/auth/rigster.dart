@@ -4,12 +4,23 @@ import 'bloc/login.cubit.dart';
 import 'login.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   final TextEditingController emailController = TextEditingController();
+
   final TextEditingController passwordController = TextEditingController();
+
   final TextEditingController nameController = TextEditingController();
-  GlobalKey<FormState> formState = GlobalKey();
+
   SignUpScreen({super.key});
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  GlobalKey<FormState> formState = GlobalKey();
+  bool obscureText = true;
+  bool x = true;
   @override
   Widget build(BuildContext context) {
     LoginCubit loginCubit = LoginCubit.get(context);
@@ -70,7 +81,7 @@ class SignUpScreen extends StatelessWidget {
                         children: [
                           SizedBox(
                             child: TextFormField(
-                              controller: emailController,
+                              controller: widget.emailController,
                               decoration: InputDecoration(
                                 labelText: AppLocalizations.of(context)!.email,
                                 border: OutlineInputBorder(
@@ -80,6 +91,9 @@ class SignUpScreen extends StatelessWidget {
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return "the field is empty";
+                                }
+                                if (loginCubit.emilv == "email already exist") {
+                                  return "email already exist";
                                 }
                                 if (!RegExp(
                                         r'^[\w-]+(\.[\w-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$')
@@ -100,7 +114,7 @@ class SignUpScreen extends StatelessWidget {
                           SizedBox(
                             child: TextFormField(
                               keyboardType: TextInputType.text,
-                              controller: nameController,
+                              controller: widget.nameController,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return "the field is empty";
@@ -126,8 +140,8 @@ class SignUpScreen extends StatelessWidget {
                           SizedBox(
                             child: TextFormField(
                               keyboardType: TextInputType.visiblePassword,
-                              obscureText: true,
-                              controller: passwordController,
+                              obscureText: obscureText,
+                              controller: widget.passwordController,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return "the field is empty";
@@ -151,8 +165,15 @@ class SignUpScreen extends StatelessWidget {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                suffixIcon: Icon(
-                                  Icons.remove_red_eye,
+                                suffixIcon: InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      obscureText = !obscureText;
+                                    });
+                                  },
+                                  child: Icon(
+                                    Icons.remove_red_eye,
+                                  ),
                                 ),
                               ),
                             ),
@@ -163,7 +184,7 @@ class SignUpScreen extends StatelessWidget {
                           SizedBox(
                             child: TextFormField(
                               keyboardType: TextInputType.visiblePassword,
-                              obscureText: true,
+                              obscureText: obscureText,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return "the field is empty";
@@ -178,7 +199,7 @@ class SignUpScreen extends StatelessWidget {
                                 if (value.length > 16) {
                                   return "Password must be at most 16 characters short";
                                 }
-                                if (value != passwordController.text) {
+                                if (value != widget.passwordController.text) {
                                   return "password didn't much password corect";
                                 } else {
                                   return null;
@@ -190,8 +211,15 @@ class SignUpScreen extends StatelessWidget {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                suffixIcon: Icon(
-                                  Icons.remove_red_eye,
+                                suffixIcon: InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      obscureText = !obscureText;
+                                    });
+                                  },
+                                  child: Icon(
+                                    Icons.remove_red_eye,
+                                  ),
                                 ),
                               ),
                             ),
@@ -211,13 +239,22 @@ class SignUpScreen extends StatelessWidget {
                       width: double.infinity,
                       child: MaterialButton(
                         onPressed: () {
-                          loginCubit.SignupWithEmailandpass(
-                              emailController.text,
-                              passwordController.text,
-                              nameController.text);
-
-                          // if (formState.currentState!.validate()) {
-                          // } else {}
+                          if (formState.currentState!.validate()) {
+                            loginCubit.SignupWithEmailandpass(
+                                widget.emailController.text,
+                                widget.passwordController.text,
+                                widget.nameController.text);
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: const Text(
+                                  'you Sigun up is sucesfuly ,pleas check your mail'),
+                              action: SnackBarAction(
+                                label: 'Action',
+                                onPressed: () {
+                                  // Code to execute.
+                                },
+                              ),
+                            ));
+                          } else {}
                         },
                         child: Text(
                           AppLocalizations.of(context)!.signup,
