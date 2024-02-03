@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../home_screen/appbar.dart';
 import 'cubit/names_cubit.dart';
 import 'cubit/names_state.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TradeProfile extends StatelessWidget {
   const TradeProfile({super.key, required this.tradeProfile});
@@ -59,7 +60,7 @@ class TradeProfile extends StatelessWidget {
                                       children: [
                                         Icon(Icons.account_circle_outlined,
                                             color: Colors.orange),
-                                        Text("about as"),
+                                        Text( AppLocalizations.of(context)!.aboutus),
                                       ],
                                     ),
                                   ),
@@ -78,7 +79,7 @@ class TradeProfile extends StatelessWidget {
                                         Icon(Icons.shopping_basket_outlined,
                                             color: Colors.orange),
                                         Text(
-                                          "myProduct",
+                                          AppLocalizations.of(context)!.myProduct,
                                         ),
                                       ],
                                     ),
@@ -97,7 +98,7 @@ class TradeProfile extends StatelessWidget {
                                       children: [
                                         Icon(Icons.contact_support_outlined,
                                             color: Colors.orange),
-                                        Text("contact as"),
+                                        Text( AppLocalizations.of(context)!.contactus),
                                       ],
                                     ),
                                   ),
@@ -168,7 +169,7 @@ class TradeProfile extends StatelessWidget {
                                     Padding(
                                       padding:
                                           const EdgeInsets.only(bottom: 20.0),
-                                      child: Text("About",
+                                      child: Text( AppLocalizations.of(context)!.about,
                                           style: TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.bold,
@@ -178,12 +179,12 @@ class TradeProfile extends StatelessWidget {
                                       padding:
                                           const EdgeInsets.only(bottom: 20.0),
                                       child: Row(children: [
-                                        Text("Business Type",
+                                        Text( AppLocalizations.of(context)!.businessType,
                                             style: TextStyle(
                                               fontSize: 20,
                                             )),
                                         SizedBox(width: 50),
-                                        Text("busnes servece",
+                                        Text( AppLocalizations.of(context)!.businessservice,
                                             style: TextStyle(
                                               fontSize: 20,
                                             )),
@@ -194,7 +195,7 @@ class TradeProfile extends StatelessWidget {
                                           const EdgeInsets.only(bottom: 20.0),
                                       child: Row(
                                         children: [
-                                          Text("Year Established",
+                                          Text( AppLocalizations.of(context)!.yearEstablished,
                                               style: TextStyle(
                                                 fontSize: 20,
                                               )),
@@ -217,7 +218,7 @@ class TradeProfile extends StatelessWidget {
                                           const EdgeInsets.only(bottom: 20.0),
                                       child: Row(
                                         children: [
-                                          Text("Product Certification",
+                                          Text( AppLocalizations.of(context)!.product_Certificate,
                                               style: TextStyle(
                                                 fontSize: 20,
                                               )),
@@ -234,7 +235,7 @@ class TradeProfile extends StatelessWidget {
                                           const EdgeInsets.only(bottom: 20.0),
                                       child: Row(
                                         children: [
-                                          Text("Trademarks",
+                                          Text( AppLocalizations.of(context)!.tradeTerms,
                                               style: TextStyle(
                                                 fontSize: 20,
                                               )),
@@ -267,8 +268,8 @@ class TradeProfile extends StatelessWidget {
                                   ),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                child: const Text(
-                                  "chat now",
+                                child:  Text(
+                                  AppLocalizations.of(context)!.chat_Now,
                                   style: TextStyle(
                                     color: Colors.orange,
                                     fontWeight: FontWeight.bold,

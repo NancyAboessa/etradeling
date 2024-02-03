@@ -144,7 +144,7 @@ class Product extends StatelessWidget {
                                       padding:
                                           const EdgeInsets.only(right: 80.0),
                                       child: Text(
-                                        "Stock In/Out : Available",
+                                        AppLocalizations.of(context)!.stockInOutAvailable,
                                         style: TextStyle(fontSize: 15),
                                       ),
                                     ),
@@ -152,7 +152,7 @@ class Product extends StatelessWidget {
                                       padding:
                                           const EdgeInsets.only(right: 140.0),
                                       child: Text(
-                                        "Sampels :10per",
+                                        AppLocalizations.of(context)!.sampels10per,
                                         style: TextStyle(fontSize: 15),
                                       ),
                                     ),
@@ -337,7 +337,7 @@ class Product extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 20.0),
-                            child: Text("Short Description",
+                            child: Text(AppLocalizations.of(context)!.shortDescription,
                                 style: TextStyle(
                                     color: Colors.orange, fontSize: 18)),
                           ),
@@ -346,7 +346,7 @@ class Product extends StatelessWidget {
                                   TextStyle(color: Colors.black, fontSize: 15)),
                           Padding(
                             padding: const EdgeInsets.only(top: 20.0),
-                            child: Text("Product Description",
+                            child: Text(AppLocalizations.of(context)!.productDescription,
                                 style: TextStyle(
                                     color: Colors.orange, fontSize: 18)),
                           ),

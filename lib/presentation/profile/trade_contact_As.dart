@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../home_screen/appbar.dart';
 import '../home_screen/home_body/components/footer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TradeContactAs extends StatelessWidget {
   const TradeContactAs({
@@ -62,7 +63,7 @@ class TradeContactAs extends StatelessWidget {
                                       children: [
                                         Icon(Icons.account_circle_outlined,
                                             color: Colors.orange),
-                                        Text("about as"),
+                                        Text(AppLocalizations.of(context)!.aboutus),
                                       ],
                                     ),
                                   ),
@@ -81,7 +82,7 @@ class TradeContactAs extends StatelessWidget {
                                         Icon(Icons.shopping_basket_outlined,
                                             color: Colors.orange),
                                         Text(
-                                          "myProduct",
+                                          AppLocalizations.of(context)!.myProduct,
                                         ),
                                       ],
                                     ),
@@ -100,7 +101,7 @@ class TradeContactAs extends StatelessWidget {
                                       children: [
                                         Icon(Icons.contact_support_outlined,
                                             color: Colors.orange),
-                                        Text("contact as"),
+                                        Text(AppLocalizations.of(context)!.contactus),
                                       ],
                                     ),
                                   ),
@@ -212,8 +213,8 @@ class TradeContactAs extends StatelessWidget {
                                   ),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                child: const Text(
-                                  "chat now",
+                                child:  Text(
+                                  AppLocalizations.of(context)!.chat_Now,
                                   style: TextStyle(
                                     color: Colors.orange,
                                     fontWeight: FontWeight.bold,

@@ -278,7 +278,7 @@ class HomeScreen extends StatelessWidget {
                                       Center(
                                         child: listViewhome(
                                           widget: iconwithTextOnly(
-                                            text: 'Labore',
+                                            text: AppLocalizations.of(context)!.labore,
                                           ),
                                           items: 6,
                                           left: 200,

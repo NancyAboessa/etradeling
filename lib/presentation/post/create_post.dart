@@ -42,7 +42,7 @@ class CreatePost extends StatelessWidget {
         return cubit.map["isVendore"] == false
             ? Center(
                 child: Text(
-                "you are not vendor",
+                  AppLocalizations.of(context)!.youarenotvendor,
                 style: TextStyle(fontSize: 20),
               ))
             : SingleChildScrollView(
@@ -66,7 +66,7 @@ class CreatePost extends StatelessWidget {
                                 children: [
                                   Text(AppLocalizations.of(context)!
                                       .we_dLoveto_helpyou),
-                                  Text("add product",
+                                  Text(AppLocalizations.of(context)!.addproduct,
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
@@ -159,14 +159,14 @@ class CreatePost extends StatelessWidget {
                                 Expanded(
                                     flex: 1,
                                     child: MainField(
-                                        hint: "sampils", controller: sampils)),
+                                        hint: AppLocalizations.of(context)!.samples, controller: sampils)),
                                 Expanded(
                                   flex: 1,
                                   child: Padding(
                                     padding: const EdgeInsets.only(bottom: 50),
                                     child: DropDownCategoryButton(
-                                      list: const ["avilable", "not avilable"],
-                                      dropdownValue: "StockIn/Out",
+                                      list:  [AppLocalizations.of(context)!.available, AppLocalizations.of(context)!.notavailable],
+                                      dropdownValue: AppLocalizations.of(context)!.stockInOut,
                                       fun: cubit,
                                       width: 1000,
                                     ),
@@ -183,7 +183,7 @@ class CreatePost extends StatelessWidget {
                                 Expanded(
                                   flex: 1,
                                   child: MainField(
-                                      hint: "Request of shipping price",
+                                      hint: AppLocalizations.of(context)!.requestofshippingprice,
                                       controller: requestSheping),
                                 ),
                                 Expanded(flex: 1, child: Container())
@@ -219,7 +219,7 @@ class CreatePost extends StatelessWidget {
                             ),
                           ),
                           LargeField(
-                              hint: "Description", controller: shortdescrption),
+                              hint: AppLocalizations.of(context)!.description, controller: shortdescrption),
                           Padding(
                             padding:
                                 const EdgeInsets.only(left: 250, bottom: 100),

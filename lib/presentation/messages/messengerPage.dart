@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../profile/cubit/names_cubit.dart';
 import '../profile/cubit/names_state.dart';
 import 'chatscreen/chatingscreen.dart';
@@ -66,7 +66,7 @@ class Messenger extends StatelessWidget {
                                         width: 500,
                                         child: TextField(
                                           decoration: InputDecoration(
-                                            hintText: 'Search Messeges',
+                                            hintText: AppLocalizations.of(context)!.searchMesseges,
                                             hintStyle: TextStyle(
                                               color: Colors.black38,
                                             ),
@@ -86,9 +86,9 @@ class Messenger extends StatelessWidget {
                                       height: 200,
                                       width: 500,
                                       child: cubit.listMaseges.isEmpty
-                                          ? const Center(
+                                          ?  Center(
                                               child: Text(
-                                                  "no users in your massenger yet "),
+                                                  AppLocalizations.of(context)!.nousersinyourmassengeryet),
                                             )
                                           : ListView.builder(
                                               itemCount:
@@ -116,9 +116,9 @@ class Messenger extends StatelessWidget {
                             Expanded(
                               flex: 1,
                               child: cubit.listMaseges.isEmpty
-                                  ? const Center(
+                                  ?  Center(
                                       child: Text(
-                                          "no masseges in your massenges yet "),
+                                          AppLocalizations.of(context)!.nomassegesinyourmassengesyet),
                                     )
                                   : Chating(
                                       receiver: cubit.listUsresMaseges[0],

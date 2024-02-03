@@ -8,6 +8,7 @@ import '../Productpage/cubit/cubit.dart';
 import '../home_screen/appbar.dart';
 import 'Cubit/Category Cubit.dart';
 import 'Cubit/category state.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Category extends StatelessWidget {
   const Category({super.key, required this.catgory});
@@ -96,8 +97,8 @@ class Category extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     alignment: Alignment.center,
-                                    child: const Text(
-                                      "category",
+                                    child:  Text(
+                                     AppLocalizations.of(context)!.categories ,
                                       style: TextStyle(color: Colors.white),
                                     ),
                                   ),

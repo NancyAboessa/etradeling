@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StoreIcon extends StatelessWidget {
   final String? image;
@@ -27,7 +28,7 @@ class StoreIcon extends StatelessWidget {
               const SizedBox(
                 height: 5,
               ),
-              const Text("Download on the",
+               Text(AppLocalizations.of(context)!.downloadonthe,
                   style: TextStyle(
                     fontSize: 10,
                   )),

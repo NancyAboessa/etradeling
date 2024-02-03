@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RequestBody extends StatelessWidget {
   const RequestBody({super.key, required this.list, required this.listId});
@@ -39,13 +40,13 @@ class RequestBody extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Text("name:   "),
+                            Text(AppLocalizations.of(context)!.nameone),
                             Text(list[i]["Product_Name"]),
                           ],
                         ),
                         Row(
                           children: [
-                            Text("id:   "),
+                            Text(AppLocalizations.of(context)!.idone),
                             Text(list[i]["ispending"] == true
                                 ? "MBGmhSJnCXlqrz4tvgQO"
                                 : listId[i]),

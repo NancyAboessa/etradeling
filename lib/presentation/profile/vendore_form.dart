@@ -4,6 +4,7 @@ import 'package:etradeling/presentation/profile/widget/profile_pig_container.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../utls/themes/main_field/main_field.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class VendorForm extends StatelessWidget {
   VendorForm({super.key});
@@ -34,25 +35,25 @@ class VendorForm extends StatelessWidget {
                   key: formState,
                   child: Column(
                     children: [
-                      MainField(hint: "contry", controller: contryController),
-                      MainField(hint: "Abut As", controller: aboutAsController),
+                      MainField(hint: AppLocalizations.of(context)!.country, controller: contryController),
+                      MainField(hint: AppLocalizations.of(context)!.aboutus, controller: aboutAsController),
                       MainField(
-                          hint: "factory name",
+                          hint: AppLocalizations.of(context)!.factoryname,
                           controller: factoryNameController),
                       MainField(
-                          hint: "Date of Establishment",
+                          hint: AppLocalizations.of(context)!.dateofEstablishment,
                           controller: dateOfEstablishment),
                       MainField(hint: "city", controller: cityController),
                       MainField(
-                          hint: "Tax card number",
+                          hint: AppLocalizations.of(context)!.taxcardnumber,
                           controller: taxCardNumberController),
                       MainField(
-                          hint: "Commercial Registration No",
+                          hint: AppLocalizations.of(context)!.commercialRegistrationNo,
                           controller: commercialRegistrationNoController),
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0, right: 410),
                         child: Text(
-                          "Tax card number",
+                          AppLocalizations.of(context)!.taxcardnumber,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
@@ -86,7 +87,7 @@ class VendorForm extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0, right: 320),
                         child: Text(
-                          "Commercial Registration No",
+                          AppLocalizations.of(context)!.commercialRegistrationNo,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
@@ -150,8 +151,8 @@ class VendorForm extends StatelessWidget {
                     color: Colors.black,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Text(
-                    "Submit",
+                  child:  Text(
+                    AppLocalizations.of(context)!.submit,
                     style: TextStyle(color: Colors.white),
                   ),
                 ),

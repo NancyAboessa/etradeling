@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LargeField extends StatelessWidget {
   final String? hint;
@@ -26,7 +27,7 @@ class LargeField extends StatelessWidget {
               maxLines: 40,
               validator: (value) {
                 if (value!.isEmpty) {
-                  return "the field is empty";
+                  return AppLocalizations.of(context)!.thefieldisempty;
                 }
                 return null;
               },

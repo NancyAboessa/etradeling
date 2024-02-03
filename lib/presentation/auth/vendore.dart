@@ -58,12 +58,12 @@ class vengorSignup extends StatelessWidget {
                     flex: 1,
                     child: Column(
                       children: [
-                        const Row(
+                         Row(
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(left: 120.0),
                               child: Text(
-                                "Sign UP AS A ",
+                                AppLocalizations.of(context)!.signUPASA,
                                 style: TextStyle(
                                   fontSize: 45,
                                   fontWeight: FontWeight.bold,
@@ -71,7 +71,7 @@ class vengorSignup extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              "Vendor ",
+                              AppLocalizations.of(context)!.vendor,
                               style: TextStyle(
                                 fontSize: 45,
                                 fontWeight: FontWeight.bold,
@@ -192,8 +192,8 @@ class vengorSignup extends StatelessWidget {
                                   cityController.text,
                                   commercialRegistrationNoController.text);
                             },
-                            child: const Text(
-                              "Sign Up as Vendor",
+                            child:  Text(
+                             AppLocalizations.of(context)!.signUpasVendor,
                               style: TextStyle(
                                 color: Colors.white,
                               ),

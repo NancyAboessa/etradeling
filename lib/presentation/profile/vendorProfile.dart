@@ -184,7 +184,7 @@ class VendorProfile extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("about_as"),
+                                  Text(AppLocalizations.of(context)!.aboutus),
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
@@ -203,7 +203,7 @@ class VendorProfile extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("city"),
+                                  Text(AppLocalizations.of(context)!.city),
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
@@ -224,7 +224,7 @@ class VendorProfile extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("commercialRegistrationNo"),
+                                  Text(AppLocalizations.of(context)!.commercialRegistrationNo),
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
@@ -247,7 +247,7 @@ class VendorProfile extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("contry"),
+                                  Text(AppLocalizations.of(context)!.country),
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
@@ -268,7 +268,7 @@ class VendorProfile extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("dateOfEstablishment"),
+                                  Text(AppLocalizations.of(context)!.dateofEstablishment),
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: TextFieldDate(
@@ -288,7 +288,7 @@ class VendorProfile extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("factoryName"),
+                                  Text(AppLocalizations.of(context)!.factoryname),
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
@@ -309,7 +309,7 @@ class VendorProfile extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text("taxCardNumber"),
+                                   Text(AppLocalizations.of(context)!.taxcardnumber),
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
@@ -329,7 +329,7 @@ class VendorProfile extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text("facebook"),
+                                   Text(AppLocalizations.of(context)!.facebook),
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
@@ -353,7 +353,7 @@ class VendorProfile extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text("instgram"),
+                                   Text(AppLocalizations.of(context)!.instgram),
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
@@ -372,7 +372,7 @@ class VendorProfile extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text("tweter"),
+                                   Text(AppLocalizations.of(context)!.twiter),
                                   FocusScope(
                                     node: FocusScopeNode(),
                                     child: textField(
@@ -433,9 +433,9 @@ class VendorProfile extends StatelessWidget {
                               cubit.NewPassword();
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(SnackBar(
-                                content: const Text('please check your e-mail'),
+                                content:  Text(AppLocalizations.of(context)!.pleasecheckyouremail),
                                 action: SnackBarAction(
-                                  label: 'Action',
+                                  label: AppLocalizations.of(context)!.action,
                                   onPressed: () {
                                     // Code to execute.
                                   },
