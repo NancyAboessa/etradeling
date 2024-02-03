@@ -52,7 +52,33 @@ class CreatePost extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const PigContainer(title: "Create Product"),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 250.0, top: 80),
+                            child: Container(
+                              height: 200,
+                              width: 1000,
+                              color: Colors.grey.shade100,
+                              padding: const EdgeInsets.only(top: 40),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(AppLocalizations.of(context)!
+                                      .we_dLoveto_helpyou),
+                                  Text("add product",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 25,
+                                      )),
+                                  Text(
+                                    AppLocalizations.of(context)!
+                                        .tell_suppliers_what_you_need_Themore,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                           Padding(
                             padding:
                                 const EdgeInsets.only(left: 80.0, right: 80.0),
@@ -162,40 +188,6 @@ class CreatePost extends StatelessWidget {
                                 Expanded(
                                     flex: 1,
                                     child: MainField(
-                                        hint: "phone", controller: phone)),
-                                Expanded(
-                                    flex: 1,
-                                    child: MainField(
-                                        hint: "email", controller: email)),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(left: 80.0, right: 80.0),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                    flex: 1,
-                                    child: MainField(
-                                        hint: "From location ",
-                                        controller: formLocation)),
-                                Expanded(
-                                    flex: 1,
-                                    child: MainField(
-                                        hint: "to location ",
-                                        controller: toLocation)),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(left: 80.0, right: 80.0),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                    flex: 1,
-                                    child: MainField(
                                         hint: "Size", controller: size)),
                                 Expanded(flex: 1, child: SizedBox()),
                               ],
@@ -212,35 +204,39 @@ class CreatePost extends StatelessWidget {
                                       cubit.getImageFirst();
                                     },
                                     child: ImageUploadFirst(
-                                        text: "firstImage", cubit: cubit)),
-                                GestureDetector(
-                                  onTap: () {
-                                    cubit.getImageScound();
-                                  },
-                                  child: ImageUploadScound(
-                                      text: "scondImage", cubit: cubit),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    cubit.getImageScound();
-                                  },
-                                  child: ImageUploadScound(
-                                      text: "therdImage", cubit: cubit),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    cubit.getImageScound();
-                                  },
-                                  child: ImageUploadScound(
-                                      text: "forthImage", cubit: cubit),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    cubit.getImageScound();
-                                  },
-                                  child: ImageUploadScound(
-                                      text: "fifthImage", cubit: cubit),
-                                ),
+                                        text: "Product image", cubit: cubit)),
+                                Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        cubit.getImageScound();
+                                      },
+                                      child: ImageUploadScound(
+                                          text: "", cubit: cubit),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        cubit.getImageScound();
+                                      },
+                                      child: ImageUploadScound(
+                                          text: "", cubit: cubit),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        cubit.getImageScound();
+                                      },
+                                      child: ImageUploadScound(
+                                          text: "", cubit: cubit),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        cubit.getImageScound();
+                                      },
+                                      child: ImageUploadScound(
+                                          text: "", cubit: cubit),
+                                    ),
+                                  ],
+                                )
                               ],
                             ),
                           ),
