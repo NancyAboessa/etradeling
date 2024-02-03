@@ -146,6 +146,15 @@ class HomeLocation extends BeamLocation<BeamState> {
         ),
       );
     }
+    if (state.uri.pathSegments.contains('blog')) {
+      pathPatterns.add(
+        BeamPage(
+          key: const ValueKey('blog'),
+          child: Plog(),
+        ),
+      );
+    }
+
     final String? tradecontactas = state.pathParameters['tradecontactas'];
     if (state.uri.pathSegments.contains('tradecontactas')) {
       if (tradecontactas != null) {

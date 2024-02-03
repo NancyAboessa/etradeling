@@ -318,7 +318,7 @@ class MainAppBar extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       // loginCubit!.signupPress();
-                      context.beamToNamed("/factor_oreder");
+                      context.beamToNamed("/blog");
                     },
                     child: Text(
                       "factor oreder",
