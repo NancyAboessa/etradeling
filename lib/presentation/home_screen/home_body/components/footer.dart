@@ -97,6 +97,7 @@ class FooterScreen extends StatelessWidget {
             top: 130,
             left: 200,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   width: 220,
