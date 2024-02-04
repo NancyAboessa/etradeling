@@ -151,7 +151,7 @@ class HomeScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 30,
                                     ),
-                                    Text("the sublies you need"),
+                                    Text(AppLocalizations.of(context)!.thesubliesyouneed),
                                     SizedBox(
                                       height: 30,
                                     ),
@@ -196,7 +196,7 @@ class HomeScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 30,
                                     ),
-                                    Text("the sublies you need"),
+                                    Text(AppLocalizations.of(context)!.thesubliesyouneed),
                                     SizedBox(
                                       height: 30,
                                     ),
