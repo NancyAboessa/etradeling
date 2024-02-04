@@ -20,7 +20,7 @@ class category_screen extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              'Apple AirPods With Charging Case White',
+             AppLocalizations.of(context)!.appleAirPodsWithChargingCaseWhite,
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: 10.0,

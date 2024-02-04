@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class CustomIconBottom extends StatelessWidget {
@@ -29,7 +30,7 @@ class CustomIconBottom extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Download on the',
+                        AppLocalizations.of(context)!.downloadonthe,
                         style: TextStyle(
                           fontSize: 10, // Adjust the font size of the small text
                         ),

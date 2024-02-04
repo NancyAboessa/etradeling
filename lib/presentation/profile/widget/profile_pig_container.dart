@@ -15,8 +15,8 @@ class PigProfileContainer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Become a Vendor"),
-            Text("Create vendor account and connect your customer in easy way",
+            Text(AppLocalizations.of(context)!.becomeavendor),
+            Text(AppLocalizations.of(context)!.createvendoraccountandconnectyourcustomerineasyway,
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,

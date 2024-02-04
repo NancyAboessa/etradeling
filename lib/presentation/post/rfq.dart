@@ -32,8 +32,8 @@ class RFQ extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               MainAppBar(),
-              const PigContainer(
-                title: "Submit RFQ",
+               PigContainer(
+                title: AppLocalizations.of(context)!.submitRFQ,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 80.0, right: 80.0),
@@ -110,17 +110,17 @@ class RFQ extends StatelessWidget {
                     Expanded(
                         flex: 1,
                         child: MainField(
-                            hint: "phone", controller: productNameController)),
+                            hint: AppLocalizations.of(context)!.phone_number, controller: productNameController)),
                     Expanded(
                         flex: 1,
                         child: MainField(
-                            hint: "email", controller: productNameController)),
+                            hint: AppLocalizations.of(context)!.email, controller: productNameController)),
                   ],
                 ),
               ),
               LargeField(
                 controller: detailsController,
-                hint: "details",
+                hint:  AppLocalizations.of(context)!.details,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 100.0, bottom: 20),

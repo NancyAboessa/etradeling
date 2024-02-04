@@ -87,16 +87,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                       keyboardType: TextInputType.emailAddress,
                                       validator: (value) {
                                         if (value!.isEmpty) {
-                                          return "the field is empty";
+                                          return AppLocalizations.of(context)!.thefieldisempty;
                                         }
                                         if (!RegExp(
                                                 r'^[\w-]+(\.[\w-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$')
                                             .hasMatch(value)) {
-                                          return "email format dosen't corect";
+                                          return AppLocalizations.of(context)!.emailformatdosentcorect;
                                         }
                                         if (loginCubit.emaile ==
                                             "user not found") {
-                                          return "your email or password dosent corect";
+                                          return AppLocalizations.of(context)!.youremailorpassworddosentcorrect;
                                         } else {
                                           return null;
                                         }
@@ -121,11 +121,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                       obscureText: obscureText,
                                       validator: (value) {
                                         if (value!.isEmpty) {
-                                          return "the field is empty";
+                                          return AppLocalizations.of(context)!.thefieldisempty;
                                         }
                                         if (loginCubit.passe ==
                                             "Wrong password provided for that user") {
-                                          return "your email or password dosent correct";
+                                          return AppLocalizations.of(context)!.youremailorpassworddosentcorrect;
                                         } else {
                                           return null;
                                         }
@@ -167,9 +167,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(SnackBar(
                                     content:
-                                        const Text('please check your e-mail'),
+                                         Text(AppLocalizations.of(context)!.pleasecheckyouremail),
                                     action: SnackBarAction(
-                                      label: 'Action',
+                                      label: AppLocalizations.of(context)!.action,
                                       onPressed: () {
                                         // Code to execute.
                                       },

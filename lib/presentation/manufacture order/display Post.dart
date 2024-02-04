@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../home_screen/appbar.dart';
 import '../home_screen/home_body/components/footer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DisplayFactory extends StatelessWidget {
   final Map<String, dynamic> map;
@@ -18,7 +19,7 @@ class DisplayFactory extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'This Is my Heading',
+                   AppLocalizations.of(context)!.thisIsmyHeading   ,
                       style: TextStyle(
                         color: Colors.orange[600],
                         fontSize: 20,
@@ -43,7 +44,7 @@ class DisplayFactory extends StatelessWidget {
                     SizedBox(
                       width: 5,
                     ),
-                    Text('Since 3 min'),
+                    Text(AppLocalizations.of(context)!.sincemin),
                   ],
                 ),
                 SizedBox(

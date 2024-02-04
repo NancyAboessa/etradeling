@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'cubit/names_cubit.dart';
 import 'cubit/names_state.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RequestAppBar extends StatelessWidget {
   const RequestAppBar({super.key});
@@ -27,7 +28,7 @@ class RequestAppBar extends StatelessWidget {
                     // await cubit.requestList();
                   },
                   child: Text(
-                    "pending",
+                    AppLocalizations.of(context)!.pending,
                     style: TextStyle(
                         color: cubit.requestIndex == 1
                             ? Colors.orange
@@ -44,7 +45,7 @@ class RequestAppBar extends StatelessWidget {
                     list = cubit.listRequest;
                   },
                   child: Text(
-                    "inProgress",
+                    AppLocalizations.of(context)!.inProgress,
                     style: TextStyle(
                         color: cubit.requestIndex == 2
                             ? Colors.orange
@@ -61,7 +62,7 @@ class RequestAppBar extends StatelessWidget {
                     list = cubit.listRequest;
                   },
                   child: Text(
-                    "finished",
+                    AppLocalizations.of(context)!.finished,
                     style: TextStyle(
                         color: cubit.requestIndex == 3
                             ? Colors.orange

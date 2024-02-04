@@ -6,6 +6,7 @@ import '../home_screen/home_body/components/footer.dart';
 import 'cubit/cubit.dart';
 import 'cubit/state.dart';
 import 'display Post.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ListUserPost extends StatelessWidget {
   final String? id;
@@ -61,7 +62,7 @@ class ListUserPost extends StatelessWidget {
                         controller: commentController,
                         maxLines: 4,
                         decoration: InputDecoration(
-                          hintText: "commint",
+                          hintText: AppLocalizations.of(context)!.commint,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(16),
                           ),
@@ -86,7 +87,7 @@ class ListUserPost extends StatelessWidget {
                             color: Colors.orange,
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          child: const Text("commint"),
+                          child:  Text(AppLocalizations.of(context)!.commint),
                         ),
                       ),
                     ),

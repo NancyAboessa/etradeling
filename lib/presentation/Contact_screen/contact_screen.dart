@@ -34,8 +34,8 @@ class ContactScreen extends StatelessWidget {
                           ),
                           child: Column(
                             children: [
-                              const Text(
-                                'Know More',
+                               Text(
+                                AppLocalizations.of(context)!.knowMore,
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 30,
@@ -45,7 +45,7 @@ class ContactScreen extends StatelessWidget {
                                 height: 10.0,
                               ),
                               Text(
-                                'Contact Us',
+                                AppLocalizations.of(context)!.contactus,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 60,
@@ -58,7 +58,7 @@ class ContactScreen extends StatelessWidget {
                           padding: EdgeInsets.only(top: 10),
                         ),
                         Text(
-                          'Let\'s Us Hear From You',
+                          AppLocalizations.of(context)!.letsUsHearFromYou,
                           style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.w900,
@@ -80,23 +80,23 @@ class ContactScreen extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Country',
+                                        AppLocalizations.of(context)!.country,
                                       ),
                                       SizedBox(height: 10),
                                       TextField(
                                         decoration: InputDecoration(
-                                          labelText: 'Where you from ?',
+                                          labelText: AppLocalizations.of(context)!.whereyoufrom,
                                           border: OutlineInputBorder(),
                                         ),
                                       ),
                                       SizedBox(height: 10),
                                       Text(
-                                        'Message',
+                                        AppLocalizations.of(context)!.message,
                                       ),
                                       SizedBox(height: 10),
                                       TextField(
                                         decoration: InputDecoration(
-                                          labelText: 'Your message Here',
+                                          labelText: AppLocalizations.of(context)!.yourmessageHere,
                                           border: OutlineInputBorder(),
                                         ),
                                       ),
@@ -110,7 +110,7 @@ class ContactScreen extends StatelessWidget {
                         InkWell(
                           onTap: () {},
                           child: CustomMaterialButtom(
-                            text: 'Send',
+                            text: AppLocalizations.of(context)!.send,
                             color: Colors.black,
                             coolor: Colors.white,
                           ),

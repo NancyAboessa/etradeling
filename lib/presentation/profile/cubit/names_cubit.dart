@@ -285,7 +285,7 @@ class NamesCubit extends Cubit<NamesState> {
     emit(CreateRomeState());
   }
 
-  GetMassenger() async {
+ GetMassenger() async {
     // print(data);
     await FirebaseFirestore.instance
         .collection("Profile")

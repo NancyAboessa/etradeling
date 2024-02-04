@@ -3,6 +3,7 @@ import 'package:etradeling/presentation/profile/cubit/names_state.dart';
 import 'package:etradeling/presentation/profile/widget/buttondown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Adress extends StatelessWidget {
   const Adress({
@@ -33,7 +34,7 @@ class Adress extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text("My Addresses"),
+                             Text(AppLocalizations.of(context)!.my_Addresses),
                             Padding(
                               padding: const EdgeInsets.only(
                                   right: 200.0, bottom: 10),
@@ -42,32 +43,32 @@ class Adress extends StatelessWidget {
                                   showDialog(
                                       context: context,
                                       builder: (context) => AlertDialog(
-                                            title: Text("Add New Address"),
+                                            title: Text(AppLocalizations.of(context)!.addNewAddress),
                                             actions: [
                                               Column(
                                                 children: [
                                                   TextField(
                                                     decoration: InputDecoration(
-                                                        label: Text("name")),
+                                                        label: Text(AppLocalizations.of(context)!.name)),
                                                     controller: firstName,
                                                   ),
                                                   TextField(
                                                     decoration: InputDecoration(
                                                         label:
-                                                            Text("last name")),
+                                                            Text(AppLocalizations.of(context)!.lastname)),
                                                     controller: lastName,
                                                   ),
                                                   TextField(
                                                     decoration: InputDecoration(
-                                                        label: Text("number")),
+                                                        label: Text(AppLocalizations.of(context)!.labore)),
                                                     controller: phoneName,
                                                   ),
                                                   DropDownCountryButton(
                                                       list: [
-                                                        "egypt",
-                                                        "unitStat"
+                                                        AppLocalizations.of(context)!.egypt ,
+                                                        AppLocalizations.of(context)!.unitStat,
                                                       ],
-                                                      dropdownValue: "Country",
+                                                      dropdownValue: AppLocalizations.of(context)!.country,
                                                       fun: cubit,
                                                       width: 100),
                                                   InkWell(
@@ -84,7 +85,7 @@ class Adress extends StatelessWidget {
                                                       });
                                                     },
                                                     child: Container(
-                                                      child: Text("ADD"),
+                                                      child: Text(AppLocalizations.of(context)!.aDD),
                                                       color: Colors.black,
                                                       width: 100,
                                                     ),
@@ -103,8 +104,8 @@ class Adress extends StatelessWidget {
                                         color: Colors.deepOrange, width: .2),
                                   ),
                                   alignment: Alignment.center,
-                                  child: const Text(
-                                    "add Addresses",
+                                  child:  Text(
+                                      AppLocalizations.of(context)!.add_Addresses,
                                     style: TextStyle(color: Colors.deepOrange),
                                   ),
                                 ),
@@ -138,7 +139,7 @@ class Adress extends StatelessWidget {
                                               top: 20.0, left: 20),
                                           child: Row(
                                             children: [
-                                              const Text("first name",
+                                               Text(AppLocalizations.of(context)!.firstname,
                                                   style:
                                                       TextStyle(fontSize: 18)),
                                               const SizedBox(
@@ -156,7 +157,7 @@ class Adress extends StatelessWidget {
                                               top: 20.0, left: 20),
                                           child: Row(
                                             children: [
-                                              const Text("last name",
+                                               Text(AppLocalizations.of(context)!.lastname,
                                                   style:
                                                       TextStyle(fontSize: 18)),
                                               const SizedBox(
@@ -174,7 +175,7 @@ class Adress extends StatelessWidget {
                                               top: 20.0, left: 20),
                                           child: Row(
                                             children: [
-                                              const Text("Country:",
+                                               Text(AppLocalizations.of(context)!.country,
                                                   style:
                                                       TextStyle(fontSize: 18)),
                                               const SizedBox(

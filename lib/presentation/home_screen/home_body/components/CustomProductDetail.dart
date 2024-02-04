@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../utls/themes/button/MaterialButtom.dart';
 import '../../../Productpage/custom Widgets/rating.dart';
@@ -18,7 +19,7 @@ class CustomProductDetail extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              'Apple AirPods With Charging Case White',
+              AppLocalizations.of(context)!.appleAirPodsWithChargingCaseWhite,
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: 10.0,
@@ -51,7 +52,7 @@ class CustomProductDetail extends StatelessWidget {
               height: 5,
             ),
             CustomMaterialButtom(
-              text: 'Add To Cart',
+              text:  AppLocalizations.of(context)!.add_To_Cart,
               icon: Icons.shopping_cart,
               color: Colors.black,
               coolor: Colors.white,

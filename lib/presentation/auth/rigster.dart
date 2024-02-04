@@ -90,15 +90,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               ),
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return "the field is empty";
+                                  return AppLocalizations.of(context)!.thefieldisempty;
                                 }
                                 if (loginCubit.emilv == "email already exist") {
-                                  return "email already exist";
+                                  return AppLocalizations.of(context)!.emailalreadyexist;
                                 }
                                 if (!RegExp(
                                         r'^[\w-]+(\.[\w-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$')
                                     .hasMatch(value)) {
-                                  return "email format dosen't corect";
+                                  return AppLocalizations.of(context)!.emailformatdosentcorect;
                                 } else {
                                   return null;
                                 }
@@ -117,11 +117,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               controller: widget.nameController,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return "the field is empty";
+                                  return AppLocalizations.of(context)!.thefieldisempty;
                                 }
                                 if (!RegExp(r'^[a-zA-Z0-9_]+$')
                                     .hasMatch(value)) {
-                                  return "name dosen't corect";
+                                  return AppLocalizations.of(context)!.namedosentcorect;
                                 } else {
                                   return null;
                                 }
@@ -144,17 +144,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               controller: widget.passwordController,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return "the field is empty";
+                                  return AppLocalizations.of(context)!.thefieldisempty;
                                 }
                                 if (value.length < 6) {
-                                  return "Password must be at least 6 characters long";
+                                  return AppLocalizations.of(context)!.passwordmustbeatleastcharacterslong;
                                 }
                                 if (!RegExp(r'^(?=.*[A-Z])(?=.*\d).{8,}$')
                                     .hasMatch(value)) {
-                                  return "password formate dosent corect ";
+                                  return AppLocalizations.of(context)!.passwordformatedosentcorect;
                                 }
                                 if (value.length > 16) {
-                                  return "Password must be at most 16 characters short";
+                                  return AppLocalizations.of(context)!.passwordmustbeatmostcharactersshort;
                                 } else {
                                   return null;
                                 }
@@ -187,20 +187,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               obscureText: obscureText,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return "the field is empty";
+                                  return AppLocalizations.of(context)!.thefieldisempty;
                                 }
                                 if (value.length < 6) {
-                                  return "Password must be at least 6 characters long";
+                                  return AppLocalizations.of(context)!.passwordmustbeatleastcharacterslong;
                                 }
                                 if (!RegExp(r'^(?=.*[A-Z])(?=.*\d).{8,}$')
                                     .hasMatch(value)) {
-                                  return "password formate dosent corect ";
+                                  return AppLocalizations.of(context)!.passwordformatedosentcorect;
                                 }
                                 if (value.length > 16) {
-                                  return "Password must be at most 16 characters short";
+                                  return AppLocalizations.of(context)!.passwordmustbeatmostcharactersshort;
                                 }
                                 if (value != widget.passwordController.text) {
-                                  return "password didn't much password corect";
+                                  return AppLocalizations.of(context)!.passwordformatedosentcorect;
                                 } else {
                                   return null;
                                 }
@@ -245,10 +245,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 widget.passwordController.text,
                                 widget.nameController.text);
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: const Text(
-                                  'you Sigun up is sucesfuly ,pleas check your mail'),
+                              content:  Text(
+                                  AppLocalizations.of(context)!.youSigunupissucesfulypleascheckyourmail),
                               action: SnackBarAction(
-                                label: 'Action',
+                                label: AppLocalizations.of(context)!.action,
                                 onPressed: () {
                                   // Code to execute.
                                 },

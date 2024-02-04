@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class DropDownCategoryButton extends StatelessWidget {
   final String? dropdownValue;
-  final List<String>? list;
+  final List? list;
   final fun;
   final double? width;
   const DropDownCategoryButton({
@@ -50,7 +50,7 @@ class DropDownCategoryButton extends StatelessWidget {
               onChanged: (String? value) {
                 fun.dropDownCategory(value);
               },
-              items: list!.map<DropdownMenuItem<String>>((String value) {
+              items: list!.map<DropdownMenuItem<String>>((value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),

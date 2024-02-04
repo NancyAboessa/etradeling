@@ -111,7 +111,7 @@ class Listnames extends StatelessWidget {
                         },
                         child: Text(
                           vandore! == true
-                              ? "create post"
+                              ? AppLocalizations.of(context)!.createpost
                               : AppLocalizations.of(context)!
                                   .become_vendor_create_account,
                         ),
