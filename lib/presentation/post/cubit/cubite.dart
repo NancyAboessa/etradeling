@@ -19,6 +19,7 @@ class PostCubit extends Cubit<PostMainState> {
   Map<String, dynamic> map = {};
   String? firstImage;
   String? scondImage;
+  String? therdImage;
 
   dropDownTrade(value) {
     valTrade = value;
@@ -126,6 +127,25 @@ class PostCubit extends Cubit<PostMainState> {
           .ref('uploads/$fileName')
           .getDownloadURL();
       emit(GetImageStateScound());
+    }
+  }
+
+  getImageTherd() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['jpg', 'pdf', 'doc'],
+    );
+    if (result != null) {
+      Uint8List? fileBytes = result.files.first.bytes;
+      String fileName = result.files.first.name;
+      // Upload file
+      await FirebaseStorage.instance
+          .ref('uploads/$fileName')
+          .putData(fileBytes!);
+      therdImage = await FirebaseStorage.instance
+          .ref('uploads/$fileName')
+          .getDownloadURL();
+      emit(GetImageStateTherd());
     }
   }
 }

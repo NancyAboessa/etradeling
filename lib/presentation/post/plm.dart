@@ -1,29 +1,32 @@
 import 'package:etradeling/presentation/home_screen/appbar.dart';
+import 'package:etradeling/presentation/post/widget/Quantity.dart';
 import 'package:etradeling/presentation/post/widget/image_upload.dart';
 import 'package:etradeling/presentation/post/widget/image_upload_scund.dart';
 import 'package:etradeling/presentation/post/widget/lagerField.dart';
 import 'package:etradeling/utls/themes/main_field/main_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/cubite.dart';
 import 'cubit/state.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'widget/RQFButton.dart';
 import 'widget/sub_catgory.dart';
 
-class PLM extends StatelessWidget {
-  final TextEditingController productNameController = TextEditingController();
-  final TextEditingController tradeTermsController = TextEditingController();
-  final TextEditingController maxBudgetController = TextEditingController();
-  final TextEditingController detailsController = TextEditingController();
-  final TextEditingController MainController = TextEditingController();
-  final TextEditingController priceFromController = TextEditingController();
-  final TextEditingController PricetoController = TextEditingController();
+TextEditingController productNameController = TextEditingController();
+TextEditingController tagetController = TextEditingController();
+TextEditingController maxBudgetController = TextEditingController();
+TextEditingController detailsController = TextEditingController();
+TextEditingController MainController = TextEditingController();
+TextEditingController priceFromController = TextEditingController();
+TextEditingController EstimatedController = TextEditingController();
+TextEditingController PricetoController = TextEditingController();
 
+class PLM extends StatelessWidget {
   PLM({super.key});
   @override
   Widget build(BuildContext context) {
     var cubit = PostCubit.get(context);
+    cubit.getData();
     return Scaffold(
       body: BlocBuilder<PostCubit, PostMainState>(builder: (context, i) {
         return SingleChildScrollView(
@@ -57,6 +60,14 @@ class PLM extends StatelessWidget {
                 ),
               ),
               Padding(
+                padding: const EdgeInsets.only(right: 770, left: 80),
+                child: DropDownQuantityButton(
+                    width: 1000,
+                    list: ["x", "y", "z"],
+                    dropdownValue: "Category",
+                    fun: cubit),
+              ),
+              Padding(
                 padding: const EdgeInsets.only(left: 80.0, right: 80.0),
                 child: Row(
                   children: [
@@ -68,8 +79,7 @@ class PLM extends StatelessWidget {
                     Expanded(
                         flex: 1,
                         child: MainField(
-                            hint: "Min order ",
-                            controller: tradeTermsController)),
+                            hint: "Min order ", controller: MainController)),
                   ],
                 ),
               ),
@@ -81,7 +91,7 @@ class PLM extends StatelessWidget {
                         flex: 1,
                         child: MainField(
                             hint: "Estimated price ",
-                            controller: tradeTermsController)),
+                            controller: EstimatedController)),
                   ],
                 ),
               ),
@@ -137,7 +147,7 @@ class PLM extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {
-                              cubit.getImageScound();
+                              cubit.getImageTherd();
                             },
                             child: ImageUploadScound(text: "", cubit: cubit),
                           ),
@@ -152,7 +162,17 @@ class PLM extends StatelessWidget {
                       const EdgeInsets.only(left: 500, bottom: 100, right: 500),
                   child: InkWell(
                     onTap: () {
-                      cubit.PLM({});
+                      cubit.PLM({
+                        "name": cubit.map["name"],
+                        "user": FirebaseAuth.instance.currentUser!.uid,
+                        "Category ": cubit.valUnit,
+                        "product_name": productNameController.text,
+                        "firt_image": cubit.firstImage,
+                        "scound_image": cubit.scondImage,
+                        "Therd_image": cubit.therdImage,
+                        "min_order": MainController.text,
+                        "Target market ": cubit.valSubCategory,
+                      });
                     },
                     child: Container(
                       height: 50,

@@ -14,6 +14,8 @@ import '../../presentation/manufacture order/ListUserPost.dart';
 import '../../presentation/manufacture order/List_Of_factory.dart';
 import '../../presentation/manufacture order/factor order.dart';
 import '../../presentation/manufacture order/factory.dart';
+import '../../presentation/plm/lis_blm.dart';
+import '../../presentation/plm/main_plm.dart';
 import '../../presentation/plog/plog.dart';
 import '../../presentation/post/create_post.dart';
 import '../../presentation/post/plm.dart';
@@ -156,6 +158,14 @@ class HomeLocation extends BeamLocation<BeamState> {
         ),
       );
     }
+    if (state.uri.pathSegments.contains('PLM')) {
+      pathPatterns.add(
+        BeamPage(
+          key: const ValueKey('PLM'),
+          child: PlmOrder(),
+        ),
+      );
+    }
 
     final String? tradecontactas = state.pathParameters['tradecontactas'];
     if (state.uri.pathSegments.contains('tradecontactas')) {
@@ -177,6 +187,15 @@ class HomeLocation extends BeamLocation<BeamState> {
           ),
         ),
       );
+    }
+    final String? plm = state.pathParameters['plm'];
+    if (state.uri.pathSegments.contains('plm')) {
+      if (plm != null) {
+        pathPatterns.add(BeamPage(
+          key: ValueKey('plm/$plm'),
+          child: ListPLM(id: plm),
+        ));
+      }
     }
     return pathPatterns;
   }
@@ -202,6 +221,8 @@ class HomeLocation extends BeamLocation<BeamState> {
         '/meProduct/:meProduct',
         'tradecontactas/:tradecontactas',
         "/all_factor_oreder",
-        "/CreatePost"
+        "/CreatePost",
+        "/PLM",
+        "/plm/:plm"
       ];
 }

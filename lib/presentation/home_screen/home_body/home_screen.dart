@@ -200,17 +200,23 @@ class HomeScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 30,
                                     ),
-                                    Container(
-                                      width: 80,
-                                      height: 40,
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
-                                        color: Colors.orange,
+                                    InkWell(
+                                      onTap: () {
+                                        context.beamToNamed("/PLM");
+                                      },
+                                      child: Container(
+                                        width: 80,
+                                        height: 40,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          color: Colors.orange,
+                                        ),
+                                        child: Text("PLM",
+                                            style:
+                                                TextStyle(color: Colors.white)),
                                       ),
-                                      child: Text("PLM",
-                                          style:
-                                              TextStyle(color: Colors.white)),
                                     ),
                                   ],
                                 ),

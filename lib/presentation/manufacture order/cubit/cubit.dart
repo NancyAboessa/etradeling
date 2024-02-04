@@ -24,6 +24,18 @@ class FactoryCubit extends Cubit<MainFactoryState> {
     emit(GetRFQ());
   }
 
+  getPLM(id) async {
+    await FirebaseFirestore.instance
+        .collection("PLM")
+        .doc(id)
+        .get()
+        .then((value) {
+      mapRFQ = value.data()!;
+    });
+
+    emit(GetPLM());
+  }
+
   getRFQCommint(id) async {
     emit(LoadCommintState());
     commintList = [];
@@ -39,6 +51,23 @@ class FactoryCubit extends Cubit<MainFactoryState> {
       });
     });
     emit(GetRFQCommintState());
+  }
+
+  getPLmCommint(id) async {
+    emit(LoadCommintState());
+    commintList = [];
+    await FirebaseFirestore.instance
+        .collection("PLM")
+        .doc(id)
+        .collection("commints")
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        commintList.add(element.data());
+        print("${commintList}");
+      });
+    });
+    emit(GetPLMCommintState());
   }
 
   getProfile() async {
@@ -64,6 +93,19 @@ class FactoryCubit extends Cubit<MainFactoryState> {
     });
     print(orderList);
     emit(GetFactoryState());
+  }
+
+  getAllPLM() async {
+    orderList = [];
+    userId = [];
+    await FirebaseFirestore.instance.collection("PLM").get().then((value) {
+      value.docs.forEach((element) {
+        orderList.add(element.data());
+        userId.add(element.id);
+      });
+    });
+    print(orderList);
+    emit(GetPLMState());
   }
 
   sendCommint(id, data) async {

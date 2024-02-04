@@ -13,7 +13,7 @@ class PlmOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FactoryCubit cubit = FactoryCubit.get(context);
-    cubit.getAll();
+    cubit.getAllPLM();
     return BlocBuilder<FactoryCubit, MainFactoryState>(
         builder: (context, state) {
       return Scaffold(
@@ -30,13 +30,12 @@ class PlmOrder extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return InkWell(
                           onTap: () {
-                            context.beamToNamed(
-                                "/Request_of_quotation/${cubit.userId[index]}");
+                            context.beamToNamed("/plm/${cubit.userId[index]}");
                           },
                           child: UserList(
                             text: cubit.orderList[index]["Details"],
                             userName: cubit.orderList[index]["name"],
-                            title: cubit.orderList[index]["Product_Name"],
+                            title: cubit.orderList[index]["product_name"],
                           ));
                     }),
               ),

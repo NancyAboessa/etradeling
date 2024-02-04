@@ -27,3 +27,5 @@ class Minas extends PostMainState {}
 class GetImageStateFirst extends PostMainState {}
 
 class GetImageStateScound extends PostMainState {}
+
+class GetImageStateTherd extends PostMainState {}
