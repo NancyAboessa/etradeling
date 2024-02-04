@@ -34,6 +34,11 @@ class PostCubit extends Cubit<PostMainState> {
     emit(PostActionState());
   }
 
+  PLM(data) async {
+    await FirebaseFirestore.instance.collection("PLM").add(data);
+    emit(PLMState());
+  }
+
   getData() async {
     // if (FirebaseAuth.instance.currentUser!.uid.isNotEmpty) {
     await FirebaseFirestore.instance

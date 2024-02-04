@@ -3,6 +3,7 @@ import 'package:etradeling/presentation/cartPage/cartPage.dart';
 import 'package:etradeling/presentation/cartPage/cubit/CartCubit.dart';
 import 'package:etradeling/presentation/home_screen/Bloc/BlocAppBar.dart';
 import 'package:etradeling/presentation/home_screen/home_body/home_screen.dart';
+import 'package:etradeling/presentation/post/plm.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,12 +25,13 @@ class MainAppBar extends StatelessWidget {
     return BlocBuilder<CubitMessages, MainMessagesState>(
         builder: (context, state) {
       List list = [
-        "my account",
+        "my profile",
         "masseges",
         "myaddres",
         "request",
         "logout",
       ];
+      List listCat = ["z", "z1"];
       List list2 = ["eg", "usa"];
       return Column(
         children: [
@@ -169,9 +171,8 @@ class MainAppBar extends StatelessWidget {
                         width: 120,
                         child: DropdownButton<String>(
                           isExpanded: true,
-                          hint: Text(
-                              cubit.name!.isNotEmpty ? cubit.name! : "profile"),
-                          value: list[0],
+                          hint: Text(cubit.name!),
+                          // value: cubit.name!,
                           padding: const EdgeInsets.only(left: 20),
                           underline: const SizedBox(
                             height: 0,
@@ -185,6 +186,7 @@ class MainAppBar extends StatelessWidget {
                           style: const TextStyle(color: Colors.black),
                           onChanged: (String? value) {
                             if (value == cubit.name) {
+                              // cubit.name = "my account";
                               Beamer.of(context).beamToNamed("profile");
                             }
 
@@ -291,24 +293,42 @@ class MainAppBar extends StatelessWidget {
                   SizedBox(
                     width: 20.0,
                   ),
-                  TextButton(
-                    onPressed: () {
-                      // loginCubit!.signupPress();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => BlocProvider.value(
-                              value: BlocProvider.of<LoginCubit>(context),
-                              child: HomeScreen(),
-                            ),
-                          ));
-                    },
-                    child: Text(
-                      AppLocalizations.of(context)!.categories,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
+                  Container(
+                    height: 50,
+                    width: 160,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black54, width: .8),
+                      borderRadius: BorderRadius.circular(3),
+                    ),
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      hint: Text(
+                        AppLocalizations.of(context)!.categories,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
+                      // value: listCat[0],
+                      padding: const EdgeInsets.only(left: 20),
+                      underline: const SizedBox(
+                        height: 0,
+                        width: 0,
+                      ),
+                      icon: const Icon(Icons.arrow_drop_down),
+                      elevation: 16,
+                      style: const TextStyle(color: Colors.black54),
+                      onChanged: (String? value) {
+                        if (value != listCat[0]) {
+                          context.beamToNamed('category/${value}', data: value);
+                        }
+                      },
+                      items: listCat.map<DropdownMenuItem<String>>((value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
                     ),
                   ),
                   SizedBox(
@@ -394,6 +414,27 @@ class MainAppBar extends StatelessWidget {
                       },
                       child: Text(
                         AppLocalizations.of(context)!.submitRFQ,
+                        style: TextStyle(
+                          color: Colors.orange[600],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Colors.white,
+                    ),
+                    child: MaterialButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context, MaterialPageRoute(builder: (_) => PLM()));
+                      },
+                      child: Text(
+                        "submet plm",
                         style: TextStyle(
                           color: Colors.orange[600],
                         ),

@@ -3,14 +3,12 @@ import 'package:etradeling/presentation/post/widget/image_upload.dart';
 import 'package:etradeling/presentation/post/widget/image_upload_scund.dart';
 import 'package:etradeling/presentation/post/widget/lagerField.dart';
 import 'package:etradeling/utls/themes/main_field/main_field.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/cubite.dart';
 import 'cubit/state.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'widget/RQFButton.dart';
-import 'widget/select_category.dart';
 import 'widget/sub_catgory.dart';
 
 class PLM extends StatelessWidget {
@@ -18,6 +16,9 @@ class PLM extends StatelessWidget {
   final TextEditingController tradeTermsController = TextEditingController();
   final TextEditingController maxBudgetController = TextEditingController();
   final TextEditingController detailsController = TextEditingController();
+  final TextEditingController MainController = TextEditingController();
+  final TextEditingController priceFromController = TextEditingController();
+  final TextEditingController PricetoController = TextEditingController();
 
   PLM({super.key});
   @override
@@ -147,26 +148,30 @@ class PLM extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.only(left: 500, bottom: 100, right: 500),
-                child: RQFButton(
-                  cubit: cubit,
-                  data: {
-                    // "Product_Name": productNameController.text,
-                    // "Trade_Terms": tradeTermsController.text,
-                    // "Max_Budget": maxBudgetController.text,
-                    // "Quantity": cubit.count,
-                    // "unit": cubit.valUnit,
-                    // "Product_Certificate": cubit.firstImage,
-                    // "Company_Certificate": cubit.scondImage,
-                    // "user": FirebaseAuth.instance.currentUser!.uid,
-                    // "ispending": false,
-                    // "Catgory": cubit.valSubCategory,
-                    // "name": cubit.map["name"],
-                    // "Details": detailsController.text,
-                  },
-                ),
-              ),
+                  padding:
+                      const EdgeInsets.only(left: 500, bottom: 100, right: 500),
+                  child: InkWell(
+                    onTap: () {
+                      cubit.PLM({});
+                    },
+                    child: Container(
+                      height: 50,
+                      width: 200,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        AppLocalizations.of(context)!.submit,
+                        style: TextStyle(
+                          fontSize: 24,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  )),
             ],
           ),
         );

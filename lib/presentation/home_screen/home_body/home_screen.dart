@@ -130,6 +130,94 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 340.0),
+                              child: Container(
+                                height: 200,
+                                width: 400,
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.black),
+                                    borderRadius: BorderRadius.circular(20)),
+                                padding: EdgeInsets.only(left: 20),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Text("RQF"),
+                                    SizedBox(
+                                      height: 30,
+                                    ),
+                                    Text("the sublies you need"),
+                                    SizedBox(
+                                      height: 30,
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        context.beamToNamed("/factor_oreder");
+                                      },
+                                      child: Container(
+                                        width: 80,
+                                        height: 40,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          color: Colors.orange,
+                                        ),
+                                        child: Text("RQF",
+                                            style:
+                                                TextStyle(color: Colors.white)),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 50.0),
+                              child: Container(
+                                height: 200,
+                                width: 400,
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.black),
+                                    borderRadius: BorderRadius.circular(20)),
+                                padding: EdgeInsets.only(left: 20),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Text("PLM"),
+                                    SizedBox(
+                                      height: 30,
+                                    ),
+                                    Text("the sublies you need"),
+                                    SizedBox(
+                                      height: 30,
+                                    ),
+                                    Container(
+                                      width: 80,
+                                      height: 40,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(12),
+                                        color: Colors.orange,
+                                      ),
+                                      child: Text("PLM",
+                                          style:
+                                              TextStyle(color: Colors.white)),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                         const SizedBox(
                           height: 30.0,
                         ),
@@ -278,7 +366,8 @@ class HomeScreen extends StatelessWidget {
                                       Center(
                                         child: listViewhome(
                                           widget: iconwithTextOnly(
-                                            text: AppLocalizations.of(context)!.labore,
+                                            text: AppLocalizations.of(context)!
+                                                .labore,
                                           ),
                                           items: 6,
                                           left: 200,

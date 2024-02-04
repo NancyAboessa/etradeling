@@ -16,7 +16,7 @@ class CubitMessages extends Cubit<MainMessagesState> {
   List? _listUsers;
   String? valProf;
   String Curnce = "eg";
-
+  bool x = false;
   String? name;
   Locale lang = const Locale("en");
   listUser() async {
@@ -30,15 +30,20 @@ class CubitMessages extends Cubit<MainMessagesState> {
     emit(ListUser());
   }
 
+  listcheck() async {
+    x != true;
+    emit(ListUser());
+  }
+
   getData() async {
     // if (FirebaseAuth.instance.currentUser!.uid.isNotEmpty) {
     await FirebaseFirestore.instance
         .collection("Profile")
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .get()
-        .then((value) {
+        .then((value) async {
       map = value.data()!;
-      name = map["name"];
+      name = await map["name"];
       print("${name}");
     });
     // getImage(map);

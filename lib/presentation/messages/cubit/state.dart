@@ -6,6 +6,8 @@ class MessagesInit extends MainMessagesState {}
 
 class ListUser extends MainMessagesState {}
 
+class ListCheck extends MainMessagesState {}
+
 class getDataState extends MainMessagesState {}
 
 class GetCurnceState extends MainMessagesState {}
