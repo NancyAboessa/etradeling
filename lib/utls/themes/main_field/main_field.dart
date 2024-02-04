@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MainField extends StatelessWidget {
   final String? hint;
   final TextEditingController? controller;
-  const MainField({super.key, required this.hint, required this.controller});
+  MainField({super.key, required this.hint, required this.controller});
   @override
   Widget build(BuildContext context) {
     return Padding(
