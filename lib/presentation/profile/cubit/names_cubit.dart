@@ -20,14 +20,18 @@ class NamesCubit extends Cubit<NamesState> {
   final storage = FirebaseStorage.instance;
   String? getimage;
   String? id;
+  String contryString = "contry";
+  String cityString = "giza";
   Map<String, dynamic> map = {};
   int count = 0;
   String? myProf;
   Uint8List webImage = Uint8List(8);
-  String? valCountry;
+  String valCountry = "egypt";
   List address = [];
   List listMaseges = [];
   List listmaseges = [];
+  String employ = "1";
+  String date = "2024";
   List listUsresMaseges = [];
   List listRequest = [];
   List listRequestTrue = [];
@@ -173,6 +177,21 @@ class NamesCubit extends Cubit<NamesState> {
       // getImage(map);
     }
     emit(getDataTradeState());
+  }
+
+  getCitylistData(value) async {
+    cityString = value;
+    emit(GetContryListState());
+  }
+
+  getEmploylistData(value) async {
+    employ = value;
+    emit(GetEmployListState());
+  }
+
+  getdatelistData(value) async {
+    date = value;
+    emit(GetDateListState());
   }
 
   getAddress() async {

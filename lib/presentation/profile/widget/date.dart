@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 
-class DropDownCountryButton extends StatelessWidget {
+import 'package:flutter/material.dart';
+
+class Date extends StatelessWidget {
   final String? dropdownValue;
   final List<String>? list;
   final fun;
   final double? width;
-  const DropDownCountryButton({
+  const Date({
     super.key,
     required this.list,
     required this.dropdownValue,
     required this.fun,
     required this.width,
   });
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,7 +22,7 @@ class DropDownCountryButton extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("contry",
+          Text("date",
               style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
@@ -38,7 +41,7 @@ class DropDownCountryButton extends StatelessWidget {
             child: DropdownButton<String>(
               isExpanded: true,
               hint: Text(dropdownValue!),
-              value: fun.valCountry,
+              value: fun.date,
               padding: const EdgeInsets.only(left: 20),
               underline: const SizedBox(
                 height: 0,
@@ -48,7 +51,7 @@ class DropDownCountryButton extends StatelessWidget {
               elevation: 16,
               style: const TextStyle(color: Colors.black54),
               onChanged: (String? value) {
-                fun.dropDownCountry(value);
+                fun.getdatelistData(value);
               },
               items: list!.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(

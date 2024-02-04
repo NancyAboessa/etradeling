@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
-class DropDownCountryButton extends StatelessWidget {
+class EmbloyButton extends StatelessWidget {
   final String? dropdownValue;
   final List<String>? list;
   final fun;
   final double? width;
-  const DropDownCountryButton({
+  const EmbloyButton({
     super.key,
     required this.list,
     required this.dropdownValue,
     required this.fun,
     required this.width,
   });
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,7 +20,7 @@ class DropDownCountryButton extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("contry",
+          Text("embloy bottum",
               style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
@@ -38,7 +39,7 @@ class DropDownCountryButton extends StatelessWidget {
             child: DropdownButton<String>(
               isExpanded: true,
               hint: Text(dropdownValue!),
-              value: fun.valCountry,
+              value: fun.employ,
               padding: const EdgeInsets.only(left: 20),
               underline: const SizedBox(
                 height: 0,
@@ -48,7 +49,7 @@ class DropDownCountryButton extends StatelessWidget {
               elevation: 16,
               style: const TextStyle(color: Colors.black54),
               onChanged: (String? value) {
-                fun.dropDownCountry(value);
+                fun.getEmploylistData(value);
               },
               items: list!.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(

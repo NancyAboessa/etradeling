@@ -16,13 +16,15 @@ import '../../presentation/manufacture order/factor order.dart';
 import '../../presentation/manufacture order/factory.dart';
 import '../../presentation/plog/plog.dart';
 import '../../presentation/post/create_post.dart';
+import '../../presentation/post/plm.dart';
 import '../../presentation/profile/trade_contact_As.dart';
+import '../../presentation/profile/vendore_form.dart';
 
 class HomeLocation extends BeamLocation<BeamState> {
   @override
   List<BeamPage> buildPages(BuildContext context, BeamState state) {
     final pathPatterns = [
-      const BeamPage(
+      BeamPage(
         child: LoginCheck(),
         key: ValueKey('/'),
       ),

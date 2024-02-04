@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class DropDownCountryButton extends StatelessWidget {
+class DropDownCityButton extends StatelessWidget {
   final String? dropdownValue;
   final List<String>? list;
   final fun;
   final double? width;
-  const DropDownCountryButton({
+  const DropDownCityButton({
     super.key,
     required this.list,
     required this.dropdownValue,
@@ -19,7 +19,7 @@ class DropDownCountryButton extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("contry",
+          Text("city",
               style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
@@ -38,7 +38,7 @@ class DropDownCountryButton extends StatelessWidget {
             child: DropdownButton<String>(
               isExpanded: true,
               hint: Text(dropdownValue!),
-              value: fun.valCountry,
+              value: fun.cityString,
               padding: const EdgeInsets.only(left: 20),
               underline: const SizedBox(
                 height: 0,
@@ -48,7 +48,7 @@ class DropDownCountryButton extends StatelessWidget {
               elevation: 16,
               style: const TextStyle(color: Colors.black54),
               onChanged: (String? value) {
-                fun.dropDownCountry(value);
+                fun.getCitylistData(value);
               },
               items: list!.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(

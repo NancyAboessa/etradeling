@@ -7,14 +7,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../../utls/cache_helper/cache_helper.dart';
 import '../Contact_screen/contact_screen.dart';
 import '../auth/bloc/login.cubit.dart';
 import '../messages/cubit/cubit.dart';
 import '../messages/cubit/state.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import '../post/rfq.dart';
 
 class MainAppBar extends StatelessWidget {
@@ -26,12 +24,13 @@ class MainAppBar extends StatelessWidget {
     return BlocBuilder<CubitMessages, MainMessagesState>(
         builder: (context, state) {
       List list = [
-        cubit.name,
+        "my account",
         "masseges",
         "myaddres",
         "request",
         "logout",
       ];
+      List list2 = ["eg", "usa"];
       return Column(
         children: [
           AppBar(
@@ -125,13 +124,33 @@ class MainAppBar extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 10.0, right: 30),
                 child: Row(
                   children: [
-                    MaterialButton(
-                      onPressed: () {},
-                      child: Text(
-                        AppLocalizations.of(context)!.egyptionpound,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                    Container(
+                      width: 80,
+                      height: 20,
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        hint: Text("${cubit.Curnce}"),
+                        value: cubit.Curnce,
+                        padding: const EdgeInsets.only(left: 20),
+                        underline: const SizedBox(
+                          height: 0,
+                          width: 0,
                         ),
+                        icon: const Icon(
+                          Icons.arrow_drop_down,
+                          color: Colors.black,
+                        ),
+                        elevation: 16,
+                        style: const TextStyle(color: Colors.black),
+                        onChanged: (String? value) {
+                          cubit.getCurnce(value);
+                        },
+                        items: list2.map<DropdownMenuItem<String>>((value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
                       ),
                     ),
                     SizedBox(
@@ -151,7 +170,7 @@ class MainAppBar extends StatelessWidget {
                         child: DropdownButton<String>(
                           isExpanded: true,
                           hint: Text(
-                              cubit.name.isNotEmpty ? cubit.name : "profile"),
+                              cubit.name!.isNotEmpty ? cubit.name! : "profile"),
                           value: list[0],
                           padding: const EdgeInsets.only(left: 20),
                           underline: const SizedBox(
@@ -298,14 +317,7 @@ class MainAppBar extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       // loginCubit!.signupPress();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => BlocProvider.value(
-                              value: BlocProvider.of<LoginCubit>(context),
-                              child: HomeScreen(),
-                            ),
-                          ));
+                      context.beamToNamed("/blog");
                     },
                     child: Text(
                       AppLocalizations.of(context)!.ourblog,
@@ -318,7 +330,7 @@ class MainAppBar extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       // loginCubit!.signupPress();
-                      context.beamToNamed("/blog");
+                      context.beamToNamed("/factor_oreder");
                     },
                     child: Text(
                       "factor oreder",

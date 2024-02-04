@@ -22,6 +22,12 @@ class getDataState extends NamesState {}
 
 class getDataTradeState extends NamesState {}
 
+class GetContryListState extends NamesState {}
+
+class GetDateListState extends NamesState {}
+
+class GetEmployListState extends NamesState {}
+
 class SetDataState extends NamesState {}
 
 class GetImageState extends NamesState {}

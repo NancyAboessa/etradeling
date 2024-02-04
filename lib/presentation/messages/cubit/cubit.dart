@@ -15,7 +15,9 @@ class CubitMessages extends Cubit<MainMessagesState> {
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   List? _listUsers;
   String? valProf;
-  String name = "";
+  String Curnce = "eg";
+
+  String? name;
   Locale lang = const Locale("en");
   listUser() async {
     emit(EmptyMessegeState());
@@ -42,6 +44,11 @@ class CubitMessages extends Cubit<MainMessagesState> {
     // getImage(map);
     // }
     emit(getDataState());
+  }
+
+  getCurnce(x) async {
+    Curnce = x;
+    emit(GetCurnceState());
   }
 
   chatUser(id) async {

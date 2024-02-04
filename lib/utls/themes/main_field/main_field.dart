@@ -30,7 +30,9 @@ class MainField extends StatelessWidget {
                 return null;
               },
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
                 hintText: hint!,
               ),
               controller: controller!,

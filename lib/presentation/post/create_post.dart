@@ -30,7 +30,6 @@ class CreatePost extends StatelessWidget {
   final TextEditingController formLocation = TextEditingController();
   final TextEditingController toLocation = TextEditingController();
   final TextEditingController size = TextEditingController();
-
   CreatePost({super.key});
   @override
   Widget build(BuildContext context) {
@@ -39,7 +38,7 @@ class CreatePost extends StatelessWidget {
     cubit.getData();
     return Scaffold(
       body: BlocBuilder<PostCubit, PostMainState>(builder: (context, i) {
-        return cubit.map["isVendore"] == false
+        return cubit.map["isVendore"] == true
             ? Center(
                 child: Text(
                 "you are not vendor",
@@ -47,6 +46,7 @@ class CreatePost extends StatelessWidget {
               ))
             : SingleChildScrollView(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Form(
                       key: formState,
@@ -55,7 +55,7 @@ class CreatePost extends StatelessWidget {
                         children: [
                           Padding(
                             padding:
-                                const EdgeInsets.only(left: 250.0, top: 80),
+                                const EdgeInsets.only(left: 250.0, top: 40),
                             child: Container(
                               height: 200,
                               width: 1000,
@@ -131,9 +131,36 @@ class CreatePost extends StatelessWidget {
                                 Expanded(
                                     flex: 1,
                                     child: MainField(
-                                        hint: AppLocalizations.of(context)!
-                                            .product_Name,
+                                        hint: "product name englesh",
                                         controller: productNameController)),
+                                Expanded(
+                                    flex: 1,
+                                    child: MainField(
+                                        hint: "product name arabic",
+                                        controller: productNameController)),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 80.0, right: 80.0),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(bottom: 50),
+                                    child: DropDownCategoryButton(
+                                      list: const ["kelogram", "gram"],
+                                      dropdownValue: "unit",
+                                      fun: cubit,
+                                      width: 1000,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
                                 Expanded(
                                   flex: 1,
                                   child: Padding(
@@ -157,20 +184,20 @@ class CreatePost extends StatelessWidget {
                             child: Row(
                               children: [
                                 Expanded(
-                                    flex: 1,
-                                    child: MainField(
-                                        hint: "sampils", controller: sampils)),
-                                Expanded(
                                   flex: 1,
                                   child: Padding(
                                     padding: const EdgeInsets.only(bottom: 50),
                                     child: DropDownCategoryButton(
-                                      list: const ["avilable", "not avilable"],
-                                      dropdownValue: "StockIn/Out",
+                                      list: const ["yes", "no"],
+                                      dropdownValue: "free sampels",
                                       fun: cubit,
                                       width: 1000,
                                     ),
                                   ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(),
                                 ),
                               ],
                             ),
@@ -183,10 +210,15 @@ class CreatePost extends StatelessWidget {
                                 Expanded(
                                   flex: 1,
                                   child: MainField(
-                                      hint: "Request of shipping price",
+                                      hint: "National of origin",
                                       controller: requestSheping),
                                 ),
-                                Expanded(flex: 1, child: Container())
+                                Expanded(
+                                  flex: 1,
+                                  child: MainField(
+                                      hint: "Min order",
+                                      controller: requestSheping),
+                                ),
                               ],
                             ),
                           ),
@@ -197,52 +229,27 @@ class CreatePost extends StatelessWidget {
                               children: [
                                 Expanded(
                                   flex: 1,
-                                  child: Counter(
-                                    minasFunction: cubit,
-                                    plasFunction: cubit,
-                                    count: cubit.count,
-                                    text:
-                                        AppLocalizations.of(context)!.quantity,
-                                    left: 100,
-                                    width: 360,
-                                    hight: 40,
-                                    widthtt: 10,
-                                  ),
+                                  child: MainField(
+                                      hint: "Price from",
+                                      controller: requestSheping),
                                 ),
                                 Expanded(
-                                    flex: 1,
-                                    child: MainField(
-                                        hint:
-                                            "${AppLocalizations.of(context)!.quantity}",
-                                        controller: productNameController)),
+                                  flex: 1,
+                                  child: MainField(
+                                      hint: "Price to",
+                                      controller: requestSheping),
+                                ),
                               ],
                             ),
                           ),
                           LargeField(
                               hint: "Description", controller: shortdescrption),
                           Padding(
-                            padding:
-                                const EdgeInsets.only(left: 250, bottom: 100),
-                            child: InkWell(
-                              onTap: () async {
-                                await cubit.postCreate({
-                                  "Product_Name": productNameController.text,
-                                  "short_Description":
-                                      tradeTermsController.text,
-                                  "Product_Description":
-                                      maxBudgetController.text,
-                                  "sampils": sampils.text,
-                                  "Quantity": cubit.count,
-                                  "unit": cubit.valUnit,
-                                  "firstImage": cubit.firstImage,
-                                  "scondImage": cubit.scondImage,
-                                  "user":
-                                      FirebaseAuth.instance.currentUser!.uid,
-                                  "ispending": false,
-                                  "Catgory": cubit.valSubCategory,
-                                  // "Details": "",
-                                });
-                                if (formState.currentState!.validate()) {
+                            padding: const EdgeInsets.only(
+                                left: 250, bottom: 100, right: 250),
+                            child: Container(
+                              child: InkWell(
+                                onTap: () async {
                                   await cubit.postCreate({
                                     "Product_Name": productNameController.text,
                                     "short_Description":
@@ -260,9 +267,29 @@ class CreatePost extends StatelessWidget {
                                     "Catgory": cubit.valSubCategory,
                                     // "Details": "",
                                   });
-                                } else {}
-                              },
-                              child: const PostButton(),
+                                  if (formState.currentState!.validate()) {
+                                    await cubit.postCreate({
+                                      "Product_Name":
+                                          productNameController.text,
+                                      "short_Description":
+                                          tradeTermsController.text,
+                                      "Product_Description":
+                                          maxBudgetController.text,
+                                      "sampils": sampils.text,
+                                      "Quantity": cubit.count,
+                                      "unit": cubit.valUnit,
+                                      "firstImage": cubit.firstImage,
+                                      "scondImage": cubit.scondImage,
+                                      "user": FirebaseAuth
+                                          .instance.currentUser!.uid,
+                                      "ispending": false,
+                                      "Catgory": cubit.valSubCategory,
+                                      // "Details": "",
+                                    });
+                                  } else {}
+                                },
+                                child: const PostButton(),
+                              ),
                             ),
                           ),
                         ],

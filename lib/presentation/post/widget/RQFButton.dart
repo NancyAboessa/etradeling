@@ -14,11 +14,11 @@ class RQFButton extends StatelessWidget {
       },
       child: Container(
         height: 50,
-        width: 1000,
+        width: 200,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: Colors.black,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(20),
         ),
         child: Text(
           AppLocalizations.of(context)!.submit,

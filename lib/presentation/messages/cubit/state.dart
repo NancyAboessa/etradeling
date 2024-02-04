@@ -8,6 +8,8 @@ class ListUser extends MainMessagesState {}
 
 class getDataState extends MainMessagesState {}
 
+class GetCurnceState extends MainMessagesState {}
+
 class sendmessegeState extends MainMessagesState {}
 
 class EmptyMessegeState extends MainMessagesState {}
