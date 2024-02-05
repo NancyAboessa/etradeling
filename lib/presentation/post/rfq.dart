@@ -32,7 +32,7 @@ class RFQ extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               MainAppBar(),
-               PigContainer(
+              PigContainer(
                 title: AppLocalizations.of(context)!.submitRFQ,
               ),
               Padding(
@@ -69,13 +69,29 @@ class RFQ extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 770, left: 80),
-                child: MainField(
-                    hint: AppLocalizations.of(context)!.max_Budget,
-                    controller: maxBudgetController),
+                padding: const EdgeInsets.only(left: 80.0, right: 80),
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: SizedBox(
+                        width: 650,
+                        child: MainField(
+                            hint: AppLocalizations.of(context)!.max_Budget,
+                            controller: maxBudgetController),
+                      ),
+                    ),
+                    SizedBox(width: 60),
+                    Expanded(
+                      child: Container(),
+                      flex: 1,
+                    ),
+                  ],
+                ),
               ),
               Row(
                 children: [
+                  SizedBox(width: 80),
                   Expanded(
                     flex: 1,
                     child: Counter(
@@ -100,7 +116,8 @@ class RFQ extends StatelessWidget {
                         width: 200,
                       ),
                     ),
-                  )
+                  ),
+                  SizedBox(width: 80),
                 ],
               ),
               Padding(
@@ -110,20 +127,23 @@ class RFQ extends StatelessWidget {
                     Expanded(
                         flex: 1,
                         child: MainField(
-                            hint: AppLocalizations.of(context)!.phone_number, controller: productNameController)),
+                            hint: AppLocalizations.of(context)!.phone_number,
+                            controller: productNameController)),
                     Expanded(
                         flex: 1,
                         child: MainField(
-                            hint: AppLocalizations.of(context)!.email, controller: productNameController)),
+                            hint: AppLocalizations.of(context)!.email,
+                            controller: productNameController)),
                   ],
                 ),
               ),
               LargeField(
                 controller: detailsController,
-                hint:  AppLocalizations.of(context)!.details,
+                hint: AppLocalizations.of(context)!.details,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 100.0, bottom: 20),
+                padding:
+                    const EdgeInsets.only(left: 100.0, bottom: 20, right: 100),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

@@ -7,7 +7,7 @@ class PigContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 250.0, top: 80),
+      padding: const EdgeInsets.only(left: 250.0, top: 80, right: 250),
       child: Container(
         height: 200,
         width: 1000,

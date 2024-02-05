@@ -12,7 +12,6 @@ class RequestAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     NamesCubit cubit = NamesCubit.get(context);
     List list = [];
-    List listId = ["ngRTesakQNGiJu8sjPQK", "saJ1DvfxSwTcrUoajrxG"];
     cubit.requestColorTop(1);
     return BlocBuilder<NamesCubit, NamesState>(builder: (context, state) {
       return SizedBox(

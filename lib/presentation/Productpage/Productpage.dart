@@ -32,7 +32,8 @@ class Product extends StatelessWidget {
                   children: [
                     MainAppBar(),
                     Padding(
-                      padding: const EdgeInsets.only(left: 100, top: 50),
+                      padding:
+                          const EdgeInsets.only(left: 100, top: 50, right: 100),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -144,7 +145,8 @@ class Product extends StatelessWidget {
                                       padding:
                                           const EdgeInsets.only(right: 80.0),
                                       child: Text(
-                                        AppLocalizations.of(context)!.stockInOutAvailable,
+                                        AppLocalizations.of(context)!
+                                            .stockInOutAvailable,
                                         style: TextStyle(fontSize: 15),
                                       ),
                                     ),
@@ -152,7 +154,8 @@ class Product extends StatelessWidget {
                                       padding:
                                           const EdgeInsets.only(right: 140.0),
                                       child: Text(
-                                        AppLocalizations.of(context)!.sampels10per,
+                                        AppLocalizations.of(context)!
+                                            .sampels10per,
                                         style: TextStyle(fontSize: 15),
                                       ),
                                     ),
@@ -337,7 +340,8 @@ class Product extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 20.0),
-                            child: Text(AppLocalizations.of(context)!.shortDescription,
+                            child: Text(
+                                AppLocalizations.of(context)!.shortDescription,
                                 style: TextStyle(
                                     color: Colors.orange, fontSize: 18)),
                           ),
@@ -346,7 +350,9 @@ class Product extends StatelessWidget {
                                   TextStyle(color: Colors.black, fontSize: 15)),
                           Padding(
                             padding: const EdgeInsets.only(top: 20.0),
-                            child: Text(AppLocalizations.of(context)!.productDescription,
+                            child: Text(
+                                AppLocalizations.of(context)!
+                                    .productDescription,
                                 style: TextStyle(
                                     color: Colors.orange, fontSize: 18)),
                           ),
