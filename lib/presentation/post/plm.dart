@@ -38,7 +38,7 @@ class PLM extends StatelessWidget {
                 height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 40.0, right: 40.0),
+                padding: const EdgeInsets.only(left: 40.0, right: 40),
                 child: Container(
                   height: 200,
                   width: 1000,
@@ -58,13 +58,22 @@ class PLM extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 770, left: 80),
-                child: DropDownQuantityButton(
-                    width: 1000,
-                    list: ["x", "y", "z"],
-                    dropdownValue: "Category",
-                    fun: cubit),
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(),
+                    flex: 1,
+                  ),
+                  SizedBox(width: 40),
+                  Expanded(
+                    flex: 1,
+                    child: DropDownQuantityButton(
+                        width: 650,
+                        list: ["x", "y", "z"],
+                        dropdownValue: "Category",
+                        fun: cubit),
+                  ),
+                ],
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 80.0, right: 80.0),
