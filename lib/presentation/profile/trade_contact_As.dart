@@ -152,7 +152,7 @@ class TradeContactAs extends StatelessWidget {
                                       cubit.map["factoryName"] != null &&
                                               cubit.map.isNotEmpty
                                           ? cubit.map["factoryName"]
-                                          : "factoryName",
+                                          : AppLocalizations.of(context)!.factoryname,
                                       style: const TextStyle(
                                         fontSize: 20,
                                       ),
@@ -170,7 +170,7 @@ class TradeContactAs extends StatelessWidget {
                                   children: [
                                     Row(
                                       children: [
-                                        const Text("facebook:"),
+                                         Text(AppLocalizations.of(context)!.facebook),
                                         cubit.map["facebook"] != null
                                             ? Text("${cubit.map["facebook"]}")
                                             : Text(""),
@@ -178,7 +178,7 @@ class TradeContactAs extends StatelessWidget {
                                     ),
                                     Row(
                                       children: [
-                                        const Text("instgram:"),
+                                         Text(AppLocalizations.of(context)!.instgram),
                                         cubit.map["instgram"] != null
                                             ? Text("${cubit.map["instgram"]}")
                                             : Text(""),
@@ -186,7 +186,7 @@ class TradeContactAs extends StatelessWidget {
                                     ),
                                     Row(
                                       children: [
-                                        const Text("twiter:"),
+                                         Text(AppLocalizations.of(context)!.twiter),
                                         cubit.map["twiter"] != null
                                             ? Text("${cubit.map["twiter"]}")
                                             : Text(""),

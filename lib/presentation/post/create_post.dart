@@ -87,7 +87,7 @@ class CreatePost extends StatelessWidget {
                                       cubit.getImageFirst();
                                     },
                                     child: ImageUploadFirst(
-                                        text: "ProductImage", cubit: cubit)),
+                                        text: AppLocalizations.of(context)!.productImage, cubit: cubit)),
                                 Row(
                                   children: [
                                     GestureDetector(
@@ -131,12 +131,12 @@ class CreatePost extends StatelessWidget {
                                 Expanded(
                                     flex: 1,
                                     child: MainField(
-                                        hint: "product name englesh",
+                                        hint: AppLocalizations.of(context)!.productnameenglesh,
                                         controller: productNameController)),
                                 Expanded(
                                     flex: 1,
                                     child: MainField(
-                                        hint: "product name arabic",
+                                        hint: AppLocalizations.of(context)!.productnamearabic,
                                         controller: productNameController)),
                               ],
                             ),
@@ -151,8 +151,8 @@ class CreatePost extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.only(bottom: 50),
                                     child: DropDownCategoryButton(
-                                      list: const ["kelogram", "gram"],
-                                      dropdownValue: "unit",
+                                      list:  [AppLocalizations.of(context)!.kilogram,AppLocalizations.of(context)!.gram],
+                                      dropdownValue:AppLocalizations.of(context)!.unit,
                                       fun: cubit,
                                       width: 1000,
                                     ),
@@ -226,7 +226,7 @@ class CreatePost extends StatelessWidget {
                                 Expanded(
                                   flex: 1,
                                   child: MainField(
-                                      hint: "National of origin",
+                                      hint: AppLocalizations.of(context)!.nationaloforigin,
                                       controller: requestSheping),
                                 ),
                                 Expanded(
@@ -248,13 +248,13 @@ class CreatePost extends StatelessWidget {
                                 Expanded(
                                   flex: 1,
                                   child: MainField(
-                                      hint: "Price from",
+                                      hint: AppLocalizations.of(context)!.pricefrom,
                                       controller: requestSheping),
                                 ),
                                 Expanded(
                                   flex: 1,
                                   child: MainField(
-                                      hint: "Price to",
+                                      hint: AppLocalizations.of(context)!.priceto,
                                       controller: requestSheping),
                                 ),
                               ],

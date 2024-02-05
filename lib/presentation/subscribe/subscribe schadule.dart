@@ -1,5 +1,6 @@
 import 'package:etradeling/utls/themes/color_manager/textstyle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class subscirbe extends StatelessWidget {
   const subscirbe({super.key});
@@ -9,7 +10,7 @@ class subscirbe extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Text('Price Plans',
+          Text(AppLocalizations.of(context)!.pricePlans,
             style: TextStyle(color: Colors.black,fontSize: 30),),
           SizedBox(height: 40,),
           Row(
@@ -34,41 +35,41 @@ class subscirbe extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 5,),
                       child: Column(
                         children: [
-                          Text('Subscription plan',
+                          Text(AppLocalizations.of(context)!.subscriptionplan,
                           style: FonttextStyle.fontBoldStyle(),
                           ),
-                          Text('Vendor store',
+                          Text(AppLocalizations.of(context)!.vendorstore,
                             style: FonttextStyle.lightTextStyle()
                           ),
-                          Text('Show Products',
+                          Text(AppLocalizations.of(context)!.showProducts,
                             style:  FonttextStyle.lightTextStyle()
                           ),
-                          Text('Respond to RFQ',
+                          Text(AppLocalizations.of(context)!.respondtoRFQ,
                             style: FonttextStyle.lightTextStyle()
                           ),
                           SizedBox(height: 20,),
-                          Text('Subaccounts',
+                          Text(AppLocalizations.of(context)!.subaccounts,
                             style:  FonttextStyle.lightTextStyle()
                           ),
-                          Text('Business verification support',
+                          Text(AppLocalizations.of(context)!.businessverificationsupport,
                             style:  FonttextStyle.lightTextStyle()
                           ),
-                          Text('Report and Analysis',
+                          Text(AppLocalizations.of(context)!.reportandAnalysis,
                             style: FonttextStyle.lightTextStyle()
                           ),
-                          Text('Ads Website & App',
+                          Text(AppLocalizations.of(context)!.adsWebsiteApp,
                             style: FonttextStyle.lightTextStyle()
                           ),
-                          Text('Digital Marketing',
+                          Text(AppLocalizations.of(context)!.digitalMarketing,
                             style: FonttextStyle.lightTextStyle()
                           ),
-                          Text('Export opportunity',
+                          Text(AppLocalizations.of(context)!.exportopportunity,
                             style: FonttextStyle.lightTextStyle()
                           ),
-                          Text('Account Manager',
+                          Text(AppLocalizations.of(context)!.accountManager,
                             style:  FonttextStyle.lightTextStyle()
                           ),
-                          Text('Subscription fees',
+                          Text(AppLocalizations.of(context)!.subscriptionfees,
                             style: FonttextStyle.lightTextStyle()
                           ),
                         ],
@@ -97,14 +98,14 @@ class subscirbe extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 20),
                         child: Column(
                           children: [
-                            Text('Silver',
+                            Text(AppLocalizations.of(context)!.silver,
                               style: FonttextStyle.fontBoldStyle(),
                             ),
                             Icon(Icons.check,size: 25,),
                             Text('50',
                                 style:  FonttextStyle.lightTextStyle()
                             ),
-                            Text('20/Month',
+                            Text(AppLocalizations.of(context)!.twentyMonth,
                                 style: FonttextStyle.lightTextStyle()
                             ),
                             SizedBox(height: 20,),
@@ -112,16 +113,16 @@ class subscirbe extends StatelessWidget {
                                 style:  FonttextStyle.lightTextStyle()
                             ),
                             Icon(Icons.check,size: 30,color: Colors.black,),
-                            Text('Annually',
+                            Text(AppLocalizations.of(context)!.annually,
                                 style: FonttextStyle.lightTextStyle()
                             ),
                             Text('1',
                                 style: FonttextStyle.lightTextStyle()
                             ),
-                            Text('Medium',
+                            Text(AppLocalizations.of(context)!.medium,
                                 style: FonttextStyle.lightTextStyle()
                             ),
-                            Text('Medium',
+                            Text(AppLocalizations.of(context)!.medium,
                                 style: FonttextStyle.lightTextStyle()
                             ),
                             Text('-',
@@ -157,7 +158,7 @@ class subscirbe extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 20),
                         child: Column(
                           children: [
-                            Text('Gold',
+                            Text(AppLocalizations.of(context)!.gold,
                               style: FonttextStyle.fontBoldStyle(),
                             ),
                             Icon(Icons.check,
@@ -166,7 +167,7 @@ class subscirbe extends StatelessWidget {
                             Text('100',
                                 style:  FonttextStyle.lightTextStyle()
                             ),
-                            Text('50/Month',
+                            Text(AppLocalizations.of(context)!.fiftymonthly,
                                 style: FonttextStyle.lightTextStyle()
                             ),
                             SizedBox(height: 20,),
@@ -174,22 +175,22 @@ class subscirbe extends StatelessWidget {
                                 style:  FonttextStyle.lightTextStyle()
                             ),
                             Icon(Icons.check,size: 30,color: Colors.black,),
-                            Text('3-Monthly',
+                            Text(AppLocalizations.of(context)!.threeMonthly,
                                 style: FonttextStyle.lightTextStyle()
                             ),
                             Text('3',
                                 style: FonttextStyle.lightTextStyle()
                             ),
-                            Text('High',
+                            Text(AppLocalizations.of(context)!.high,
                                 style: FonttextStyle.lightTextStyle()
                             ),
-                            Text('High',
+                            Text(AppLocalizations.of(context)!.high,
                                 style: FonttextStyle.lightTextStyle()
                             ),
                             Text('-',
                                 style:  FonttextStyle.lightTextStyle()
                             ),
-                            Text('3000/m',
+                            Text(AppLocalizations.of(context)!.threethousandpermonth,
                                 style: FonttextStyle.lightTextStyle()
                             ),
                           ],
@@ -219,14 +220,14 @@ class subscirbe extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 20),
                         child: Column(
                           children: [
-                            Text('Platinum',
+                            Text(AppLocalizations.of(context)!.platinum,
                               style: FonttextStyle.goldText(),
                             ),
                             Icon(Icons.check,size: 25,color: Colors.orange[600],),
                             Text('200',
                                 style:  FonttextStyle.goldlightText()
                             ),
-                            Text('100/Month',
+                            Text(AppLocalizations.of(context)!.onehundredpermonth,
                                 style: FonttextStyle.goldlightText()
                             ),
                            SizedBox(height: 20,),
@@ -234,20 +235,20 @@ class subscirbe extends StatelessWidget {
                                 style:  FonttextStyle.goldlightText()
                             ),
                             Icon(Icons.check,size: 30,color: Colors.orange[600],),
-                            Text('3-monthly',
+                            Text(AppLocalizations.of(context)!.threeMonthly,
                                 style: FonttextStyle.goldlightText()
                             ),
                             Text('5',
                                 style: FonttextStyle.goldlightText()
                             ),
-                            Text('Super',
+                            Text(AppLocalizations.of(context)!.suuper,
                                 style: FonttextStyle.goldlightText()
                             ),
-                            Text('Super',
+                            Text(AppLocalizations.of(context)!.suuper,
                                 style: FonttextStyle.goldlightText()
                             ),
                             Icon(Icons.check,size: 30,color: Colors.orange[600],),
-                            Text('4500/m',
+                            Text(AppLocalizations.of(context)!.fourThousandpermonth,
                                 style: FonttextStyle.goldlightText()
                             ),
                           ],

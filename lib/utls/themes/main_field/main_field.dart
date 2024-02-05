@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainField extends StatelessWidget {
   final String? hint;
@@ -25,7 +26,7 @@ class MainField extends StatelessWidget {
             child: TextFormField(
               validator: (value) {
                 if (value!.isEmpty) {
-                  return "the field is empty";
+                  return AppLocalizations.of(context)!.thisfieldisempty;
                 }
                 return null;
               },

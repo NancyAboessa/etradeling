@@ -68,7 +68,7 @@ class PLM extends StatelessWidget {
                     Expanded(
                         flex: 1,
                         child: MainField(
-                            hint: "Min order ",
+                            hint:  AppLocalizations.of(context)!.minorder,
                             controller: tradeTermsController)),
                   ],
                 ),
@@ -80,7 +80,7 @@ class PLM extends StatelessWidget {
                     Expanded(
                         flex: 1,
                         child: MainField(
-                            hint: "Estimated price ",
+                            hint:  AppLocalizations.of(context)!.estimatedprice,
                             controller: tradeTermsController)),
                   ],
                 ),
@@ -90,7 +90,7 @@ class PLM extends StatelessWidget {
                 child: DropDownSubCategoryButton(
                     width: 1000,
                     list: ["x", "y", "z"],
-                    dropdownValue: "Target market",
+                    dropdownValue: AppLocalizations.of(context)!.targetmarket,
                     fun: cubit),
               ),
               Row(
@@ -100,7 +100,7 @@ class PLM extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(right: 770, left: 80),
                       child: MainField(
-                          hint: "Products specification",
+                          hint:  AppLocalizations.of(context)!.productsspecification,
                           controller: maxBudgetController),
                     ),
                   ),
@@ -108,7 +108,7 @@ class PLM extends StatelessWidget {
               ),
               LargeField(
                 controller: detailsController,
-                hint: "details",
+                hint:  AppLocalizations.of(context)!.details,
               ),
               Padding(
                 padding:
@@ -116,7 +116,7 @@ class PLM extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Products specification",
+                    Text( AppLocalizations.of(context)!.productsspecification,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20)),
                     Padding(

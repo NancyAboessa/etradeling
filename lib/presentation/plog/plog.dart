@@ -4,6 +4,7 @@ import 'package:etradeling/presentation/home_screen/appbar.dart';
 import 'package:etradeling/presentation/home_screen/home_body/components/footer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Plog extends StatelessWidget {
   const Plog({super.key});
@@ -41,7 +42,7 @@ class Plog extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  "Our Vison",
+                               AppLocalizations.of(context)!.ourVison  ,
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16),
