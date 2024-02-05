@@ -46,7 +46,8 @@ class MainAppBar extends StatelessWidget {
                   child: SizedBox(
                     height: 200,
                     width: 200,
-                    child: Image.asset("assets/imeges/etradeling3-1.png"),
+                    child:
+                        Image.asset("assets/imeges/Etradeling_logo_whit.png"),
                   ),
                 ),
                 SizedBox(
@@ -285,9 +286,9 @@ class MainAppBar extends StatelessWidget {
                     child: Text(
                       AppLocalizations.of(context)!.home,
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
                     ),
                   ),
                   SizedBox(
@@ -304,7 +305,7 @@ class MainAppBar extends StatelessWidget {
                       isExpanded: true,
                       hint: Text(
                         AppLocalizations.of(context)!.categories,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 20),
@@ -334,32 +335,6 @@ class MainAppBar extends StatelessWidget {
                   SizedBox(
                     width: 20.0,
                   ),
-                  TextButton(
-                    onPressed: () {
-                      // loginCubit!.signupPress();
-                      context.beamToNamed("/blog");
-                    },
-                    child: Text(
-                      AppLocalizations.of(context)!.ourblog,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      // loginCubit!.signupPress();
-                      context.beamToNamed("/factor_oreder");
-                    },
-                    child: Text(
-                      "factor oreder",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
                   SizedBox(
                     width: 20.0,
                   ),
@@ -378,9 +353,9 @@ class MainAppBar extends StatelessWidget {
                     child: Text(
                       AppLocalizations.of(context)!.contactus,
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
                     ),
                   ),
                   SizedBox(
@@ -394,9 +369,22 @@ class MainAppBar extends StatelessWidget {
                     child: Text(
                       AppLocalizations.of(context)!.aboutus,
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // loginCubit!.signupPress();
+                      context.beamToNamed("/blog");
+                    },
+                    child: Text(
+                      AppLocalizations.of(context)!.ourblog,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
                     ),
                   ),
                   SizedBox(

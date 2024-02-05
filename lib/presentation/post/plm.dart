@@ -37,9 +37,8 @@ class PLM extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Positioned(
-                left: 250.0,
-                right: 200,
+              Padding(
+                padding: const EdgeInsets.only(left: 40.0, right: 40.0),
                 child: Container(
                   height: 200,
                   width: 1000,

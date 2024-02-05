@@ -1,3 +1,4 @@
+import 'package:beamer/beamer.dart';
 import 'package:etradeling/presentation/home_screen/Bloc/BlocAppBar.dart';
 import 'package:etradeling/presentation/home_screen/Bloc/stateAppBar.dart';
 import 'package:etradeling/presentation/home_screen/home_body/components/store.dart';
@@ -15,270 +16,285 @@ class FooterScreen extends StatelessWidget {
     AppBarCubit cubit = AppBarCubit.get(context);
     cubit.getFooter();
     return BlocBuilder<AppBarCubit, AppBarState>(builder: (context, state) {
-      return Stack(
-        children: [
-          Container(
-            color: Colors.black,
-            width: double.infinity,
-            height: 450,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 200, left: 150),
-            child: Row(
-              children: [
-                Image.asset("assets/imeges/etradeling3-1.png",
-                    width: 200, height: 45),
-                const SizedBox(
-                  width: 150,
-                ),
-                //two texts
-                Column(
-                  children: [
-                    Text(
-                      AppLocalizations.of(context)!.join_our,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    Text(
-                      AppLocalizations.of(context)!.newsetter,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  width: 100,
-                ),
-                Container(
-                  height: 40,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white),
-                    color: Colors.white,
+      return Container(
+        color: Colors.black,
+        width: double.infinity,
+        height: 450,
+        child: Column(
+          children: [
+            Padding(
+              padding:
+                  const EdgeInsets.only(bottom: 0, left: 250.0, right: 100),
+              child: Row(
+                children: [
+                  Image.asset("assets/imeges/Etradeling_logo.png",
+                      width: 200, height: 45),
+                  const SizedBox(
+                    width: 150,
                   ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(bottom: 10),
-                      hintText:
-                          " ${AppLocalizations.of(context)!.what_yourareLookingfor}",
-                      border: InputBorder.none,
-                      hintStyle: TextStyle(
-                        color: Colors.black.withOpacity(.6),
-                        fontSize: 15,
+                  //two texts
+                  Column(
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.join_our,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 3,
+                      ),
+                      Text(
+                        AppLocalizations.of(context)!.newsetter,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    width: 100,
+                  ),
+                  Container(
+                    height: 40,
+                    width: 400,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      color: Colors.white,
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(bottom: 10),
+                        hintText:
+                            " ${AppLocalizations.of(context)!.what_yourareLookingfor}",
+                        border: InputBorder.none,
+                        hintStyle: TextStyle(
+                          color: Colors.black.withOpacity(.6),
+                          fontSize: 15,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                MaterialButton(
-                  onPressed: () {},
-                  height: 50,
-                  color: Colors.orange[600],
-                  child: Text(AppLocalizations.of(context)!.subscribe),
-                ),
-              ],
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(top: 10),
-            child: Divider(
-              color: Colors.white54,
-              thickness: 1,
-              height: 200,
-            ),
-          ),
-          Positioned(
-            top: 130,
-            left: 200,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: 220,
-                  child: Text(
-                    "${cubit.fotter}",
-                    style: TextStyle(color: Colors.white),
+                  MaterialButton(
+                    onPressed: () {
+                      context.beamToNamed("/subscrib");
+                    },
+                    height: 50,
+                    color: Colors.orange[600],
+                    child: Text(AppLocalizations.of(context)!.subscribe),
                   ),
-                ),
-                Text(
-                  AppLocalizations.of(context)!.follow_uson,
-                  style: TextStyle(
-                      color: Colors.orange[600], fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () async {
-                        final Uri _url =
-                            Uri.parse('https://www.facebook.com/etradeling');
-                        await launchUrl(_url);
-                      },
-                      child: Icon(
-                        Icons.facebook,
-                        color: Colors.orange[600],
-                        size: 15,
+                ],
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Divider(
+                color: Colors.white54,
+                thickness: 1,
+                endIndent: 00,
+                indent: 00,
+                height: 00,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 100.0, right: 100, top: 20),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: 0,
+                    ),
+                    child: Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: 220,
+                            child: Text(
+                              "${cubit.fotter}",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!.follow_uson,
+                            style: TextStyle(
+                                color: Colors.orange[600],
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            children: [
+                              InkWell(
+                                onTap: () async {
+                                  final Uri _url = Uri.parse(
+                                      'https://www.facebook.com/etradeling');
+                                  await launchUrl(_url);
+                                },
+                                child: Icon(
+                                  Icons.facebook,
+                                  color: Colors.orange[600],
+                                  size: 15,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  final Uri _url = Uri.parse(
+                                      'https://www.instagram.com/etradeling/');
+                                  await launchUrl(_url);
+                                },
+                                child: Icon(
+                                  FontAwesomeIcons.instagram,
+                                  color: Colors.orange[600],
+                                  size: 15,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  final Uri _url = Uri.parse(
+                                      'https://www.linkedin.com/company/etradeling/');
+                                  await launchUrl(_url);
+                                },
+                                child: Icon(
+                                  FontAwesomeIcons.linkedin,
+                                  color: Colors.orange[600],
+                                  size: 15,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  final Uri _url = Uri.parse(
+                                      'https://twitter.com/etradeling');
+                                  await launchUrl(_url);
+                                },
+                                child: Icon(
+                                  FontAwesomeIcons.twitter,
+                                  color: Colors.orange[600],
+                                  size: 15,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
-                    SizedBox(
-                      width: 10,
+                  ),
+                  SizedBox(
+                    width: 200,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 100.0),
+                    child: Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              AppLocalizations.of(context)!.categories,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Text(
+                              AppLocalizations.of(context)!.ourblog,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Text(
+                              AppLocalizations.of(context)!.aboutus,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              AppLocalizations.of(context)!.termsConditions,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Text(
+                              AppLocalizations.of(context)!.privacypolicies,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Text(
+                              AppLocalizations.of(context)!.fAQ,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    InkWell(
-                      onTap: () async {
-                        final Uri _url =
-                            Uri.parse('https://www.instagram.com/etradeling/');
-                        await launchUrl(_url);
-                      },
-                      child: Icon(
-                        FontAwesomeIcons.instagram,
-                        color: Colors.orange[600],
-                        size: 15,
+                  ),
+                  SizedBox(
+                    width: 200,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.get_The_app,
+                        style: TextStyle(color: Colors.white),
                       ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    InkWell(
-                      onTap: () async {
-                        final Uri _url = Uri.parse(
-                            'https://www.linkedin.com/company/etradeling/');
-                        await launchUrl(_url);
-                      },
-                      child: Icon(
-                        FontAwesomeIcons.linkedin,
-                        color: Colors.orange[600],
-                        size: 15,
+                      const SizedBox(
+                        height: 10,
                       ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    InkWell(
-                      onTap: () async {
-                        final Uri _url =
-                            Uri.parse('https://twitter.com/etradeling');
-                        await launchUrl(_url);
-                      },
-                      child: Icon(
-                        FontAwesomeIcons.twitter,
-                        color: Colors.orange[600],
-                        size: 15,
+                      Text(
+                        AppLocalizations.of(context)!.app_available_nowon,
+                        style: TextStyle(color: Colors.white),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      StoreIcon(
+                          image: "assets/imeges/googleplay.png",
+                          storeName: "Google play"),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      StoreIcon(
+                          image: "assets/imeges/applelogo.jpg",
+                          storeName: "ApppStore"),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      StoreIcon(
+                          image: "assets/imeges/appg.jpeg",
+                          storeName: "App Gallery"),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            width: 120,
-          ),
-          Positioned(
-            top: 130,
-            left: 610,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.categories,
-                  style: TextStyle(color: Colors.white),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  AppLocalizations.of(context)!.ourblog,
-                  style: TextStyle(color: Colors.white),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  AppLocalizations.of(context)!.aboutus,
-                  style: TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            top: 100,
-            left: 450,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  AppLocalizations.of(context)!.termsConditions,
-                  style: TextStyle(color: Colors.white),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  AppLocalizations.of(context)!.privacypolicies,
-                  style: TextStyle(color: Colors.white),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  AppLocalizations.of(context)!.fAQ,
-                  style: TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            top: 130,
-            left: 950,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.get_The_app,
-                  style: TextStyle(color: Colors.white),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  AppLocalizations.of(context)!.app_available_nowon,
-                  style: TextStyle(color: Colors.white),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                StoreIcon(
-                    image: "assets/imeges/googleplay.png",
-                    storeName: "Google play"),
-                const SizedBox(
-                  height: 10,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                StoreIcon(
-                    image: "assets/imeges/applelogo.jpg",
-                    storeName: "ApppStore"),
-                const SizedBox(
-                  height: 10,
-                ),
-                StoreIcon(
-                    image: "assets/imeges/appg.jpeg", storeName: "App Gallery"),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       );
     });
   }

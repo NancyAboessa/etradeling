@@ -22,7 +22,7 @@ class ListUserPost extends StatelessWidget {
       body: BlocBuilder<FactoryCubit, MainFactoryState>(
           builder: (context, state) {
         return cubit.mapRFQ.isEmpty
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(),
               )
             : SingleChildScrollView(
@@ -87,7 +87,7 @@ class ListUserPost extends StatelessWidget {
                             color: Colors.orange,
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          child:  Text(AppLocalizations.of(context)!.commint),
+                          child: Text(AppLocalizations.of(context)!.commint),
                         ),
                       ),
                     ),
@@ -97,7 +97,7 @@ class ListUserPost extends StatelessWidget {
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
                           return state is LoadCommintState
-                              ? Center(
+                              ? const Center(
                                   child: CircularProgressIndicator(),
                                 )
                               : DisplayFactory(

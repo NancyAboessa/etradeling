@@ -28,7 +28,7 @@ class HomeLocation extends BeamLocation<BeamState> {
   List<BeamPage> buildPages(BuildContext context, BeamState state) {
     final pathPatterns = [
       BeamPage(
-        child: subscirbe(),
+        child: LoginCheck(),
         key: ValueKey('/'),
       ),
     ];
@@ -40,6 +40,15 @@ class HomeLocation extends BeamLocation<BeamState> {
         ),
       );
     }
+    if (state.uri.pathSegments.contains('subscrib')) {
+      pathPatterns.add(
+        BeamPage(
+          key: const ValueKey('/subscrib'),
+          child: subscirbe(),
+        ),
+      );
+    }
+
     if (state.uri.pathSegments.contains('CreatePost')) {
       pathPatterns.add(
         BeamPage(
@@ -224,6 +233,7 @@ class HomeLocation extends BeamLocation<BeamState> {
         "/all_factor_oreder",
         "/CreatePost",
         "/PLM",
-        "/plm/:plm"
+        "/plm/:plm",
+        "subscrib"
       ];
 }

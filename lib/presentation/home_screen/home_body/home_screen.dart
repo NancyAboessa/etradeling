@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
-                                      children: [
+                                      children: <Widget>[
                                         InkWell(
                                           onTap: () {
                                             carouselController.previousPage();
@@ -88,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      Column(children: [
+                      Column(children: <Widget>[
                         // List View AirPods
                         Text(
                           AppLocalizations.of(context)!.exploreourCategories,
@@ -103,7 +103,8 @@ class HomeScreen extends StatelessWidget {
                                 child: CircularProgressIndicator(),
                               )
                             : Padding(
-                                padding: const EdgeInsets.only(left: 100),
+                                padding: const EdgeInsets.only(
+                                    left: 100, right: 100),
                                 child: SizedBox(
                                   height: 350 * cubit.list.length / 3,
                                   width: 1000,
@@ -130,20 +131,21 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 340.0),
-                              child: Container(
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(left: 340.0, right: 340),
+                          child: Row(
+                            children: <Widget>[
+                              Container(
                                 height: 200,
                                 width: 400,
                                 decoration: BoxDecoration(
                                     border: Border.all(color: Colors.black),
                                     borderRadius: BorderRadius.circular(20)),
-                                padding: EdgeInsets.only(left: 20),
+                                padding: EdgeInsets.only(left: 20, right: 20),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
+                                  children: <Widget>[
                                     SizedBox(
                                       height: 20,
                                     ),
@@ -151,7 +153,8 @@ class HomeScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 30,
                                     ),
-                                    Text(AppLocalizations.of(context)!.thesubliesyouneed),
+                                    Text(AppLocalizations.of(context)!
+                                        .thesubliesyouneed),
                                     SizedBox(
                                       height: 30,
                                     ),
@@ -176,19 +179,19 @@ class HomeScreen extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 50.0),
-                              child: Container(
+                              const SizedBox(
+                                width: 50,
+                              ),
+                              Container(
                                 height: 200,
                                 width: 400,
                                 decoration: BoxDecoration(
                                     border: Border.all(color: Colors.black),
                                     borderRadius: BorderRadius.circular(20)),
-                                padding: EdgeInsets.only(left: 20),
+                                padding: EdgeInsets.only(left: 20, right: 20),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
+                                  children: <Widget>[
                                     SizedBox(
                                       height: 20,
                                     ),
@@ -196,7 +199,8 @@ class HomeScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 30,
                                     ),
-                                    Text(AppLocalizations.of(context)!.thesubliesyouneed),
+                                    Text(AppLocalizations.of(context)!
+                                        .thesubliesyouneed),
                                     SizedBox(
                                       height: 30,
                                     ),
@@ -221,8 +225,8 @@ class HomeScreen extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           height: 30.0,
@@ -270,7 +274,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
+                          children: <Widget>[
                             //our benefits
                             Stack(
                               alignment: AlignmentDirectional.center,
@@ -292,7 +296,7 @@ class HomeScreen extends StatelessWidget {
                                 //Text our benifits
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
+                                  children: <Widget>[
                                     Padding(
                                       padding: EdgeInsets.only(
                                           bottom: 190, right: 30),
@@ -309,82 +313,79 @@ class HomeScreen extends StatelessWidget {
                                   ],
                                 ),
                                 //Icons
-                                Positioned(
-                                  left: 300,
-                                  top: 180,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      iconColom(
-                                        text: AppLocalizations.of(context)!
-                                            .we_Provide_all_agricultural_products,
-                                        texttwo: AppLocalizations.of(context)!
-                                            .browse_bycategories,
-                                        icon: Icons.category,
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      iconColom(
-                                        text: AppLocalizations.of(context)!
-                                            .to_ensure_a_perfect_customere,
-                                        texttwo: AppLocalizations.of(context)!
-                                            .fastdelivery,
-                                        icon: Icons.fire_truck,
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      iconColom(
-                                        text: AppLocalizations.of(context)!
-                                            .we_target_all_segments_both_business_or,
-                                        texttwo: AppLocalizations.of(context)!
-                                            .easy_payment_options,
-                                        icon: Icons.wallet,
-                                      ),
-                                    ],
+                                Center(
+                                  child: Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        iconColom(
+                                          text: AppLocalizations.of(context)!
+                                              .we_Provide_all_agricultural_products,
+                                          texttwo: AppLocalizations.of(context)!
+                                              .browse_bycategories,
+                                          icon: Icons.category,
+                                        ),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        iconColom(
+                                          text: AppLocalizations.of(context)!
+                                              .to_ensure_a_perfect_customere,
+                                          texttwo: AppLocalizations.of(context)!
+                                              .fastdelivery,
+                                          icon: Icons.fire_truck,
+                                        ),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        iconColom(
+                                          text: AppLocalizations.of(context)!
+                                              .we_target_all_segments_both_business_or,
+                                          texttwo: AppLocalizations.of(context)!
+                                              .easy_payment_options,
+                                          icon: Icons.wallet,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
                             ),
 
-                            Column(
-                              children: [
-                                const SizedBox(
-                                  width: double.infinity,
-                                  height: 100,
-                                ),
-                                Positioned(
-                                  left: 700,
-                                  top: 50,
-                                  child: Text(
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 20.0, left: 100, right: 100),
+                              child: Column(
+                                children: <Widget>[
+                                  const SizedBox(
+                                    width: double.infinity,
+                                    height: 100,
+                                  ),
+                                  Text(
                                     AppLocalizations.of(context)!.our_partners,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 30,
                                     ),
                                   ),
-                                ),
-                                SizedBox(height: 100),
-                                Column(
-                                  children: [
-                                    Column(children: [
-                                      Center(
-                                        child: listViewhome(
-                                          widget: iconwithTextOnly(
-                                            text: AppLocalizations.of(context)!
-                                                .labore,
-                                          ),
-                                          items: 6,
-                                          left: 200,
-                                          hight: 400,
-                                          width: 600,
+                                  SizedBox(height: 100),
+                                  Column(children: [
+                                    Center(
+                                      child: listViewhome(
+                                        widget: iconwithTextOnly(
+                                          text: AppLocalizations.of(context)!
+                                              .labore,
                                         ),
+                                        items: 6,
+                                        left: 200,
+                                        hight: 400,
+                                        width: 600,
                                       ),
-                                    ]),
-                                  ],
-                                ),
-                              ],
+                                    ),
+                                  ]),
+                                ],
+                              ),
                             ),
                             const SizedBox(
                               height: 50,

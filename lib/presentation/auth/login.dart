@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             height: 20,
                           ),
                           Image.asset(
-                            "assets/imeges/etradling1-1.png",
+                            "assets/imeges/Etradeling_logo.png",
                             fit: BoxFit.cover,
                             height: 90,
                             width: 300,
@@ -87,16 +87,19 @@ class _LoginScreenState extends State<LoginScreen> {
                                       keyboardType: TextInputType.emailAddress,
                                       validator: (value) {
                                         if (value!.isEmpty) {
-                                          return AppLocalizations.of(context)!.thefieldisempty;
+                                          return AppLocalizations.of(context)!
+                                              .thefieldisempty;
                                         }
                                         if (!RegExp(
                                                 r'^[\w-]+(\.[\w-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$')
                                             .hasMatch(value)) {
-                                          return AppLocalizations.of(context)!.emailformatdosentcorect;
+                                          return AppLocalizations.of(context)!
+                                              .emailformatdosentcorect;
                                         }
                                         if (loginCubit.emaile ==
                                             "user not found") {
-                                          return AppLocalizations.of(context)!.youremailorpassworddosentcorrect;
+                                          return AppLocalizations.of(context)!
+                                              .youremailorpassworddosentcorrect;
                                         } else {
                                           return null;
                                         }
@@ -121,11 +124,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                       obscureText: obscureText,
                                       validator: (value) {
                                         if (value!.isEmpty) {
-                                          return AppLocalizations.of(context)!.thefieldisempty;
+                                          return AppLocalizations.of(context)!
+                                              .thefieldisempty;
                                         }
                                         if (loginCubit.passe ==
                                             "Wrong password provided for that user") {
-                                          return AppLocalizations.of(context)!.youremailorpassworddosentcorrect;
+                                          return AppLocalizations.of(context)!
+                                              .youremailorpassworddosentcorrect;
                                         } else {
                                           return null;
                                         }
@@ -166,10 +171,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                       widget.emailController.text);
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(SnackBar(
-                                    content:
-                                         Text(AppLocalizations.of(context)!.pleasecheckyouremail),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .pleasecheckyouremail),
                                     action: SnackBarAction(
-                                      label: AppLocalizations.of(context)!.action,
+                                      label:
+                                          AppLocalizations.of(context)!.action,
                                       onPressed: () {
                                         // Code to execute.
                                       },

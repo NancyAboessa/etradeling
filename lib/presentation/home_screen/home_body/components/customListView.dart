@@ -17,8 +17,8 @@ class listViewhome extends StatelessWidget {
   double? width;
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      left: left,
+    return Padding(
+      padding: EdgeInsets.only(left: left, right: left),
       child: Container(
         height: hight,
         width: width,
